@@ -1,4 +1,4 @@
-package com.izo.camp;
+package com.izo.camp.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
