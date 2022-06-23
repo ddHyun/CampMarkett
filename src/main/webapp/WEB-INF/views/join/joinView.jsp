@@ -66,7 +66,8 @@
 				<th>주소</th>
 				<td>
 				<textarea name="addr" rows="2" cols="50" style="resize:none"></textarea>
-				<input type="button" value="주소찾기" onclick="">
+				<!-- 주소찾기 버튼 클릭 시  주소API로 이동 -->
+				<input type="button" value="주소찾기" onclick="location.href='jusoPopup.do'">
 				</td>
 			</tr>
 			<tr>
