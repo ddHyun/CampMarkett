@@ -6,8 +6,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CustomError {
 	
-	@RequestMapping("/error")
-	public String goErrorPage() {
-		return "error/error";
+	@RequestMapping("/error404")
+	public String goErrorPage404() {
+		return "error/error404";
+	}
+	
+	@RequestMapping("/error405")
+	public String goErrorPage405() {
+		return "error/error405";
+	}
+	
+	@RequestMapping("/error500")
+	public String goErrorPage500() {
+		return "error/error500";
 	}
 }
