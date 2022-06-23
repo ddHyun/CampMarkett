@@ -57,8 +57,8 @@ public class HomeController {
 		model.addAttribute("list", memberService.list());
 		return "join/join_view";
 	}
-	//�뀒�뒪�듃
+	//테스트	
 	
-	//�뀒�뒪�듃2
+	//테스트2
 	
 }
