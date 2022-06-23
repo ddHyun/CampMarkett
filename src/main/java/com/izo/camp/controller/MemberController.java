@@ -26,10 +26,10 @@ public class MemberController {
 	}
 	
 	//즈소API 이동
-//	@RequestMapping("/sample.do")
-//	public String sample() {
-//		return "join/Sample";
-//	}
+	@RequestMapping("/sample.do")
+	public String sample() {
+		return "join/Sample";
+	}
 	
 	//주소API팝업창 이동
 	@RequestMapping("/jusoPopup.do")
