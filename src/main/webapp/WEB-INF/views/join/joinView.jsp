@@ -7,12 +7,14 @@
 <title>Insert title here</title>
 <script>
 	function goPopup(){
-		var pop = window.open("joinView/jusoPopup.do","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 		
+		var pop = window.open("jusoPopup.do","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 		
 	}
 
 	function jusoCallBack(roadFullAddr){
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-		document.querySelector("#addr");
+		var address = document.querySelector("#address");
+		address.value = roadFullAddr;
+		document.getElementById("addressBtn").disabled = true;
 	}
 	
 	//비밀번호 일치확인 버튼
@@ -114,9 +116,9 @@
 			<tr>
 				<th>주소</th>
 				<td>
-				<textarea name="addr" rows="2" cols="50" style="resize:none"></textarea>
+				<input type="text" id="address" name="addr" style="width:500px;">
 				<!-- 주소찾기 버튼 클릭 시  주소API로 이동 -->
-				<input type="button" value="주소찾기" onclick="goPopup();">
+				<input type="button" value="주소찾기" id="addressBtn" onclick="goPopup();">
 				</td>
 			</tr>
 			<tr>
