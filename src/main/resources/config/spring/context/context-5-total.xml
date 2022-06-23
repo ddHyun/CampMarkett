@@ -10,6 +10,8 @@
 		
 		<!-- mapper, service의 빈(객체)를 자동으로 생성 -->
 		<context:component-scan base-package="com.izo.camp.mapper"/>
-		<context:component-scan base-package="com.izo.camp.service"/>
+		<context:component-scan base-package="com.izo.camp.member"/>
+		<context:component-scan base-package="com.izo.camp.review"/>
+		<context:component-scan base-package="com.izo.camp.weather"/>
 		<mybatis-spring:scan base-package="com.izo.camp.mapper"/>
 </beans>
