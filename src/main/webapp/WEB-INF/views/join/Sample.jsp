@@ -10,7 +10,7 @@
 
 function goPopup(){
 
-	var pop = window.open("camp/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 	
+	var pop = window.open("camp/sample.do","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 	
 	
 }
 
