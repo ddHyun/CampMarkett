@@ -46,11 +46,12 @@
 				<td><input name="birth" placeholder="예) 990101"></td>
 			</tr>
 			<tr>
-				<th rowspan="2">전화번호</th>
-				<td>집 : <input name="homeTel"></td>
+				<th>전화번호</th>
+				<td><input name="homeTel"></td>
 			</tr>
 			<tr>
-				<td>휴대전화 : <input name="mobileTel"></td>
+				<th>휴대전화번호</th>
+				<td><input name="mobileTel"></td>
 			</tr>
 			<tr>
 				<th>주소</th>
