@@ -42,7 +42,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 
-		for(DeptVO deptVO : deptMapper.deptList()) {
+		for(DeptVO deptVO : deptMapper.dept()) {
 			System.out.println(deptVO.getDeptno());
 		}
 		

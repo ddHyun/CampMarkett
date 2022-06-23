@@ -11,6 +11,7 @@ import com.izo.camp.vo.DeptVO;
 public interface DeptMapper {
 	
 	public List<DeptVO> deptList(); 
+	
 	@Select("SELECT * FROM DEPT")
 	public List<DeptVO> dept();
 }
