@@ -10,9 +10,12 @@ import com.izo.camp.vo.ReviewVO;
 @Mapper
 public interface ReviewMapper {
 
-	public List<ReviewVO> reviewlist(); 
-	
 	@Select("SELECT * FROM REVIEWTABLE")
-	public List<ReviewVO> review();
+	public List<ReviewVO> list(); 
+	
+	// ReviewMapper.xml 의 id와 동일해야함
+	public List<ReviewVO> reviewlist();
+	
+
 	
 }

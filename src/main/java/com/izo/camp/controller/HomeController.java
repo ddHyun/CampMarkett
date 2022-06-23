@@ -47,5 +47,19 @@ public class HomeController {
 		}
 		
 		return "home";
-	}	
+
+	}
+	
+	
+	@Autowired
+	MemberService memberService;
+	@RequestMapping(value = "/join_view.do")
+	public String join_view(Model model) {
+		model.addAttribute("list", memberService.list());
+		return "join/join_view";
+	}
+	//테스트	
+	
+	//테스트2
+	
 }
