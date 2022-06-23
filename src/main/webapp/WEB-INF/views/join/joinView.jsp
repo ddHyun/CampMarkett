@@ -17,13 +17,27 @@
 	
 	//비밀번호 일치확인 버튼
 	function checkPwd() {
-		var pwd  = document.getElementById("password1").value.trim();
-		var pwd2  = document.getElementById("password2").value.trim();
+		
+		var pwdPattern = /^[A-Za-z0-9]{8,15}$/;
+		var pwdId = document.getElementById("password1");
+		var pwd2Id = document.getElementById("password2");
+		
+		var pwd = pwdId.value.trim();
+		var pwd2 = pwd2Id.value.trim();
 		
 		if(pwd==''){
 			alert("비밀번호를 입력해 주세요");
 			return;
 		}
+
+		if(!pwdPattern.test(pwd)){
+			alert("비밀번호는 특수문자를 제외한 8~15자리의 영어 대소문자, 숫자로 이루어져야 합니다");
+			//input내용 초기화
+			pwdId.value="";
+			pwd2Id.value="";
+			return;
+		}
+		
 		
 		if(pwd==pwd2){
 			alert("비밀번호가 일치합니다");
@@ -32,6 +46,8 @@
 			return;
 		}else{
 			alert("비밀번호가 일치하지 않습니다");
+			pwdId.value="";
+			pwd2Id.value="";
 			return;
 		}
 		
