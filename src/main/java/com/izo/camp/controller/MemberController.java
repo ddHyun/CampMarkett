@@ -13,12 +13,28 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 	
-	//회원가입화면
-	@RequestMapping(value = "/join_view.do")
-	public String join_view(Model model) {
-		model.addAttribute("list", memberService.list());
+//	@RequestMapping(value = "/join_view.do")
+//	public String join_view(Model model) {
+//		model.addAttribute("list", memberService.list());
+//		return "join/joinView";
+//	}
+	
+	//회원가입페이지로 이동
+	@RequestMapping("/joinView.do")
+	public String joinView() {
 		return "join/joinView";
 	}
 	
+	//즈소API 이동
+//	@RequestMapping("/sample.do")
+//	public String sample() {
+//		return "join/Sample";
+//	}
+	
+	//주소API팝업창 이동
+	@RequestMapping("/jusoPopup.do")
+	public String jusoPopup() {
+		return "join/jusoPopup";
+	}
 	
 }
