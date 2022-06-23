@@ -12,8 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.izo.camp.dao.DeptDAO;
 import com.izo.camp.mapper.DeptMapper;
+import com.izo.camp.member.MemberService;
 import com.izo.camp.vo.DeptVO;
 
 /**
@@ -49,8 +49,12 @@ public class HomeController {
 		return "home";
 	}
 	
+	
+	@Autowired
+	MemberService memberService;
 	@RequestMapping(value = "/join_view.do")
-	public String join_view() {
+	public String join_view(Model model) {
+		model.addAttribute("list", memberService.list());
 		return "join/join_view";
 	}
 	//테스트 

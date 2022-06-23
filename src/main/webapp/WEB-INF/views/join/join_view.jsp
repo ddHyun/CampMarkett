@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,21 @@
 <title>Insert title here</title>
 </head>
 <body>
+<table>
+	<tr>
+		<th>이름</th>
+		<th>아이디</th>
+		<th>주소</th>
+	</tr>
+	<c:forEach var="vo" items="${list}">
+		<tr>
+			<td>${vo.name}</td>
+			<td>${vo.id}</td>
+			<td>${vo.addr}</td>
+		</tr>
+	</c:forEach>
+</table>
+
 	<form action="" method="post">
 		<table border="1">
 			<tr>
