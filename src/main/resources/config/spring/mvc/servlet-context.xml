@@ -22,6 +22,7 @@
 	</beans:bean>
 	<!-- 컨트롤러와 뷰단에 관련된 것을 자동주입  -->
 	<context:component-scan base-package="com.izo.camp" />
+	<context:component-scan base-package="com.izo.camp.controller" />
 	<context:component-scan base-package="com.izo.camp.exception" />
 	
 	
