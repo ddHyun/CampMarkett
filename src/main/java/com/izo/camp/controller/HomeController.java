@@ -53,5 +53,6 @@ public class HomeController {
 	public String join_view() {
 		return "join/join_view";
 	}
+	//테스트 
 	
 }
