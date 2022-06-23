@@ -49,4 +49,9 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/join_view.do")
+	public String join_view() {
+		return "join/join_view";
+	}
+	
 }
