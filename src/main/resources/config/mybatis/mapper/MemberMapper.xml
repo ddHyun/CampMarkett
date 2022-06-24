@@ -8,6 +8,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from membertable
 	</select>
 	
+	<select id="checkId" resultType="String" parameterType="String">
+		select id from membertable where id=#{id}
+	</select>
 </mapper>
 
 

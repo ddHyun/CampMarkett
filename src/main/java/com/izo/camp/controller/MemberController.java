@@ -1,8 +1,9 @@
 package com.izo.camp.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.izo.camp.member.MemberService;
@@ -25,16 +26,31 @@ public class MemberController {
 		return "join/joinView";
 	}
 	
-	//즈소API 이동
-	@RequestMapping("/sample.do")
-	public String sample() {
-		return "join/Sample";
-	}
-	
 	//주소API팝업창 이동
 	@RequestMapping("/jusoPopup.do")
 	public String jusoPopup() {
 		return "join/jusoPopup";
+	}
+	
+	//아이디 중복검사 창으로 이동
+//	@RequestMapping("/checkId.do")
+//	public String checkId() {
+//		return "join/checkId";
+//	}
+	
+	//아이디 중복검사
+	@RequestMapping("/checkId.do")
+	public String checkId(String id) {
+		String cnt = memberService.checkId();
+//		int cntId = 0; //아이디 중복횟수 검사용 변수
+//		for (String i : idList) {
+//			if(id.equals(i)) {
+//				cntId++;
+//			}
+//		}
+		System.out.println(id);
+//		System.out.println(cntId);
+		return "join/checkId";
 	}
 	
 }
