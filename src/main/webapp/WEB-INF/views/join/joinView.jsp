@@ -1,13 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="js/httpRequest.js"></script>
 <script>
+	var joinForm = document.form;
+	
 	function goPopup(){
-		var pop = window.open("jusoPopup.do","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 		
+		var pop = window.open("jusoPopup.do","pop","width=570,height=420, scrollbars=yes, resizable=no"); 		
 	}
 
 	function jusoCallBack(roadFullAddr){
@@ -56,15 +60,31 @@
 		//유효성 체크
 	}
 	
+	//아이디 중복버튼 클릭 시 파마리터 가지고 페이지 이동
 	function send(){
-		var id = document.getElementById("id").value.trim();
-		location.href = "checkId.do?id="+id;
-	}
+		var id = document.getElementById("id").value;
+		var duplicationID = f.chk.value;
+		
+		if(id==''){
+			alert("아이디를 입력해주세요");
+			return;
+		}
+		/* 
+		if(duplicationID != 'no'){
+			alert("중복된 아이디입니다");
+			return;
+		}else{
+			alert("사용 가능한 아이디입니다");
+			return;
+		} */
+			
+		location.href = "checkID.do?id=" + id;
+	}	
 	
-</script>
+	</script>
 </head>
 <body>
-	<form action="" method="post">
+	<form name="f" action="" method="post">
 		<table border="1" align="center" width="800px">
 			<tr>
 				<td colspan="2">
@@ -75,9 +95,18 @@
 			<tr>
 				<th>아이디</th>
 				<td>
-				<input type="text" name="id" id="id">
+				<input type="hidden" name="chk" value="${duplicationID}">
+				<input type="text" name="id" value="${id}" id="id">
 				<!-- 아이디 중복확인 버튼 -->
-				<input type="button" value="중복확인" onclick="send()">
+				<input type="button" value="중복확인" onclick="send()">				
+				<c:choose>
+					<c:when test="${duplicationID eq 'no'}">
+					사용가능한 아이디입니다					
+					</c:when>
+					<c:when test="${duplicationID eq 'yes'}">
+					중복된 아이디입니다
+					</c:when>
+				</c:choose>
 				</td>				
 			</tr>
 			<tr>
@@ -97,7 +126,13 @@
 			<tr>
 				<th>이름</th>
 				<td><input type="text" name="name"></td>
-			</tr>
+			</tr>	
+			<tr>
+				<th>성별</th>
+				<td>
+					
+				</td>
+			</tr>	
 			<tr>
 				<th>이메일</th>
 				<td>

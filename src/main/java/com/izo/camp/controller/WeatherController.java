@@ -21,6 +21,5 @@ public class WeatherController {
 		return "weather/weatherHome";
 	}
 	
-	//
-	//
+	
 }
