@@ -7,7 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="resources/css/bootstrap.origin.min.css" rel="stylesheet" />
+	<!-- 부트스트랩, 제이쿼리 -->
+<%-- <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="<c:url value="/resources/user/css/bootstrap.min.css"/>">
+<script src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="<c:url value="/resources/user/js/bootstrap.min.js"/>"></script> --%>
+
 <style>
 	body{
 		background-color:black;

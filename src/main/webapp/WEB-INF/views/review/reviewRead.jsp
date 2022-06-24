@@ -10,29 +10,8 @@
 	<table border="1">
 		<tr>
 			<th>제목</th>
-			<td>${title}</td>
+				<td>${vo.title}</td>
 		</tr>
-		
-		<tr>
-			<td>${productid}</td>
-		</tr>
-		
-		<tr>
-			<td>${content}</td>
-		</tr>
-		
-		<tr>
-			<td>${memberid}</td>
-		</tr>
-		
-		<tr>
-			<td>${readhit}</td>
-		</tr>
-		
-		<tr>
-			<td>${joayo}</td>
-		</tr>
-		
 	</table>
 </body>
 </html>

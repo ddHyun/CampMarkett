@@ -14,9 +14,6 @@ import com.izo.camp.vo.ReviewVO;
 	public class ReviewController {
 
 	@Autowired
-	ReviewMapper reviewMapper;
-
-	@Autowired
 	ReviewService reviewService;
 
 	@RequestMapping("/reviewMain.do")
@@ -28,9 +25,9 @@ import com.izo.camp.vo.ReviewVO;
 	
 
 	@RequestMapping("/reviewRead.do")
-	public String reviewRead(Model model) {
+	public String reviewRead(int idx, Model model) {
 		
-		model.addAttribute("list", reviewService.list());
+		model.addAttribute("vo", reviewService.getReviewIdx(idx));
 		
 		return "review/reviewRead";
 		
