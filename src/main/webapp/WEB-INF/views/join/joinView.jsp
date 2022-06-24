@@ -51,14 +51,17 @@
 			pwdId.value="";
 			pwd2Id.value="";
 			return;
-		}
+		}		
 		
 		//유효성 체크
 	}
+	
+	
+	
 </script>
 </head>
 <body>
-	<form action="">
+	<form action="" method="post">
 		<table border="1" align="center" width="800px">
 			<tr>
 				<td colspan="2">
@@ -69,8 +72,9 @@
 			<tr>
 				<th>아이디</th>
 				<td>
-				<input name="id">
-				<input type="button" value="중복확인" onclick="">
+				<input type="text" name="id" id="id">
+				<!-- 아이디 중복확인 버튼 -->
+				<input type="button" value="중복확인" onclick="location.href='checkId.do'">
 				</td>				
 			</tr>
 			<tr>
@@ -89,7 +93,7 @@
 			</tr>
 			<tr>
 				<th>이름</th>
-				<td><input name="name"></td>
+				<td><input type="text" name="name"></td>
 			</tr>
 			<tr>
 				<th>이메일</th>
@@ -102,12 +106,12 @@
 			</tr>
 			<tr>
 				<th>전화번호</th>
-				<td><input name="hometel"></td>
+				<td><input type="text" name="hometel"></td>
 			</tr>
 			<tr>
 				<th>휴대전화번호</th>
 				<td>
-				<input name="mobiletel">
+				<input type="text" name="mobiletel">
 				<input type="button" value="본인 인증하기" onclick=""><br>
 				<input type="checkbox" value="smsAgreeBox">SMS 수신 동의<br>
 				수신거부시 일부 서비스에 제한이 있을 수 있습니다.
