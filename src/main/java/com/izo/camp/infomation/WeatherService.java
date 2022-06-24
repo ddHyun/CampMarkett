@@ -1,4 +1,4 @@
-package com.izo.camp.weather;
+package com.izo.camp.infomation;
 
 import org.springframework.stereotype.Service;
 
