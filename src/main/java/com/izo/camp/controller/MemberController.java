@@ -55,15 +55,12 @@ public class MemberController {
 		}
 		
 		model.addAttribute("duplicationID", duplicationID);
-		System.out.println(id);
-		System.out.println(idList);
-		System.out.println(cntId);
+		
 		return "join/joinView";
 	}
 	
-	@RequestMapping("/okId.do")
-	public String okId() {
-		return "join/okId";
+	@RequestMapping("/join.do")
+	public void join(MemberVO vo) {
+		
 	}
-	
 }
