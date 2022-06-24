@@ -31,36 +31,35 @@ public class MemberController {
 	
 	//회원인지 아닌지 확인하기
 	@RequestMapping("/memberOrNot.do")
-	public String memberOrNot(@ModelAttribute("name, birth") String name, int birth, Model model) {
-		List<MemberVO> list = memberService.list();
-		
-		int cnt = 0; //DB자료와 중복된 값이 있으면 증가
-		
-		for (int i = 0; i < list.size(); i++) {
-			String dbName = list.get(i).getName();
-			System.out.println(dbName);
-			if(name.equals(dbName)) {
-				cnt++;	//같은 이름이 있을 때 1 반환
-				int dbBirth = list.get(i).getBirth();
-				if(birth == dbBirth) {
-					cnt++; //이름이 같은데 생년월일까지 같을 때 2 반환
-				}
-			}
-		}
-		
-		System.out.println(cnt);
-		String result = "" + cnt;
-		
-		model.addAttribute("result", result);
-		
-//		int idx = 0;
-//	
-//		int dbIdx = memberService.memberCheck();
+	public String memberOrNot(MemberVO vo, Model model) {
+//		List<MemberVO> list = memberService.list();
 //		
-//		if(dbIdx > 0) {
-//			idx = dbIdx;
+//		int cnt = 0; //DB자료와 중복된 값이 있으면 증가
+//		
+//		for (int i = 0; i < list.size(); i++) {
+//			String dbName = list.get(i).getName();
+//			System.out.println(dbName);
+//			if(name.equals(dbName)) {
+//				cnt++;	//같은 이름이 있을 때 1 반환
+//				int dbBirth = list.get(i).getBirth();
+//				if(birth == dbBirth) {
+//					cnt++; //이름이 같은데 생년월일까지 같을 때 2 반환
+//				}
+//			}
 //		}
-//		System.out.println("idx="+idx+"/dbidx="+dbIdx);
+//		
+//		String result = "" + cnt;
+//		
+//		model.addAttribute("result", result);
+		
+		int idx = 0;
+	
+		int dbIdx = memberService.getMemberIdx(vo.getIdx());
+		
+		if(dbIdx > 0) {
+			idx = dbIdx;
+		}
+		System.out.println("idx="+idx+"/dbidx="+dbIdx);
 		
 		return "join/memberCheck";
 	}
