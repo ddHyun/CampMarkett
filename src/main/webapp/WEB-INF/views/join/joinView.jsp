@@ -61,16 +61,12 @@
 	}
 	
 	//아이디 중복버튼 클릭 시 파마리터 가지고 페이지 이동
-	function send(){
-		
+	function send(){		
 		var id = document.getElementById("id").value;		
-		
 		if(id==''){
-			alert("아이디를 입력해주세요");
-			
+			alert("아이디를 입력해주세요");			
 			return;
-		}
-		
+		}		
 		location.href = "checkID.do?id=" + id;
 	}	
 		

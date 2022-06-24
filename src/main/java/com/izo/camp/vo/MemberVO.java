@@ -4,8 +4,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MemberVO {
-	private int idx;
+	private int idx, birth;
 	private String id, pwd, name, gender, email, hometel, mobiletel, addr;
+	
+	public int getBirth() {
+		return birth;
+	}
+	public void setBirth(int birth) {
+		this.birth = birth;
+	}
 	
 	public int getIdx() {
 		return idx;
