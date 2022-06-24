@@ -23,7 +23,8 @@ public class MemberService {
 		return memberMapper.idList();
 	}
 	
-	public int memberCheck() {
-		return memberMapper.memberCheck();
+	public int getMemberIdx(int idx) {
+		MemberVO vo = new MemberVO();
+		return memberMapper.memberIdx(vo);
 	}
 }

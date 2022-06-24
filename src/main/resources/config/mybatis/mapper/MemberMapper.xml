@@ -9,9 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from membertable
 	</select>
 	
-	<!-- <select id="memberCheck" resultType="int" parameterType="vo.MemberVO">
+	<select id="memberIdx" resultType="int" parameterType="memberVO">
 		select idx from membertable where name=#{name} and birth=#{birth}
-	</select> -->
+	</select>
 		
 </mapper>
 

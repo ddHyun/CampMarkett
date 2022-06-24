@@ -19,5 +19,5 @@ public interface MemberMapper {
 	@Select("select id from membertable")
 	public List<String> idList();
 	
-	public int memberCheck();
+	public int memberIdx(MemberVO vo);
 }
