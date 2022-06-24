@@ -22,4 +22,8 @@ public class MemberService {
 	public List<String> idList() {
 		return memberMapper.idList();
 	}
+	
+	public int memberCheck() {
+		return memberMapper.memberCheck();
+	}
 }
