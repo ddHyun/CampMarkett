@@ -4,9 +4,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.izo.camp.mapper.MemberMapper">
 
+	<!-- 테이블 목록조회 -->
 	<select id="memberlist">
 		select * from membertable
 	</select>
+	
+	<!-- <select id="memberCheck" resultType="int" parameterType="vo.MemberVO">
+		select idx from membertable where name=#{name} and birth=#{birth}
+	</select> -->
 		
 </mapper>
 
