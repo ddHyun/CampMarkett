@@ -37,7 +37,7 @@
 	<div id="board">
 	<table border="1" align="center"  width="700">
 		<tr>
-			<th><i class="bi bi-diagram-2-fill"></i></th>
+			<th><!-- <i class="bi bi-diagram-2-fill"></i> --></th>
 			<th width="250">제목</th>
 			<th width="100">후기상품</th>
 			<th width="150">작성자</th>
