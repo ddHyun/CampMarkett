@@ -19,7 +19,7 @@ public class MemberService {
 		return memberMapper.list();
 	}
 	
-	public String checkId(){
-		return memberMapper.checkId();
+	public List<String> idList() {
+		return memberMapper.idList();
 	}
 }
