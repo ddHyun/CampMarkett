@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.izo.camp.member.MemberService;
+import com.izo.camp.vo.MemberVO;
 
 @Controller
 public class MemberController {
@@ -32,25 +35,32 @@ public class MemberController {
 		return "join/jusoPopup";
 	}
 	
-	//아이디 중복검사 창으로 이동
-//	@RequestMapping("/checkId.do")
-//	public String checkId() {
-//		return "join/checkId";
-//	}
-	
-	//아이디 중복검사
-	@RequestMapping("/checkId.do")
-	public String checkId(String id) {
-		String cnt = memberService.checkId();
-//		int cntId = 0; //아이디 중복횟수 검사용 변수
-//		for (String i : idList) {
-//			if(id.equals(i)) {
-//				cntId++;
-//			}
-//		}
-		System.out.println(id);
-//		System.out.println(cntId);
-		return "join/checkId";
+	//아이디중복확인
+	@RequestMapping("checkID.do")
+	public String checkId(@ModelAttribute("id") String id, Model model) {		
+		List<String> idList = memberService.idList();
+		
+		int cntId = 0;
+		
+		for(String i : idList) {
+			if(id.equals(i)) {
+				cntId++;
+			}
+		}
+		
+		String duplicationID = "no";
+		
+		if(cntId != 0) {
+			duplicationID = "yes";
+		}
+		
+		model.addAttribute("duplicationID", duplicationID);
+		
+		return "join/joinView";
 	}
 	
+	@RequestMapping("/join.do")
+	public void join(MemberVO vo) {
+		
+	}
 }
