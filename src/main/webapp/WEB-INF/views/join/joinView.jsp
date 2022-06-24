@@ -56,7 +56,10 @@
 		//유효성 체크
 	}
 	
-	
+	function send(){
+		var id = document.getElementById("id").value.trim();
+		location.href = "checkId.do?id="+id;
+	}
 	
 </script>
 </head>
@@ -74,7 +77,7 @@
 				<td>
 				<input type="text" name="id" id="id">
 				<!-- 아이디 중복확인 버튼 -->
-				<input type="button" value="중복확인" onclick="location.href='checkId.do'">
+				<input type="button" value="중복확인" onclick="send()">
 				</td>				
 			</tr>
 			<tr>

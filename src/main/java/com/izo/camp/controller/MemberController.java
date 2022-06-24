@@ -33,21 +33,23 @@ public class MemberController {
 	}
 	
 	//아이디 중복검사 창으로 이동
-	@RequestMapping("/checkId.do")
-	public String checkId() {
-		return "join/checkId";
-	}
+//	@RequestMapping("/checkId.do")
+//	public String checkId() {
+//		return "join/checkId";
+//	}
 	
 	//아이디 중복검사
-	@RequestMapping("/checkId2.do")
+	@RequestMapping("/checkId.do")
 	public String checkId(String id) {
-		List<String> idList = memberService.listId();
-		int cntId = 0; //아이디 중복횟수 검사용 변수
-		for (String i : idList) {
-			if(id.equals(i)) {
-				cntId++;
-			}
-		}
+		String cnt = memberService.checkId();
+//		int cntId = 0; //아이디 중복횟수 검사용 변수
+//		for (String i : idList) {
+//			if(id.equals(i)) {
+//				cntId++;
+//			}
+//		}
+		System.out.println(id);
+//		System.out.println(cntId);
 		return "join/checkId";
 	}
 	
