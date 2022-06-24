@@ -1,8 +1,9 @@
 package com.izo.camp.vo;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class CampInfoVO {
 //	idx number(5) PRIMARY KEY,
 //	name varchar2(2000),
@@ -11,10 +12,10 @@ public class CampInfoVO {
 //	address VARCHAR2(2000),
 //	tell VARCHAR2(2000)
 	
-	private int idx;
+	private Integer idx;
 	private String name;
-	private double latitude;
-	private double logitude;
+	private Double latitude;
+	private Double longitude;
 	private String address;
 	private String tell;
 	
@@ -22,11 +23,11 @@ public class CampInfoVO {
 	
 	}
 
-	public int getIdx() {
+	public Integer getIdx() {
 		return idx;
 	}
 
-	public void setIdx(int idx) {
+	public void setIdx(Integer idx) {
 		this.idx = idx;
 	}
 
@@ -38,20 +39,20 @@ public class CampInfoVO {
 		this.name = name;
 	}
 
-	public double getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(double latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
-	public double getLogitude() {
-		return logitude;
+	public Double getLongitude() {
+		return longitude;
 	}
 
-	public void setLogitude(double logitude) {
-		this.logitude = logitude;
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
 	}
 
 	public String getAddress() {
@@ -69,6 +70,7 @@ public class CampInfoVO {
 	public void setTell(String tell) {
 		this.tell = tell;
 	}
+
 	
 	
 }
