@@ -18,4 +18,8 @@ public class MemberService {
 	public List<MemberVO> list(){
 		return memberMapper.list();
 	}
+	
+	public String checkId(){
+		return memberMapper.checkId();
+	}
 }
