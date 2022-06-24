@@ -5,9 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.izo.camp.mapper.ReviewMapper;
 import com.izo.camp.review.ReviewService;
-import com.izo.camp.vo.ReviewVO;
 
 @Controller
 
