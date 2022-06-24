@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="js/httpRequest.js"></script>
+<!-- <script src="js/httpRequest.js"></script> -->
 <script>
 	var joinForm = document.form;
 	
@@ -62,29 +62,50 @@
 	
 	//아이디 중복버튼 클릭 시 파마리터 가지고 페이지 이동
 	function send(){
-		var id = document.getElementById("id").value;
-		var duplicationID = f.chk.value;
+		var id = document.getElementById("id").value;		
 		
 		if(id==''){
 			alert("아이디를 입력해주세요");
 			return;
 		}
-		/* 
-		if(duplicationID != 'no'){
-			alert("중복된 아이디입니다");
-			return;
-		}else{
-			alert("사용 가능한 아이디입니다");
-			return;
-		} */
-			
+		
 		location.href = "checkID.do?id=" + id;
 	}	
+		
+	//성별 하나만 체크하기
+	function chooseGender(target){
+	    var gender = document.getElementsByName("gender");
+	    for(var i=0; i<gender.length; i++){
+	        if(gender[i] != target){
+	        	gender[i].checked = false;
+	        }
+	    }
+	}
+	
+	function certifyTel(){
+		var phoneJ = /^01([0:1:6:7:8:9]?)?([0-9]{3,4})?([0-9]{4})$/;
+		var tel = document.getElementById("mobiletel");
+		var mobiletel = tel.value.trim();
+		if(!phoneJ.test(mobiletel)){
+			alert("잘못된 형식의 전화번호입니다");
+			return;
+		}
+	}
+		
+	
+	//가입하기
+	function join(f){
+		var id = f.id.value;
+		var pwd = f.pwd.value;
+		var mobiletel = f.mobiletel.value;
+		var addr = f.addr.value;	
+		f.submit();
+	}
 	
 	</script>
 </head>
 <body>
-	<form name="f" action="" method="post">
+	<form action="join.do" method="post">
 		<table border="1" align="center" width="800px">
 			<tr>
 				<td colspan="2">
@@ -93,15 +114,14 @@
 				</td>
 			</tr>			
 			<tr>
-				<th>아이디</th>
-				<td>
-				<input type="hidden" name="chk" value="${duplicationID}">
+				<th>*아이디</th>
+				<td>				
 				<input type="text" name="id" value="${id}" id="id">
 				<!-- 아이디 중복확인 버튼 -->
-				<input type="button" value="중복확인" onclick="send()">				
+				<input type="button" value="중복확인" id="duplIdBtn" onclick="send()">				
 				<c:choose>
 					<c:when test="${duplicationID eq 'no'}">
-					사용가능한 아이디입니다					
+					사용가능한 아이디입니다								
 					</c:when>
 					<c:when test="${duplicationID eq 'yes'}">
 					중복된 아이디입니다
@@ -110,11 +130,11 @@
 				</td>				
 			</tr>
 			<tr>
-				<th>비밀번호</th>
+				<th>*비밀번호</th>
 				<td><input type="password" name="pwd" id="password1"></td>
 			</tr>
 			<tr>
-				<th>비밀번호 확인</th>
+				<th>*비밀번호 확인</th>
 				<td>
 				<input type="password" name="pwd2" id="password2">
 				<input type="button" value="일치확인" id="checkPwdBtn" onclick="checkPwd()">
@@ -124,21 +144,17 @@
 				<td colspan="2">개인정보 입력</td>
 			</tr>
 			<tr>
-				<th>이름</th>
-				<td><input type="text" name="name"></td>
-			</tr>	
-			<tr>
-				<th>성별</th>
+				<th>*이름</th>
 				<td>
-					
+					<input type="text" name="name">
+					<input type="checkbox" name="gender" value="male" onclick="chooseGender(this)" checked="checked">남자
+					<input type="checkbox" name="gender" value="female" onclick="chooseGender(this)">여자
 				</td>
-			</tr>	
+			</tr>			
 			<tr>
-				<th>이메일</th>
+				<th>*이메일</th>
 				<td>
-				<input name="email">&nbsp;
-				<input type="checkbox" value="emailAgreeBox">이메일 수신 동의<br>
-				수신거부시 일부 서비스에 제한이 있을 수 있습니다.<br>
+				<input name="email"><br>
 				비밀번호 초기화 메일 수신 등에 반드시 필요한 정보이므로 정확히 입력해주세요.
 				</td>
 			</tr>
@@ -147,16 +163,14 @@
 				<td><input type="text" name="hometel"></td>
 			</tr>
 			<tr>
-				<th>휴대전화번호</th>
+				<th>*휴대전화번호</th>
 				<td>
-				<input type="text" name="mobiletel">
-				<input type="button" value="본인 인증하기" onclick=""><br>
-				<input type="checkbox" value="smsAgreeBox">SMS 수신 동의<br>
-				수신거부시 일부 서비스에 제한이 있을 수 있습니다.
+				<input type="text" name="mobiletel" id="mobiletel" onfocus='this.placeholder="예) 010-2345-6789'>
+				<input type="button" value="본인 인증하기" onclick="certifyTel()"><br>
 				</td>
 			</tr>
 			<tr>
-				<th>주소</th>
+				<th>*주소</th>
 				<td>
 				<input type="text" id="address" name="addr" style="width:500px;">
 				<!-- 주소찾기 버튼 클릭 시  주소API로 이동 -->
@@ -165,8 +179,8 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button" value="취소하기" onclick="">
-					<input type="button" value="가입하기" onclick="">
+					<input type="button" value="취소하기" onclick="location.href='_____________'">
+					<input type="button" value="가입하기" onclick="join(this.form)">
 				</td>
 			</tr>
 		</table>
