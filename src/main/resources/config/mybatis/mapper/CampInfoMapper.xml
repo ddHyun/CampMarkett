@@ -8,7 +8,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getTotalNum" resultType="int">
 		SELECT count(*) FROM campingTable
 	</select>
-	
+	<!-- private int idx;
+	private String name;
+	private double latitude;
+	private double longitude;
+	private String address;
+	private String tell;
+
+	 -->
+	<insert id="addNewCamp" parameterType="campInfoVO">
+		INSERT INTO CAMPINGTABLE
+		(IDX, NAME, LATITUDE, LONGITUDE, ADDRESS, TELL)
+		VALUES(SEQ_CampingArea.NEXTVAL,#{name},#{latitude},#{longitude},#{address},#{tell})
+	</insert>
 </mapper>
 
 
