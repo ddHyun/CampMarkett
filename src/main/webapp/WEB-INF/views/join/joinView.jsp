@@ -62,10 +62,12 @@
 	
 	//아이디 중복버튼 클릭 시 파마리터 가지고 페이지 이동
 	function send(){
+		
 		var id = document.getElementById("id").value;		
 		
 		if(id==''){
 			alert("아이디를 입력해주세요");
+			
 			return;
 		}
 		
@@ -82,12 +84,17 @@
 	    }
 	}
 	
+	//휴대전화인증
 	function certifyTel(){
+		//유효성 체크
 		var phoneJ = /^01([0:1:6:7:8:9]?)?([0-9]{3,4})?([0-9]{4})$/;
 		var tel = document.getElementById("mobiletel");
 		var mobiletel = tel.value.trim();
 		if(!phoneJ.test(mobiletel)){
 			alert("잘못된 형식의 전화번호입니다");
+			return;
+		}else if(mobiletel == ''){
+			alert("전화번호를 입력해 주세요");
 			return;
 		}
 	}
