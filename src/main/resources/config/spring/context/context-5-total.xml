@@ -12,6 +12,7 @@
 		<context:component-scan base-package="com.izo.camp.mapper"/>
 		<context:component-scan base-package="com.izo.camp.member"/>
 		<context:component-scan base-package="com.izo.camp.review"/>
-		<context:component-scan base-package="com.izo.camp.weather"/>
+		<context:component-scan base-package="com.izo.camp.infomation"/>
+		<context:component-scan base-package="com.izo.camp.vo"/>
 		<mybatis-spring:scan base-package="com.izo.camp.mapper"/>
 </beans>
