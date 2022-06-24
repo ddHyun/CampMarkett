@@ -15,7 +15,9 @@ public interface ReviewMapper {
 	
 	// ReviewMapper.xml 의 id와 동일해야함
 	public List<ReviewVO> reviewlist();
-	
 
+	
+	public ReviewVO reviewIdx(int idx);
+	
 	
 }

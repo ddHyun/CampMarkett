@@ -19,4 +19,12 @@ public class ReviewService {
 	public List<ReviewVO> list(){
 		return reviewMapper.list();
 	}
+	
+	public ReviewVO getReviewIdx(int idx) {
+		
+		System.out.println("서비스 들어옴"+ idx);
+		
+		return reviewMapper.reviewIdx(idx);
+		
+	}
 }

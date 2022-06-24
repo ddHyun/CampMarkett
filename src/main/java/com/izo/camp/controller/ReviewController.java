@@ -5,16 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.izo.camp.mapper.ReviewMapper;
 import com.izo.camp.review.ReviewService;
-import com.izo.camp.vo.ReviewVO;
 
 @Controller
 
 	public class ReviewController {
-
-	@Autowired
-	ReviewMapper reviewMapper;
 
 	@Autowired
 	ReviewService reviewService;
@@ -28,9 +23,9 @@ import com.izo.camp.vo.ReviewVO;
 	
 
 	@RequestMapping("/reviewRead.do")
-	public String reviewRead(Model model) {
+	public String reviewRead(int idx, Model model) {
 		
-		model.addAttribute("list", reviewService.list());
+		model.addAttribute("vo", reviewService.getReviewIdx(idx));
 		
 		return "review/reviewRead";
 		
