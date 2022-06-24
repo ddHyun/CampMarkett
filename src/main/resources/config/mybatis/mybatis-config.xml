@@ -10,9 +10,11 @@
 	
 	<typeAliases>		
 		<typeAlias type="com.izo.camp.vo.DeptVO" alias="deptVO"/>		
+		<typeAlias type="com.izo.camp.vo.ReviewVO" alias="reviewVO"/>		
 	</typeAliases>
 	
-	<mappers>
+<!-- 	<mappers>
 		<mapper resource="config/mybatis/mapper/DeptMapper.xml" />
-	</mappers>
+		<mapper resource="config/mybatis/mapper/ReviewMapper.xml"/>
+	</mappers> -->
 </configuration>
