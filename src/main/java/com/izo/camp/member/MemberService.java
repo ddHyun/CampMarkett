@@ -19,7 +19,7 @@ public class MemberService {
 		return memberMapper.list();
 	}
 	
-	public List<String> listId(){
-		return memberMapper.listId();
+	public String checkId(){
+		return memberMapper.checkId();
 	}
 }

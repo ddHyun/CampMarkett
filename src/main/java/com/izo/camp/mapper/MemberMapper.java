@@ -16,6 +16,6 @@ public interface MemberMapper {
 	//MemberMapper.xml의  id와 메서드명 동일하게 만들어서 쿼리문 작성하기
 	public List<MemberVO> memberlist();
 	
-	@Select("select id from membertable")
-	public List<String> listId();
+//	@Select("select id from membertable")
+	public String checkId();
 }
