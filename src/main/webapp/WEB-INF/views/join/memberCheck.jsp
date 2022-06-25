@@ -9,10 +9,10 @@
 <script src="resources/assets/js/httpRequest.js"></script>
 <script>	
 
+	function checkMember(f){
 	var name = document.getElementById("name").value;
 	var birth = document.getElementById("birth").value;
 		
-	function checkMember(f){
 		//유효성 검사
 		if(name==''){
 			alert("이름을 입력해주세요");
@@ -55,16 +55,14 @@
 			<div class="dd">
 			<input type="button" value="조회" id="searchBtn" onclick="f()">	
 			</div>	
+					<input type="button" value="가입 확인하기" onclick="checkMember(this.form)">
 			<c:choose>
-				<c:when test="${result eq '2'}">
-					<input type="button" value="로그인하러 가기" onclick="---로그인페이지로 이동---">
+				<c:when test="${result ne 0}">
+					<input type="button" value="로그인하러 가기" onclick="">
 				</c:when>
-				<c:when test="${result eq '1' or result eq '0'}">
+				<c:when test="${result eq 0}">
 					<input type="button" value="가입하러 가기" onclick="location.href='joinView.do'">
 				</c:when>
-				<c:otherwise>
-					<input type="button" value="가입 확인하기" onclick="checkMember(this.form)">
-				</c:otherwise>
 			</c:choose>
 		</div>
 	</form>
