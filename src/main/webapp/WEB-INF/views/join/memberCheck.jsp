@@ -42,6 +42,7 @@
 </script>
 </head>
 <body>
+	<p>회원 확인</p>
 	<form action="memberOrNot.do" method="post" align="center">
 		<div>
 			<label>이름</label>
@@ -58,7 +59,7 @@
 					<input type="button" value="가입 확인하기" onclick="checkMember(this.form)">
 			<c:choose>
 				<c:when test="${result ne 0}">
-					<input type="button" value="로그인하러 가기" onclick="">
+					<input type="button" value="로그인하러 가기" onclick="location.href='loginView.do'">
 				</c:when>
 				<c:when test="${result eq 0}">
 					<input type="button" value="가입하러 가기" onclick="location.href='joinView.do'">

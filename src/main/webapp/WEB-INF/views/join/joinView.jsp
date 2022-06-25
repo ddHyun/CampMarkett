@@ -108,6 +108,7 @@
 	</script>
 </head>
 <body>
+	<p>회원가입</p>
 	<form action="join.do" method="post">
 		<table border="1" align="center" width="800px">
 			<tr>
@@ -182,7 +183,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button" value="취소하기" onclick="location.href='_____________'">
+					<input type="button" value="취소하기" onclick="location.href='##########'">
 					<input type="button" value="가입하기" onclick="join(this.form)">
 				</td>
 			</tr>
