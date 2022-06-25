@@ -6,8 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="resources/assets/js/httpRequest.js"></script>
 <script>	
-	function goLogin(f){
+	function goLogin(){
 		var id = document.getElementById("id").value.trim();
 		var pwd = document.getElementById("pwd").value.trim();
 		//유효성 검사
@@ -21,7 +22,23 @@
 			return;
 		}
 		
-		
+		var url = "goLogin.do";
+		var param = "id=" + id + "&pwd=" + pwd;
+		sendRequest(url, param, cb, "POST");
+	}
+	
+	function cb(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var data = xhr.responseText;
+			var json = (new Function('return'+data))();			
+			
+			if(json[0].param=='n'){
+				alert("아이디나 비밀번호를 확인해 주세요");
+				return;
+			}else{
+				location.href="joinView.do";
+			}
+		}
 	}
 </script>
 </head>
@@ -37,7 +54,7 @@
 			<input type="password" name="pwd" id="pwd">
 		</div>
 		<div>			
-			<input type="button" value="로그인" onclick="goLogin(this.form)">
+			<input type="button" value="로그인" onclick="goLogin()">
 			<input type="button" value="회원가입" onclick="location.href='joinView.do'">
 		</div>
 		<div>
