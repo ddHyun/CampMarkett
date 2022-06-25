@@ -7,12 +7,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="resources/assets/js/httpRequest.js"></script>
-<script>	
+<script>
 
+	//페이지 로딩되면 자동커서
+	window.onload = function(){
+		document.getElementById("name").focus();
+	};
+
+	function checkMember(){
 	var name = document.getElementById("name").value;
 	var birth = document.getElementById("birth").value;
 		
-	function checkMember(f){
 		//유효성 검사
 		if(name==''){
 			alert("이름을 입력해주세요");
@@ -35,19 +40,43 @@
 			alert("생년월일은 6자로 입력해주세요    예)990101");
 			return;
 		}
-				
-		f.submit();
-	}
+		
+		var url = "memberOrNot.do";
+		var param = "name=" + name + "&birth=" + birth;
+		
+		sendRequest(url, param, cb, "POST");						
+	}	
 	
-	function f(){		
-		var url = "memberOrNot2.do";
-		var param = ;
-	}
+	function cb() {
+		if(xhr.readyState==4 && xhr.status==200){
+			var data = xhr.responseText;
+			var json = (new Function('return'+data)());
+			var name = document.getElementById("name");
+			var birth = document.getElementById("birth");				
 			
+			if(json[0].param=='n'){
+				if(!confirm("아직 회원이 아니시군요? 회원가입하러 가시죠~!")){
+					name.focus();
+					name.value="";
+					birth.value="";
+				}else{
+					location.href="joinView.do";
+				}
+			}else{
+				if(!confirm("정보가 존재합니다. 로그인하시겠습니까?")){
+					return;
+				}else{
+					location.href="loginView.do";
+				}
+			}
+		}
+	}
+		
 </script>
 </head>
 <body>
-	<form action="memberOrNot.do" method="post" align="center">
+	<p align="center">회원 확인</p>
+	<form align="center">
 		<div>
 			<label>이름</label>
 			<input type="text" name="name" id="name" value="${name}">
@@ -56,21 +85,8 @@
 			<label>생년월일(6자리)</label>
 			<input type="text" name="birth" id="birth" placeholder="예) 990101" value="${birth}">
 		</div>
-		<div>	
-			<div class="dd">
-			<input type="button" value="조회" id="searchBtn" onclick="f()">	
-			</div>	
-			<c:choose>
-				<c:when test="${result eq '2'}">
-					<input type="button" value="로그인하러 가기" onclick="---로그인페이지로 이동---">
-				</c:when>
-				<c:when test="${result eq '1' or result eq '0'}">
-					<input type="button" value="가입하러 가기" onclick="location.href='joinView.do'">
-				</c:when>
-				<c:otherwise>
-					<input type="button" value="가입 확인하기" onclick="checkMember(this.form)">
-				</c:otherwise>
-			</c:choose>
+		<div>				
+			<input type="button" value="가입 확인하기" onclick="checkMember()">			
 		</div>
 	</form>
 </body>

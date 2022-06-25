@@ -15,17 +15,24 @@ public class MemberService {
 	@Autowired
 	MemberMapper memberMapper;
 	
+	//회원 전체목록
 	public List<MemberVO> list(){
 		return memberMapper.list();
 	}
 	
+	//아이디목록
 	public List<String> idList() {
 		return memberMapper.idList();
 	}
 	
 //	컨트롤러 -> 서비스 : 메서드명(변수)의 변수는 컨트롤러에서 보낸 타입과 일치
 //  매퍼 -> 서비스  : 리턴과 메서드 타입 일치
+	//이름, 생일 일치 idx
 	public int getMemberIdx(MemberVO vo){
 		return memberMapper.memberIdx(vo);
+	}
+	
+	public int getIdxFromId(MemberVO vo) {
+		return memberMapper.memberIdxFromId(vo);
 	}
 }
