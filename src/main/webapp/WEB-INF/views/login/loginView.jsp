@@ -36,6 +36,7 @@
 				alert("아이디나 비밀번호를 확인해 주세요");
 				return;
 			}else{
+				alert("어서오세요 회원님~");
 				location.href="joinView.do";
 			}
 		}
@@ -43,8 +44,8 @@
 </script>
 </head>
 <body>
+	<form method="POST" action="########" align="center">
 	<p>로그인</p>
-	<form method="POST" action="########">
 		<div>
 			<label>아이디</label>
 			<input type="text" name="id" id="id">
