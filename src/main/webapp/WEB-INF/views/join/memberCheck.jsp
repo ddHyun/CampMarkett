@@ -6,12 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="/resources/assets/js/httpRequest.js"></script>
+<script src="resources/assets/js/httpRequest.js"></script>
 <script>	
-		
-	function checkMember(f){
+
 	var name = document.getElementById("name").value;
 	var birth = document.getElementById("birth").value;
+		
+	function checkMember(f){
 		//유효성 검사
 		if(name==''){
 			alert("이름을 입력해주세요");
@@ -38,8 +39,9 @@
 		f.submit();
 	}
 	
-	function f(){
-		alert("시작");
+	function f(){		
+		var url = "memberOrNot2.do";
+		var param = ;
 	}
 			
 </script>
