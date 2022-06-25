@@ -118,5 +118,11 @@ public class MemberController {
 //		return result;
 //	}
 	
+	
+	//로그인페이지로 이동
+	@RequestMapping("/loginView.do")
+	public String loginView() {
+		return "login/loginView";
+	}
 		
 }
