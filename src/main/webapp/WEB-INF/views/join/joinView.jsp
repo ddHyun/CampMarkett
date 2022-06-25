@@ -135,7 +135,8 @@
 			</tr>
 			<tr>
 				<th>*비밀번호</th>
-				<td><input type="password" name="pwd" id="password1"></td>
+				<td><input type="password" name="pwd" id="password1" 
+						placeholder="특수문자를 제외한 8~15자리의 영어 대소문자, 숫자"></td>
 			</tr>
 			<tr>
 				<th>*비밀번호 확인</th>

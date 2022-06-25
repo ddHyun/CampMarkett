@@ -7,7 +7,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="resources/assets/js/httpRequest.js"></script>
-<script>	
+<script>
+
+	//페이지 로딩되면 자동커서
+	window.onload = function(){
+		document.getElementById("id").focus();
+	};
+
 	function goLogin(){
 		var id = document.getElementById("id").value.trim();
 		var pwd = document.getElementById("pwd").value.trim();
@@ -34,7 +40,11 @@
 			
 			if(json[0].param=='n'){
 				alert("아이디나 비밀번호를 확인해 주세요");
-				return;
+				var id = document.getElementById("id");
+				id.focus();
+				id.value = "";
+				document.getElementById("pwd").value="";
+				
 			}else{
 				alert("어서오세요 회원님~");
 				location.href="joinView.do";
