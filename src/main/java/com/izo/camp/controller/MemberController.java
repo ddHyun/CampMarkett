@@ -100,23 +100,23 @@ public class MemberController {
 		return "join/joinView";
 	}
 	
-	//회원가입 유무 확인
-	@ResponseBody
-	@RequestMapping("/memberOrNot2.do")
-	public String search(MemberVO vo) {
-		
-		int idx = memberService.getMemberIdx(vo);
-		
-		String param = "n";
-		
-		if(idx > 0) {
-			param = "y";
-		}
-		
-		String result = String.format("[{'param':'%s'}]", param);
-		
-		return result;
-	}
+//	//회원가입 유무 확인
+//	@ResponseBody
+//	@RequestMapping("/memberOrNot2.do")
+//	public String search(MemberVO vo) {
+//		
+//		int idx = memberService.getMemberIdx(vo);
+//		
+//		String param = "n";
+//		
+//		if(idx > 0) {
+//			param = "y";
+//		}
+//		
+//		String result = String.format("[{'param':'%s'}]", param);
+//		
+//		return result;
+//	}
 	
 		
 }
