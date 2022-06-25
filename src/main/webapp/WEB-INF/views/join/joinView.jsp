@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <script src="js/httpRequest.js"></script> -->
+<script src="/resources/assets/js/httpRequest.js"></script>
 <script>
 	var joinForm = document.form;
 	
