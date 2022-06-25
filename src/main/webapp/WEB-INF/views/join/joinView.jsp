@@ -108,7 +108,7 @@
 	</script>
 </head>
 <body>
-	<p>회원가입</p>
+	<p align="center">회원가입</p>
 	<form action="join.do" method="post">
 		<table border="1" align="center" width="800px">
 			<tr>

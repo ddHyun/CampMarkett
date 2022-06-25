@@ -9,7 +9,7 @@
 <script src="resources/assets/js/httpRequest.js"></script>
 <script>	
 
-	function checkMember(f){
+	function checkMember(){
 	var name = document.getElementById("name").value;
 	var birth = document.getElementById("birth").value;
 		
@@ -35,15 +35,39 @@
 			alert("생년월일은 6자로 입력해주세요    예)990101");
 			return;
 		}
-				
-		f.submit();
+		
+		var url = "memberOrNot.do";
+		var param = "name=" + name + "&birth=" + birth;
+		
+		sendRequest(url, param, cb, "POST");						
 	}	
+	
+	function cb() {
+		if(xhr.readyState==4 && xhr.status==200){
+			var data = xhr.responseText;
+			var json = (new Function('return'+data)());
+			
+			if(json[0].param=='n'){
+				if(!confirm("아직 회원이 아니시군요? 회원가입하러 가시죠~!")){
+					return;
+				}else{
+					location.href="joinView.do";
+				}
+			}else{
+				if(!confirm("정보가 존재합니다. 로그인하시겠습니까?")){
+					return;
+				}else{
+					location.href="loginView.do";
+				}
+			}
+		}
+	}
 		
 </script>
 </head>
 <body>
-	<p>회원 확인</p>
-	<form action="memberOrNot.do" method="post" align="center">
+	<p align="center">회원 확인</p>
+	<form align="center">
 		<div>
 			<label>이름</label>
 			<input type="text" name="name" id="name" value="${name}">
@@ -52,19 +76,8 @@
 			<label>생년월일(6자리)</label>
 			<input type="text" name="birth" id="birth" placeholder="예) 990101" value="${birth}">
 		</div>
-		<div>	
-			<div class="dd">
-			<input type="button" value="조회" id="searchBtn" onclick="f()">	
-			</div>	
-					<input type="button" value="가입 확인하기" onclick="checkMember(this.form)">
-			<c:choose>
-				<c:when test="${result ne 0}">
-					<input type="button" value="로그인하러 가기" onclick="location.href='loginView.do'">
-				</c:when>
-				<c:when test="${result eq 0}">
-					<input type="button" value="가입하러 가기" onclick="location.href='joinView.do'">
-				</c:when>
-			</c:choose>
+		<div>				
+			<input type="button" value="가입 확인하기" onclick="checkMember()">			
 		</div>
 	</form>
 </body>
