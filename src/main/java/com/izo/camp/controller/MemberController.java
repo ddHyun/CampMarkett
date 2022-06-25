@@ -125,4 +125,24 @@ public class MemberController {
 		return "login/loginView";
 	}
 		
+	//로그인하기
+	@RequestMapping("/goLogin.do")
+	@ResponseBody
+	public String goLogin(MemberVO vo) {
+		
+		int idx = memberService.getIdxFromId(vo);
+		
+		String param = "n";
+		
+		if(idx > 0) {
+			param = "y";
+		}
+		
+		System.out.println(idx);
+		System.out.println(param);
+		
+		String result = String.format("[{'param':'%s'}]", param);
+		
+		return result;
+	}
 }
