@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="js/httpRequest.js"></script>
 <script>	
 		
 	function checkMember(f){
@@ -36,6 +37,11 @@
 				
 		f.submit();
 	}
+	
+	function f(){
+		alert("시작");
+	}
+			
 </script>
 </head>
 <body>
@@ -48,7 +54,10 @@
 			<label>생년월일(6자리)</label>
 			<input type="text" name="birth" id="birth" placeholder="예) 990101" value="${birth}">
 		</div>
-		<div>			
+		<div>	
+			<div class="dd">
+			<input type="button" value="조회" id="searchBtn" onclick="f()">	
+			</div>	
 			<c:choose>
 				<c:when test="${result eq '2'}">
 					<input type="button" value="로그인하러 가기" onclick="---로그인페이지로 이동---">

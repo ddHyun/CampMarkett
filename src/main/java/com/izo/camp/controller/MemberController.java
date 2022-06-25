@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.izo.camp.member.MemberService;
 import com.izo.camp.vo.MemberVO;
@@ -77,6 +78,7 @@ public class MemberController {
 	
 	//아이디중복확인
 	@RequestMapping("checkID.do")
+	@ResponseBody
 	public String checkId(@ModelAttribute("id") String id, Model model) {		
 		List<String> idList = memberService.idList();
 		
@@ -96,6 +98,16 @@ public class MemberController {
 		model.addAttribute("duplicationID", duplicationID);
 		
 		return "join/joinView";
+	}
+	
+	@RequestMapping("/memberOrNot2.do")
+	public String search(MemberVO vo) {
+		int result = memberService.getMemberIdx(vo);
+		if(result > 0) {
+			return "fail";
+		}else {
+			return "ok";
+		}
 	}
 		
 }
