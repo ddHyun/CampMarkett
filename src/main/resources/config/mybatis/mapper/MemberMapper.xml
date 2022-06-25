@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="memberIdx" resultType="int" parameterType="memberVO">
-		select idx from membertable where name=#{name} and birth=#{birth}
+		select nvl(idx, 0) from membertable right outer join dual on name=#{name} and birth=#{birth}
 	</select>
 		
 </mapper>
