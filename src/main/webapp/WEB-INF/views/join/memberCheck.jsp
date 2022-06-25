@@ -37,13 +37,8 @@
 		}
 				
 		f.submit();
-	}
-	
-	function f(){		
-		var url = "memberOrNot2.do";
-		var param = ;
-	}
-			
+	}	
+		
 </script>
 </head>
 <body>
