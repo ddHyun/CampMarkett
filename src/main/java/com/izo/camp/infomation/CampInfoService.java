@@ -18,7 +18,7 @@ public class CampInfoService {
 	@Autowired
 	CampInfoMapper campInfoMapper;
 	
-	
+	//create
 	public void hasCamping() {
 		System.out.println("---------------");
 		System.out.println(campInfoMapper.getTotalNum());
@@ -33,17 +33,6 @@ public class CampInfoService {
 		
 		if(campInfoMapper.getTotalNum() != 0) {
 			
-			CampInfoVO campInfoVO = campInfoMapper.checkOne();
-			System.out.println(campInfoVO.getIdx());
-			System.out.println(campInfoVO.getName());
-			System.out.println(campInfoVO.getLatitude());
-			System.out.println(campInfoVO.getLongitude());
-			System.out.println(campInfoVO.getAddress());
-			System.out.println(campInfoVO.getTell());
-			CampInfoVO campInfoVO2 = campInfoVO;
-			campInfoVO2.setIdx(2);
-			System.out.println(campInfoVO.getIdx());
-			campInfoMapper.addNewCamp(campInfoVO2);
 			return;
 		}
 		else {
