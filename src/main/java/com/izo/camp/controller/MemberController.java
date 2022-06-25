@@ -53,8 +53,7 @@ public class MemberController {
 //		model.addAttribute("result", result);
 		
 		int idx = 0;
-	
-		int dbIdx = memberService.getMemberIdx(vo.getIdx());
+		int dbIdx = memberService.getMemberIdx(vo);
 		
 		if(dbIdx > 0) {
 			idx = dbIdx;
