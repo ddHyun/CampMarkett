@@ -46,9 +46,20 @@ public class ReviewController {
 	@RequestMapping("/reviewInform.do")
 	public String reviewInform() {
 
+
 		return "review/reviewInform";
 
 	}
+
+
+
+	
+	// 새 글 작성
+//	@RequestMapping("/reviewInsert.do")
+//
+//		
+//	}
+
 
 	
 	  // 새 글 작성
