@@ -23,7 +23,7 @@
 		
 	//아이디 중복버튼 클릭 시 파마리터 가지고 페이지 이동
 	function checkID(){
-		var idPattern = /^(?=.*[a-zA-Z0-9]).{5,15}$/;
+		var idPattern = /^[a-zA-Z]{1}[a-zA-Z0-9]{4,14}$/;
 		var id = document.getElementById("id");		
 		var idVal = document.getElementById("id").value.trim();		
 		if(idVal==''){
@@ -102,12 +102,16 @@
 		var id = f.id.value;
 		var pwd = f.pwd.value;
 		var name = f.name.value;
-		var gender = f.gender.value;
+		var genderBox = document.getElementByName("gender");
 		var birth = f.birth.value;
 		var hometel = f.hometel.value;
 		var mobiletel = f.mobiletel.value;
 		var addr = f.addr.value;	
 		
+		if(genderBox.checked==true){
+			var gender = genderBox.value;
+			console.log(gender);
+		}
 		
 		if(name==''){
 			alert("이름을 입력해주세요");
@@ -139,6 +143,7 @@
 			return;
 		}
 		
+		console.log(gender);
 	}
 	
 	
@@ -159,14 +164,15 @@
 				<td>				
 					<input type="text" name="id" id="id">
 					<input type="button" value="중복확인" id="idCheckBtn" onclick="checkID()"><br>		
-					<span>5~15자리의 영문자와 숫자만 입력이 가능합니다</span>				
+					<span style="color:#787878">5~15자리의 영문자와 숫자만 입력이 가능합니다(시작은 영문자)</span>				
 				</td>				
 			</tr>
 			<tr>
 				<th><span style="color:red">*</span>비밀번호</th>
 				<td>
-				<input type="password" name="pwd" id="password1"><br>
-				<span>특수문자를 제외한 8~15자리의 영문과 숫자를 입력해야 합니다</span>
+				<input type="password" name="pwd" id="password1">
+				<span id="pwdErrorMsg" style="color:red">올바른 형식이 아닙니다</span><br>
+				<span style="color:#787878">8~15자리의 영문과 숫자를 모두 사용해 입력해야 합니다(특수문자 제외)</span>
 				</td>
 			</tr>
 			<tr>
@@ -184,8 +190,9 @@
 				<th><span style="color:red">*</span>이름</th>
 				<td>
 					<input type="text" name="name" id="name" value="${name}">
-					<input type="checkbox" name="gender" value="male" onclick="chooseGender(this)" checked="checked">남자
-					<input type="checkbox" name="gender" value="female" onclick="chooseGender(this)">여자&emsp;
+					<!-- 성별 -->
+					<input type="checkbox" name="gender" value="남자" onclick="chooseGender(this)" checked="checked">남자
+					<input type="checkbox" name="gender" value="여자" onclick="chooseGender(this)">여자&emsp;
 					<span id=nameErrorMsg style="color:red">이름은 한글만 입력이 가능합니다</span>
 				</td>
 			</tr>	
@@ -193,7 +200,7 @@
 				<th><span style="color:red">*</span>생년월일</th>
 				<td>
 					<input type="text" id="birth" name="birth" value="${birth}">
-					<span>6자리로 입력해주세요 (예) 990101)</span>
+					<span style="color:#787878">6자리로 입력해주세요 (예) 990101)</span>
 					<span id="birthErrorMsg" style="color:red">올바른 형식이 아닙니다</span>
 				</td>
 			</tr>		
@@ -202,7 +209,7 @@
 				<td>
 				<input name="email" id="email">
 				<span id="emailErrorMsg" style="color:red">올바른 형식이 아닙니다</span><br>
-				<span>비밀번호 초기화 메일 수신 등에 반드시 필요한 정보이므로 정확히 입력해주세요.</span>
+				<span style="color:#787878">비밀번호 초기화 메일 수신 등에 반드시 필요한 정보이므로 정확히 입력해주세요.</span>
 				</td>
 			</tr>
 			<tr>
@@ -248,25 +255,28 @@
 	var pwdPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}$/;
 	var equalMsg = $('#equalMsg');
 	var notEqualMsg = $('#notEqualMsg');
+	var pwdErrorMsg = $('#pwdErrorMsg');
 	
 	//비밀번호 유효성 체크
-	pwd1.change(function(){
-		checkPwd(pwd1.val());
-	});
-	function checkPwd(password){
-		if(!pwdPattern.test(password)){
-			alert("특수문자를 제외한 8~15자리의 영문과 숫자가 최소 1개씩은 존재해야 합니다");
-			pwd1.focus();
-			pwd1.val('');
-			return false;
-		}
-		return true;
-	}
+	pwdErrorMsg.hide();
 	
+	pwd1.on('input', function(){
+		var pwdVal = $.trim(pwd1.val());
+		if(!pwdPattern.test(pwdVal)){
+			pwdErrorMsg.show();
+			if(pwd1.val()==''){
+				pwdErrorMsg.hide();
+			}
+		}else{//이부분을 적어줘야 올바른 형식일 때 에러메시지 지워짐
+			pwdErrorMsg.hide();
+		}
+	});
+	
+	
+	//비밀번호1, 비밀번호2 일치/불일치
 	equalMsg.hide();
 	notEqualMsg.hide();
 	
-	//비밀번호1, 비밀번호2 일치/불일치
 	pwd2.on('input', function(){
 		var pwd1Val = $.trim(pwd1.val());
 		var pwd2Val = $.trim(pwd2.val());
