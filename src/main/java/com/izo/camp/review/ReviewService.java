@@ -22,9 +22,12 @@ public class ReviewService {
 	
 	public ReviewVO getReviewIdx(int idx) {
 		
-		System.out.println("서비스 들어옴"+ idx);
 		
+		System.out.println("서비스 들어옴"+ idx);
+	
 		return reviewMapper.reviewIdx(idx);
 		
 	}
+
+	
 }
