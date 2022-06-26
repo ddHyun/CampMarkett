@@ -59,8 +59,12 @@
 					$('#name').focus();
 					name.value="";
 					birth.value="";
-				}else{
-					location.href="joinView.do?name="+name.value+"&birth="+birth.value;
+				}else{	
+					//파라미터 값 다른 페이지로 넘기기
+					var f = document.f;
+					f.action = "joinView.do";
+					f.method = "post";
+					f.submit();
 				}
 			}else{
 				if(!confirm("정보가 존재합니다. 로그인 페이지로 이동합니다.")){
@@ -76,7 +80,7 @@
 </head>
 <body>
 	<p align="center">회원가입 유무 확인</p>
-	<form align="center">
+	<form name="f" align="center">
 		<div>
 			<label>이름</label>
 			<input type="text" name="name" id="name" value="${name}">

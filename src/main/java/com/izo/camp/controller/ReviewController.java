@@ -43,9 +43,9 @@ import com.izo.camp.vo.ReviewVO;
 	}
 	
 	// 새 글 작성
-	@RequestMapping("/reviewInsert.do")
-
-		
-	}
+//	@RequestMapping("/reviewInsert.do")
+//
+//		
+//	}
 	
 }
