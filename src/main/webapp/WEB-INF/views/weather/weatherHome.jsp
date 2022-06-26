@@ -28,7 +28,10 @@
 		let obj;
 		let str;
 		let words = new Array();
-		let url = "https://api.openweathermap.org/data/2.5/weather?lat=37.5666805&lon=126.9784147&appid=69e06beb30084da3eabe041e57096ba5&units=metric&lang=kr";
+		/* 내 위치 받아서 우선 뿌려주기 */
+		let url = "https://api.openweathermap.org/data/2.5/weather?"
+				+ "lat=${lat}&lon=${lon}"
+				+ "&appid=69e06beb30084da3eabe041e57096ba5&units=metric&lang=kr";
 		xhr.open("GET",url, true);
 		xhr.send();
 		

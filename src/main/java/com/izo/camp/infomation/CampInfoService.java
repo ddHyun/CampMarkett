@@ -1,6 +1,17 @@
 package com.izo.camp.infomation;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -18,11 +29,14 @@ public class CampInfoService {
 	@Autowired
 	CampInfoMapper campInfoMapper;
 	
-	//create
+	//테이블에 추가 
 	public void hasCamping() {
 		System.out.println("---------------");
-		System.out.println(campInfoMapper.getTotalNum());
-		insertInfo();
+		if(campInfoMapper.getTotalNum() == 0) {
+			insertInfo();
+		}else {
+			System.out.println("CampInfo 테이블이 이미 있습니다");
+		}
 	}
 	
 	//테이블이 비어있다면 이 테이블을 채워 넣어준다. 
@@ -51,8 +65,6 @@ public class CampInfoService {
 			// 5. Array 속에서 원하는 정보를 가져온다.
 				JSONObject jsonObject2 = (JSONObject)fieidsList.get(0);
 				String name = (String)jsonObject2.get("id");
-				System.out.println(name);
-				System.out.println(fieidsList.size());
 				//JSONObject campInfoArr = (JSONObject)campList.get(1);
 			
 			//실제 사용부 
@@ -85,5 +97,73 @@ public class CampInfoService {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	
+	//나의 위치 받아오기 
+	public Map getKakaoApiFromAddress(String roadFullAddr) {
+	    String apiKey = "1c7ac58832774fc482b8cc40b799e103";
+	    String apiUrl = "https://dapi.kakao.com/v2/local/search/address.json";
+	    Map<String, Double> resultMap = new HashMap<String, Double>();
+	    
+	    /*
+	     * MemberMapper를 통해서 받던지 지금 로그인된 상태의 지역에서 받아서 사용 
+	     * 로그인이 되지 않은 상태에서는 어떻게 할까? 
+	     * 지도를 입력해주세요 혹은 로그인후  이용해주세요 ? 지역을 설정해주세요 ? 
+	     */
+	    
+	    try {
+	        roadFullAddr = "인천 중구 영종대로 190, 이곳저곳아파트";
+	        roadFullAddr = roadFullAddr.substring(0,roadFullAddr.indexOf(","));
+	        roadFullAddr = URLEncoder.encode(roadFullAddr, "UTF-8");
+	        
+	        String addr = apiUrl + "?query=" + roadFullAddr;
+
+	        URL url = new URL(addr);
+	        URLConnection conn = url.openConnection();
+	        conn.setRequestProperty("Authorization", "KakaoAK " + apiKey);
+
+	        BufferedReader rd = null;
+	        rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+	        StringBuffer docJson = new StringBuffer();
+
+	        String line;
+
+	        while ((line=rd.readLine()) != null) {
+	            docJson.append(line);
+	        }
+	        JSONParser parser = new JSONParser();
+	        Object obj = parser.parse( docJson.toString() );
+	        JSONObject jobj = (JSONObject)obj;
+	        
+	        JSONArray fieidsList = (JSONArray)jobj.get("documents");
+	        JSONObject fieid = (JSONObject)fieidsList.get(0);
+	        String address = (String)fieid.get("address_name");
+	        System.out.println(address);
+	        
+	        //나의 경도
+	        String x = (String)fieid.get("x");
+	        //나의 위도
+	        String y = (String)fieid.get("y");
+	        resultMap.put("lon", Double.parseDouble(x));
+	        resultMap.put("lat", Double.parseDouble(y));
+	        
+	        rd.close();
+
+	    } catch (UnsupportedEncodingException e) {
+	        e.printStackTrace();
+	    } catch (MalformedURLException e) {
+	        e.printStackTrace();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } catch (Exception e) {
+	    	e.printStackTrace();
+	    }
+	    return resultMap;
+	}
+	
+	public List<CampInfoVO> getNearCampingArea(){
+
+		return campInfoMapper.nearCampArea(getKakaoApiFromAddress(""));
 	}
 }

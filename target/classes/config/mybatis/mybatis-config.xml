@@ -9,11 +9,9 @@
 	</settings>
 	
 	<typeAliases>		
-		<typeAlias type="com.izo.camp.vo.DeptVO" alias="deptVO"/>		
-
-		<typeAlias type="com.izo.camp.vo.ReviewVO" alias="reviewVO"/>		
-
+		<typeAlias type="com.izo.camp.vo.DeptVO" alias="deptVO"/>
 		<typeAlias type="com.izo.camp.vo.MemberVO" alias="memberVO"/>	
+		<typeAlias type="com.izo.camp.vo.ReviewVO" alias="reviewVO"/>	
 		<typeAlias type="com.izo.camp.vo.CampInfoVO" alias="campInfoVO"/>		
 	</typeAliases>
 	
