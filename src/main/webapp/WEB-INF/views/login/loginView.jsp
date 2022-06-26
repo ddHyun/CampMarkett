@@ -48,7 +48,7 @@
 				
 			}else{
 				alert("어서오세요 회원님~");
-				location.href="joinView.do";
+				location.href="#############";
 			}
 		}
 	}
@@ -67,7 +67,7 @@
 		</div>
 		<div>			
 			<input type="button" value="로그인" onclick="goLogin()">
-			<input type="button" value="회원가입" onclick="location.href='joinView.do'">
+			<input type="button" value="회원가입" onclick="location.href='joinView2.do'">
 		</div>
 		<div>
 			<a href="" target="_blank">아이디 찾기</a>

@@ -8,15 +8,12 @@
 <title>Insert title here</title>
 <script src="resources/assets/js/httpRequest.js"></script>
 <script src="resources/assets/js/jquery-3.6.0.min.js"></script>
-<script>
-	
-
-	var joinForm = document.form;
-	
+<script>	
+	//주소찾기 API
 	function goPopup(){
 		var pop = window.open("jusoPopup.do","pop","width=570,height=420, scrollbars=yes, resizable=no"); 		
 	}
-
+	//주소찾기 API cb
 	function jusoCallBack(roadFullAddr){
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 		var address = document.querySelector("#address");
@@ -26,26 +23,46 @@
 		
 	//아이디 중복버튼 클릭 시 파마리터 가지고 페이지 이동
 	function checkID(){
-		var idPattern = /^(?=.*[a-zA-Z0-9])(?=.*[0-9]).{5,15}$/;
-		var id = document.getElementById("id").value.trim();		
-		if(id==''){
+		var idPattern = /^(?=.*[a-zA-Z0-9]).{5,15}$/;
+		var id = document.getElementById("id");		
+		var idVal = document.getElementById("id").value.trim();		
+		if(idVal==''){
 			alert("아이디를 입력해주세요");			
 			return;
 		}
-		if(!idPattern.test(id)){
+		if(!idPattern.test(idVal)){
 			alert("특수문자를 제외한 5~15자리의 영문자, 숫자만 입력해 주세요");
+			idVal = '';
+			id.focus();
 			return;
 		}
-		console.log(id);
+		console.log(idVal);
 		var url = "checkID.do";
-		var param = "id=" + id;
+		var param = "id=" + idVal;
 		
 		sendRequest(url, param, cb, "POST");
 	}	
 	
 	function cb(){
+		var id = document.getElementById("id");
 		if(xhr.readyState==4 && xhr.status==200){
-			alert("성공");
+			var data = xhr.responseText;
+			var json = (new Function('return'+data))();
+			if(json[0].param == 'n'){
+				if(!confirm("사용 가능한 아이디입니다. 사용하시겠습니까?")){
+					id.focus();
+					id.value = '';
+					return;
+				}else{					
+					document.getElementById("idCheckBtn").disabled = true;
+					id.disabled = true;
+					}
+			}else{
+					alert("중복된 아이디입니다. 다시 시도해 주세요");
+					id.focus();
+					id.value = '';
+					return;
+				}				
 		}
 	}
 		
@@ -101,8 +118,8 @@
 			<tr>
 				<th>*아이디</th>
 				<td>				
-					<input type="text" name="id" value="${id}" id="id">
-					<input type="button" value="중복확인" id="duplIdBtn" onclick="checkID()"><br>		
+					<input type="text" name="id" id="id">
+					<input type="button" value="중복확인" id="idCheckBtn" onclick="checkID()"><br>		
 					<span>5~15자리의 영문자와 숫자만 입력이 가능합니다</span>				
 				</td>				
 			</tr>
@@ -110,7 +127,7 @@
 				<th>*비밀번호</th>
 				<td>
 				<input type="password" name="pwd" id="password1"><br>
-				<span>특수문자를 제외한 8~15자리의 영문, 숫자만 입력이 가능합니다</span>
+				<span>특수문자를 제외한 8~15자리의 영문과 숫자를 입력해야 합니다</span>
 				</td>
 			</tr>
 			<tr>
@@ -127,16 +144,23 @@
 			<tr>
 				<th>*이름</th>
 				<td>
-					<input type="text" name="name">
+					<input type="text" name="name" value="${vo.name}">
 					<input type="checkbox" name="gender" value="male" onclick="chooseGender(this)" checked="checked">남자
 					<input type="checkbox" name="gender" value="female" onclick="chooseGender(this)">여자
 				</td>
-			</tr>			
+			</tr>	
+			<tr>
+				<th>생년월일</th>
+				<td>
+					<input type="text" name="birth" value="${vo.birth}">
+					<span>6자리로 입력해주세요 (예) 990101)</span>
+				</td>
+			</tr>		
 			<tr>
 				<th>*이메일</th>
 				<td>
 				<input name="email"><br>
-				비밀번호 초기화 메일 수신 등에 반드시 필요한 정보이므로 정확히 입력해주세요.
+				<span>비밀번호 초기화 메일 수신 등에 반드시 필요한 정보이므로 정확히 입력해주세요.</span>
 				</td>
 			</tr>
 			<tr>
