@@ -56,8 +56,6 @@
 			pwd2Id.value="";
 			return;
 		}		
-		
-		//유효성 체크
 	}
 	
 	//아이디 중복버튼 클릭 시 파마리터 가지고 페이지 이동
@@ -103,6 +101,19 @@
 		var mobiletel = f.mobiletel.value;
 		var addr = f.addr.value;	
 		f.submit();
+	}
+	
+	function checkpwd(){
+		var pwdPattern = /^[A-Za-z0-9]{8,15}$/;
+		var pwdId = document.getElementById("password1");
+		var pwd2Id = document.getElementById("password2");
+		
+		var pwd = pwdId.value.trim();
+		var pwd2 = pwd2Id.value.trim();
+		
+		if(pwd!=pwd2){
+			
+		}
 	}
 	
 	</script>

@@ -56,14 +56,15 @@
 			
 			if(json[0].param=='n'){
 				if(!confirm("아직 회원이 아니시군요? 회원가입하러 가시죠~!")){
-					name.focus();
+					$('id').focus();
+				//	name.focus();
 					name.value="";
 					birth.value="";
 				}else{
-					location.href="joinView.do";
+					location.href="joinView.do?name="+name.value+"&birth="+birth.value;
 				}
 			}else{
-				if(!confirm("정보가 존재합니다. 로그인하시겠습니까?")){
+				if(!confirm("정보가 존재합니다. 로그인 페이지로 이동합니다.")){
 					return;
 				}else{
 					location.href="loginView.do";
@@ -75,7 +76,7 @@
 </script>
 </head>
 <body>
-	<p align="center">회원 확인</p>
+	<p align="center">회원가입 유무 확인</p>
 	<form align="center">
 		<div>
 			<label>이름</label>
