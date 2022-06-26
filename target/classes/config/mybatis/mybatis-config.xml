@@ -14,7 +14,6 @@
 		<typeAlias type="com.izo.camp.vo.MemberVO" alias="memberVO"/>	
 		<typeAlias type="com.izo.camp.vo.CampInfoVO" alias="campInfoVO"/>		
 	</typeAliases>
-	
 <!-- 	<mappers>
 		<mapper resource="config/mybatis/mapper/DeptMapper.xml" />
 		<mapper resource="config/mybatis/mapper/ReviewMapper.xml"/>
