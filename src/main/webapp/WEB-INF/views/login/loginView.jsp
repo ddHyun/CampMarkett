@@ -7,12 +7,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="resources/assets/js/httpRequest.js"></script>
+<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 <script>
 
 	//페이지 로딩되면 자동커서
-	window.onload = function(){
-		document.getElementById("id").focus();
-	};
+	$(function(){
+		$('#id').focus();
+	});	
 
 	function goLogin(){
 		var id = document.getElementById("id").value.trim();

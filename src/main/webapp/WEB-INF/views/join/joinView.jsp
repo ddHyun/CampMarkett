@@ -7,7 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="resources/assets/js/httpRequest.js"></script>
+<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 <script>
+	
+
 	var joinForm = document.form;
 	
 	function goPopup(){
@@ -20,53 +23,31 @@
 		address.value = roadFullAddr;
 		document.getElementById("addressBtn").disabled = true;
 	}
-	
-	//비밀번호 일치확인 버튼
-	function checkPwd() {
 		
-		var pwdPattern = /^[A-Za-z0-9]{8,15}$/;
-		var pwdId = document.getElementById("password1");
-		var pwd2Id = document.getElementById("password2");
-		
-		var pwd = pwdId.value.trim();
-		var pwd2 = pwd2Id.value.trim();
-		
-		if(pwd==''){
-			alert("비밀번호를 입력해 주세요");
-			return;
-		}
-
-		if(!pwdPattern.test(pwd)){
-			alert("비밀번호는 특수문자를 제외한 8~15자리의 영어 대소문자, 숫자로 이루어져야 합니다");
-			//input내용 초기화
-			pwdId.value="";
-			pwd2Id.value="";
-			return;
-		}
-		
-		
-		if(pwd==pwd2){
-			alert("비밀번호가 일치합니다");
-			//일치하면 버튼 비활성화
-			document.getElementById("checkPwdBtn").disabled = true;
-			return;
-		}else{
-			alert("비밀번호가 일치하지 않습니다");
-			pwdId.value="";
-			pwd2Id.value="";
-			return;
-		}		
-	}
-	
 	//아이디 중복버튼 클릭 시 파마리터 가지고 페이지 이동
-	function send(){		
-		var id = document.getElementById("id").value;		
+	function checkID(){
+		var idPattern = /^(?=.*[a-zA-Z0-9])(?=.*[0-9]).{5,15}$/;
+		var id = document.getElementById("id").value.trim();		
 		if(id==''){
 			alert("아이디를 입력해주세요");			
 			return;
-		}		
-		location.href = "checkID.do?id=" + id;
+		}
+		if(!idPattern.test(id)){
+			alert("특수문자를 제외한 5~15자리의 영문자, 숫자만 입력해 주세요");
+			return;
+		}
+		console.log(id);
+		var url = "checkID.do";
+		var param = "id=" + id;
+		
+		sendRequest(url, param, cb, "POST");
 	}	
+	
+	function cb(){
+		if(xhr.readyState==4 && xhr.status==200){
+			alert("성공");
+		}
+	}
 		
 	//성별 하나만 체크하기
 	function chooseGender(target){
@@ -103,18 +84,7 @@
 		f.submit();
 	}
 	
-	function checkpwd(){
-		var pwdPattern = /^[A-Za-z0-9]{8,15}$/;
-		var pwdId = document.getElementById("password1");
-		var pwd2Id = document.getElementById("password2");
-		
-		var pwd = pwdId.value.trim();
-		var pwd2 = pwd2Id.value.trim();
-		
-		if(pwd!=pwd2){
-			
-		}
-	}
+	
 	
 	</script>
 </head>
@@ -131,29 +101,24 @@
 			<tr>
 				<th>*아이디</th>
 				<td>				
-				<input type="text" name="id" value="${id}" id="id">
-				<!-- 아이디 중복확인 버튼 -->
-				<input type="button" value="중복확인" id="duplIdBtn" onclick="send()">				
-				<c:choose>
-					<c:when test="${duplicationID eq 'no'}">
-					사용가능한 아이디입니다								
-					</c:when>
-					<c:when test="${duplicationID eq 'yes'}">
-					중복된 아이디입니다
-					</c:when>
-				</c:choose>
+					<input type="text" name="id" value="${id}" id="id">
+					<input type="button" value="중복확인" id="duplIdBtn" onclick="checkID()"><br>		
+					<span>5~15자리의 영문자와 숫자만 입력이 가능합니다</span>				
 				</td>				
 			</tr>
 			<tr>
 				<th>*비밀번호</th>
-				<td><input type="password" name="pwd" id="password1" 
-						placeholder="특수문자를 제외한 8~15자리의 영어 대소문자, 숫자"></td>
+				<td>
+				<input type="password" name="pwd" id="password1"><br>
+				<span>특수문자를 제외한 8~15자리의 영문, 숫자만 입력이 가능합니다</span>
+				</td>
 			</tr>
 			<tr>
 				<th>*비밀번호 확인</th>
 				<td>
 				<input type="password" name="pwd2" id="password2">
-				<input type="button" value="일치확인" id="checkPwdBtn" onclick="checkPwd()">
+				<span id=equalMsg style="color:blue">비밀번호가 일치합니다</span>
+				<span id=notEqualMsg style="color:red">비밀번호가 일치하지 않습니다</span>				
 				</td>
 			</tr>
 			<tr>
@@ -202,4 +167,48 @@
 		</table>
 	</form>
 </body>
+<script>
+
+//페이지 로딩되면 자동커서
+	$(function(){
+		$('#id').focus();
+	});
+	
+	var pwd1 = $('#password1');
+	var pwd2 = $('#password2');
+	var pwdPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}$/;
+	var equalMsg = $('#equalMsg');
+	var notEqualMsg = $('#notEqualMsg');
+	
+	//유효성 체크
+	pwd1.change(function(){
+		checkPwd(pwd1.val());
+	});
+	function checkPwd(password){
+		if(!pwdPattern.test(password)){
+			alert("특수문자를 제외한 8~15자리의 영문, 숫자만 입력이 가능합니다");
+			pwd1.focus();
+			pwd1.val('');
+			return false;
+		}
+		return true;
+	}
+	
+	equalMsg.hide();
+	notEqualMsg.hide();
+	
+	//비밀번호1, 비밀번호2 일치/불일치
+	pwd2.on('input', function(){
+		var pwd1Val = $.trim(pwd1.val());
+		var pwd2Val = $.trim(pwd2.val());
+	
+		if(pwd1Val==pwd2Val){
+			equalMsg.show();
+			notEqualMsg.hide();
+		}else{
+			equalMsg.hide();
+			notEqualMsg.show();
+		}		
+	});	
+</script>
 </html>

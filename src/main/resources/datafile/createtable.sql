@@ -18,14 +18,14 @@ ALTER TABLE MEMBERTABLE ADD BIRTH NUMBER(6);
 
 INSERT INTO MEMBERTABLE VALUES(
  SEQ_MEMBER.NEXTVAL,
- 'APPLE2',
+ 'APPLE',
  '1111',
  '사과',
  '남',
  'APPLE@APPLE.COM',
  '032-111-1111',
  '010-2222-2222',
- '인천광역시 중구 영종대로 190, 운서동 샘플아파트',
+ '인천광역시 중구 영종대로 188, 운서동 샘플아파트',
  '990503'
  );
 

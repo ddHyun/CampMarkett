@@ -45,25 +45,25 @@ public class MemberController {
 	//아이디중복확인
 	@RequestMapping("checkID.do")
 	@ResponseBody
-	public String checkId(@ModelAttribute("id") String id, Model model) {		
+	public String checkId(@ModelAttribute("id") String id) {		
 		List<String> idList = memberService.idList();
 		
-		int cntId = 0;		
+		int cnt = 0;		
 		for(String i : idList) {
 			if(id.equals(i)) {
-				cntId++;
+				cnt++;
 			}
 		}
 		
-		String duplicationID = "no";
+		String param = "n";
 		
-		if(cntId != 0) {
-			duplicationID = "yes";
+		if(cnt > 0) {
+			param = "y";
 		}
 		
-		model.addAttribute("duplicationID", duplicationID);
+		String result = String.format("[{'param':'%s'}]", param);
 		
-		return "join/joinView";
+		return result;
 	}
 	
 	//회원가입 유무 확인
@@ -111,4 +111,6 @@ public class MemberController {
 		
 		return result;
 	}
+	
+	
 }
