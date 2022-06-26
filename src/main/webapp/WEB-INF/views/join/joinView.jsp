@@ -144,7 +144,7 @@
 			<tr>
 				<th>*이름</th>
 				<td>
-					<input type="text" name="name" value="${vo.name}">
+					<input type="text" name="name" value="${name}">
 					<input type="checkbox" name="gender" value="male" onclick="chooseGender(this)" checked="checked">남자
 					<input type="checkbox" name="gender" value="female" onclick="chooseGender(this)">여자
 				</td>
@@ -152,7 +152,7 @@
 			<tr>
 				<th>생년월일</th>
 				<td>
-					<input type="text" name="birth" value="${vo.birth}">
+					<input type="text" name="birth" value="${birth}">
 					<span>6자리로 입력해주세요 (예) 990101)</span>
 				</td>
 			</tr>		

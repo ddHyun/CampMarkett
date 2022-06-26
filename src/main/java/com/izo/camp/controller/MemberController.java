@@ -34,10 +34,9 @@ public class MemberController {
 	@RequestMapping("/joinView.do")
 	public String joinView(String name, Integer birth, Model model) {
 		System.out.println("name : "+name + "/birth : "+birth );
-		MemberVO vo = new MemberVO();
-		vo.setName(name);
-		vo.setBirth(birth);
-		model.addAttribute("vo", vo);		
+		String birth1 = ""+birth;
+		model.addAttribute("name", name);	
+		model.addAttribute("birth", birth1);
 		return "join/joinView";
 	}
 	
