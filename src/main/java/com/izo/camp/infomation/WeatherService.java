@@ -13,6 +13,8 @@ import java.io.IOException;
 public class WeatherService {
 	
 	
+	
+	//테스트 입니다.
     public void checkWeather() throws IOException {
     	
     	

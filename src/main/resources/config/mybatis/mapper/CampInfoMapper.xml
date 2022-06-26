@@ -16,11 +16,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	private String tell;
 
 	 -->
+	 
 	<insert id="addNewCamp" parameterType="campInfoVO">
 		INSERT INTO CAMPINGTABLE
 		(IDX, NAME, LATITUDE, LONGITUDE, ADDRESS, TELL)
 		VALUES(SEQ_CampingArea.NEXTVAL,#{name},#{latitude},#{longitude},#{address},#{tell})
 	</insert>
+	
+	<!-- <![CDATA[>]]> -->
+	
+	<select id="nearCampArea" parameterType="map" resultType="campInfoVO">
+		<![CDATA[
+			SELECT * FROM CAMPINGTABLE
+			WHERE latitude > #{lat}
+		]]>
+	</select>
 </mapper>
 
 
