@@ -26,10 +26,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- <![CDATA[>]]> -->
 	
 	<select id="nearCampArea" parameterType="map" resultType="campInfoVO">
-		<![CDATA[
-			SELECT * FROM CAMPINGTABLE
-			WHERE latitude > #{lat}
-		]]>
+		
+			SELECT IDX, NAME, LATITUDE, LONGITUDE, ADDRESS, TELL, 
+			 ABS(LATITUDE-#{lat})+ABS(LONGITUDE-#{lon}) AS DISTANCE
+			FROM CAMPINGTABLE
+			WHERE (latitude BETWEEN (#{lat} - #{limitLat}) AND (#{lat} + #{limitLat}) )
+					AND (LONGITUDE BETWEEN (#{lon} - #{limitLon}) AND (#{lon} + #{limitLon}) )
+			ORDER BY DISTANCE
+		
 	</select>
 </mapper>
 

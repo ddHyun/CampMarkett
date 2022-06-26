@@ -10,8 +10,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -68,11 +70,17 @@ public class CampInfoService {
 				//JSONObject campInfoArr = (JSONObject)campList.get(1);
 			
 			//실제 사용부 
+				Set<String> nameSet = new HashSet<String>();
 				JSONArray campList = (JSONArray)jsonObject.get("records");
 				for(Object campObj : campList) {
 					JSONObject camp = (JSONObject)campObj;
-					System.out.println(camp.get("야영(캠핑)장명"));
+					//System.out.println(camp.get("야영(캠핑)장명")); -확인
 					//insert 할 CampInfoVO 생성
+					if(nameSet.contains((String)camp.get("야영(캠핑)장명"))) {
+						continue;
+					}else {
+						nameSet.add((String)camp.get("야영(캠핑)장명"));
+					}
 					CampInfoVO campInfoVO = new CampInfoVO();
 					//이름
 					campInfoVO.setName((String)camp.get("야영(캠핑)장명"));
@@ -84,7 +92,6 @@ public class CampInfoService {
 					if(address==null) {
 						address=(String)camp.get("소재지지번주소");
 					}
-					
 					campInfoVO.setAddress(address);
 					campInfoVO.setTell((String)camp.get("야영장전화번호"));
 					
@@ -101,7 +108,7 @@ public class CampInfoService {
 	
 	
 	//나의 위치 받아오기 
-	public Map getKakaoApiFromAddress(String roadFullAddr) {
+	public Map<String,Double> getKakaoApiFromAddress(String roadFullAddr) {
 	    String apiKey = "1c7ac58832774fc482b8cc40b799e103";
 	    String apiUrl = "https://dapi.kakao.com/v2/local/search/address.json";
 	    Map<String, Double> resultMap = new HashMap<String, Double>();
@@ -113,7 +120,6 @@ public class CampInfoService {
 	     */
 	    
 	    try {
-	        roadFullAddr = "인천 중구 영종대로 190, 이곳저곳아파트";
 	        roadFullAddr = roadFullAddr.substring(0,roadFullAddr.indexOf(","));
 	        roadFullAddr = URLEncoder.encode(roadFullAddr, "UTF-8");
 	        
@@ -139,7 +145,6 @@ public class CampInfoService {
 	        JSONArray fieidsList = (JSONArray)jobj.get("documents");
 	        JSONObject fieid = (JSONObject)fieidsList.get(0);
 	        String address = (String)fieid.get("address_name");
-	        System.out.println(address);
 	        
 	        //나의 경도
 	        String x = (String)fieid.get("x");
@@ -162,8 +167,55 @@ public class CampInfoService {
 	    return resultMap;
 	}
 	
-	public List<CampInfoVO> getNearCampingArea(){
+	
+	//가까운 캠핑장들을 받아오는것
+	public List<CampInfoVO> getNearCampingArea(String address,Map<String,Double> coordination){
+		//받아온 주소
+		
+		//Map<String,Double> coordination = getKakaoApiFromAddress(address);
+		//나의 주소를 기반으로 가까운 캠핑장 얻기
+		
+		//범위 설정을 맵으로 넣어준다 .
+		//위도
+		coordination.put("limitLat",0.36);
+		//경도
+		coordination.put("limitLon",0.45);
+		
+		System.out.println(coordination);
+		
+		List<CampInfoVO> campList = campInfoMapper.nearCampArea(coordination);
+		
+		//내 주소 위도 경도 기반으로 주어진 campList의 거리값들을 계산해줌
+		Double myLat = coordination.get("lat");
+		Double myLon = coordination.get("lon");
+		for(int i = 0 ; i < campList.size() ; i++) {
+			Double distance = distanceInKilometerByHaversine(myLat, myLon, campList.get(i).getLatitude(), campList.get(i).getLongitude());
+			//거리 셋팅
+			distance = Math.round(distance * 100)/100.00;
+			campList.get(i).setDistance(distance);
+		}
+		
+		return campList;
+	}
+	
+	
+	//두 지점 사이의 km 구하기
+	public static double distanceInKilometerByHaversine(double x1, double y1, double x2, double y2) {
+	    double distance;
+	    double radius = 6371; // 지구 반지름(km)
+	    double toRadian = Math.PI / 180;
 
-		return campInfoMapper.nearCampArea(getKakaoApiFromAddress(""));
+	    double deltaLatitude = Math.abs(x1 - x2) * toRadian;
+	    double deltaLongitude = Math.abs(y1 - y2) * toRadian;
+
+	    double sinDeltaLat = Math.sin(deltaLatitude / 2);
+	    double sinDeltaLng = Math.sin(deltaLongitude / 2);
+	    double squareRoot = Math.sqrt(
+	        sinDeltaLat * sinDeltaLat +
+	        Math.cos(x1 * toRadian) * Math.cos(x2 * toRadian) * sinDeltaLng * sinDeltaLng);
+
+	    distance = 2 * radius * Math.asin(squareRoot);
+
+	    return distance;
 	}
 }
