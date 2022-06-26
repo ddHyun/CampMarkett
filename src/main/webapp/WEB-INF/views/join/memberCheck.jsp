@@ -15,8 +15,8 @@
 	});
 
 	function checkMember(){
-	var name = document.getElementById("name").value;
-	var birth = document.getElementById("birth").value;
+	var name = document.getElementById("name").value.trim();
+	var birth = document.getElementById("birth").value.trim();
 		
 		//유효성 검사
 		if(name==''){
@@ -24,9 +24,12 @@
 			return;
 		}
 		
+		var name1 = document.getElementById("name");
 		var namePattern = /^[가-힣]{2,6}$/;
 		if(!namePattern.test(name)){
 			alert("한글 이외의 문자는 입력이 불가능합니다");
+			 name1.value="";
+			 name1.focus();
 			return;
 		}
 		
@@ -35,9 +38,12 @@
 			return;
 		}
 		
+		var birth1 = document.getElementById("birth");
 		var birthPattern = /^[0-9]{6}$/;
 		if(!birthPattern.test(birth)){
 			alert("생년월일은 6자로 입력해주세요    예)990101");
+			birth1.value="";
+			birth1.focus();
 			return;
 		}
 		

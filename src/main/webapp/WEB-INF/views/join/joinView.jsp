@@ -27,12 +27,13 @@
 		var id = document.getElementById("id");		
 		var idVal = document.getElementById("id").value.trim();		
 		if(idVal==''){
-			alert("아이디를 입력해주세요");			
+			alert("아이디를 입력해주세요");	
+			id.focus();
 			return;
 		}
 		if(!idPattern.test(idVal)){
 			alert("특수문자를 제외한 5~15자리의 영문자, 숫자만 입력해 주세요");
-			idVal = '';
+			id.value = '';
 			id.focus();
 			return;
 		}
@@ -79,14 +80,18 @@
 	//휴대전화인증
 	function certifyTel(){
 		//유효성 체크
-		var phoneJ = /^01([0:1:6:7:8:9]?)?([0-9]{3,4})?([0-9]{4})$/;
+		var phonePattern = /^01([0:1:6:7:8:9]?)-([0-9]{3,4})-([0-9]{4})$/;
 		var tel = document.getElementById("mobiletel");
 		var mobiletel = tel.value.trim();
-		if(!phoneJ.test(mobiletel)){
-			alert("잘못된 형식의 전화번호입니다");
-			return;
-		}else if(mobiletel == ''){
+		
+		if(mobiletel == ''){
 			alert("전화번호를 입력해 주세요");
+			return;
+		}
+		if(!phonePattern.test(mobiletel)){
+			alert("잘못된 형식의 전화번호입니다");
+			tel.value='';
+			tel.focus();
 			return;
 		}
 	}
@@ -96,9 +101,44 @@
 	function join(f){
 		var id = f.id.value;
 		var pwd = f.pwd.value;
+		var name = f.name.value;
+		var gender = f.gender.value;
+		var birth = f.birth.value;
+		var hometel = f.hometel.value;
 		var mobiletel = f.mobiletel.value;
 		var addr = f.addr.value;	
-		f.submit();
+		
+		
+		if(name==''){
+			alert("이름을 입력해주세요");
+			f.name.focus();
+			return;
+		}
+		
+		if(birth==''){
+			alert("생년월일을 입력해주세요");
+			f.birth.focus();
+			return;
+		}
+		
+		if(pwd==''){
+			alert("비밀번호를 입력해주세요");
+			f.pwd.focus();
+			return;
+		}
+		
+		if(email==''){
+			alert("이메일을 입력해주세요");
+			f.email.focus();
+			return;
+		}
+		
+		if(addr==''){
+			alert("주소를 입력해주세요");
+			f.addr.focus();
+			return;
+		}
+		
 	}
 	
 	
@@ -111,12 +151,11 @@
 		<table border="1" align="center" width="800px">
 			<tr>
 				<td colspan="2">
-				기본정보 입력<br>
-				*표시는 필수 입력항목입니다.
+				기본정보 입력&nbsp;<span style="color:red">*표시는 필수 입력항목입니다.</span>
 				</td>
 			</tr>			
 			<tr>
-				<th>*아이디</th>
+				<th><span style="color:red">*</span>아이디</th>
 				<td>				
 					<input type="text" name="id" id="id">
 					<input type="button" value="중복확인" id="idCheckBtn" onclick="checkID()"><br>		
@@ -124,14 +163,14 @@
 				</td>				
 			</tr>
 			<tr>
-				<th>*비밀번호</th>
+				<th><span style="color:red">*</span>비밀번호</th>
 				<td>
 				<input type="password" name="pwd" id="password1"><br>
 				<span>특수문자를 제외한 8~15자리의 영문과 숫자를 입력해야 합니다</span>
 				</td>
 			</tr>
 			<tr>
-				<th>*비밀번호 확인</th>
+				<th><span style="color:red">*</span>비밀번호 확인</th>
 				<td>
 				<input type="password" name="pwd2" id="password2">
 				<span id=equalMsg style="color:blue">비밀번호가 일치합니다</span>
@@ -142,40 +181,46 @@
 				<td colspan="2">개인정보 입력</td>
 			</tr>
 			<tr>
-				<th>*이름</th>
+				<th><span style="color:red">*</span>이름</th>
 				<td>
-					<input type="text" name="name" value="${name}">
+					<input type="text" name="name" id="name" value="${name}">
 					<input type="checkbox" name="gender" value="male" onclick="chooseGender(this)" checked="checked">남자
-					<input type="checkbox" name="gender" value="female" onclick="chooseGender(this)">여자
+					<input type="checkbox" name="gender" value="female" onclick="chooseGender(this)">여자&emsp;
+					<span id=nameErrorMsg style="color:red">이름은 한글만 입력이 가능합니다</span>
 				</td>
 			</tr>	
 			<tr>
-				<th>생년월일</th>
+				<th><span style="color:red">*</span>생년월일</th>
 				<td>
-					<input type="text" name="birth" value="${birth}">
+					<input type="text" id="birth" name="birth" value="${birth}">
 					<span>6자리로 입력해주세요 (예) 990101)</span>
+					<span id="birthErrorMsg" style="color:red">올바른 형식이 아닙니다</span>
 				</td>
 			</tr>		
 			<tr>
-				<th>*이메일</th>
+				<th><span style="color:red">*</span>이메일</th>
 				<td>
-				<input name="email"><br>
+				<input name="email" id="email">
+				<span id="emailErrorMsg" style="color:red">올바른 형식이 아닙니다</span><br>
 				<span>비밀번호 초기화 메일 수신 등에 반드시 필요한 정보이므로 정확히 입력해주세요.</span>
 				</td>
 			</tr>
 			<tr>
 				<th>전화번호</th>
-				<td><input type="text" name="hometel"></td>
+				<td>
+					<input type="text" id="hometel" name="hometel" placeholder="예)032-111-1111">
+					<span id="hometelErrorMsg" style="color:red">올바른 형식이 아닙니다</span>
+				</td>
 			</tr>
 			<tr>
-				<th>*휴대전화번호</th>
+				<th><span style="color:red">*</span>휴대전화번호</th>
 				<td>
-				<input type="text" name="mobiletel" id="mobiletel" onfocus='this.placeholder="예) 010-2345-6789'>
+				<input type="text" name="mobiletel" id="mobiletel" placeholder="예) 010-2345-6789">
 				<input type="button" value="본인 인증하기" onclick="certifyTel()"><br>
 				</td>
 			</tr>
 			<tr>
-				<th>*주소</th>
+				<th><span style="color:red">*</span>주소</th>
 				<td>
 				<input type="text" id="address" name="addr" style="width:500px;">
 				<!-- 주소찾기 버튼 클릭 시  주소API로 이동 -->
@@ -204,13 +249,13 @@
 	var equalMsg = $('#equalMsg');
 	var notEqualMsg = $('#notEqualMsg');
 	
-	//유효성 체크
+	//비밀번호 유효성 체크
 	pwd1.change(function(){
 		checkPwd(pwd1.val());
 	});
 	function checkPwd(password){
 		if(!pwdPattern.test(password)){
-			alert("특수문자를 제외한 8~15자리의 영문, 숫자만 입력이 가능합니다");
+			alert("특수문자를 제외한 8~15자리의 영문과 숫자가 최소 1개씩은 존재해야 합니다");
 			pwd1.focus();
 			pwd1.val('');
 			return false;
@@ -232,7 +277,86 @@
 		}else{
 			equalMsg.hide();
 			notEqualMsg.show();
+			if(pwd2.val()==''){
+				notEqualMsg.hide();
+				equalMsg.hide();
+			}
 		}		
 	});	
+	
+	//이메일 유효성 체크
+	var emailErrorMsg = $('#emailErrorMsg');
+	var email = $('#email');
+	var emailPattern =
+		 /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	
+	emailErrorMsg.hide();
+		 
+	email.on('input', function(){
+		var emailVal = $.trim(email.val());
+		if(!emailPattern.test(emailVal)){
+			emailErrorMsg.show();
+		}else{
+			emailErrorMsg.hide();
+		}
+	});
+	
+	//이름 유효성 체크
+	var nameErrorMsg = $('#nameErrorMsg');
+	var namePattern = /^[가-힣]{2,6}$/;
+	
+	nameErrorMsg.hide();
+	
+	$('#name').on('input', function(){
+		var nameVal = $.trim($('#name').val());
+		if(!namePattern.test(nameVal)){
+			nameErrorMsg.show();
+			if($('#name').val()==''){
+				nameErrorMsg.hide();
+			}
+		}else{
+			nameErrorMsg.hide();
+		}
+	});
+	
+	//생년월일 유효성 체크
+	var birthErrorMsg = $('#birthErrorMsg');
+	var birthPattern = /^[0-9]{6}$/;
+	
+	birthErrorMsg.hide();
+	
+	$('#birth').on('input', function(){
+		var birthVal = $.trim($('#birth').val());
+		if(!birthPattern.test(birthVal)){
+			birthErrorMsg.show();
+			if($('#birth').val()==''){
+			birthErrorMsg.hide();
+			}
+		}else{
+			birthErrorMsg.hide();
+		}
+	});
+	
+	//집전화 유효성 체크
+	var hometelErrorMsg = $('#hometelErrorMsg');
+	var phonePattern = /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}/;
+	var hometel = $('#hometel');
+	
+	hometelErrorMsg.hide();
+	
+	hometel.on('input', function(){
+		var hometelVal = $.trim(hometel.val());
+		if(!phonePattern.test(hometelVal)){
+			hometelErrorMsg.show();
+			if(hometel.val()==''){
+				hometelErrorMsg.hide();
+			}
+		}else{
+			hometelErrorMsg.hide();
+		}
+	})
+	
+		
+
 </script>
 </html>
