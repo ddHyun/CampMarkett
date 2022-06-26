@@ -18,6 +18,6 @@ public interface ReviewMapper {
 
 	
 	public ReviewVO reviewIdx(int idx);
-	
+
 	
 }

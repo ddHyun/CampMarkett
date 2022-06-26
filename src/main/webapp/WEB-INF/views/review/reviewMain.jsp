@@ -34,7 +34,6 @@
 </head>
 <body>
 
-	<div id="board">
 	<table border="1" align="center"  width="700">
 		<tr>
 			<th><!-- <i class="bi bi-diagram-2-fill"></i> --></th>
@@ -55,15 +54,15 @@
 				<font color="black">${vo.title}</font>  <!-- 글 제목  -->
 				</a>
 			</td>
-			<td align="center">${vo.productid}</td> <!-- onclick 기능으로 해당제품으로 연결되는 기능 상의후 추가(내부에 넣을지 외부에 넣을지) -->
-			<td align="center">${vo.memberid}</td>
+			<td align="center">${vo.productid}</td> 
 			<td align="center">${fn:split(vo.regdate,' ')[0]}</td>
 			<td align="center">${vo.readhit}</td>
 			<td align="center">${vo.joayo}</td>
 		</tr>
-		</c:forEach>
-		
+		</c:forEach>	
 	</table>
+	<div class="inform_box" align="center">
+			<input type="button" value="리뷰쓰기" onclick="location.href='reviewInform.do'">
 	</div>
 </body>
 </html>
