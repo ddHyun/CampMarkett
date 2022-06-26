@@ -11,6 +11,7 @@ public class CampInfoVO {
 //	longitude number(10,5),
 //	address VARCHAR2(2000),
 //	tell VARCHAR2(2000)
+// DB에 들어가지않는 Distance 값
 	
 	private Integer idx;
 	private String name;
@@ -18,6 +19,8 @@ public class CampInfoVO {
 	private Double longitude;
 	private String address;
 	private String tell;
+	private Double Distance;
+
 	
 	public CampInfoVO() {
 	
@@ -71,6 +74,13 @@ public class CampInfoVO {
 		this.tell = tell;
 	}
 
-	
+	public Double getDistance() {
+		return Distance;
+	}
+
+	public void setDistance(Double distance) {
+		Distance = distance;
+	}
+
 	
 }
