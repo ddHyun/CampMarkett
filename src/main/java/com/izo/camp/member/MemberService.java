@@ -36,4 +36,6 @@ public class MemberService {
 	public int getIdxFromId(MemberVO vo) {
 		return memberMapper.memberIdxFromId(vo);
 	}
+	
+	
 }

@@ -7,12 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="resources/assets/js/httpRequest.js"></script>
+<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 <script>
 
-	//페이지 로딩되면 자동커서
-	window.onload = function(){
-		document.getElementById("name").focus();
-	};
+	$(function(){
+		$('#name').focus();
+	});
 
 	function checkMember(){
 	var name = document.getElementById("name").value;
@@ -56,8 +56,7 @@
 			
 			if(json[0].param=='n'){
 				if(!confirm("아직 회원이 아니시군요? 회원가입하러 가시죠~!")){
-					$('id').focus();
-				//	name.focus();
+					$('#name').focus();
 					name.value="";
 					birth.value="";
 				}else{
