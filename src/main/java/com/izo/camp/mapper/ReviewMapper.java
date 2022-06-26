@@ -19,5 +19,6 @@ public interface ReviewMapper {
 	
 	public ReviewVO reviewIdx(int idx);
 
+	public ReviewVO reviewInsert(ReviewVO vo);
 	
 }

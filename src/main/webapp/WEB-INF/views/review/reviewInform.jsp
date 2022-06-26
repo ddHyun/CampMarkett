@@ -9,7 +9,16 @@
 
 	function insert(f){
 		
-		f.action = "reviewInsert.do"
+		var memberid = f.memberid.value;
+		var productid = f.productid.value;
+		var title = f.title.value;
+		var content = f.content.value;
+		var pwd = f.pwd.value;
+		var filename = f.filename.value;
+	
+		
+		f.action = "reviewInsert.do";
+		f.method = "POST";
 		f.submit();
 		
 	}
@@ -45,7 +54,7 @@
 			
 			<tr>
 				<th>업로드<th>
-				<td><input type="file" name="photo"></td>
+				<td><input type="file" name="filename"></td>
 			</tr>
 			
 			<tr>

@@ -28,6 +28,11 @@ public class ReviewService {
 		return reviewMapper.reviewIdx(idx);
 		
 	}
-
+	
+	public ReviewVO setReviewVO(ReviewVO vo) {
+		
+		return reviewMapper.reviewInsert(vo);
+		
+	}
 	
 }
