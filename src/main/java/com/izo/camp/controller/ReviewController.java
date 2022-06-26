@@ -50,6 +50,16 @@ public class ReviewController {
 
 	}
 
+
+		
+	}
+	
+	// 새 글 작성
+//	@RequestMapping("/reviewInsert.do")
+//
+//		
+//	}
+
 	
 	  // 새 글 작성
 	 

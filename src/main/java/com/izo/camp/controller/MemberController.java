@@ -30,8 +30,18 @@ public class MemberController {
 		return "join/memberCheck";
 	}
 		
-	//회원가입페이지로 이동
+	//회원유무확인 페이지 -> 회원가입 페이지(파라미터 이동/post)
 	@RequestMapping("/joinView.do")
+	public String joinView(String name, Integer birth, Model model) {
+		System.out.println("name : "+name + "/birth : "+birth );
+		String birth1 = ""+birth;
+		model.addAttribute("name", name);	
+		model.addAttribute("birth", birth1);
+		return "join/joinView";
+	}
+	
+	//로그인 페이지 -> 회원가입 페이지
+	@RequestMapping("/joinView2.do")
 	public String joinView() {
 		return "join/joinView";
 	}
