@@ -37,5 +37,9 @@ public class MemberService {
 		return memberMapper.memberIdxFromId(vo);
 	}
 	
+	//회원정보 추가하기
+	public int insertInfo(MemberVO vo) {
+		return memberMapper.insertInfo(vo);
+	}
 	
 }
