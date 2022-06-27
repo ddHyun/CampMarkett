@@ -58,10 +58,12 @@
 	}
 	
 	function IDpopup(){
+		//console.log(document.domain);으로 확인함
+		document.domain = "localhost";
 		var url = "/camp/searchIDView.do";
 		var name = "아이디 찾기";
 		var option = "width=570,height=420, scrollbars=yes, resizable=no";
-		var pop = window.open(url, name, option);
+		window.open(url, name, option);
 	}
 </script>
 </head>
@@ -81,8 +83,8 @@
 			<input type="button" value="회원가입" onclick="location.href='joinView2.do'">
 		</div>
 		<div>
-			<button onclick="IDpopup()">아이디 찾기</button>
-			<a href="" target="_blank">비밀번호 찾기</a>
+			<span style="cursor:pointer; text-decoration:underline;" onclick="IDpopup()">아이디 찾기</span>
+			<span style="cursor:pointer; text-decoration:underline;" onclick="IDpopup()">비밀번호 찾기</span>
 		</div>
 	</form>
 </body>
