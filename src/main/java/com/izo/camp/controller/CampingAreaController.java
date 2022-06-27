@@ -60,4 +60,15 @@ public class CampingAreaController {
 	    return "campingArea/main";
 	}
 	
+	@RequestMapping("/campDetail")
+	public String goDetailPage(Integer idx,Model model) {
+		
+		CampInfoVO campInfoVO = campInfoService.campInfoByIndex(idx);
+		
+		
+		model.addAttribute("campInfo",campInfoVO);
+		
+		return "campingArea/detail";
+	}
+	
 }

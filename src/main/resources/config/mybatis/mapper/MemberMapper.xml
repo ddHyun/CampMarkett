@@ -18,6 +18,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="memberIdxFromId" resultType="int" parameterType="memberVO">
 		select nvl(idx, 0) from membertable right outer join dual on id=#{id} and pwd=#{pwd}
 	</select>
+	
+	<!-- 회원정보 추가하기 -->
+	<insert id="insertInfo" parameterType="memberVO">
+		insert into membertable values(
+			seq_member.nextval,
+			#{id},#{pwd},#{name},#{gender},#{email},#{hometel},#{mobiletel},#{addr},#{birth}
+			)			
+	</insert>
 		
 </mapper>
 

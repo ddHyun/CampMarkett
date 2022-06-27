@@ -19,53 +19,7 @@
 		var address = document.querySelector("#address");
 		address.value = roadFullAddr;
 		document.getElementById("addressBtn").disabled = true;
-	}
-		
-	//아이디 중복버튼 클릭 시 파마리터 가지고 페이지 이동
-	function checkID(){
-		var idPattern = /^[a-zA-Z]{1}[a-zA-Z0-9]{4,14}$/;
-		var id = document.getElementById("id");		
-		var idVal = document.getElementById("id").value.trim();		
-		if(idVal==''){
-			alert("아이디를 입력해주세요");	
-			id.focus();
-			return;
-		}
-		if(!idPattern.test(idVal)){
-			alert("특수문자를 제외한 5~15자리의 영문자, 숫자만 입력해 주세요");
-			id.value = '';
-			id.focus();
-			return;
-		}
-		console.log(idVal);
-		var url = "checkID.do";
-		var param = "id=" + idVal;
-		
-		sendRequest(url, param, cb, "POST");
 	}	
-	
-	function cb(){
-		var id = document.getElementById("id");
-		if(xhr.readyState==4 && xhr.status==200){
-			var data = xhr.responseText;
-			var json = (new Function('return'+data))();
-			if(json[0].param == 'n'){
-				if(!confirm("사용 가능한 아이디입니다. 사용하시겠습니까?")){
-					id.focus();
-					id.value = '';
-					return;
-				}else{					
-					document.getElementById("idCheckBtn").disabled = true;
-					id.disabled = true;
-					}
-			}else{
-					alert("중복된 아이디입니다. 다시 시도해 주세요");
-					id.focus();
-					id.value = '';
-					return;
-				}				
-		}
-	}
 		
 	//성별 하나만 체크하기
 	function chooseGender(target){
@@ -98,21 +52,20 @@
 		
 	
 	//가입하기
-	function join(f){
+	function join(){
+		var f = document.form;
 		var id = f.id.value;
 		var pwd = f.pwd.value;
 		var name = f.name.value;
-		var genderBox = document.getElementByName("gender");
+		//체크박스 value받기
+		var gender = document.querySelector('input[name="gender"]:checked').value;
 		var birth = f.birth.value;
 		var hometel = f.hometel.value;
 		var mobiletel = f.mobiletel.value;
+		var email = f.email.value;
 		var addr = f.addr.value;	
-		
-		if(genderBox.checked==true){
-			var gender = genderBox.value;
-			console.log(gender);
-		}
-		
+
+	
 		if(name==''){
 			alert("이름을 입력해주세요");
 			f.name.focus();
@@ -137,13 +90,36 @@
 			return;
 		}
 		
+		if(hometel==''){
+			hometel="none";
+		}
+		
 		if(addr==''){
 			alert("주소를 입력해주세요");
 			f.addr.focus();
 			return;
 		}
+			
+		var url = "join.do";
+		var param = "id="+id+"&pwd="+pwd+"&name="+name+"&gender="+gender+"&birth="
+		+birth+"&email="+email+"&hometel="+hometel+"&mobiletel="+mobiletel+"&addr="+addr;
 		
-		console.log(gender);
+		console.log(param);
+		sendRequest(url, param, cb, "POST");
+	}
+	
+	function cb(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var data = xhr.responseText;
+			var json = (new Function('return'+data))(); 
+			if(json[0].param = 'y'){
+				alert("회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.");
+				location.href = "loginView.do";
+			}else{
+				alert("프로그램 상의 문제가 발생했습니다. 관리자에게 문의해 주세요");
+				location.href= "관리자 항의 메일 보내기";
+			}
+		}
 	}
 	
 	
@@ -152,7 +128,7 @@
 </head>
 <body>
 	<p align="center">회원가입</p>
-	<form action="join.do" method="post">
+	<form name="form" action="join" method="post">
 		<table border="1" align="center" width="800px">
 			<tr>
 				<td colspan="2">
@@ -163,7 +139,8 @@
 				<th><span style="color:red">*</span>아이디</th>
 				<td>				
 					<input type="text" name="id" id="id">
-					<input type="button" value="중복확인" id="idCheckBtn" onclick="checkID()"><br>		
+					<!-- <input type="button" value="중복확인" id="idCheckBtn" onclick="checkID()"><br> -->		
+					<input type="button" value="중복확인" id="idCheckBtn"><br>		
 					<span style="color:#787878">5~15자리의 영문자와 숫자만 입력이 가능합니다(시작은 영문자)</span>				
 				</td>				
 			</tr>
@@ -189,9 +166,9 @@
 			<tr>
 				<th><span style="color:red">*</span>이름</th>
 				<td>
-					<input type="text" name="name" id="name" value="${name}">
+					<input type="text" name="name" id="name" value="${vo.name}">
 					<!-- 성별 -->
-					<input type="checkbox" name="gender" value="남자" onclick="chooseGender(this)" checked="checked">남자
+					<input type="checkbox" name="gender" value="남자" onclick="chooseGender(this)" checked>남자
 					<input type="checkbox" name="gender" value="여자" onclick="chooseGender(this)">여자&emsp;
 					<span id=nameErrorMsg style="color:red">이름은 한글만 입력이 가능합니다</span>
 				</td>
@@ -199,7 +176,7 @@
 			<tr>
 				<th><span style="color:red">*</span>생년월일</th>
 				<td>
-					<input type="text" id="birth" name="birth" value="${birth}">
+					<input type="text" id="birth" name="birth" value="${vo.birth}">
 					<span style="color:#787878">6자리로 입력해주세요 (예) 990101)</span>
 					<span id="birthErrorMsg" style="color:red">올바른 형식이 아닙니다</span>
 				</td>
@@ -237,7 +214,7 @@
 			<tr>
 				<td colspan="2" align="center">
 					<input type="button" value="취소하기" onclick="location.href='##########'">
-					<input type="button" value="가입하기" onclick="join(this.form)">
+					<input type="button" value="가입하기" onclick="join()">
 				</td>
 			</tr>
 		</table>
@@ -337,9 +314,15 @@
 	
 	$('#birth').on('input', function(){
 		var birthVal = $.trim($('#birth').val());
+		var birthLen = $('#birth').val().length;
+		//길이가 6자가 넘어가면 오류 메시지 띄운다
+		if(birthLen > 6){
 		if(!birthPattern.test(birthVal)){
 			birthErrorMsg.show();
 			if($('#birth').val()==''){
+			birthErrorMsg.hide();
+			}
+		}else{
 			birthErrorMsg.hide();
 			}
 		}else{
@@ -364,9 +347,51 @@
 		}else{
 			hometelErrorMsg.hide();
 		}
-	})
+	});
 	
-		
+	//아이디 중복체크 => 버튼에 onclick 적지 말고 사용하기
+	$('#idCheckBtn').on('click', function(){
+		var idPattern = /^[a-zA-Z]{1}[a-zA-Z0-9]{4,14}$/;
+		var id = $('#id');	
+		var idVal = $.trim(id.val());	
+		if(idVal==''){
+			alert("사용할 아이디를 입력해주세요");
+			id.focus();
+			return;
+		}
+		if(!idPattern.test(idVal)){			
+			alert("특수문자를 제외한 5~15자리의 영문자, 숫자만 입력해 주세요");
+			id.focus();
+			id.val('');
+			return;
+		}
+		console.log(idVal);
+		$.ajax({
+			url: "checkID.do",
+			type: "POST",
+			data: {id:$('#id').val()},
+			datatype: "json"
+		}).done(function(data){
+				var json = (new Function('return'+data))();
+				if(json[0].param == 'n'){
+					if(!confirm("사용 가능한 아이디입니다. 사용하시겠습니까?")){
+						id.val('');
+						id.focus();
+						return;
+						}else{
+							$('#idCheckBtn').attr('disabled', true);
+							id.attr('disabled', true);
+						}
+					}else{
+						alert("중복된 아이디입니다. 다시 시도해 주세요");
+						id.val('');
+						id.focus();
+						return;
+					}
+			}).fail(function(){
+				alert("ajax 오류");
+		});	
+	});	
 
 </script>
 </html>

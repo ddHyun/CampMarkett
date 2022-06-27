@@ -27,5 +27,8 @@ public interface MemberMapper {
 	//아이디, 비밀번호 일치하는 idx
 	public int memberIdxFromId(MemberVO vo);
 	
+	//회원정보 추가하기
+	public int insertInfo(MemberVO vo);
+	
 	
 }

@@ -30,11 +30,18 @@ public class MemberController {
 		return "join/memberCheck";
 	}
 		
-	//회원가입페이지로 이동
+	//회원가입 유무확인 페이지 -> 회원가입 페이지
 	@RequestMapping("/joinView.do")
-	public String joinView() {
+	public String joinView(MemberVO vo, Model model) {
+		model.addAttribute("vo", vo);
 		return "join/joinView";
 	}
+	
+	//로그인 페이지 -> 회원가입 페이지
+		@RequestMapping("/joinView2.do")
+		public String joinView() {
+			return "join/joinView";
+		}
 	
 	//주소API팝업창 이동
 	@RequestMapping("/jusoPopup.do")
@@ -61,8 +68,22 @@ public class MemberController {
 			param = "y";
 		}
 		
-		String result = String.format("[{'param':'%s'}]", param);
+		String result = String.format("[{'param':'%s'}]", param);		
 		
+		return result;
+	}
+	
+	//회원가입하기
+	@ResponseBody
+	@RequestMapping("/join.do")
+	public String join(MemberVO vo) {
+		int cnt = memberService.insertInfo(vo);
+		System.out.println(cnt);
+		String param = "n";
+		if(cnt > 0) {
+			param = "y";
+		}
+		String result = String.format("[{'param':'%s'}]", param);
 		return result;
 	}
 	
