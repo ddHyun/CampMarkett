@@ -26,14 +26,10 @@
 		<br>
 		<div>
 			<input type="button" value="아이디 찾기" id="idFindBtn" onclick="searchID()">
-		</div>
-		<div>
-			<span>일치하는 정보가 없습니다.</span><br>
-			<input type="button" value="회원가입하러 가기" onclick="">
-		</div>
+		</div>		
 		<div id="idText" style="display:none">
-			<span>아이디 : ${id}</span><br>
-			<input type="button" value="회원가입하러 가기" onclick="">
+			<label>아이디 :<span id="id"></span></label>&emsp;
+			<input type="button" value="로그인하러 가기" onclick="location.href='loginView.do'">
 		</div>
 	</form>
 </body>
@@ -80,9 +76,16 @@
 			var json = (new Function('return'+data))();
 			//회원정보가 없다면
 			if(json[0].id == 'none'){
-				
+				alert("입력하신 정보와 일치하는 아이디가 존재하지 않습니다. 다시 시도해 주세요");
+				$('#name').val('');
+				birth.value="";
+				email.value="";
+				name.focus();
+				return;
 			}else{
 				document.getElementById('idText').style.display = 'block';
+				document.getElementById('id').innerHTML = json[0].id;
+				//$('#id').text(json[0].id);
 			}
 		}
 	}
