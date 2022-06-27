@@ -73,6 +73,20 @@ public class MemberController {
 		return result;
 	}
 	
+	//회원가입하기
+	@ResponseBody
+	@RequestMapping("/join")
+	public String join(MemberVO vo) {
+		int cnt = memberService.insertInfo(vo);
+		System.out.println(cnt);
+		String param = "n";
+		if(cnt > 0) {
+			param = "y";
+		}
+		String result = String.format("[{'param':'%s'}]", param);
+		return result;
+	}
+	
 	//회원가입 유무 확인
 	@ResponseBody
 	@RequestMapping("/memberOrNot.do")
