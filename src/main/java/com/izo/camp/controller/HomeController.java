@@ -51,6 +51,8 @@ public class HomeController {
 			System.out.println(deptVO.getDeptno());
 		}
 		
+		System.out.println("home");
+		
 		return "home";
 
 	}

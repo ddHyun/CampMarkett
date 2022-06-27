@@ -19,14 +19,13 @@ ${sessionScope.sessionLat}
 <button onclick='closeb()'>닫기</button>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=981d10b9423551ea1989e7ef7415c980"></script>
 <script>
-var lat;
-var lon;
+var lat = "${sessionScope.sessionLat}";
+var lon = "${sessionScope.sessionLon}";
 
 function closeb(){
-	sessionStorage.setItem("sessionLat", lat);
-	sessionStorage.setItem("sessionLon", lon);
-
-	opener.parent.location.href="/camp/info";
+	
+	opener.parent.location.href="/camp/info?lat="+lat+"&lon="+lon;
+	
 	window.close();
 }
 
