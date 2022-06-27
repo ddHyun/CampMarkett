@@ -139,6 +139,12 @@ public class MemberController {
 		return "login/findMyID";
 	}
 	
+	//아이디 찾기 페이지로 이동
+	@RequestMapping("/searchIDView.do")
+	public String searchIDView() {
+		return "login/findMyID";
+	}
+	
 	//아이디찾기
 	@ResponseBody
 	@RequestMapping("/searchID.do")
@@ -147,8 +153,16 @@ public class MemberController {
 		return result;		
 	}
 	
-	@RequestMapping("/searchIDView.do")
-	public String searchIDView() {
-		return "login/findMyID";
+	//비밀번호 찾기 페이지로 이동
+	@RequestMapping("/searchPwdView.do")
+	public String searchPwdView() {
+		return "login/findMyPWD";
 	}
+	
+	//비밀번호 찾기
+//	@ResponseBody
+//	@RequestMapping("/searchPwd.do")
+//	public String searchPwd(MemberVO vo) {
+//		int idx1 = memberService.
+//	}
 }

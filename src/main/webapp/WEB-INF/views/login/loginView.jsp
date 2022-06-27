@@ -57,14 +57,55 @@
 		}
 	}
 	
+	//팝업창 세팅인데 함수 안에 넣으면 팝업창 생성이 안됨
+	/* function popupSetting(url, name, width, height){
+		document.domain = "localhost";
+		this.url = url;
+		this.name = name;
+		this.width = width;
+		this.height = height;
+		//화면 중앙에 위치
+		var left = Math.ceil((window.screen.width - width)/2); 
+		var top = 100;
+		//var top = Math.ceil((window.screen.height - height)/2);
+		var option = 
+			"width="+width+",height="+height+", scrollbars=yes, resizable=no, left="+left+", top="+top;
+		window.open(url, name, option);
+	} */
+	
+	//아이디 찾기
 	function IDpopup(){
 		//console.log(document.domain);으로 확인함
 		document.domain = "localhost";
 		var url = "/camp/searchIDView.do";
-		var name = "아이디 찾기";
-		var option = "width=570,height=420, scrollbars=yes, resizable=no";
+		var name = "FIND MY ID";
+		var width = 570;
+		var height = 420;
+		//화면 중앙에 위치
+		var left = Math.ceil((window.screen.width - width)/2); 
+		var top = 100;
+		//var top = Math.ceil((window.screen.height - height)/2);
+		var option = 
+			"width="+width+",height="+height+", scrollbars=yes, resizable=no, left="+left+", top="+top;
 		window.open(url, name, option);
 	}
+	
+	//비밀번호 찾기
+	function PWDpopup(){
+		document.domain = "localhost";
+		var url = "/camp/searchPwdView.do";
+		var name = "FIND MY PWD";
+		var width = 570;
+		var height = 420;
+		//화면 중앙에 위치
+		var left = Math.ceil((window.screen.width - width)/2); 
+		var top = 100;
+		var option = 
+			"width="+width+",height="+height+", scrollbars=yes, resizable=no, left="+left+", top="+top;
+		window.open(url, name, option);
+	} 
+		
+	
 </script>
 </head>
 <body>
@@ -83,8 +124,8 @@
 			<input type="button" value="회원가입" onclick="location.href='joinView2.do'">
 		</div>
 		<div>
-			<span style="cursor:pointer; text-decoration:underline;" onclick="IDpopup()">아이디 찾기</span>
-			<span style="cursor:pointer; text-decoration:underline;" onclick="IDpopup()">비밀번호 찾기</span>
+			<span style="cursor:pointer; text-decoration:underline;" onclick="IDpopup()">아이디 찾기</span>&emsp;
+			<span style="cursor:pointer; text-decoration:underline;" onclick="PWDpopup()">비밀번호 찾기</span>
 		</div>
 	</form>
 </body>
