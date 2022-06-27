@@ -53,29 +53,31 @@ public class MemberController {
 	@RequestMapping("checkID.do")
 	@ResponseBody
 	public String checkId(@ModelAttribute("id") String id) {		
-		List<String> idList = memberService.idList();
+//		List<String> idList = memberService.idList();
+//		
+//		int cnt = 0;		
+//		for(String i : idList) {
+//			if(id.equals(i)) {
+//				cnt++;
+//			}
+//		}
+//		
+//		String param = "n";
+//		
+//		if(cnt > 0) {
+//			param = "y";
+//		}
+//		
+//		String result = String.format("[{'param':'%s'}]", param);
 		
-		int cnt = 0;		
-		for(String i : idList) {
-			if(id.equals(i)) {
-				cnt++;
-			}
-		}
-		
-		String param = "n";
-		
-		if(cnt > 0) {
-			param = "y";
-		}
-		
-		String result = String.format("[{'param':'%s'}]", param);
+		String result = "제발!!!!!!!!!!!!!";
 		
 		return result;
 	}
 	
 	//회원가입하기
 	@ResponseBody
-	@RequestMapping("/join")
+	@RequestMapping("/join.do")
 	public String join(MemberVO vo) {
 		int cnt = memberService.insertInfo(vo);
 		System.out.println(cnt);
