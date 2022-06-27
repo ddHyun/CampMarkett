@@ -14,9 +14,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	private double longitude;
 	private String address;
 	private String tell;
-
 	 -->
-	 
+	 <!-- 캠핑장 갱신 -->
 	<insert id="addNewCamp" parameterType="campInfoVO">
 		INSERT INTO CAMPINGTABLE
 		(IDX, NAME, LATITUDE, LONGITUDE, ADDRESS, TELL)
@@ -34,6 +33,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					AND (LONGITUDE BETWEEN (#{lon} - #{limitLon}) AND (#{lon} + #{limitLon}) )
 			ORDER BY DISTANCE
 		
+	</select>
+	
+	<select id="getCampingByIdx" resultType="campInfoVO">
+		SELECT IDX, NAME, LATITUDE, LONGITUDE, ADDRESS, TELL FROM CAMPINGTABLE
+		WHERE IDX = #{idx}
 	</select>
 </mapper>
 
