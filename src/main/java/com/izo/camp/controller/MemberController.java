@@ -113,8 +113,8 @@ public class MemberController {
 	}
 		
 	//로그인하기
-	@RequestMapping("/goLogin.do")
 	@ResponseBody
+	@RequestMapping("/goLogin.do")
 	public String goLogin(MemberVO vo) {
 		
 		int idx = memberService.getIdxFromId(vo);
@@ -133,5 +133,18 @@ public class MemberController {
 		return result;
 	}
 	
+	//아이디찾기 페이지로 이동
+	@RequestMapping("/findMyID.do")
+	public String findMyID() {
+		return "login/findMyID";
+	}
 	
+	//아이디찾기
+	@ResponseBody
+	@RequestMapping("/searchID.do")
+	public String searchID(MemberVO vo) {
+		String result = String.format("[{'id':'%s'}]", memberService.searchID(vo)); 
+		System.out.println(result);
+		return result;		
+	}
 }

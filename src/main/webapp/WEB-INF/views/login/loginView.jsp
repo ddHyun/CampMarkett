@@ -70,7 +70,7 @@
 			<input type="button" value="회원가입" onclick="location.href='joinView2.do'">
 		</div>
 		<div>
-			<a href="" target="_blank">아이디 찾기</a>
+			<a href="findMyID.do" target="_blank">아이디 찾기</a>
 			<a href="" target="_blank">비밀번호 찾기</a>
 		</div>
 	</form>

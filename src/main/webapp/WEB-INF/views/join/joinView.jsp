@@ -139,7 +139,6 @@
 				<th><span style="color:red">*</span>아이디</th>
 				<td>				
 					<input type="text" name="id" id="id">
-					<!-- <input type="button" value="중복확인" id="idCheckBtn" onclick="checkID()"><br> -->		
 					<input type="button" value="중복확인" id="idCheckBtn"><br>		
 					<span style="color:#787878">5~15자리의 영문자와 숫자만 입력이 가능합니다(시작은 영문자)</span>				
 				</td>				
