@@ -29,7 +29,9 @@ public class ReviewService {
 		
 	}
 	
-	public ReviewVO setReviewVO(ReviewVO vo) {
+	public int setReviewVO(ReviewVO vo) {
+		
+		System.out.println("vo.filename = " + vo.getFile());
 		
 		return reviewMapper.reviewInsert(vo);
 		
