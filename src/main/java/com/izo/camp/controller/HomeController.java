@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,8 @@ public class HomeController {
 	
 	@Autowired
 	DeptMapper deptMapper;
-	
+	@Autowired
+    private HttpSession session;
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -39,6 +42,8 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
+		session.setAttribute("sessionLat", 37.49051);
+		session.setAttribute("sessionLon", 126.72414);
 		
 		model.addAttribute("serverTime", formattedDate );
 
