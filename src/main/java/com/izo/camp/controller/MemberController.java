@@ -144,7 +144,11 @@ public class MemberController {
 	@RequestMapping("/searchID.do")
 	public String searchID(MemberVO vo) {
 		String result = String.format("[{'id':'%s'}]", memberService.searchID(vo)); 
-		System.out.println(result);
 		return result;		
+	}
+	
+	@RequestMapping("/searchIDView.do")
+	public String searchIDView() {
+		return "login/findMyID";
 	}
 }

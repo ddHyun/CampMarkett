@@ -16,21 +16,25 @@
 	});	
 
 	function goLogin(){
-		var id = document.getElementById("id").value.trim();
-		var pwd = document.getElementById("pwd").value.trim();
+		var id = document.getElementById("id");
+		var idVal = id.value.trim();
+		var pwd = document.getElementById("pwd");
+		var pwdVal = pwd.value.trim();
 		//유효성 검사
-		if(id==''){
+		if(idVal==''){
 			alert("아이디를 입력해 주세요");
+			id.focus();
 			return;
 		}
 		
-		if(pwd==''){
+		if(pwdVal==''){
 			alert("비밀번호를 입력해주세요");
+			pwd.focus();
 			return;
 		}
 		
 		var url = "goLogin.do";
-		var param = "id=" + id + "&pwd=" + pwd;
+		var param = "id=" + idVal + "&pwd=" + pwdVal;
 		sendRequest(url, param, cb, "POST");
 	}
 	
@@ -52,6 +56,13 @@
 			}
 		}
 	}
+	
+	function IDpopup(){
+		var url = "/camp/searchIDView.do";
+		var name = "아이디 찾기";
+		var option = "width=570,height=420, scrollbars=yes, resizable=no";
+		var pop = window.open(url, name, option);
+	}
 </script>
 </head>
 <body>
@@ -70,7 +81,7 @@
 			<input type="button" value="회원가입" onclick="location.href='joinView2.do'">
 		</div>
 		<div>
-			<a href="findMyID.do" target="_blank">아이디 찾기</a>
+			<button onclick="IDpopup()">아이디 찾기</button>
 			<a href="" target="_blank">비밀번호 찾기</a>
 		</div>
 	</form>
