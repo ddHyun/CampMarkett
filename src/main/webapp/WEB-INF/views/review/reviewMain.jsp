@@ -41,8 +41,8 @@
 			<th width="100">후기상품</th>
 			<th width="150">작성자</th>
 			<th width="100">작성일</th>
-			<th width="60">조회수</th>
-			<th width="60">추천수</th>
+			<th width="40">조회수</th>
+			<th width="40">추천수</th>
 		</tr>
 		
 		<c:forEach var="vo" items="${list}">
@@ -55,6 +55,7 @@
 				</a>
 			</td>
 			<td align="center">${vo.productid}</td> 
+			<td align="center">${vo.memberid}</td>
 			<td align="center">${fn:split(vo.regdate,' ')[0]}</td>
 			<td align="center">${vo.readhit}</td>
 			<td align="center">${vo.joayo}</td>

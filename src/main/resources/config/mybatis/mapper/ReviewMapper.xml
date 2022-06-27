@@ -13,18 +13,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="reviewInsert" parameterType="reviewVO" >
-		INSERT INTO REVIEWTABLE VALUES(
-			seq_reviewtable_idx.nextVal,
-			#{memberid},
-			#{productid},
-			#{title},
-			#{content},
-			#{filename},
-			#{pwd},
-			sysdate,
-			default 0,
-			dafault 0
-			) 
+			
+		INSERT INTO REVIEWTABLE
+(IDX, MEMBERID, PRODUCTID, TITLE, CONTENT, FILENAME, PWD, REGDATE, READHIT, JOAYO)
+VALUES(SEQ_Review.nextVal, #{memberid}, #{productid}, #{title}, #{content}, #{filename}, #{pwd}, SYSDATE, 0, 0)
 	</insert>
 
 	
