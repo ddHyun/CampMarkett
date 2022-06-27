@@ -218,4 +218,10 @@ public class CampInfoService {
 
 	    return distance;
 	}
+	
+	//인덱스로 캠핑장 정보 받아오기
+	public CampInfoVO campInfoByIndex(Integer idx) {
+		
+		return campInfoMapper.getCampingByIdx(idx);
+	}
 }

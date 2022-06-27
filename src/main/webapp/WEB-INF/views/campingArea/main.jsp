@@ -16,11 +16,34 @@
 		</tr>
 	</table>
 	<c:forEach var="camp" items="#{camplist}">
-		<p>캠핑장 이름 : ${camp.name} 거리는 ${camp.distance}km 입니다.</p>
+		<p><div class="temp" onclick="popup(${camp.idx})" style="cursor:pointer;">캠핑장 이름 : ${camp.name}  거리는 ${camp.distance}km 입니다.</div></p>
 		<br>
 	</c:forEach>
 </body>
 <script>
+	
+	var windowX = window.screen.width;
+	var windowY = window.screen.height;
+	function popup(idx){
+		var popUpWidth = windowX / 3 ;
+		var popUpheight = windowY / 2 ;
+		var top =  ((windowY / 2) - (popUpheight / 2));
+		var left = ((windowX / 2) - (popUpWidth / 2));
+	
+		
+		
+	/* 	var pop = window.open("/camp/campDetail?idx="+e,"pop","width=650,height=800, scrollbars=yes, resizable=no");  */
+		var pop = window.open(
+				"/camp/campDetail?idx="+idx,
+						"pop",
+						"width=" + popUpWidth 
+						+ ", height = " + popUpheight 
+						+ ", top = " + top
+						+ ", left = " + left
+						+ " ,scrollbars=yes, resizable=no"); 	
+		
+	}
+
 	window.onload = function(){
 		let ranking = document.getElementById("weather");
 		let xhr = new XMLHttpRequest();
@@ -50,4 +73,5 @@
 		
 	}
 </script>
+ <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 </html>
