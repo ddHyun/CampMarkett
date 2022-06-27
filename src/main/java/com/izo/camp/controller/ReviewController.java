@@ -51,62 +51,62 @@ public class ReviewController {
 
 	}
 
-
-
-	
-	// 새 글 작성
-//	@RequestMapping("/reviewInsert.do")
-//
-//		
-//	}
-
-
-	
 	  // 새 글 작성
 	 
 	 @RequestMapping("/reviewInsert.do")
 	 public String reviewInsert(ReviewVO vo, Model model) {
 		 
-			/*
-			 * String webPath = "/resources/upload/"; String savePath =
-			 * request.getSession().getServletContext().getRealPath(webPath);
-			 * 
-			 * // 업로드된 파일의 정보 MultipartFile photo = vo.getFilename(); String filename =
-			 * "no_file";
-			 * 
-			 * // 업로드된 파일이 존재할 경우 if(!photo.isEmpty()) {
-			 * 
-			 * //업로드될 실제 파일명 filename = photo.getOriginalFilename();
-			 * 
-			 * File saveFile = new File(savePath, filename);
-			 * 
-			 * if(!saveFile.exists()) {
-			 * 
-			 * saveFile.mkdirs();
-			 * 
-			 * } else {
-			 * 
-			 * //파일명 겹치는것 방지 long time = System.currentTimeMillis(); filename =
-			 * String.format("%d_%s", time, filename); saveFile = new File(savePath,
-			 * filename);
-			 * 
-			 * }
-			 * 
-			 * try { photo.transferTo(saveFile); } catch (Exception e) {
-			 * 
-			 * e.printStackTrace(); }
-			 * 
-			 * }
-			 * 
-			 * vo.setFilename(photo);
-			 */
+		 System.out.println("vo.filename" + vo.getFile());
 		 
+		 String webPath = "/resources/upload/";
+		 String savePath = request.getSession().getServletContext().getRealPath(webPath);
+		 
+		 MultipartFile file = vo.getFile();
+		 
+		 String filename = "no_file";
+		 
+		 // 업로드된 파일 있을경우
+		 if(!file.isEmpty()) {
+			 
+			 // 업로드된 실제 파일명
+			 filename = file.getOriginalFilename();
+			 
+			 File saveFile = new File(savePath, filename);
+			
+			 if(saveFile.exists()) {
+				 
+				 saveFile.mkdirs();
+				 
+			 } else {
+				 
+				 // 파일명 중복방지
+				 long time = System.currentTimeMillis();
+				 filename = String.format("%d_%s", time, filename);
+				 saveFile = new File(savePath, filename);
+				 
+			 }
+			 
+			 try {
+				file.transferTo(saveFile);
+			 } catch (Exception e) {
+				e.printStackTrace();
+			 }
+			 
+		 }
+		 
+		 vo.setFilename(filename);
+			 
 		 model.addAttribute("vo",reviewService.setReviewVO(vo));
+		 
+		 //reviewMain에서 list를 받아서 보여주니까 list에도 묶어서 전달
+		 model.addAttribute("list",reviewService.list());
 		 
 		 
 		 return "review/reviewMain";
 		 
 	 }
+	 
+	
 	 
 
 }
