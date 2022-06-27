@@ -9,7 +9,7 @@
 <script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-	<form action="" method="POST" name="f" align="center">
+	<form action="loginView.do" method="POST" name="f" align="center">
 	<p>아이디 찾기</p>
 		<div>
 			<label>이름</label>
@@ -28,8 +28,8 @@
 			<input type="button" value="아이디 찾기" id="idFindBtn" onclick="searchID()">
 		</div>		
 		<div id="idText" style="display:none">
-			<label>아이디 :<span id="id"></span></label>&emsp;
-			<input type="button" value="로그인하러 가기" onclick="location.href='loginView.do'">
+			<label>아이디 :&emsp;<span id="id" style="color:red"></span></label>&emsp;
+			<input type="button" value="로그인하러 가기" onclick="selfCloseSubmit()">
 		</div>
 	</form>
 </body>
@@ -37,7 +37,17 @@
 	//페이지 로딩되면 자동커서	
 	$(function(){
 		$('#name').focus();
-	});	
+	});		
+	
+	//팝업창 사라지고 부모창으로 이동
+	function selfCloseSubmit(){
+		var f = document.forms.f;
+		document.domain = "localhost";
+		opener.name = "DDD";
+		f.target = opener.name;
+		f.submit();
+		self.close();
+	}
 	
 	//아이디찾기
 	function searchID(){
@@ -88,44 +98,7 @@
 				//$('#id').text(json[0].id);
 			}
 		}
-	}
-		
+	}		
 	
- 	/* $('#idFindBtn').on('click', function(){
-		var name = $('#name');
-		var birth = $('#birth');
-		var email = $('#email');
-		
-		var nameVal = $.trim(name.val());
-		var birthVal = $.trim(birth.val());
-		var emailVal = $.trim(email.val());
-		
-		if(nameVal==''){
-			alert("이름을 입력해 주세요");
-			name.focus();
-			return;
-		}
-		if(birthVal==''){
-			alert("생년월일을 입력해 주세요");
-			birth.focus();		
-			return;
-		}
-		if(emailVal==''){
-			alert("이메일을 입력해 주세요");
-			email.focus();
-			return;
-		}
-		
-		$.ajax({
-			url:"searchID.do",
-			data:{name:nameVal, birth:birthVal, email:emailVal},
-			type:"POST",
-			dataType:"json"
-		}).done(function(data){
-			alert("데이터 받았다/ "+data);
-		}).fail(function(){
-			alert("Ajax Error");
-		});		
-	}); */
 </script>
 </html>
