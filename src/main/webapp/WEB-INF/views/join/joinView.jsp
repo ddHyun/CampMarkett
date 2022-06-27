@@ -37,7 +37,7 @@
 			id.focus();
 			return;
 		}
-		console.log(idVal);
+		
 		var url = "checkID.do";
 		var param = "id=" + idVal;
 		
@@ -98,20 +98,20 @@
 		
 	
 	//가입하기
-	function join(f){
+	function join(){
+		var f = document.form;
 		var id = f.id.value;
 		var pwd = f.pwd.value;
 		var name = f.name.value;
 		//체크박스 value받기
-		var gender = document.querySelector('input[name="gender"]:checked');
+		var gender = document.querySelector('input[name="gender"]:checked').value;
 		var birth = f.birth.value;
 		var hometel = f.hometel.value;
 		var mobiletel = f.mobiletel.value;
+		var email = f.email.value;
 		var addr = f.addr.value;	
 
-		console.log(gender.value);
-
-		
+	
 		if(name==''){
 			alert("이름을 입력해주세요");
 			f.name.focus();
@@ -141,8 +141,18 @@
 			f.addr.focus();
 			return;
 		}
+			
+		var url = "join";
+		var param = "id="+id+"&pwd="+pwd+"&name="+name+"&gender="+gender+"&birth="
+		+birth+"&email="+email+"&hometel="+hometel+"&mobiletel="+mobiletel+"&addr="+addr;
 		
-		console.log(gender);
+		sendRequest(url, param, cb, "POST");
+	}
+	
+	function cb(){
+		if(xhr.readyState==4 && xhr.status==200){
+			alert("성공");
+		}
 	}
 	
 	
@@ -151,7 +161,7 @@
 </head>
 <body>
 	<p align="center">회원가입</p>
-	<form action="join.do" method="post">
+	<form name="form" action="join" method="post">
 		<table border="1" align="center" width="800px">
 			<tr>
 				<td colspan="2">
@@ -236,7 +246,7 @@
 			<tr>
 				<td colspan="2" align="center">
 					<input type="button" value="취소하기" onclick="location.href='##########'">
-					<input type="button" value="가입하기" onclick="join(this.form)">
+					<input type="button" value="가입하기" onclick="join()">
 				</td>
 			</tr>
 		</table>
