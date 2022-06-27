@@ -19,53 +19,7 @@
 		var address = document.querySelector("#address");
 		address.value = roadFullAddr;
 		document.getElementById("addressBtn").disabled = true;
-	}
-		
-	//아이디 중복체크
-	/* function checkID(){
-		var idPattern = /^[a-zA-Z]{1}[a-zA-Z0-9]{4,14}$/;
-		var id = document.getElementById("id");		
-		var idVal = document.getElementById("id").value.trim();		
-		if(idVal==''){
-			alert("아이디를 입력해주세요");	
-			id.focus();
-			return;
-		}
-		if(!idPattern.test(idVal)){
-			alert("특수문자를 제외한 5~15자리의 영문자, 숫자만 입력해 주세요");
-			id.value = '';
-			id.focus();
-			return;
-		}
-		
-		var url = "checkID.do";
-		var param = "id=" + idVal;
-		
-		sendRequest(url, param, cb, "POST");
 	}	
-	
-	function cb(){
-		var id = document.getElementById("id");
-		if(xhr.readyState==4 && xhr.status==200){
-			var data = xhr.responseText;
-			var json = (new Function('return'+data))();
-			if(json[0].param == 'n'){
-				if(!confirm("사용 가능한 아이디입니다. 사용하시겠습니까?")){
-					id.focus();
-					id.value = '';
-					return;
-				}else{					
-					document.getElementById("idCheckBtn").disabled = true;
-					id.disabled = true;
-					}
-			}else{
-					alert("중복된 아이디입니다. 다시 시도해 주세요");
-					id.focus();
-					id.value = '';
-					return;
-				}				
-		}
-	} */
 		
 	//성별 하나만 체크하기
 	function chooseGender(target){
@@ -136,6 +90,10 @@
 			return;
 		}
 		
+		if(hometel==''){
+			hometel="none";
+		}
+		
 		if(addr==''){
 			alert("주소를 입력해주세요");
 			f.addr.focus();
@@ -146,14 +104,23 @@
 		var param = "id="+id+"&pwd="+pwd+"&name="+name+"&gender="+gender+"&birth="
 		+birth+"&email="+email+"&hometel="+hometel+"&mobiletel="+mobiletel+"&addr="+addr;
 		
-		//sendRequest(url, param, cb, "POST");
+		console.log(param);
+		sendRequest(url, param, cb, "POST");
 	}
 	
-	/* function cb(){
+	function cb(){
 		if(xhr.readyState==4 && xhr.status==200){
-			alert("성공");
+			var data = xhr.responseText;
+			var json = (new Function('return'+data))(); 
+			if(json[0].param = 'y'){
+				alert("회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.");
+				location.href = "loginView.do";
+			}else{
+				alert("프로그램 상의 문제가 발생했습니다. 관리자에게 문의해 주세요");
+				location.href= "관리자 항의 메일 보내기";
+			}
 		}
-	} */
+	}
 	
 	
 	
@@ -172,7 +139,6 @@
 				<th><span style="color:red">*</span>아이디</th>
 				<td>				
 					<input type="text" name="id" id="id">
-					<!-- <input type="button" value="중복확인" id="idCheckBtn" onclick="checkID()"><br> -->		
 					<input type="button" value="중복확인" id="idCheckBtn"><br>		
 					<span style="color:#787878">5~15자리의 영문자와 숫자만 입력이 가능합니다(시작은 영문자)</span>				
 				</td>				
@@ -347,9 +313,15 @@
 	
 	$('#birth').on('input', function(){
 		var birthVal = $.trim($('#birth').val());
+		var birthLen = $('#birth').val().length;
+		//길이가 6자가 넘어가면 오류 메시지 띄운다
+		if(birthLen > 6){
 		if(!birthPattern.test(birthVal)){
 			birthErrorMsg.show();
 			if($('#birth').val()==''){
+			birthErrorMsg.hide();
+			}
+		}else{
 			birthErrorMsg.hide();
 			}
 		}else{
@@ -376,101 +348,49 @@
 		}
 	});
 	
-	//아이디 중복체크
-	//$(document).ready(function(){
+	//아이디 중복체크 => 버튼에 onclick 적지 말고 사용하기
 	$('#idCheckBtn').on('click', function(){
 		var idPattern = /^[a-zA-Z]{1}[a-zA-Z0-9]{4,14}$/;
 		var id = $('#id');	
 		var idVal = $.trim(id.val());	
 		if(idVal==''){
-			alert("빈칸 오류");
+			alert("사용할 아이디를 입력해주세요");
+			id.focus();
 			return;
 		}
 		if(!idPattern.test(idVal)){			
-			alert("형식 오류");
-			return;
-		}else{
-			if(!confirm("사용 가능한 아이디입니다. 사용하시겠습니까?")){
-				return;
-			}
-			console.log(idVal);
-		}
-		$.ajax({
-			url: 'checkID.do',
-			type: 'POST',
-			data: {"id":idVal},
-			dataType: 'json',
-			done : function(data){
-				alert("ajax 성공");
-				console.log(data);
-			},
-			fail : function(){
-				alert("ajax 오류");
-			}
-		});
-		
-	/* $.ajax({
-		url : "checkID.do",
-		type : "POST",
-		data : {id : idVal},
-		dataType : "json",
-		success(function(param){
-			alert("아이디 오케이");
-		}),
-		error(function(){
-			alert("ㅠㅡㅠ");
-		})
-	}); */
-		
-	});
-		
-	//});
-	
-		
-	/* function checkID(){
-		var idPattern = /^[a-zA-Z]{1}[a-zA-Z0-9]{4,14}$/;
-		var id = document.getElementById("id");		
-		var idVal = document.getElementById("id").value.trim();		
-		if(idVal==''){
-			alert("아이디를 입력해주세요");	
-			id.focus();
-			return;
-		}
-		if(!idPattern.test(idVal)){
 			alert("특수문자를 제외한 5~15자리의 영문자, 숫자만 입력해 주세요");
-			id.value = '';
 			id.focus();
+			id.val('');
 			return;
 		}
-		
-		var url = "checkID.do";
-		var param = "id=" + idVal;
-		
-		sendRequest(url, param, cb, "POST");
-	}	
-	
-	function cb(){
-		var id = document.getElementById("id");
-		if(xhr.readyState==4 && xhr.status==200){
-			var data = xhr.responseText;
-			var json = (new Function('return'+data))();
-			if(json[0].param == 'n'){
-				if(!confirm("사용 가능한 아이디입니다. 사용하시겠습니까?")){
-					id.focus();
-					id.value = '';
-					return;
-				}else{					
-					document.getElementById("idCheckBtn").disabled = true;
-					id.disabled = true;
+		console.log(idVal);
+		$.ajax({
+			url: "checkID.do",
+			type: "POST",
+			data: {id:$('#id').val()},
+			datatype: "json"
+		}).done(function(data){
+				var json = (new Function('return'+data))();
+				if(json[0].param == 'n'){
+					if(!confirm("사용 가능한 아이디입니다. 사용하시겠습니까?")){
+						id.val('');
+						id.focus();
+						return;
+						}else{
+							$('#idCheckBtn').attr('disabled', true);
+							id.attr('disabled', true);
+						}
+					}else{
+						alert("중복된 아이디입니다. 다시 시도해 주세요");
+						id.val('');
+						id.focus();
+						return;
 					}
-			}else{
-					alert("중복된 아이디입니다. 다시 시도해 주세요");
-					id.focus();
-					id.value = '';
-					return;
-				}				
-		}
-	} */
+			}).fail(function(){
+				alert("ajax 오류");
+		});	
+	});	
 
 </script>
 </html>

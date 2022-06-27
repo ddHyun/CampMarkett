@@ -22,19 +22,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 회원정보 추가하기 -->
 	<insert id="insertInfo" parameterType="memberVO">
 		insert into membertable values(
-			idx=seq_member.nextval,
-			id=#{id},
-			pwd=#{pwd},
-			name=#{name},
-			gender=#{gender},
-			email=#{email},
-			hometel=#{hometel},
-			mobiletel=#{mobiletel},
-			addr=#{addr},
-			birth=#{birth}
-			)
+			seq_member.nextval,
+			#{id},#{pwd},#{name},#{gender},#{email},#{hometel},#{mobiletel},#{addr},#{birth}
+			)			
 	</insert>
-		
+	
+	<!-- 아이디 찾기(이름/생년월일/이메일) -->
+		<select id="searchID" resultType="String" parameterType="memberVO">
+			select nvl(id, 'none') from membertable right outer join dual on name=#{name} and birth=#{birth} and email=#{email}
+		</select>
 </mapper>
 
 

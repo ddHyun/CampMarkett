@@ -19,6 +19,7 @@ public interface ReviewMapper {
 	
 	public ReviewVO reviewIdx(int idx);
 
-	public ReviewVO reviewInsert(ReviewVO vo);
+	//insert는 건수로 받기때문에 int
+	public int reviewInsert(ReviewVO vo);
 	
 }

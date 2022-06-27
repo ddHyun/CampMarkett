@@ -30,5 +30,8 @@ public interface MemberMapper {
 	//회원정보 추가하기
 	public int insertInfo(MemberVO vo);
 	
+	//아이디 찾기
+	public String searchID(MemberVO vo);
+	
 	
 }

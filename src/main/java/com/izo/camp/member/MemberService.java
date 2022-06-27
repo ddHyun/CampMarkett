@@ -42,4 +42,9 @@ public class MemberService {
 		return memberMapper.insertInfo(vo);
 	}
 	
+	//아이디 찾기
+	public String searchID(MemberVO vo) {
+		return memberMapper.searchID(vo);
+	}
+	
 }
