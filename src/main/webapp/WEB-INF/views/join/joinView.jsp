@@ -37,7 +37,7 @@
 			id.focus();
 			return;
 		}
-		console.log(idVal);
+		
 		var url = "checkID.do";
 		var param = "id=" + idVal;
 		
@@ -98,21 +98,20 @@
 		
 	
 	//가입하기
-	function join(f){
+	function join(){
+		var f = document.form;
 		var id = f.id.value;
 		var pwd = f.pwd.value;
 		var name = f.name.value;
-		var genderBox = document.getElementByName("gender");
+		//체크박스 value받기
+		var gender = document.querySelector('input[name="gender"]:checked').value;
 		var birth = f.birth.value;
 		var hometel = f.hometel.value;
 		var mobiletel = f.mobiletel.value;
+		var email = f.email.value;
 		var addr = f.addr.value;	
-		
-		if(genderBox.checked==true){
-			var gender = genderBox.value;
-			console.log(gender);
-		}
-		
+
+	
 		if(name==''){
 			alert("이름을 입력해주세요");
 			f.name.focus();
@@ -142,8 +141,18 @@
 			f.addr.focus();
 			return;
 		}
+			
+		var url = "join";
+		var param = "id="+id+"&pwd="+pwd+"&name="+name+"&gender="+gender+"&birth="
+		+birth+"&email="+email+"&hometel="+hometel+"&mobiletel="+mobiletel+"&addr="+addr;
 		
-		console.log(gender);
+		sendRequest(url, param, cb, "POST");
+	}
+	
+	function cb(){
+		if(xhr.readyState==4 && xhr.status==200){
+			alert("성공");
+		}
 	}
 	
 	
@@ -152,7 +161,7 @@
 </head>
 <body>
 	<p align="center">회원가입</p>
-	<form action="join.do" method="post">
+	<form name="form" action="join" method="post">
 		<table border="1" align="center" width="800px">
 			<tr>
 				<td colspan="2">
@@ -189,9 +198,9 @@
 			<tr>
 				<th><span style="color:red">*</span>이름</th>
 				<td>
-					<input type="text" name="name" id="name" value="${name}">
+					<input type="text" name="name" id="name" value="${vo.name}">
 					<!-- 성별 -->
-					<input type="checkbox" name="gender" value="남자" onclick="chooseGender(this)" checked="checked">남자
+					<input type="checkbox" name="gender" value="남자" onclick="chooseGender(this)" checked>남자
 					<input type="checkbox" name="gender" value="여자" onclick="chooseGender(this)">여자&emsp;
 					<span id=nameErrorMsg style="color:red">이름은 한글만 입력이 가능합니다</span>
 				</td>
@@ -199,7 +208,7 @@
 			<tr>
 				<th><span style="color:red">*</span>생년월일</th>
 				<td>
-					<input type="text" id="birth" name="birth" value="${birth}">
+					<input type="text" id="birth" name="birth" value="${vo.birth}">
 					<span style="color:#787878">6자리로 입력해주세요 (예) 990101)</span>
 					<span id="birthErrorMsg" style="color:red">올바른 형식이 아닙니다</span>
 				</td>
@@ -237,7 +246,7 @@
 			<tr>
 				<td colspan="2" align="center">
 					<input type="button" value="취소하기" onclick="location.href='##########'">
-					<input type="button" value="가입하기" onclick="join(this.form)">
+					<input type="button" value="가입하기" onclick="join()">
 				</td>
 			</tr>
 		</table>

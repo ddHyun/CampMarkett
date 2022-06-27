@@ -49,7 +49,7 @@
 		
 		var url = "memberOrNot.do";
 		var param = "name=" + name + "&birth=" + birth;
-		
+		console.log("name: "+name+"/birth: "+birth)
 		sendRequest(url, param, cb, "POST");						
 	}	
 	
@@ -89,11 +89,11 @@
 	<form name="f" align="center">
 		<div>
 			<label>이름</label>
-			<input type="text" name="name" id="name" value="${name}">
+			<input type="text" name="name" id="name">
 		</div>
 		<div>
 			<label>생년월일(6자리)</label>
-			<input type="text" name="birth" id="birth" placeholder="예) 990101" value="${birth}">
+			<input type="text" name="birth" id="birth" placeholder="예) 990101">
 		</div>
 		<div>				
 			<input type="button" value="가입 확인하기" onclick="checkMember()">			
