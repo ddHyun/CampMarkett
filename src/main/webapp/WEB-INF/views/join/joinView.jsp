@@ -102,16 +102,15 @@
 		var id = f.id.value;
 		var pwd = f.pwd.value;
 		var name = f.name.value;
-		var genderBox = document.getElementByName("gender");
+		//체크박스 value받기
+		var gender = document.querySelector('input[name="gender"]:checked');
 		var birth = f.birth.value;
 		var hometel = f.hometel.value;
 		var mobiletel = f.mobiletel.value;
 		var addr = f.addr.value;	
-		
-		if(genderBox.checked==true){
-			var gender = genderBox.value;
-			console.log(gender);
-		}
+
+		console.log(gender.value);
+
 		
 		if(name==''){
 			alert("이름을 입력해주세요");
@@ -189,9 +188,9 @@
 			<tr>
 				<th><span style="color:red">*</span>이름</th>
 				<td>
-					<input type="text" name="name" id="name" value="${name}">
+					<input type="text" name="name" id="name" value="${vo.name}">
 					<!-- 성별 -->
-					<input type="checkbox" name="gender" value="남자" onclick="chooseGender(this)" checked="checked">남자
+					<input type="checkbox" name="gender" value="남자" onclick="chooseGender(this)" checked>남자
 					<input type="checkbox" name="gender" value="여자" onclick="chooseGender(this)">여자&emsp;
 					<span id=nameErrorMsg style="color:red">이름은 한글만 입력이 가능합니다</span>
 				</td>
@@ -199,7 +198,7 @@
 			<tr>
 				<th><span style="color:red">*</span>생년월일</th>
 				<td>
-					<input type="text" id="birth" name="birth" value="${birth}">
+					<input type="text" id="birth" name="birth" value="${vo.birth}">
 					<span style="color:#787878">6자리로 입력해주세요 (예) 990101)</span>
 					<span id="birthErrorMsg" style="color:red">올바른 형식이 아닙니다</span>
 				</td>
