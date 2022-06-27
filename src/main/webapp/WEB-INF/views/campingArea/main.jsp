@@ -8,15 +8,17 @@
 <title>주변 캠핑장</title>
 </head>
 <body>
-	<button>위치 설정</button>
+	<button onclick="popupLocation()">위치 설정</button>
+	<input type="text">
+	<button onclick="location.href='/camp/makeLocation'">위치 설정</button>
 	<table>
 		<tr>
-			<td class="td1"><h2>날씨</h2></td>
-			<td class="td2"><div id="weather">온도</div></td>
+			<td class="td1"><h2 id="user_barcode">날씨</h2></td>
+			<td class="td2" ><div id="weather" >온도</div></td>
 		</tr>
 	</table>
 	<c:forEach var="camp" items="#{camplist}">
-		<p><div class="temp" onclick="popup(${camp.idx})" style="cursor:pointer;">캠핑장 이름 : ${camp.name}  거리는 ${camp.distance}km 입니다.</div></p>
+		<p><div class="temp" onclick="popupDetail(${camp.idx})" style="cursor:pointer;">캠핑장 이름 : ${camp.name}  거리는 ${camp.distance}km 입니다.</div></p>
 		<br>
 	</c:forEach>
 </body>
@@ -24,7 +26,9 @@
 	
 	var windowX = window.screen.width;
 	var windowY = window.screen.height;
-	function popup(idx){
+	
+	//상세보기 페이지 띄우기
+	function popupDetail(idx){
 		var popUpWidth = windowX / 3 ;
 		var popUpheight = windowY / 2 ;
 		var top =  ((windowY / 2) - (popUpheight / 2));
@@ -43,7 +47,31 @@
 						+ " ,scrollbars=yes, resizable=no"); 	
 		
 	}
-
+	
+	//위치설정 페이지 띄우기
+	function popupLocation(){
+		var popUpWidth = windowX / 3 ;
+		var popUpheight = windowY / 2 ;
+		var top =  ((windowY / 2) - (popUpheight / 2));
+		var left = ((windowX / 2) - (popUpWidth / 2));
+		var win = this.window;
+		
+		var pop = window.open(
+				"/camp/makeLocation",
+						"pop",
+						"width=" + popUpWidth 
+						+ ", height = " + popUpheight 
+						+ ", top = " + top
+						+ ", left = " + left
+						+ " ,scrollbars=yes, resizable=no"); 	
+		
+		//팝업창이 닫힐때 발생하는 이벤트
+		 pop.onbeforeunload = function() {
+			 document.getElementById('user_barcode').focus();
+			}; 
+	}	
+	
+	//없어도됨
 	window.onload = function(){
 		let ranking = document.getElementById("weather");
 		let xhr = new XMLHttpRequest();
@@ -70,8 +98,8 @@
 		}
 		
 		let i = 0;
-		
 	}
+	
 </script>
- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 </html>
