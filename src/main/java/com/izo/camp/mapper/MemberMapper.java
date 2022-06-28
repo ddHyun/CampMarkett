@@ -32,5 +32,6 @@ public interface MemberMapper {
 	//아이디 찾기
 	public String searchID(MemberVO vo);
 	
-	
+	//비밀번호 변경하기
+	public int changePwd(MemberVO vo);
 }

@@ -24,6 +24,12 @@ public class MemberController {
 //		return "join/memberCheck";
 //	}
 	
+	//약관동의 페이지로 이동
+	@RequestMapping("/term.do")
+	public String term() {
+		return "join/term";
+	}
+	
 	//가입확인 페이지로 이동
 	@RequestMapping("/memberCheck.do")
 	public String memberCheck() {
@@ -161,23 +167,32 @@ public class MemberController {
 		int idx1 = memberService.idIdx(vo.getId());
 		int idx2 = memberService.getMemberIdx(vo);
 		System.out.println("idx1 : "+idx1+"/ idx2 : "+idx2);
-		String param = "0";
+		int idx = 0;
 		if(idx1 == idx2) {
 			if(idx1!=0 ||idx2!=0) {
-				param = ""+idx1;
+				idx = idx1;
 			}else {
-				param = "0";
+				idx = 0;
 			}
 		}else {
-			param = "0";
+			idx = 0;
 		}
-		String result = String.format("[{'param':'%s'}]", param);
+		System.out.println(idx);
+		String result = String.format("[{'idx':'%d'}]", idx);
 		return result;
 	}
 	
 	//비밀번호 변경하기
+	@ResponseBody
 	@RequestMapping("/changePwd.do")
-	public String changePwd(String pwd) {
-		
+	public String changePwd(MemberVO vo) {
+		int cnt = memberService.changePwd(vo);
+		System.out.println("컨트롤러 결과 : "+cnt);
+		String param = "n";
+		if(cnt > 0) {
+			param = "y";
+		}
+		String result = String.format("[{'param':'%s'}]", param);
+		return result;
 	}
 }

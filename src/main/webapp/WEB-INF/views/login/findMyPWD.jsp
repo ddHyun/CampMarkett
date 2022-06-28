@@ -37,8 +37,7 @@
 					<label>비밀번호 확인</label>
 					<input type="password" name="pwd2" id="pwd2">
 				</div>
-				<div>
-					<!-- <input type="button" value="비밀번호 변경하기" id="changePwdBtn"> -->
+				<div id="pwdField2" style="display:display">
 					<input type="button" value="비밀번호 변경하기" onclick="changePwd()">
 				</div>
 				<div id="loginField" style="display:none">
@@ -91,15 +90,15 @@
 		
 		var url = "searchPwd.do";
 		var param = "name="+nameVal+"&id="+idVal+"&email="+emailVal;
-		sendRequest(url, param, cb, "POST");
+		sendRequest(url, param, cb1, "POST");
 	}
 	
-	function cb(){
+	function cb1(){
 		if(xhr.readyState==4 && xhr.status==200){
 			var data = xhr.responseText;
 			var json = (new Function('return'+data))();
 			//회원정보가 없다면
-			if(json[0].param == '0'){
+			if(json[0].param == 0){
 				alert("일치하는 정보가 없습니다. 다시 시도해 주세요");
 				$('#name').val('');
 				id.value="";
@@ -108,7 +107,7 @@
 				return;
 			}else{//회원정보가 있다면			
 				document.getElementById('pwdField').style.display = 'block';
-				document.getElementById('idx').value= json[0].param;
+				document.getElementById('idx').value= json[0].idx;
 				console.log(document.getElementById('idx').value);
 			}
 		}
@@ -143,16 +142,26 @@
 				url = "changePwd.do";
 				param = "pwd="+pwdVal+ "&idx="+idx;
 				console.log("pwd: "+pwdVal+"/idx: "+idx);
-				sendRequest(url, param, cb, "POST");
+				sendRequest(url, param, cb2, "POST");
 			}
 		}		
 	}
 	
-	/* function cb(){
+	function cb2(){
 		if(xhr.readyState==4 && xhr.status==200){
-			alert("성공");
-		}
-	} */
+			var data = xhr.responseText;
+			var json = (new Function('return'+data))();
+			if(json[0].param=='y'){
+				alert("비밀번호가 정상적으로 변경되었습니다");
+				document.getElementById('loginField').style.display = 'block';
+				document.getElementById('pwdField2').style.display = 'none';
+			}else{
+				alert("비밀번호가 변경되지 못했습니다. 다시 시도해주세요");
+				return;
+			}
+		}		
+		
+	}//cb2끝
 	
 </script>
 </html>

@@ -48,8 +48,9 @@ public class MemberService {
 	}
 	
 	//비밀번호 변경하기
-	public int changePwd(String pwd) {
-		
+	public int changePwd(MemberVO vo) {
+		System.out.println(memberMapper.changePwd(vo));
+		return memberMapper.changePwd(vo);
 	}
 	
 }
