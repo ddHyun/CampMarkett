@@ -65,7 +65,7 @@
 			var data = xhr.responseText;
 			var json = (new Function('return'+data))();			
 			
-			if(json[0].param=='n'){
+			if(json[0].param==0){
 				alert("아이디나 비밀번호를 확인해 주세요");
 				var id = document.getElementById("id");
 				id.focus();
@@ -74,7 +74,9 @@
 				
 			}else{
 				alert("어서오세요 회원님~");
-				window.location="#############";
+				var idx = json[0].param;
+				console.log(idx);
+				window.location="money.do?idx="+idx;
 			}
 		}
 	}
