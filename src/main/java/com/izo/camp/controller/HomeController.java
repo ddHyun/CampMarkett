@@ -68,5 +68,8 @@ public class HomeController {
 	//테스트	
 	
 	//테스트2
-	
+	@RequestMapping(value = "/home2", method = RequestMethod.GET)
+	public String home2go() {
+		return "home2";
+	}
 }
