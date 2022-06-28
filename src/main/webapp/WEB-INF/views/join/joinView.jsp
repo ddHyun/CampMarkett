@@ -401,7 +401,7 @@
 	
 	//휴대전화 본인인증
 	function certifyTel() {
-		alert("인증이 정상적으로 작동되었습니다");
+		alert("인증이 정상적으로 처리되었습니다");
 		return;
 	}
 
