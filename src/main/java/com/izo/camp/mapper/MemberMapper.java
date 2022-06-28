@@ -18,7 +18,7 @@ public interface MemberMapper {
 	public List<MemberVO> memberlist();
 	
 	//아이디 idx	
-	public int idIdx();
+	public int idIdx(String id);
 	
 	//이름, 생일 일치하는 idx
 	public int memberIdx(MemberVO vo);

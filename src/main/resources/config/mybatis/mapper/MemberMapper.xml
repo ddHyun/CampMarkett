@@ -11,9 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 아이디 idx -->
 	<select id="idIdx" resultType="int" parameterType="String">
-		select idx from membertable where id = case when #{id} is null then 0
-												else #{id}
-												end 
+		select sum(idx) idx from membertable where id=#{id}
 	</select>
 	
 	<!-- 이름, 생일 일치하는 idx 반환 -->

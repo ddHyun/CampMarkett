@@ -53,18 +53,20 @@ public class MemberController {
 	@RequestMapping("checkID.do")
 	@ResponseBody
 	public String checkId(@ModelAttribute("id") String id) {		
-		List<String> idList = memberService.idList();
+		int idSum = memberService.idIdx(id);
 		
-		int cnt = 0;		
-		for(String i : idList) {
-			if(id.equals(i)) {
-				cnt++;
-			}
-		}
+//		int cnt = 0;		
+//		for(String i : idList) {
+//			if(id.equals(i)) {
+//				cnt++;
+//			}
+//		}
+		
+		System.out.println(idSum);
 		
 		String param = "n";
 		
-		if(cnt > 0) {
+		if(idSum > 0) {
 			param = "y";
 		}
 		

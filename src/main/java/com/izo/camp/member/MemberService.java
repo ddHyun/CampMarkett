@@ -21,8 +21,8 @@ public class MemberService {
 	}
 	
 	//아이디 idx 찾기
-	public int idIdx() {
-		return memberMapper.idIdx();
+	public int idIdx(String id) {
+		return memberMapper.idIdx(id);
 	}
 	
 //	컨트롤러 -> 서비스 : 메서드명(변수)의 변수는 컨트롤러에서 보낸 타입과 일치
