@@ -134,7 +134,7 @@ public class MemberController {
 		return "login/findMyID";
 	}
 	
-	//아이디 찾기 페이지로 이동
+	//아이디 찾기 팝업창으로 이동
 	@RequestMapping("/searchIDView.do")
 	public String searchIDView() {
 		return "login/findMyID";
@@ -148,7 +148,7 @@ public class MemberController {
 		return result;		
 	}
 	
-	//비밀번호 찾기 페이지로 이동
+	//비밀번호 찾기 팝업창으로 이동
 	@RequestMapping("/searchPwdView.do")
 	public String searchPwdView() {
 		return "login/findMyPWD";
@@ -161,17 +161,23 @@ public class MemberController {
 		int idx1 = memberService.idIdx(vo.getId());
 		int idx2 = memberService.getMemberIdx(vo);
 		System.out.println("idx1 : "+idx1+"/ idx2 : "+idx2);
-		String param = "n";
+		String param = "0";
 		if(idx1 == idx2) {
 			if(idx1!=0 ||idx2!=0) {
-				param = "y";
+				param = ""+idx1;
 			}else {
-				param = "n";
+				param = "0";
 			}
 		}else {
-			param = "n";
+			param = "0";
 		}
 		String result = String.format("[{'param':'%s'}]", param);
 		return result;
+	}
+	
+	//비밀번호 변경하기
+	@RequestMapping("/changePwd.do")
+	public String changePwd(String pwd) {
+		
 	}
 }
