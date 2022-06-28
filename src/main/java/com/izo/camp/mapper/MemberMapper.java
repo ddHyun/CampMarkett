@@ -20,7 +20,7 @@ public interface MemberMapper {
 	//아이디 idx	
 	public int idIdx(String id);
 	
-	//이름, 생일 일치하는 idx
+	//이름, 이메일 일치하는 idx
 	public int memberIdx(MemberVO vo);
 	
 	//아이디, 비밀번호 일치하는 idx

@@ -16,7 +16,7 @@
 
 	function checkMember(){
 	var name = document.getElementById("name").value.trim();
-	var birth = document.getElementById("birth").value.trim();
+	var email = document.getElementById("email").value.trim();
 		
 		//유효성 검사
 		if(name==''){
@@ -33,23 +33,24 @@
 			return;
 		}
 		
-		if(birth==''){
-			alert("생년월일을 입력해주세요");
+		if(email==''){
+			alert("이메일을 입력해주세요");
 			return;
 		}
 		
-		var birth1 = document.getElementById("birth");
-		var birthPattern = /^[0-9]{6}$/;
-		if(!birthPattern.test(birth)){
+		var email1 = document.getElementById("email");
+		var emailPattern =
+			 /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		if(!emailPattern.test(email)){
 			alert("생년월일은 6자로 입력해주세요    예)990101");
-			birth1.value="";
-			birth1.focus();
+			email1.value="";
+			email1.focus();
 			return;
 		}
 		
 		var url = "memberOrNot.do";
-		var param = "name=" + name + "&birth=" + birth;
-		console.log("name: "+name+"/birth: "+birth)
+		var param = "name=" + name + "&email=" + email;
+		console.log("name: "+name+"/email: "+email)
 		sendRequest(url, param, cb, "POST");						
 	}	
 	
@@ -58,13 +59,13 @@
 			var data = xhr.responseText;
 			var json = (new Function('return'+data)());
 			var name = document.getElementById("name");
-			var birth = document.getElementById("birth");				
+			var email = document.getElementById("email");				
 			
 			if(json[0].param=='n'){
 				if(!confirm("아직 회원이 아니시군요? 회원가입하러 가시죠~!")){
 					$('#name').focus();
 					name.value="";
-					birth.value="";
+					email.value="";
 				}else{	
 					//파라미터 값 다른 페이지로 넘기기
 					var f = document.f;
@@ -92,8 +93,8 @@
 			<input type="text" name="name" id="name">
 		</div>
 		<div>
-			<label>생년월일(6자리)</label>
-			<input type="text" name="birth" id="birth" placeholder="예) 990101">
+			<label>이메일</label>
+			<input type="text" name="email" id="email" placeholder="예)abc@def.com">
 		</div>
 		<div>				
 			<input type="button" value="가입 확인하기" onclick="checkMember()">			

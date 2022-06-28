@@ -175,7 +175,7 @@
 			<tr>
 				<th><span style="color:red">*</span>생년월일</th>
 				<td>
-					<input type="text" id="birth" name="birth" value="${vo.birth}">
+					<input type="text" id="birth" name="birth">
 					<span style="color:#787878">6자리로 입력해주세요 (예) 990101)</span>
 					<span id="birthErrorMsg" style="color:red">올바른 형식이 아닙니다</span>
 				</td>
@@ -183,7 +183,7 @@
 			<tr>
 				<th><span style="color:red">*</span>이메일</th>
 				<td>
-				<input name="email" id="email">
+				<input name="email" id="email" value="${vo.email}">
 				<span id="emailErrorMsg" style="color:red">올바른 형식이 아닙니다</span><br>
 				<span style="color:#787878">비밀번호 초기화 메일 수신 등에 반드시 필요한 정보이므로 정확히 입력해주세요.</span>
 				</td>
