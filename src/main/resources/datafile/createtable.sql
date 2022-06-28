@@ -116,3 +116,17 @@ CREATE TABLE CAMPINGTABLE
 	TELL VARCHAR2(2000),
 	imgName VARCHAR2(1000)
 	);
+	
+	
+create sequence seq_loadmoney;
+
+create table loadmoneytable(
+	idx number(3) primary key,
+	id varchar2(50),
+	cardno number(20),
+	money number(7),
+	adddate date default sysdate,
+	FOREIGN KEY (id)
+ 		   REFERENCES MEMBERTABLE (ID) ON DELETE CASCADE
+);
+

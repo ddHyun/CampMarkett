@@ -121,47 +121,50 @@ height: 'auto',
  </div>
 <!--=======content================================-->
 
-<div class="content page1">
+<div class="content">
   <div class="zerogrid">
-      
-	  <div class="row">
-      <div class="col-full">
-	  	<div class="wrap-col">
-        <div class="car_wrap">
-        <h2>Best Choice</h2>
-        <a href="#" class="prev"></a><a href="#" class="next"></a>
-        <ul class="carousel1">
-          <li><div><img src="resources/assets/img/images/page1_img1.jpg" alt="">
-          <div class="col1 upp"> <a href="#">kim Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img2.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img3.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img4.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img3.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet kim</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-        </ul>
-      </div>
-	  </div>
+    <div class="col-full">
+      <h2>campingArea</h2>
     </div>
-	</div>
+    <div class="clear"></div>
+	
 	<div class="row">
+    <div class="portfolio">
+      <div class="col-1-2">
+	  	<div class="wrap-col">
+	  	<a href="images/big3.jpg" data-gal="prettyPhoto[1]"><span><img src="images/page4_img1.jpg" alt=""></span></a>
+		</div>
+	</div>
+      <div class="col-1-2">
+	  	<div class="wrap-col">
+	  	<a href="images/big2.jpg" data-gal="prettyPhoto[1]"><span><img src="images/page4_img2.jpg" alt=""></span></a>
+		</div>
+	</div>
+      <div class="col-1-2">
+	  	<div class="wrap-col">
+	  	<a href="images/big4.jpg" data-gal="prettyPhoto[1]"><span><img src="images/page4_img3.jpg" alt=""></span></a>
+		</div>
+	  </div>
+      <div class="col-1-2">
+	  <div class="wrap-col">
+	  	<a href="images/big1.jpg" data-gal="prettyPhoto[1]"><span><img src="images/page4_img4.jpg" alt=""></span></a>
+		</div>
+	</div>
+	</div>
+      <div class="col-1-2">
+	  	<div class="wrap-col">
+	  	<a href="images/big4.jpg" data-gal="prettyPhoto[1]"><span><img src="images/page4_img3.jpg" alt=""></span></a>
+		</div>
+	  </div>
+      <div class="col-1-2">
+	  <div class="wrap-col">
+	  	<a href="images/big1.jpg" data-gal="prettyPhoto[1]"><span><img src="images/page4_img4.jpg" alt=""></span></a>
+		</div>
+	</div>
+    </div>
+    </div>
+   
+    <div class="row">
     <div class="bottom_block">
       <div class="col-1-2">
         <h3>Follow Us</h3>
@@ -171,12 +174,12 @@ height: 'auto',
           <a href="#"></a>
         </div>
         <nav><ul>
-                   <li class="current"><a href="home">Home</a></li>
-                   <li ><a href="resources/assets/html/index-1.html">About Us</a></li>
-                   <li><a href="resources/assets/html/index-2.html">Menu</a></li>
-                   <li><a href="resources/assets/html/index-3.html">Portfolio</a></li>
-                   <li><a href="resources/assets/html/index-4.html">News </a></li>
-                   <li><a href="resources/assets/html/index-5.html">Contacts</a></li>
+                   <li><a href="index.html">Home</a></li>
+                   <li><a href="index-1.html">About Us</a></li>
+                   <li><a href="index-2.html">Menu</a></li>
+                   <li class="current"><a href="index-3.html">Portfolio</a></li>
+                   <li><a href="index-4.html">News </a></li>
+                   <li><a href="index-5.html">Contacts</a></li>
                  </ul></nav>
       </div>
       <div class="col-1-2">
