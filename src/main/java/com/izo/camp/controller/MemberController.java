@@ -53,20 +53,13 @@ public class MemberController {
 	@RequestMapping("checkID.do")
 	@ResponseBody
 	public String checkId(@ModelAttribute("id") String id) {		
-		int idSum = memberService.idIdx(id);
+		int idx = memberService.idIdx(id);
 		
-//		int cnt = 0;		
-//		for(String i : idList) {
-//			if(id.equals(i)) {
-//				cnt++;
-//			}
-//		}
-		
-		System.out.println(idSum);
+		System.out.println(idx);
 		
 		String param = "n";
 		
-		if(idSum > 0) {
+		if(idx > 0) {
 			param = "y";
 		}
 		
@@ -162,9 +155,23 @@ public class MemberController {
 	}
 	
 	//비밀번호 찾기
-//	@ResponseBody
-//	@RequestMapping("/searchPwd.do")
-//	public String searchPwd(MemberVO vo) {
-//		int idx1 = memberService.
-//	}
+	@ResponseBody
+	@RequestMapping("/searchPwd.do")
+	public String searchPwd(MemberVO vo) {
+		int idx1 = memberService.idIdx(vo.getId());
+		int idx2 = memberService.getMemberIdx(vo);
+		System.out.println("idx1 : "+idx1+"/ idx2 : "+idx2);
+		String param = "n";
+		if(idx1 == idx2) {
+			if(idx1!=0 ||idx2!=0) {
+				param = "y";
+			}else {
+				param = "n";
+			}
+		}else {
+			param = "n";
+		}
+		String result = String.format("[{'param':'%s'}]", param);
+		return result;
+	}
 }

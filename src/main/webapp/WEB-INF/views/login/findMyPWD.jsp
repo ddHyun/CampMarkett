@@ -27,7 +27,9 @@
 			<div>
 				<input type="button" value="비밀번호 찾기" id="PwdFindBtn" onclick="searchPwd()">
 			</div>		
-			<div id="idText" style="display:none">
+			<div id="pwdText" style="display:none">
+				<label>새로운 비밀번호</label>
+				<input type="password" >
 				<label>아이디 :&emsp;<span id="id" style="color:red"></span></label>&emsp;
 				<input type="button" value="로그인하러 가기" onclick="selfCloseSubmit()">
 			</div>
@@ -61,11 +63,11 @@
 		
 		if(nameVal==''){
 			alert("이름을 입력해 주세요");
-			id.focus();
+			name.focus();
 			return;
 		}
 		if(idVal==''){
-			alert("생년월일을 입력해 주세요");
+			alert("아이디를 입력해 주세요");
 			id.focus();		
 			return;
 		}
@@ -85,17 +87,16 @@
 			var data = xhr.responseText;
 			var json = (new Function('return'+data))();
 			//회원정보가 없다면
-			if(json[0].id == 'none'){
-				alert("입력하신 정보와 일치하는 아이디가 존재하지 않습니다. 다시 시도해 주세요");
+			if(json[0].param == 'n'){
+				alert("일치하는 정보가 없습니다. 다시 시도해 주세요");
 				$('#name').val('');
-				birth.value="";
+				id.value="";
 				email.value="";
-				name.focus();
+				id.focus();
 				return;
-			}else{
-				document.getElementById('idText').style.display = 'block';
-				document.getElementById('id').innerHTML = json[0].id;
-				//$('#id').text(json[0].id);
+			}else{				
+				document.getElementById('pwdText').style.display = 'block';
+				document.getElementById('id').innerHTML = json[0].id;				
 			}
 		}
 	}		

@@ -11,12 +11,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 아이디 idx -->
 	<select id="idIdx" resultType="int" parameterType="String">
-		select sum(idx) idx from membertable where id=#{id}
+		SELECT nvl(idx, 0) FROM MEMBERTABLE RIGHT OUTER JOIN dual ON id=#{id}
 	</select>
 	
-	<!-- 이름, 생일 일치하는 idx 반환 -->
+	<!-- 이름, 이메일 일치하는 idx 반환 -->
 	<select id="memberIdx" resultType="int" parameterType="memberVO">
-		select nvl(idx, 0) from membertable right outer join dual on name=#{name} and birth=#{birth}
+		select nvl(idx, 0) from membertable right outer join dual on name=#{name} and email=#{email}
 	</select>
 	
 	<!-- 아이디, 비번 일치하는 idx 반환 -->
