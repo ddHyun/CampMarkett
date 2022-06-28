@@ -17,11 +17,10 @@ public interface MemberMapper {
 	//MemberMapper.xml의  id와 메서드명 동일하게 만들어서 쿼리문 작성하기
 	public List<MemberVO> memberlist();
 	
-	//아이디목록
-	@Select("select id from membertable")
-	public List<String> idList();
+	//아이디 idx	
+	public int idIdx(String id);
 	
-	//이름, 생일 일치하는 idx
+	//이름, 이메일 일치하는 idx
 	public int memberIdx(MemberVO vo);
 	
 	//아이디, 비밀번호 일치하는 idx
@@ -33,5 +32,6 @@ public interface MemberMapper {
 	//아이디 찾기
 	public String searchID(MemberVO vo);
 	
-	
+	//비밀번호 변경하기
+	public int changePwd(MemberVO vo);
 }
