@@ -10,7 +10,7 @@ import com.izo.camp.vo.CampInfoVO;
 
 @Mapper
 public interface CampInfoMapper {
-	
+	//
 	//등록된 캠핑장 갯수 가져오기
 	public int getTotalNum();
 	
