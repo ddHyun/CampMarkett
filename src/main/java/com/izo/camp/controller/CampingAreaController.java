@@ -1,6 +1,7 @@
 package com.izo.camp.controller;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -47,12 +48,13 @@ public class CampingAreaController {
 	public String getInfoMyLocation(
 			@RequestParam(required=false, defaultValue="0")Double lat,
 			@RequestParam(required=false, defaultValue="0")Double lon,
+			@RequestParam(required=false, defaultValue="1")int page,
 			Model model,HttpServletRequest request) {
 		HttpSession session = request.getSession();
+		
 		//campInfoService.getKakaoApiFromAddress("");
 		String defaultAddress = "경원대로 1397, 학원";
 		if(lat!=0) {
-			System.out.println("in lat zero");
 			session.setAttribute("sessionLat", lat);
 			session.setAttribute("sessionLon", lon);
 		}
@@ -64,8 +66,7 @@ public class CampingAreaController {
 		getXY.replace("lat", (Double) session.getAttribute("sessionLat"));
 		getXY.replace("lon", (Double) session.getAttribute("sessionLon"));
 		
-		System.out.println("세션값 : "+ (Double) session.getAttribute("sessionLat"));
-		System.out.println("map : " + getXY);
+		
 		List<CampInfoVO> list  = 
 				campInfoService.getNearCampingArea(defaultAddress, getXY);
 		//현재 위치 바인딩
@@ -74,16 +75,28 @@ public class CampingAreaController {
 		
 		if(session.getAttribute("sessionLat") != null) {
 			model.addAttribute("lat", session.getAttribute("sessionLat"));
-			model.addAttribute("lon", session.getAttribute("sessionLat"));
+			model.addAttribute("lon", session.getAttribute("sessionLon"));
 		}
 		
 		/*
 		 * for(CampInfoVO vo : list) { System.out.println(vo.getName() + "거리는 : " +
 		 * vo.getDistance()+"km 입니다."); }
 		 */
+		
+		int last = (page * 10) > list.size() ? list.size() : (page * 10);
+		
+		//listsize 20 
+		//page 2   20  >  20
+		
+	    int maxPage = (list.size() + 9) / 10; 
+		
+	    
+	    System.out.println(list.size() + " < 페이지 >  " + maxPage);
+	    list = list.subList(10 * (page - 1), last);
 	    
 	    model.addAttribute("camplist", list);
-	    
+	    model.addAttribute("maxPage", maxPage);
+	    model.addAttribute("nowPage", page);
 	    return "campingArea/main";
 	}
 	

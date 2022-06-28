@@ -9,8 +9,6 @@
 </head>
 <body>
 	<button onclick="popupLocation()">위치 설정</button>
-	<input type="text">
-	<button onclick="location.href='/camp/makeLocation'">위치 설정</button>
 	<table>
 		<tr>
 			<td class="td1"><h2 id="user_barcode">날씨</h2></td>
@@ -18,10 +16,31 @@
 		</tr>
 	</table>
 	<c:forEach var="camp" items="#{camplist}">
-		<p><div class="temp" onclick="popupDetail(${camp.idx})" style="cursor:pointer;">캠핑장 이름 : ${camp.name}  거리는 ${camp.distance}km 입니다.</div></p>
+		<div class="temp" onclick="popupDetail(${camp.idx})" style="cursor:pointer;">
+		<img src="resources/assets/img/campingArea/${camp.imgName}" height="200px" width="300px">
+		캠핑장 이름 : ${camp.name}  거리는 ${camp.distance}km 입니다.
+		</div>
 		<br>
 	</c:forEach>
+	
+	<!-- 페이징 처리 -->
+	페이지 버튼 
+	<c:forEach var="i" begin="1" end="${maxPage}">
+			<c:choose>
+				<c:when test="${i eq nowPage}">
+					<c:out value="[${i}]"/>&nbsp;
+				</c:when>
+				<c:otherwise>
+					<a href="/camp/info?page=${i}"><c:out value="${i}"/></a>
+				</c:otherwise>
+			</c:choose>
+	</c:forEach>
 </body>
+
+
+
+
+
 <script>
 	
 	var windowX = window.screen.width;
@@ -30,7 +49,7 @@
 	//상세보기 페이지 띄우기
 	function popupDetail(idx){
 		var popUpWidth = windowX / 3 ;
-		var popUpheight = windowY / 2 ;
+		var popUpheight = (windowY * 3 ) / 4 ;
 		var top =  ((windowY / 2) - (popUpheight / 2));
 		var left = ((windowX / 2) - (popUpWidth / 2));
 	
@@ -79,6 +98,8 @@
 		let str;
 		let words = new Array();
 		/* 내 위치 받아서 우선 뿌려주기 */
+		console.log(${lat});
+		console.log(${lon});
 		let url = "https://api.openweathermap.org/data/2.5/weather?"
 				+ "lat=${lat}&lon=${lon}"
 				+ "&appid=69e06beb30084da3eabe041e57096ba5&units=metric&lang=kr";

@@ -12,11 +12,9 @@
 <div id="map" style="width:400px;height:400px;"></div>
 
 <br> 
-세션 확인
-${sessionScope.sessionLat}
-<p><em>지도를 클릭해주세요!</em></p> 
 <div id="clickLatlng"></div>
-<button onclick='closeb()'>닫기</button>
+<button onclick='closeb()'>위치 결정</button>
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=981d10b9423551ea1989e7ef7415c980"></script>
 <script>
 var lat = "${sessionScope.sessionLat}";
@@ -62,8 +60,8 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     lat = latlng.getLat();
     lon = latlng.getLng();
     
-    var resultDiv = document.getElementById('clickLatlng'); 
-    resultDiv.innerHTML = message;
+    /* var resultDiv = document.getElementById('clickLatlng'); 
+    resultDiv.innerHTML = message; */
     
 });
 </script>

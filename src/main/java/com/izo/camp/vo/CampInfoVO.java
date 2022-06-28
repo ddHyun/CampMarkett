@@ -19,6 +19,7 @@ public class CampInfoVO {
 	private Double longitude;
 	private String address;
 	private String tell;
+	private String imgName;
 	private Double Distance;
 
 	
@@ -80,6 +81,14 @@ public class CampInfoVO {
 
 	public void setDistance(Double distance) {
 		Distance = distance;
+	}
+
+	public String getImgName() {
+		return imgName;
+	}
+
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
 	}
 
 	
