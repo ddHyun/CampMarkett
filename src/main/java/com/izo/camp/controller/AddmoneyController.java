@@ -17,4 +17,9 @@ public class AddmoneyController {
 		return "mypage/addmoney";
 	}
 	
+	@RequestMapping("/registCard.do")
+	public void registCare() {
+		
+	}
+	
 }

@@ -10,23 +10,24 @@
 </head>
 <body>
 	<form align="center">
-		<h1>마켓페이</h1>
+		<h1>마이페이지1</h1>
 		<label></label>
 		<div>
-			<label for="regist" id="registCard">카드등록</label>&emsp;&emsp;
+			<label for="regist" id="registCard" style="cursor:pointer">카드등록</label>&emsp;&emsp;
 			<label>카드정보</label>&emsp;&emsp;
 			<label>충전하기</label>&emsp;&emsp;
 			<label>이용내역</label>
 		</div>
 		<div><br><br>
 			<div name="regist" id="regist" style="display:block">
-				<form>
+				<form name="f">
+				<input type="hidden" id="idx" value="${param.idx}">
 					<label>카드번호</label>
-					<input type="text" class="moveNumber" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
-					<input type="text" class="moveNumber" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
-					<input type="text" class="moveNumber" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
-					<input type="password" class="moveNumber" maxlength="4"/>
-					<button onclick="">등록하기</button>
+					<input type="text" class="moveNumber" id="cardNo1" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
+					<input type="text" class="moveNumber" id="cardNo2" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
+					<input type="text" class="moveNumber" id="cardNo3" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
+					<input type="password" class="moveNumber" id="cardNo4" maxlength="4"/>
+					<input type="button" value="등록하기" onclick="registCard()">
 				</form>
 			</div>
 		</div>
@@ -37,7 +38,7 @@
 		document.getElementById('regist').display = 'block';
 	}
 	
-	//카드번호 자동이동
+	//카드번호 자동 커서이동
 	function moveNumber(num){
 		//isFinite():유한한 수 -> true 반환 / 무한한 수 or 문자 -> false 반환
 		if(isFinite(num.value)==false){
@@ -51,6 +52,20 @@
 		if(num.value.length >= max) {
 			num.nextElementSibling.focus();
 		}
+	}
+	
+	function registCard() {	
+		var cardNo1 = document.getElementById("cardNo1").value;
+		var cardNo2 = document.getElementById("cardNo2").value;
+		var cardNo3 = document.getElementById("cardNo3").value;
+		var cardNo4 = document.getElementById("cardNo4").value;
+		var cardno = cardNo1 + cardNo2 + cardNo3 + cardNo4;
+		var idx = document.getElementById("idx").value;
+	
+		var f = document.f;
+		f.action = "registCard.do?idx="+idx+"cardno"+cardno;
+		f.method = "post";
+		f.submit();		
 	}
 </script>
 </html>
