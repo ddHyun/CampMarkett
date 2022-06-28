@@ -121,7 +121,7 @@
 		</div>
 		<div>			
 			<input type="button" value="로그인" onclick="goLogin()">
-			<input type="button" value="회원가입" onclick="location.href='joinView2.do'">
+			<input type="button" value="회원가입" onclick="location.href='term.do'">
 		</div>
 		<div>
 			<span style="cursor:pointer; text-decoration:underline;" onclick="IDpopup()">아이디 찾기</span>&emsp;

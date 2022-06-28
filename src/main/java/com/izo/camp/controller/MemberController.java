@@ -26,7 +26,8 @@ public class MemberController {
 	
 	//약관동의 페이지로 이동
 	@RequestMapping("/term.do")
-	public String term() {
+	public String term(MemberVO vo, Model model) {
+		model.addAttribute("vo", vo);
 		return "join/term";
 	}
 	
