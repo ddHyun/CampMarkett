@@ -43,7 +43,7 @@ public class MemberController {
 			return "join/joinView";
 		}
 	
-	//주소API팝업창 이동
+	//주소찾기 이동
 	@RequestMapping("/jusoPopup.do")
 	public String jusoPopup() {
 		return "join/jusoPopup";
