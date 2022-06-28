@@ -27,11 +27,23 @@
 			<div>
 				<input type="button" value="비밀번호 찾기" id="PwdFindBtn" onclick="searchPwd()">
 			</div>		
-			<div id="pwdText" style="display:none">
-				<label>새로운 비밀번호</label>
-				<input type="password" >
-				<label>아이디 :&emsp;<span id="id" style="color:red"></span></label>&emsp;
-				<input type="button" value="로그인하러 가기" onclick="selfCloseSubmit()">
+			<div id="pwdField" style="display:none">
+					<input type="hidden" id="idx">
+				<div>
+					<label>새로운 비밀번호</label>
+					<input type="password" name="pwd" id="pwd1">
+				</div>
+				<div>
+					<label>비밀번호 확인</label>
+					<input type="password" name="pwd2" id="pwd2">
+				</div>
+				<div>
+					<!-- <input type="button" value="비밀번호 변경하기" id="changePwdBtn"> -->
+					<input type="button" value="비밀번호 변경하기" onclick="changePwd()">
+				</div>
+				<div id="loginField" style="display:none">
+					<input type="button" value="로그인하러 가기" onclick="selfCloseSubmit()">
+				</div>
 			</div>
 	</form>
 </body>
@@ -87,19 +99,60 @@
 			var data = xhr.responseText;
 			var json = (new Function('return'+data))();
 			//회원정보가 없다면
-			if(json[0].param == 'n'){
+			if(json[0].param == '0'){
 				alert("일치하는 정보가 없습니다. 다시 시도해 주세요");
 				$('#name').val('');
 				id.value="";
 				email.value="";
 				id.focus();
 				return;
-			}else{				
-				document.getElementById('pwdText').style.display = 'block';
-				document.getElementById('id').innerHTML = json[0].id;				
+			}else{//회원정보가 있다면			
+				document.getElementById('pwdField').style.display = 'block';
+				document.getElementById('idx').value= json[0].param;
+				console.log(document.getElementById('idx').value);
 			}
 		}
-	}		
+	}
+	
+	//비밀번호 변경하기
+	function changePwd() {
+		var pwdPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}$/;
+		var pwd = document.getElementById("pwd1");
+		var pwd2 = document.getElementById("pwd2");
+		var pwdVal = pwd.value.trim();
+		var pwd2Val = pwd2.value.trim();
+		
+		if(pwdVal==''){
+			alert("비밀번호를 입력해 주세요");
+			return;
+		}
+		if(!pwdPattern.test(pwdVal)){//정규표현식 형식과 일치하지 않을 때
+			alert("8~15자리의 영문과 숫자를 모두 사용해 입력해야 합니다(특수문자 제외)");
+			pwd.value="";
+			pwd.focus();
+			return;
+		}else{//비밀번호 형식 통과 후
+			if(pwdVal!=pwd2Val){//비밀번호 불일치시 
+				alert("비밀번호가 일치하지 않습니다. 다시 시도해 주세요");
+				pwd.value="";
+				pwd2.value="";
+				pwd.focus();
+				return;
+			}else{//비밀번호 일치시
+				var idx = document.getElementById('idx').value; 
+				url = "changePwd.do";
+				param = "pwd="+pwdVal+ "&idx="+idx;
+				console.log("pwd: "+pwdVal+"/idx: "+idx);
+				sendRequest(url, param, cb, "POST");
+			}
+		}		
+	}
+	
+	/* function cb(){
+		if(xhr.readyState==4 && xhr.status==200){
+			alert("성공");
+		}
+	} */
 	
 </script>
 </html>

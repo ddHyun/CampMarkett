@@ -47,4 +47,9 @@ public class MemberService {
 		return memberMapper.searchID(vo);
 	}
 	
+	//비밀번호 변경하기
+	public int changePwd(String pwd) {
+		
+	}
+	
 }
