@@ -8,8 +8,30 @@
 <title>Insert title here</title>
 <script src="resources/assets/js/httpRequest.js"></script>
 <script src="resources/assets/js/jquery-3.6.0.min.js"></script>
-<script>
 
+</head>
+<body>
+	<form method="POST" action="########" align="center">
+	<p>로그인</p>
+		<div>
+			<label>아이디</label>
+			<input type="text" name="id" id="id">
+		</div>
+		<div>
+			<label>비밀번호</label>
+			<input type="password" name="pwd" id="pwd">
+		</div>
+		<div>			
+			<input type="button" value="로그인" onclick="goLogin()">
+			<input type="button" value="회원가입" onclick="location.href='term.do'">
+		</div>
+		<div>
+			<span style="cursor:pointer; text-decoration:underline;" onclick="IDpopup()">아이디 찾기</span>&emsp;
+			<span style="cursor:pointer; text-decoration:underline;" onclick="PWDpopup()">비밀번호 찾기</span>
+		</div>
+	</form>
+</body>
+<script>
 	//페이지 로딩되면 자동커서
 	$(function(){
 		$('#id').focus();
@@ -52,7 +74,7 @@
 				
 			}else{
 				alert("어서오세요 회원님~");
-				location.href="#############";
+				window.location="#############";
 			}
 		}
 	}
@@ -103,30 +125,6 @@
 		var option = 
 			"width="+width+",height="+height+", scrollbars=yes, resizable=no, left="+left+", top="+top;
 		window.open(url, name, option);
-	} 
-		
-	
+	} 	
 </script>
-</head>
-<body>
-	<form method="POST" action="########" align="center">
-	<p>로그인</p>
-		<div>
-			<label>아이디</label>
-			<input type="text" name="id" id="id">
-		</div>
-		<div>
-			<label>비밀번호</label>
-			<input type="password" name="pwd" id="pwd">
-		</div>
-		<div>			
-			<input type="button" value="로그인" onclick="goLogin()">
-			<input type="button" value="회원가입" onclick="location.href='term.do'">
-		</div>
-		<div>
-			<span style="cursor:pointer; text-decoration:underline;" onclick="IDpopup()">아이디 찾기</span>&emsp;
-			<span style="cursor:pointer; text-decoration:underline;" onclick="PWDpopup()">비밀번호 찾기</span>
-		</div>
-	</form>
-</body>
 </html>
