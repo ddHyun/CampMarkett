@@ -184,6 +184,7 @@
 				<th><span style="color:red">*</span>이메일</th>
 				<td>
 				<input name="email" id="email" value="${vo.email}">
+				<input type="button" value="이메일 확인" onclick="verifyEmail()">
 				<span id="emailErrorMsg" style="color:red">올바른 형식이 아닙니다</span><br>
 				<span style="color:#787878">비밀번호 초기화 메일 수신 등에 반드시 필요한 정보이므로 정확히 입력해주세요.</span>
 				</td>
@@ -391,6 +392,18 @@
 				alert("ajax 오류");
 		});	
 	});	
+	
+	//이메일 확인
+	function verifyEmail() {
+		alert("이메일이 정상적으로 확인되었습니다");
+		return;
+	}
+	
+	//휴대전화 본인인증
+	function certifyTel() {
+		alert("인증이 정상적으로 작동되었습니다");
+		return;
+	}
 
 </script>
 </html>

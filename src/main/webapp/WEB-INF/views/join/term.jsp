@@ -8,7 +8,7 @@
 <script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<form align="center">
+<form align="center" name="f">
 	<h1>약관동의</h1>	
 	<p style="font-size:12px">
 	CampMarket의 서비스를 이용하기 위해 이용자는 이용 약관을 읽어보시고 동의하셔야 합니다.<br>
@@ -256,7 +256,7 @@
 		</textarea>
 	</div>
 	<div>
-		<input type="checkbox" id="term" value="term1">위의 "이용약관"에 동의 합니다.
+		<input type="checkbox" id="term" class="terms">위의 "이용약관"에 동의 합니다.
 	</div>
 	<h2>개인정보수집 및 활용에 대한 동의</h2>
 	<div>
@@ -325,25 +325,35 @@
 		</textarea>
 	</div>
 	<div>
-		<input type="checkbox" id="term2" value="term2">위의 "개인정보 수집이용"에 동의 합니다.
+		<input type="checkbox" id="term2" class="terms">위의 "개인정보 수집이용"에 동의 합니다.
 	</div>
 	<br>
 	<div>
-		<input type="button" id="termAgreeBtn" value="이용약관과 개인정보처리방침사항에 모두 동의합니다." style="font-size:25px; cursor:pointer;">	
+		<input type="checkbox" id="term3" class="terms">
+		<span style="font-size:20px">이용약관과 개인정보처리방침사항에 모두 동의합니다.</span><br><br>
+		<input type="button" value="다음 단계" onclick="moveToJoin()">
+		<input type="hidden" name="name" id="name" value="${vo.name}">
+		<input type="hidden" name="email" id="email" value="${vo.email}">
 	</div>
+	<div style="margin-top:100px"></div>
 </form>
 </body>
 <script>
-/* $(function(){
-	$('#id').focus();
-}); */
-
-	$('#termAgreeBtn').on('click', function(){
-			$('#term').prop("checked", true);
-			$('#term2').prop("checked", true);
-			alert("회원가입 페이지로 이동합니다");
-			//alert에서 '확인'버튼 누르면 페이지 이동!
-			window.location="joinView.do";
-	})
+	
+	$('#term3').on('click', function(){
+		if($(this).prop("clicked", true)){
+			$('.terms').prop("checked", true);
+		console.log("name : " + document.getElementById("name").value+"/email : "+document.getElementById("email").value);
+		}else{
+			$('.terms').prop("checked", false);			
+		}
+	});
+	
+	function moveToJoin(){
+		var f = document.f;
+		f.action = "joinView.do";
+		f.method = "POST";
+		f.submit();
+	}
 </script>
 </html>
