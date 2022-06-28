@@ -81,12 +81,12 @@ height: 'auto',
   <div class="zerogrid">
     <div class="col-full">
 	<div class="wrap-col">
-    <h1><a href="home2"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
+    <h1><a href="home"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
     
          <div class="menu_block">
            <nav>
             <ul class="sf-menu">
-                   <li class="current"><a href="home2">Home</a></li>
+                   <li class="current"><a href="home">Home</a></li>
                    
                    <li><a href="resources/assets/html/index-2.html">밀키트</a></li>
                    <li><a href="resources/assets/html/index-3.html">후기</a></li>
@@ -204,7 +204,7 @@ height: 'auto',
           <a href="#"></a>
         </div>
         <nav><ul>
-                   <li class="current"><a href="home2">Home</a></li>
+                   <li class="current"><a href="home">Home</a></li>
                    <li ><a href="resources/assets/html/index-1.html">About Us</a></li>
                    <li><a href="resources/assets/html/index-2.html">Menu</a></li>
                    <li><a href="resources/assets/html/index-3.html">Portfolio</a></li>

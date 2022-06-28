@@ -72,4 +72,10 @@ public class HomeController {
 	public String home2go() {
 		return "home2";
 	}
+	
+	//테스트 Home 페이지로 이동
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String homeGo() {
+		return "home_real";
+	}
 }
