@@ -69,7 +69,7 @@
 				}else{	
 					//파라미터 값 다른 페이지로 넘기기
 					var f = document.f;
-					f.action = "joinView.do";
+					f.action = "term.do";
 					f.method = "post";
 					f.submit();
 				}

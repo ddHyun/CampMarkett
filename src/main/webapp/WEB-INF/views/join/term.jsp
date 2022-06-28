@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <form align="center">
@@ -254,10 +255,13 @@
 ②“몰”과 이용자간에 제기된 전자상거래 소송에는 한국법을 적용합니다.
 		</textarea>
 	</div>
-	
+	<div>
+		<input type="checkbox" id="term" value="term1">위의 "이용약관"에 동의 합니다.
+	</div>
+	<h2>개인정보수집 및 활용에 대한 동의</h2>
 	<div>
 		<textarea rows="20" cols="100">
-'CampMarket'은 회원님께서 ㈜캠핑가즈아가 운영하는 웹사이트(이하'CampMarket'이라고 함)의 각종 서비스를 이용하거나  상품을 주문하는데 있어, 본인확인, 원활한 서비스 제공 및 주문 접수, 물품 배송, 대금 결제, 회원님에게 유용한 맞춤정보 제공 등을 위하여 필요한 최소한의 개인정보를 필수 사항으로 수집합니다.
+'CampMarket'은 회원님께서 ㈜캠핑가즈아가 운영하는 웹사이트(이하 "몰"이라고 함)의 각종 서비스를 이용하거나  상품을 주문하는데 있어, 본인확인, 원활한 서비스 제공 및 주문 접수, 물품 배송, 대금 결제, 회원님에게 유용한 맞춤정보 제공 등을 위하여 필요한 최소한의 개인정보를 필수 사항으로 수집합니다.
 
 제1항 (수집하는 개인정보 항목 및 방법)
 당사에서는 몰 회원 여러분에게 다양하고 편리한 인터넷 서비스를 제공하기 위하여 아래와 같은 개인정보를 수집하고 있습니다.
@@ -320,6 +324,26 @@
 ② 이용약관에 따라 자격이 상실 된 회원정보(부정이용 회원의 재발 방지): 5년지할 것입니다.
 		</textarea>
 	</div>
+	<div>
+		<input type="checkbox" id="term2" value="term2">위의 "개인정보 수집이용"에 동의 합니다.
+	</div>
+	<br>
+	<div>
+		<input type="button" id="termAgreeBtn" value="이용약관과 개인정보처리방침사항에 모두 동의합니다." style="font-size:25px; cursor:pointer;">	
+	</div>
 </form>
 </body>
+<script>
+/* $(function(){
+	$('#id').focus();
+}); */
+
+	$('#termAgreeBtn').on('click', function(){
+			$('#term').prop("checked", true);
+			$('#term2').prop("checked", true);
+			alert("회원가입 페이지로 이동합니다");
+			//alert에서 '확인'버튼 누르면 페이지 이동!
+			window.location="joinView.do";
+	})
+</script>
 </html>
