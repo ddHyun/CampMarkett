@@ -32,9 +32,7 @@
 		<div>
 			<span style="cursor:pointer; text-decoration:underline;" onclick="IDpopup()">아이디 찾기</span>&emsp;
 			<span style="cursor:pointer; text-decoration:underline;" onclick="PWDpopup()">비밀번호 찾기</span>
-		</div>
-		<!-- <input type="hidden" name="idx" id="idx">
-		<input type="hidden" name="loginId" id="loginId"> -->
+		</div>		
 	</form>
 	</div>	
 </body>
@@ -82,16 +80,8 @@
 				
 			}else{
 				var name = json[1].name;
-				alert("환영합니다 "+name+" 회원님~");
-				/* var idxVal = json[0].param;
-				var idVal = json[2].id;
-				var idx = document.getElementById("idx");
-				idx.value = idxVal;
-				console.log("idx value: "+idx.value); */
-				
-				var f = document.f;
-				f.id.value = idVal;
-				console.log(f.id.value);
+				alert("환영합니다 "+name+" 회원님~");				
+				var f = document.f;			
 				document.f.submit();	
 				
 			}

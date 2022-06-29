@@ -25,7 +25,7 @@ public class AddmoneyController {
 	@Autowired
 	HttpSession session;
 	
-	
+	//카드등록, 충전페이지로 이동
 	@RequestMapping(value="/money.do", produces = "application/text; charset=UTF-8", method=RequestMethod.POST)
 	public String money(Model model) {
 		//세션으로 받은 정보로 필요한 거 활용할 때 
