@@ -135,7 +135,7 @@
 				<h2>Error 405 - 작업을 다시 확인해 주세요.</h2>
 			</div>
 			<a href="javascript:history.go(-1)" style="color:#ff8b77; background:#fff">Go TO Back</a>
-			<a href="/board/list">Go TO Board</a>
+			<a href="home">Go TO Home</a>
 		</div>
 	</div>
 </body>
