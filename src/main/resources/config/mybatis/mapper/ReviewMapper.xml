@@ -33,13 +33,13 @@ VALUES(SEQ_Review.nextVal, #{memberid}, #{productid}, #{title}, #{content}, #{fi
 	</update>
 
 	
-<!--	애초에 수정할거면 글을 안쓰는게 맞습니다. 그래서 없앤겁니다 어려워서 뺀거 아닙니다.
- 		 게시글 수정을 위한 한건 조회 
+
+ 		 <!-- 게시글 수정을 위한  조회 --> 
 	<select id="reviewSelect" resultType="reviewVO" parameterType="int">
 		select * from reviewtable where idx=#{idx}
 	</select>
 	
-		게시글 수정하기
+		<!-- 게시글 수정하기 -->
 	<update id="reviewUpdate" parameterType="reviewVO">
 		update reviewtable
 		set productid=#{productid},
@@ -50,7 +50,18 @@ VALUES(SEQ_Review.nextVal, #{memberid}, #{productid}, #{title}, #{content}, #{fi
 		regdate=sysdate
 		where idx=#{idx}
 	</update>
-	 -->
+	
+	<update id="joayo_check" parameterType="HashMap">
+		update joayo
+			set joayo_check = joayo_check+1
+			where id=#{id} and idx={idx}
+	</update>
+
+	<update id="joayo_check_cancel" parameterType="HashMap">
+		update joayo
+			set joayo_check = 0
+			where id=#{id} and idx=#{idx}
+	</update>
 
 	
 </mapper>
