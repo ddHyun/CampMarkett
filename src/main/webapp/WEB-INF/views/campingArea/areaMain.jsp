@@ -121,23 +121,38 @@ height: 'auto',
 	<div class="row">
    		
 	    <div class="portfolio">
-	    	<c:forEach var="camp" items="${camplist}">
+	    	<c:forEach var="camp" items="#{camplist}">
 	   	   <div class="col-1-2">
 		  		<div class="wrap-col" onclick="popupDetail(${camp.idx})" style="cursor:pointer;">
 		  			<img src="resources/assets/img/campingArea/${camp.imgName}" alt="">
 		  			<h3>${camp.name}</h3>
-		  			<p>캠핑장 거리  ${camp.distance}km</p>
+		  			<p>캠핑장 까지 거리  ${camp.distance}km</p>
 				</div>
 			</div>
 			</c:forEach>
 	    </div>
 	    
-	    </div>
+	</div>
 	    
 	   
     
-    </div>
   </div>
+  <!-- 페이징 처리 -->
+	<div class="row"	>
+		<c:forEach var="i" begin="1" end="${maxPage}">
+			<c:choose>
+				<c:when test="${i eq nowPage}">
+					<c:out value="[${i}]"/>&nbsp;
+				</c:when>
+				<c:otherwise>
+					<a href="campingAreaMain_Temp?page=${i}"><c:out value="${i}"/></a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+	</div>
+  </div>
+  
+  
 </div>
 <!--==============================footer=================================-->
 

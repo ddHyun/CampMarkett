@@ -4,7 +4,7 @@
 
 <html>
 <head>
-     <title>주변 캠핑장</title>
+     <title>Home</title>
      <meta charset="utf-8">
 	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      <link rel="icon" href="resources/assets/img/images/favicon.ico">
@@ -73,6 +73,11 @@ height: 'auto',
       <link rel="stylesheet" media="screen" href="resources/assets/css/ie.css">
 
     <![endif]-->
+    <style>
+    .zerogrid2{ width: 900px; position: relative; margin: 0 auto; padding: 0px;}
+   
+    </style>
+    
      </head>
      <body>
        <div class="main">
@@ -81,16 +86,16 @@ height: 'auto',
   <div class="zerogrid">
     <div class="col-full">
 	<div class="wrap-col">
-    <h1><a href="home"><img src="resources/assets/img/images/logo2.png" alt="EXTERIOR"></a> </h1>
+    <h1><a href="home"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
     
          <div class="menu_block">
            <nav>
             <ul class="sf-menu">
                    <li><a href="home">Home</a></li>
                    
-                   <li><a href="marketMain_Temp">밀키트</a></li>
+                   <li class="current"><a href="marketMain_Temp">밀키트</a></li>
                    <li><a href="reviewMain_Temp">후기</a></li>
-                   <li class="current"><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
+                   <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
                    <li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
 				   	<ul>
                          <li><a href="#"> cuisine</a></li>
@@ -108,36 +113,14 @@ height: 'auto',
       </div>
     </div>
 </header>
-
-<!--=======content================================-->
+<!--==============================content=================================-->
 <div class="content">
-  <div class="zerogrid">
-    <div class="col-full">
-      <h2>주변 캠핑장</h2>
-      <button onclick="popupLocation()">위치 설정</button>
-    </div>
-    <div class="clear"></div>
-	
-	<div class="row">
-   		
-	    <div class="portfolio">
-	    	<c:forEach var="camp" items="${camplist}">
-	   	   <div class="col-1-2">
-		  		<div class="wrap-col" onclick="popupDetail(${camp.idx})" style="cursor:pointer;">
-		  			<img src="resources/assets/img/campingArea/${camp.imgName}" alt="">
-		  			<h3>${camp.name}</h3>
-		  			<p>캠핑장 거리  ${camp.distance}km</p>
-				</div>
-			</div>
-			</c:forEach>
-	    </div>
-	    
-	    </div>
-	    
-	   
-    
-    </div>
-  </div>
+<div class="zerogrid2">
+	<h2 class="head2">${product.productId}</h2>
+	<img src="resources/assets/img/food/${product.imgName}.jpg" width=700px>
+
+</div>
+</div>
 </div>
 <!--==============================footer=================================-->
 
@@ -151,54 +134,7 @@ height: 'auto',
   </div>
 </footer>
 </body>
-<script>
-	
-	var windowX = window.screen.width;
-	var windowY = window.screen.height;
-	
-	//상세보기 페이지 띄우기
-	function popupDetail(idx){
-		var popUpWidth = windowX / 3 ;
-		var popUpheight = (windowY * 3 ) / 4 ;
-		var top =  ((windowY / 2) - (popUpheight / 2));
-		var left = ((windowX / 2) - (popUpWidth / 2));
-	
-		
-		
-	/* 	var pop = window.open("/camp/campDetail?idx="+e,"pop","width=650,height=800, scrollbars=yes, resizable=no");  */
-		var pop = window.open(
-				"/camp/campDetail?idx="+idx,
-						"pop",
-						"width=" + popUpWidth 
-						+ ", height = " + popUpheight 
-						+ ", top = " + top
-						+ ", left = " + left
-						+ " ,scrollbars=yes, resizable=no"); 	
-		
-	}
-	
-	//위치설정 페이지 띄우기
-	function popupLocation(){
-		var popUpWidth = windowX / 3 ;
-		var popUpheight = windowY / 2 ;
-		var top =  ((windowY / 2) - (popUpheight / 2));
-		var left = ((windowX / 2) - (popUpWidth / 2));
-		var win = this.window;
-		
-		var pop = window.open(
-				"/camp/makeLocation",
-						"pop",
-						"width=" + popUpWidth 
-						+ ", height = " + popUpheight 
-						+ ", top = " + top
-						+ ", left = " + left
-						+ " ,scrollbars=yes, resizable=no"); 	
-		
-		//팝업창이 닫힐때 발생하는 이벤트
-		 pop.onbeforeunload = function() {
-			 document.getElementById('user_barcode').focus();
-			}; 
-	}
-	
-</script>
+
+
+
 </html>
