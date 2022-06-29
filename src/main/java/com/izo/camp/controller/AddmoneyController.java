@@ -1,7 +1,5 @@
 package com.izo.camp.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,14 +14,16 @@ public class AddmoneyController {
 
 	@Autowired
 	AddmoneyService addmoneyService;
+	
+	@Autowired
 	MemberService memberService;
 	
 	
 	@RequestMapping("/money.do")
-	public void money(int idx, Model model) {
+	public String money(int idx, Model model) {
 		MemberVO vo = memberService.userInfo(idx);
-		//model.addAttribute(attributeValue)
-		//return "mypage/addmoney";
+		model.addAttribute("vo", vo);
+		return "mypage/addmoney";
 	}
 	
 	@RequestMapping("/registCard.do")

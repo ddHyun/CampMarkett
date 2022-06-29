@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.izo.camp.member.MemberService;
@@ -19,7 +20,6 @@ public class MemberController {
 
 	@Autowired
 	MemberService memberService;
-	HttpSession session;
 	
 	//약관동의 페이지로 이동
 	@RequestMapping("/term.do")
@@ -96,23 +96,26 @@ public class MemberController {
 	
 	
 	//로그인페이지로 이동
-	@RequestMapping("/loginView.do")
+	@RequestMapping(value="/loginView.do")
 	public String loginView() {
 		return "login/loginView";
 	}
 		
 	//로그인하기
 	@ResponseBody
-	@RequestMapping("/goLogin.do")
+	//ajax로 post형식 데이터 주고 받을 때 produces = "application/text; charset=UTF-8", method=RequestMethod.POST 붙이기!
+	@RequestMapping(value="/goLogin.do", produces = "application/text; charset=UTF-8", method=RequestMethod.POST)
 	public String goLogin(MemberVO vo) {		
 		int idx = memberService.getIdxFromId(vo);		
-		int param = 0;		
+		int param = 0;	
+		String name = "none";
 		if(idx > 0) {
 			param = idx;
-			MemberVO vo1 = memberService.userInfo(idx); 
-			session.setAttribute("vo", vo1);
+			MemberVO vo1 = memberService.userInfo(idx);
+			name = vo1.getName();
 		}		
-		String result = String.format("[{'param':'%d'}]", param);		
+		System.out.println("로그인버튼 클릭시 접속자 이름: " +name);
+		String result = String.format("[{'param':'%d'}, {'name':'%s'}]", param, name);		
 		return result;
 	}
 	
