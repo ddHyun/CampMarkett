@@ -23,7 +23,16 @@ nav{ position:relative;padding: 0px 0 0 0;}
 	margin-left: 0;
 }
 
-
+.purchase{
+	font-size: 18px;
+	font-family: 'Noto Sans', sans-serif;
+	background:#80ff00;
+	color: white;
+	line-height: 20px;
+	z-index: 999;
+	border-radius: 5px;
+	margin-bottom: 0px;
+}
 
 .sf-menu>li>a{
 	font-size: 18px;

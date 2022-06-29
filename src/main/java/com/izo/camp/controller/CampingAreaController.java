@@ -2,6 +2,7 @@ package com.izo.camp.controller;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -68,7 +69,7 @@ public class CampingAreaController {
 		
 		
 		List<CampInfoVO> list  = 
-				campInfoService.getNearCampingArea(defaultAddress, getXY);
+				campInfoService.getNearCampingArea(getXY);
 		//현재 위치 바인딩
 		model.addAttribute("lat", getXY.get("lat"));
 		model.addAttribute("lon", getXY.get("lon"));
@@ -113,11 +114,72 @@ public class CampingAreaController {
 	}
 	
 	
+	
 	//나의 위치 선택하기
 	@RequestMapping("/makeLocation")
 	public String goMakeLocation() {
 		
 		return "campingArea/popupLocation";
+	}
+	
+	
+	
+	//==============================================임시
+	@RequestMapping("campingAreaMain_Temp")
+	public String goAreaMaingo(@RequestParam(required=false, defaultValue="0")Double lat,
+			@RequestParam(required=false, defaultValue="0")Double lon,
+			@RequestParam(required=false, defaultValue="1")int page,
+			Model model,HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		
+		//campInfoService.getKakaoApiFromAddress("");
+		String address = "경원대로 1397, 학원";
+		
+		//주어진 정보가 있다면 위치 session 에 session 값 추가
+		if(lat!=0) {
+			session.setAttribute("sessionLat", lat);
+			session.setAttribute("sessionLon", lon);
+		}
+		
+		//현재 위치 xy 좌표
+		Map<String,Double> getXY = new HashMap<String, Double>();
+		//로그인이 되어있지 않은 상태라면 
+		if(session.getAttribute("loginId")==null || session.getAttribute("loginId").equals("null")) {
+			getXY.put("lat", (Double) session.getAttribute("sessionLat"));
+			getXY.put("lon", (Double) session.getAttribute("sessionLon"));
+		}
+		
+		//로그인이 되어 있다면
+		else {
+			address="영종대로 190, 아이고";
+			getXY = campInfoService.getKakaoApiFromAddress(address);
+		}
+		
+		//가까운 캠핑장 목록
+		List<CampInfoVO> list  = 
+				campInfoService.getNearCampingArea( getXY);
+		//현재 위치 바인딩
+		model.addAttribute("lat", getXY.get("lat"));
+		model.addAttribute("lon", getXY.get("lon"));
+		
+		if(session.getAttribute("sessionLat") != null) {
+			model.addAttribute("lat", session.getAttribute("sessionLat"));
+			model.addAttribute("lon", session.getAttribute("sessionLon"));
+		}
+		
+		//페이징 처리
+		
+		int last = (page * 10) > list.size() ? list.size() : (page * 10);
+		int maxPage = (list.size() + 9) / 10; 
+		
+	    list = list.subList(10 * (page - 1), last);
+	    
+	    model.addAttribute("camplist", list);
+	    model.addAttribute("maxPage", maxPage);
+	    model.addAttribute("nowPage", page);
+		
+		return "campingArea/areaMain";
 	}
 	
 }

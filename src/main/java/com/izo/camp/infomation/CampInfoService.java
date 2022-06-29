@@ -178,8 +178,8 @@ public class CampInfoService {
 	}
 	
 	
-	//가까운 캠핑장들을 받아오는것
-	public List<CampInfoVO> getNearCampingArea(String address,Map<String,Double> coordination){
+	//가까운 캠핑장들을 받아오는것 - 좌표로
+	public List<CampInfoVO> getNearCampingArea(Map<String,Double> coordination){
 		//받아온 주소
 		
 		//Map<String,Double> coordination = getKakaoApiFromAddress(address);

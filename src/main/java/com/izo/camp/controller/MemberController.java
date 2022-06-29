@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.izo.camp.member.MemberService;
@@ -19,6 +20,8 @@ public class MemberController {
 
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
 	HttpSession session;
 	
 	//약관동의 페이지로 이동
@@ -96,23 +99,32 @@ public class MemberController {
 	
 	
 	//로그인페이지로 이동
-	@RequestMapping("/loginView.do")
+	@RequestMapping(value="/loginView.do")
 	public String loginView() {
 		return "login/loginView";
 	}
 		
 	//로그인하기
 	@ResponseBody
-	@RequestMapping("/goLogin.do")
+	//ajax로 post형식 데이터 주고 받을 때 produces = "application/text; charset=UTF-8", method=RequestMethod.POST 붙이기!
+	@RequestMapping(value="/goLogin.do", produces = "application/text; charset=UTF-8", method=RequestMethod.POST)
 	public String goLogin(MemberVO vo) {		
 		int idx = memberService.getIdxFromId(vo);		
-		int param = 0;		
+		int param = 0;	
+		String name = "none";
+		String id = "none";
 		if(idx > 0) {
 			param = idx;
-			MemberVO vo1 = memberService.userInfo(idx); 
-			session.setAttribute("vo", vo1);
-		}		
-		String result = String.format("[{'param':'%d'}]", param);		
+			MemberVO vo1 = memberService.userInfo(idx);
+			name = vo1.getName();
+			id = vo1.getId();
+			//로그인 성공하면 세션에 바로 묶어서 결과 보내주고 사용할 페이지에서 ${sessionScope.key값} 으로 사용하기
+			//바로 사용하는 게 아니라 컨트롤러에서 활용할 용도라면 session.getAttribute()
+			session.setAttribute("loginId", id);
+			session.setAttribute("loginIdx", idx);
+		}
+		System.out.println("로그인버튼 클릭시 접속자 이름: " +name);
+		String result = String.format("[{'param':'%d'}, {'name':'%s'}, {'id':'%s'}]", param, name, id);		
 		return result;
 	}
 	
