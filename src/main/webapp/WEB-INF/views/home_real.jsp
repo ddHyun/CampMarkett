@@ -81,25 +81,25 @@ height: 'auto',
   <div class="zerogrid">
     <div class="col-full">
 	<div class="wrap-col">
-    <h1><a href="home"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
+    <h1><a href="home"><img src="resources/assets/img/images/logo2.png" alt="EXTERIOR"></a> </h1>
     
          <div class="menu_block">
            <nav>
             <ul class="sf-menu">
                    <li class="current"><a href="home">Home</a></li>
                    
-                   <li><a href="marketMain">밀키트</a></li>
-                   <li><a href="reviewMain.do">후기</a></li>
-                   <li><a href="info">주변 캠핑장 </a></li>
-                   <li class="with_ul"><a href="resources/assets/html/index-1.html">회원 정보</a>
+                   <li><a href="marketMain_Temp">밀키트</a></li>
+                   <li><a href="reviewMain_Temp">후기</a></li>
+                   <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
+                   <li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
 				   	<ul>
                          <li><a href="#"> cuisine</a></li>
                          <li><a href="#">Good rest</a></li>
                          <li><a href="#">Services</a></li>
                      </ul>
 				   </li>
-                   <li><a href="loginView.do">로그인</a></li>
-                 </ul>
+                   <li><a href="Login_Temp">로그인</a></li>
+             </ul>
            </nav>
            <div class="clear"></div>
            </div>
