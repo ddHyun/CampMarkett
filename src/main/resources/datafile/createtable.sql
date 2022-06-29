@@ -130,3 +130,13 @@ create table loadmoneytable(
  		   REFERENCES MEMBERTABLE (ID) ON DELETE CASCADE
 );
 
+
+/*장바구니 테이블*/
+CREATE SEQUENCE seq_basket;
+/*제약조건 ( 외래키 미지정 ) */
+CREATE TABLE basketTable(
+	idx number(6) PRIMARY KEY,
+	memberID VARCHAR2(50),
+	productID VARCHAR2(1000),
+	pcs NUMBER(3)
+);
