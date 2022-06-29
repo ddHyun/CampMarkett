@@ -10,7 +10,9 @@
 </head>
 <body>
 	<form align="center">
-		<h1>마이페이지1</h1>
+		<h1>${sessionScope.loginId}님 마이페이지1</h1>
+		
+		<p> 이제 vo 확인 ${vo.name}</p>
 		<label></label>
 		<div>
 			<label for="regist" id="registCard" style="cursor:pointer">카드등록</label>&emsp;&emsp;
@@ -21,17 +23,36 @@
 		<div><br><br>
 			<div id="regist" style="display:block">
 				<input type="hidden" id="idx" value="${param.idx}">
+				<div>
+					<label>생년월일</label>
+					<input type="text" name="birth" placeholder="예) 990101" required>
+				</div>
+				<div>
 					<label>카드번호</label>
 					<input type="text" class="moveNumber" id="cardNo1" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
 					<input type="text" class="moveNumber" id="cardNo2" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
 					<input type="text" class="moveNumber" id="cardNo3" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
 					<input type="password" class="moveNumber" id="cardNo4" maxlength="4"/>
+				</div>
+				<div>
+					<label>CVC번호</label>
+					<input type="text" name="cvcno" placeholder="숫자  3자리 입력">
+				</div>
+				<div>
+					<label>카드비밀번호</label>
+					<input type="text" name="cardPw" placeholder="숫자  4자리 입력">
+				</div>
+				<div>
 					<input type="button" value="등록하기" onclick="registCard()">
+					<img src="resources/assets/img/images/questionmark.png"/>
+				</div>
 			</div>
 		</div>
 	</form>
 </body>
 <script>
+	
+	
 	function showForm(){
 		document.getElementById('regist').display = 'block';
 	}

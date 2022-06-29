@@ -81,7 +81,7 @@ height: 'auto',
   <div class="zerogrid">
     <div class="col-full">
 	<div class="wrap-col">
-    <h1><a href="home2"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
+    <h1><a href="home2"><img src="resources/assets/img/images/logo2.png" alt="EXTERIOR"></a> </h1>
     
          <div class="menu_block">
            <nav>

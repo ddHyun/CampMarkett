@@ -86,20 +86,20 @@ height: 'auto',
          <div class="menu_block">
            <nav>
             <ul class="sf-menu">
-                   <li class="current"><a href="home">Home</a></li>
+                   <li><a href="home">Home</a></li>
                    
-                   <li><a href="marketMain">밀키트</a></li>
-                   <li><a href="reviewMain.do">후기</a></li>
-                   <li><a href="info">주변 캠핑장 </a></li>
-                   <li class="with_ul"><a href="resources/assets/html/index-1.html">회원 정보</a>
+                   <li class="current"><a href="marketMain_Temp">밀키트</a></li>
+                   <li><a href="reviewMain_Temp">후기</a></li>
+                   <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
+                   <li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
 				   	<ul>
                          <li><a href="#"> cuisine</a></li>
                          <li><a href="#">Good rest</a></li>
                          <li><a href="#">Services</a></li>
                      </ul>
 				   </li>
-                   <li><a href="loginView.do">로그인</a></li>
-                 </ul>
+                   <li><a href="Login_Temp">로그인</a></li>
+             </ul>
            </nav>
            <div class="clear"></div>
            </div>
@@ -108,7 +108,7 @@ height: 'auto',
       </div>
     </div>
 </header>
- <div class="slider-relative">
+<!--  <div class="slider-relative">
     <div class="slider-block">
       <div class="slider">
         <ul class="items">
@@ -118,11 +118,22 @@ height: 'auto',
         </ul>
       </div>
     </div>
- </div>
+ </div> -->
 <!--=======content================================-->
 
 <div class="content page1">
   <div class="zerogrid">
+      
+      <c:forEach var="product" items="#{productList}">
+		<div class="temp" style="border:1px solid black; width:30%"<%--  onclick="popupDetail(${camp.idx})" --%> style="cursor:pointer;">
+		<%-- <img src="resources/assets/img/campingArea/${camp.imgName}" height="200px" width="300px"> --%>
+		상품이름 : ${product.productId}
+		<br>
+		상품가격 : ${product.price}
+		</div>
+		<br>
+		<br>
+	</c:forEach>
       
 	  <div class="row">
       <div class="col-full">
@@ -179,18 +190,7 @@ height: 'auto',
                    <li><a href="resources/assets/html/index-5.html">Contacts</a></li>
                  </ul></nav>
       </div>
-      <div class="col-1-2">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn" data-type="submit">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
-          </div>
+    
       </div>
 	  </div>
     </div>

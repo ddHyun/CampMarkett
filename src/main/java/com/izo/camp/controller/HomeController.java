@@ -70,12 +70,16 @@ public class HomeController {
 	//테스트2
 	@RequestMapping(value = "/home2", method = RequestMethod.GET)
 	public String home2go() {
+		session.setAttribute("sessionLat", 37.49051);
+		session.setAttribute("sessionLon", 126.72414);
 		return "home2";
 	}
 	
 	//테스트 Home 페이지로 이동
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String homeGo() {
+		session.setAttribute("sessionLat", 37.49051);
+		session.setAttribute("sessionLon", 126.72414);
 		return "home_real";
 	}
 }

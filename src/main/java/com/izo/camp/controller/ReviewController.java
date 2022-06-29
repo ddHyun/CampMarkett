@@ -1,7 +1,8 @@
 package com.izo.camp.controller;
 
 import java.io.File;
-import java.io.IOException;
+import java.util.HashMap;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.izo.camp.review.ReviewService;
@@ -34,8 +36,15 @@ public class ReviewController {
 
 	// 상세보기
 	@RequestMapping("/reviewRead.do")
-	public String reviewRead(int idx, Model model) {
-
+	public String reviewRead(int idx, Model model, ReviewVO vo) {
+	
+		
+		model.addAttribute("vo", vo);
+		
+		// 조회수 증가
+		reviewService.readhitCount(vo.getIdx());
+		
+		// 후기 조회
 		model.addAttribute("vo", reviewService.getReviewIdx(idx));
 
 		return "review/reviewRead";
@@ -51,7 +60,7 @@ public class ReviewController {
 
 	}
 
-	  // 새 글 작성
+	  // 새 글 작성(사진 첨부 포함)
 	 
 	 @RequestMapping("/reviewInsert.do")
 	 public String reviewInsert(ReviewVO vo, Model model) {
@@ -106,7 +115,47 @@ public class ReviewController {
 		 
 	 }
 	 
-	
+	 // reviewRead화면에서 글 삭제하기
+	 @RequestMapping("/reviewDelete.do")
+	 @ResponseBody
+	 public String reviewDelete(int idx, String pwd) {
+		 
+		 HashMap<String, Object> map = new HashMap<String, Object>();
+		 map.put("idx", idx);
+		 map.put("pwd", pwd);
+		 
+		 int res = reviewService.delReview(idx, pwd, map);
+		 
+		 String result="no";
+		 if(res == 1) {
+			 result = "yes";
+		 }
+		 
+		 String finRes = String.format("[{'res':'%s'}]", result);
+		 
+		 return	finRes;
+		 
+	 }
+	 
+
+		
+	 
+	 /* 애초에 수정할거면 글을 안쓰는게 맞습니다. 그래서 없앤겁니다 어려워서 뺀거 아닙니다.
+		 * @RequestMapping("/reviewSelect.do") public String reviewSelect(int idx, Model
+		 * model) {
+		 * 
+		 * ReviewVO vo = reviewService.selectReview(idx); model.addAttribute("vo",
+		 * reviewService.selectReview(idx));
+		 * 
+		 * return "review/reviewModify"; }
+		 * 
+		 * @RequestMapping("/reviewUpdate.do") public String reviewUpdate(ReviewVO vo,
+		 * HttpServletRequest request) {
+		 * 
+		 * int res = reviewService.updateReview(vo);
+		 * 
+		 * return "redirect:reviewMain.do"; }
+		 */
 	 
 
 }
