@@ -5,24 +5,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class TempController {
-	
-	@RequestMapping("marketMain_Temp")
-	public String goMarketMain(){
-		
-		return "temp/marketMain";
-	}
+
+	//옮김
+//	@RequestMapping("marketMain_Temp")
+//	public String goMarketMain(){
+//		
+//		return "temp/marketMain";
+//	}
 	
 	@RequestMapping("reviewMain_Temp")
 	public String goReviewMain(){
 		
 		return "temp/reviewMain";
 	}
-	
-	@RequestMapping("campingAreaMain_Temp")
-	public String goAreaMaingo(){
-		
-		return "temp/areaMain";
-	}
+
+// 옮김
+//	@RequestMapping("campingAreaMain_Temp")
+//	public String goAreaMaingo(){
+//		
+//		return "temp/areaMain";
+//	}
 	
 	@RequestMapping("memberInfo_Temp")
 	public String goMemberInfo(){

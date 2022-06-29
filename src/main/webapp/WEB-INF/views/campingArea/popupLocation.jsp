@@ -22,7 +22,7 @@ var lon = "${sessionScope.sessionLon}";
 
 function closeb(){
 	
-	opener.parent.location.href="info?lat="+lat+"&lon="+lon;
+	opener.parent.location.href="campingAreaMain_Temp?lat="+lat+"&lon="+lon;
 	
 	window.close();
 }

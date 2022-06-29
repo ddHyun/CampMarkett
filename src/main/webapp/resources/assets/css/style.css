@@ -308,7 +308,17 @@ header h1 a img {
 	text-align: center;
 	margin-top: 15px;
 }
-
+.price {
+	display: inline-block;
+	background: #699440;
+	color: #fff;
+	min-width: 41px;
+	height: 38px;
+	border-radius: 4px;
+	font: 20px/36px 'Lobster', cursive;
+	text-align: center;
+	margin-top: 15px;
+}
 
 .carousel1 li span {
 	line-height: 16px;
