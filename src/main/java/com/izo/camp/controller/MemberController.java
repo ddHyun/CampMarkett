@@ -1,5 +1,9 @@
 package com.izo.camp.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +19,7 @@ public class MemberController {
 
 	@Autowired
 	MemberService memberService;
+	HttpSession session;
 	
 	//약관동의 페이지로 이동
 	@RequestMapping("/term.do")
@@ -104,6 +109,8 @@ public class MemberController {
 		int param = 0;		
 		if(idx > 0) {
 			param = idx;
+			MemberVO vo1 = memberService.userInfo(idx); 
+			session.setAttribute("vo", vo1);
 		}		
 		String result = String.format("[{'param':'%d'}]", param);		
 		return result;

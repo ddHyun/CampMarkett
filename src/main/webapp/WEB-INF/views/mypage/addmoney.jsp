@@ -19,8 +19,7 @@
 			<label>이용내역</label>
 		</div>
 		<div><br><br>
-			<div name="regist" id="regist" style="display:block">
-				<form name="f">
+			<div id="regist" style="display:block">
 				<input type="hidden" id="idx" value="${param.idx}">
 					<label>카드번호</label>
 					<input type="text" class="moveNumber" id="cardNo1" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
@@ -28,7 +27,6 @@
 					<input type="text" class="moveNumber" id="cardNo3" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
 					<input type="password" class="moveNumber" id="cardNo4" maxlength="4"/>
 					<input type="button" value="등록하기" onclick="registCard()">
-				</form>
 			</div>
 		</div>
 	</form>
@@ -62,10 +60,10 @@
 		var cardno = cardNo1 + cardNo2 + cardNo3 + cardNo4;
 		var idx = document.getElementById("idx").value;
 	
-		var f = document.f;
+		/* var f = document.f;
 		f.action = "registCard.do?idx="+idx+"cardno"+cardno;
 		f.method = "post";
-		f.submit();		
+		f.submit();		 */
 	}
 </script>
 </html>
