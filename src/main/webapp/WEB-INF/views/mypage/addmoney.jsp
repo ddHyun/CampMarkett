@@ -28,6 +28,7 @@
 					<input type="text" class="moveNumber" id="cardno2" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
 					<input type="text" class="moveNumber" id="cardno3" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
 					<input type="password" class="moveNumber" id="cardno4" maxlength="4"/>
+					<input type="hidden" name="cardno" id="cardno">
 				</div>
 				<div>
 					<label>유효기간</label>
@@ -64,12 +65,14 @@
 					<h3>
 					꼭! 알아두세요
 					<img src="resources/assets/img/images/down_arrow.png" id="infoMsgBtn" style="cursor:pointer">
-					</h3>					
-					<p>
-						카드사용등록을 하는 즉시 충전을 할 수 있습니다.<br>
-						카드사용등록을 원하시는 카드번호와 다음 항목을 모두 정확히 입력해 주시기 바랍니다. [단, 법인카드제외]<br>
-						카드고유확인번호/비밀번호 등록오류 시 발급받은 카드회사에 문의 바랍니다.<br>
-					</p>
+					</h3>
+					<div id="infoMsg" style="display:none">				
+						<p>
+							카드사용등록을 하는 즉시 충전을 할 수 있습니다.<br>
+							카드사용등록을 원하시는 카드번호와 다음 항목을 모두 정확히 입력해 주시기 바랍니다. [단, 법인카드제외]<br>
+							카드고유확인번호/비밀번호 등록오류 시 발급받은 카드회사에 문의 바랍니다.<br>
+						</p>
+					</div>
 				</div>
 				<div>
 					<input type="button" value="등록하기" onclick="registCard()">
@@ -119,7 +122,13 @@
 	});	
 	
 	//꼭 알아두세요
-	$('#infoMsgBtn').on
+	$('#infoMsgBtn').on('click', function(){
+		if($('#infoMsg').css('display')=='block'){
+			$('#infoMsg').css('display', 'none');
+		}else{
+			$('#infoMsg').css('display', 'block');
+		}
+	})
 	
 	
 	//카드 등록
