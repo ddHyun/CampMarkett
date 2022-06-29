@@ -4,7 +4,7 @@
 
 <html>
 <head>
-     <title>Home</title>
+     <title>주변 캠핑장</title>
      <meta charset="utf-8">
 	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      <link rel="icon" href="resources/assets/img/images/favicon.ico">
@@ -88,18 +88,18 @@ height: 'auto',
             <ul class="sf-menu">
                    <li class="current"><a href="home">Home</a></li>
                    
-                   <li><a href="marketMain">밀키트</a></li>
-                   <li><a href="reviewMain.do">후기</a></li>
-                   <li><a href="info">주변 캠핑장 </a></li>
-                   <li class="with_ul"><a href="resources/assets/html/index-1.html">회원 정보</a>
+                   <li><a href="marketMain_Temp">밀키트</a></li>
+                   <li><a href="reviewMain_Temp">후기</a></li>
+                   <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
+                   <li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
 				   	<ul>
                          <li><a href="#"> cuisine</a></li>
                          <li><a href="#">Good rest</a></li>
                          <li><a href="#">Services</a></li>
                      </ul>
 				   </li>
-                   <li><a href="loginView.do">로그인</a></li>
-                 </ul>
+                   <li><a href="Login_Temp">로그인</a></li>
+             </ul>
            </nav>
            <div class="clear"></div>
            </div>
@@ -108,94 +108,30 @@ height: 'auto',
       </div>
     </div>
 </header>
- <div class="slider-relative">
-    <div class="slider-block">
-      <div class="slider">
-        <ul class="items">
-          <li><img src="resources/assets/img/images/slide.jpg" alt=""></li>
-          <li><img src="resources/assets/img/images/slide1.jpg" alt=""></li>
-          <li class="mb0"><img src="resources/assets/img/images/slide2.jpg" alt=""></li>
-        </ul>
-      </div>
-    </div>
- </div>
-<!--=======content================================-->
 
+<!--=======content================================-->
 <div class="content">
   <div class="zerogrid">
     <div class="col-full">
-      <h2>campingArea</h2>
+      <h2>주변 캠핑장</h2>
     </div>
     <div class="clear"></div>
 	
 	<div class="row">
-    <div class="portfolio">
-      <div class="col-1-2">
-	  	<div class="wrap-col">
-	  	<a href="images/big3.jpg" data-gal="prettyPhoto[1]"><span><img src="images/page4_img1.jpg" alt=""></span></a>
-		</div>
-	</div>
-      <div class="col-1-2">
-	  	<div class="wrap-col">
-	  	<a href="images/big2.jpg" data-gal="prettyPhoto[1]"><span><img src="images/page4_img2.jpg" alt=""></span></a>
-		</div>
-	</div>
-      <div class="col-1-2">
-	  	<div class="wrap-col">
-	  	<a href="images/big4.jpg" data-gal="prettyPhoto[1]"><span><img src="images/page4_img3.jpg" alt=""></span></a>
-		</div>
-	  </div>
-      <div class="col-1-2">
-	  <div class="wrap-col">
-	  	<a href="images/big1.jpg" data-gal="prettyPhoto[1]"><span><img src="images/page4_img4.jpg" alt=""></span></a>
-		</div>
-	</div>
-	</div>
-      <div class="col-1-2">
-	  	<div class="wrap-col">
-	  	<a href="images/big4.jpg" data-gal="prettyPhoto[1]"><span><img src="images/page4_img3.jpg" alt=""></span></a>
-		</div>
-	  </div>
-      <div class="col-1-2">
-	  <div class="wrap-col">
-	  	<a href="images/big1.jpg" data-gal="prettyPhoto[1]"><span><img src="images/page4_img4.jpg" alt=""></span></a>
-		</div>
-	</div>
-    </div>
-    </div>
-   
-    <div class="row">
-    <div class="bottom_block">
-      <div class="col-1-2">
-        <h3>Follow Us</h3>
-        <div class="socials">
-          <a href="#"></a>
-          <a href="#"></a>
-          <a href="#"></a>
-        </div>
-        <nav><ul>
-                   <li><a href="index.html">Home</a></li>
-                   <li><a href="index-1.html">About Us</a></li>
-                   <li><a href="index-2.html">Menu</a></li>
-                   <li class="current"><a href="index-3.html">Portfolio</a></li>
-                   <li><a href="index-4.html">News </a></li>
-                   <li><a href="index-5.html">Contacts</a></li>
-                 </ul></nav>
-      </div>
-      <div class="col-1-2">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn" data-type="submit">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
-          </div>
-      </div>
-	  </div>
+   		
+	    <div class="portfolio">
+	    	<c:forEach var="camp" items="#{camplist}">
+	   	   <div class="col-1-2">
+		  		<div class="wrap-col" onclick="popupDetail(${camp.idx})" style="cursor:pointer;">
+		  			<img src="resources/assets/img/campingArea/${camp.imgName}" alt="">
+				</div>
+			</div>
+			</c:forEach>
+	    </div>
+	    
+	    </div>
+	   
+    
     </div>
   </div>
 </div>
