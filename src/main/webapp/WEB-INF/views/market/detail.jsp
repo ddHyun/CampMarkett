@@ -4,7 +4,7 @@
 
 <html>
 <head>
-     <title>Home</title>
+     <title>상세보기</title>
      <meta charset="utf-8">
 	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      <link rel="icon" href="resources/assets/img/images/favicon.ico">
@@ -75,7 +75,10 @@ height: 'auto',
     <![endif]-->
     <style>
     .zerogrid2{ width: 900px; position: relative; margin: 0 auto; padding: 0px;}
-   
+   	button{
+   		width:350px;	
+   		height:30px;
+   	}
     </style>
     
      </head>
@@ -118,7 +121,10 @@ height: 'auto',
 <div class="zerogrid2">
 	<h2 class="head2">${product.productId}</h2>
 	<img src="resources/assets/img/food/${product.imgName}.jpg" width=700px>
-
+	<div class="clear"><br></div>
+	<button>장바구니 추가</button>
+	<button>구매하기</button>
+	
 </div>
 </div>
 </div>
