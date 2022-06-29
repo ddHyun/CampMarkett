@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-	String vo = null;
-	String name = "vo";
-	vo = (String)session.getAttribute(name);
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,19 +11,17 @@
 
 </head>
 <body>
-
-	<h3>로그인</h3>
-
-	<c:if test="${empty vo.id}">
-	<div id="logon">
+	
+	<div>
 	<form method="POST" align="center">
+	<h3>로그인</h3>
 		<div>
 			<label>아이디</label>
-			<input type="text" name="id" id="id">
+			<input type="text" name="id" id="id" required>
 		</div>
 		<div>
 			<label>비밀번호</label>
-			<input type="password" name="pwd" id="pwd">
+			<input type="password" name="pwd" id="pwd" required>
 		</div>
 		<div>			
 			<input type="button" value="로그인" onclick="goLogin()">
@@ -36,20 +29,12 @@
 		<div>
 			<span>계정이 없으신가요? <a href="term.do">회원가입</a></span>
 		</div>
-			<!-- <input type="button" value="회원가입" onclick="location.href='term.do'"> -->
 		<div>
 			<span style="cursor:pointer; text-decoration:underline;" onclick="IDpopup()">아이디 찾기</span>&emsp;
 			<span style="cursor:pointer; text-decoration:underline;" onclick="PWDpopup()">비밀번호 찾기</span>
 		</div>
 	</form>
-	</div>
-	</c:if>
-	<c:if test="${not empty vo.id}">
-		<div id="logout">
-			[${vo.name}]님 환영합니다!
-			<a href="####################">로그아웃</a>
-		</div>
-	</c:if>
+	</div>	
 </body>
 <script>
 	//페이지 로딩되면 자동커서
@@ -66,13 +51,14 @@
 		if(idVal==''){
 			alert("아이디를 입력해 주세요");
 			id.focus();
-			return;
+			//input(text, pw)태그에 required속성을 붙여주면 빈칸이면 false반환  
+			return false;
 		}
 		
 		if(pwdVal==''){
 			alert("비밀번호를 입력해주세요");
 			pwd.focus();
-			return;
+			return false;
 		}
 		
 		var url = "goLogin.do";
@@ -93,10 +79,16 @@
 				document.getElementById("pwd").value="";
 				
 			}else{
-				alert("어서오세요 회원님~");
+				var name = json[1].name;
+				alert("환영합니다 "+name+" 회원님~");
 				var idx = json[0].param;
-				console.log(idx);
-				window.location="money.do?idx="+idx;
+				console.log(json);
+				console.log("data"+data);
+				console.log("length : "+json.length);
+				console.log("json[0].param:"+json[0].param);
+				console.log("json[1].name:"+json[1].name);
+				console.log("name : "+name);
+				//window.location="money.do?idx="+idx;
 			}
 		}
 	}
