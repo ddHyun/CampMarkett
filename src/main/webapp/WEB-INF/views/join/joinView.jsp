@@ -139,7 +139,6 @@
 				<th><span style="color:red">*</span>아이디</th>
 				<td>				
 					<input type="text" name="id" id="id">
-					<!-- <input type="button" value="중복확인" id="idCheckBtn" onclick="checkID()"><br> -->		
 					<input type="button" value="중복확인" id="idCheckBtn"><br>		
 					<span style="color:#787878">5~15자리의 영문자와 숫자만 입력이 가능합니다(시작은 영문자)</span>				
 				</td>				
@@ -176,7 +175,7 @@
 			<tr>
 				<th><span style="color:red">*</span>생년월일</th>
 				<td>
-					<input type="text" id="birth" name="birth" value="${vo.birth}">
+					<input type="text" id="birth" name="birth">
 					<span style="color:#787878">6자리로 입력해주세요 (예) 990101)</span>
 					<span id="birthErrorMsg" style="color:red">올바른 형식이 아닙니다</span>
 				</td>
@@ -184,7 +183,8 @@
 			<tr>
 				<th><span style="color:red">*</span>이메일</th>
 				<td>
-				<input name="email" id="email">
+				<input name="email" id="email" value="${vo.email}">
+				<input type="button" value="이메일 확인" onclick="verifyEmail()">
 				<span id="emailErrorMsg" style="color:red">올바른 형식이 아닙니다</span><br>
 				<span style="color:#787878">비밀번호 초기화 메일 수신 등에 반드시 필요한 정보이므로 정확히 입력해주세요.</span>
 				</td>
@@ -392,6 +392,18 @@
 				alert("ajax 오류");
 		});	
 	});	
+	
+	//이메일 확인
+	function verifyEmail() {
+		alert("이메일이 정상적으로 확인되었습니다");
+		return;
+	}
+	
+	//휴대전화 본인인증
+	function certifyTel() {
+		alert("인증이 정상적으로 처리되었습니다");
+		return;
+	}
 
 </script>
 </html>

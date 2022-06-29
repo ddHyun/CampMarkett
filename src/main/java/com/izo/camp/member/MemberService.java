@@ -20,15 +20,22 @@ public class MemberService {
 		return memberMapper.list();
 	}
 	
-	//아이디목록
-	public List<String> idList() {
-		return memberMapper.idList();
+	//회원 한명 정보 조회
+	public MemberVO userInfo(int idx){
+		MemberVO vo = memberMapper.userInfo(idx);
+		System.out.println(vo.getName());
+		return memberMapper.userInfo(idx);
+	}
+	
+	//아이디 idx 찾기
+	public int idIdx(String id) {
+		return memberMapper.idIdx(id);
 	}
 	
 //	컨트롤러 -> 서비스 : 메서드명(변수)의 변수는 컨트롤러에서 보낸 타입과 일치
 //  매퍼 -> 서비스  : 리턴과 메서드 타입 일치
-	//이름, 생일 일치하는 idx
-	public int getMemberIdx(MemberVO vo){
+	//이름, 이메일 일치하는 idx
+	public int getMemberIdx(MemberVO vo){		
 		return memberMapper.memberIdx(vo);
 	}
 	
@@ -40,6 +47,17 @@ public class MemberService {
 	//회원정보 추가하기
 	public int insertInfo(MemberVO vo) {
 		return memberMapper.insertInfo(vo);
+	}
+	
+	//아이디 찾기
+	public String searchID(MemberVO vo) {
+		return memberMapper.searchID(vo);
+	}
+	
+	//비밀번호 변경하기
+	public int changePwd(MemberVO vo) {
+		System.out.println(memberMapper.changePwd(vo));
+		return memberMapper.changePwd(vo);
 	}
 	
 }

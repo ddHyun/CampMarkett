@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,8 @@ public class HomeController {
 	
 	@Autowired
 	DeptMapper deptMapper;
-	
+	@Autowired
+    private HttpSession session;
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -39,12 +42,16 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
+		session.setAttribute("sessionLat", 37.49051);
+		session.setAttribute("sessionLon", 126.72414);
 		
 		model.addAttribute("serverTime", formattedDate );
 
 		for(DeptVO deptVO : deptMapper.dept()) {
 			System.out.println(deptVO.getDeptno());
 		}
+		
+		System.out.println("home");
 		
 		return "home";
 
@@ -61,5 +68,14 @@ public class HomeController {
 	//테스트	
 	
 	//테스트2
+	@RequestMapping(value = "/home2", method = RequestMethod.GET)
+	public String home2go() {
+		return "home2";
+	}
 	
+	//테스트 Home 페이지로 이동
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String homeGo() {
+		return "home_real";
+	}
 }

@@ -8,25 +8,48 @@
 <title>주변 캠핑장</title>
 </head>
 <body>
-	<button>위치 설정</button>
+	<button onclick="popupLocation()">위치 설정</button>
 	<table>
 		<tr>
-			<td class="td1"><h2>날씨</h2></td>
-			<td class="td2"><div id="weather">온도</div></td>
+			<td class="td1"><h2 id="user_barcode">날씨</h2></td>
+			<td class="td2" ><div id="weather" >온도</div></td>
 		</tr>
 	</table>
 	<c:forEach var="camp" items="#{camplist}">
-		<p><div class="temp" onclick="popup(${camp.idx})" style="cursor:pointer;">캠핑장 이름 : ${camp.name}  거리는 ${camp.distance}km 입니다.</div></p>
+		<div class="temp" onclick="popupDetail(${camp.idx})" style="cursor:pointer;">
+		<img src="resources/assets/img/campingArea/${camp.imgName}" height="200px" width="300px">
+		캠핑장 이름 : ${camp.name}  거리는 ${camp.distance}km 입니다.
+		</div>
 		<br>
 	</c:forEach>
+	
+	<!-- 페이징 처리 -->
+	페이지 버튼 
+	<c:forEach var="i" begin="1" end="${maxPage}">
+			<c:choose>
+				<c:when test="${i eq nowPage}">
+					<c:out value="[${i}]"/>&nbsp;
+				</c:when>
+				<c:otherwise>
+					<a href="/camp/info?page=${i}"><c:out value="${i}"/></a>
+				</c:otherwise>
+			</c:choose>
+	</c:forEach>
 </body>
+
+
+
+
+
 <script>
 	
 	var windowX = window.screen.width;
 	var windowY = window.screen.height;
-	function popup(idx){
+	
+	//상세보기 페이지 띄우기
+	function popupDetail(idx){
 		var popUpWidth = windowX / 3 ;
-		var popUpheight = windowY / 2 ;
+		var popUpheight = (windowY * 3 ) / 4 ;
 		var top =  ((windowY / 2) - (popUpheight / 2));
 		var left = ((windowX / 2) - (popUpWidth / 2));
 	
@@ -43,7 +66,31 @@
 						+ " ,scrollbars=yes, resizable=no"); 	
 		
 	}
-
+	
+	//위치설정 페이지 띄우기
+	function popupLocation(){
+		var popUpWidth = windowX / 3 ;
+		var popUpheight = windowY / 2 ;
+		var top =  ((windowY / 2) - (popUpheight / 2));
+		var left = ((windowX / 2) - (popUpWidth / 2));
+		var win = this.window;
+		
+		var pop = window.open(
+				"/camp/makeLocation",
+						"pop",
+						"width=" + popUpWidth 
+						+ ", height = " + popUpheight 
+						+ ", top = " + top
+						+ ", left = " + left
+						+ " ,scrollbars=yes, resizable=no"); 	
+		
+		//팝업창이 닫힐때 발생하는 이벤트
+		 pop.onbeforeunload = function() {
+			 document.getElementById('user_barcode').focus();
+			}; 
+	}	
+	
+	//없어도됨
 	window.onload = function(){
 		let ranking = document.getElementById("weather");
 		let xhr = new XMLHttpRequest();
@@ -51,6 +98,8 @@
 		let str;
 		let words = new Array();
 		/* 내 위치 받아서 우선 뿌려주기 */
+		console.log(${lat});
+		console.log(${lon});
 		let url = "https://api.openweathermap.org/data/2.5/weather?"
 				+ "lat=${lat}&lon=${lon}"
 				+ "&appid=69e06beb30084da3eabe041e57096ba5&units=metric&lang=kr";
@@ -70,8 +119,9 @@
 		}
 		
 		let i = 0;
-		
 	}
+	
+	
 </script>
- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 </html>

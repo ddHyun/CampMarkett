@@ -72,9 +72,11 @@ public class CampInfoService {
 			//실제 사용부 
 				Set<String> nameSet = new HashSet<String>();
 				JSONArray campList = (JSONArray)jsonObject.get("records");
+				int idx = 0;
+				
 				for(Object campObj : campList) {
 					JSONObject camp = (JSONObject)campObj;
-					//System.out.println(camp.get("야영(캠핑)장명")); -확인
+					
 					//insert 할 CampInfoVO 생성
 					if(nameSet.contains((String)camp.get("야영(캠핑)장명"))) {
 						continue;
@@ -84,9 +86,11 @@ public class CampInfoService {
 					CampInfoVO campInfoVO = new CampInfoVO();
 					//이름
 					campInfoVO.setName((String)camp.get("야영(캠핑)장명"));
+					
 					//위도 ,경도
 					campInfoVO.setLatitude(Double.parseDouble((String)camp.get("위도")));
 					campInfoVO.setLongitude(Double.parseDouble((String)camp.get("경도")));
+					
 					//주소 전화번호
 					String address = (String)camp.get("소재지도로명주소");
 					if(address==null) {
@@ -95,7 +99,13 @@ public class CampInfoService {
 					campInfoVO.setAddress(address);
 					campInfoVO.setTell((String)camp.get("야영장전화번호"));
 					
-					System.out.println(campInfoVO.getLatitude());
+					System.out.println(campInfoVO.getName());
+					
+					//이미지 파일 이름
+					idx++;
+					String imgName = String.format("campingArea%02d.jpg", idx%30 + 1 );
+					System.out.println(imgName);
+					campInfoVO.setImgName(imgName);
 					
 					campInfoMapper.addNewCamp(campInfoVO);
 				}

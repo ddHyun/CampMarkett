@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String vo = null;
+	String name = "vo";
+	vo = (String)session.getAttribute(name);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,55 +13,15 @@
 <title>Insert title here</title>
 <script src="resources/assets/js/httpRequest.js"></script>
 <script src="resources/assets/js/jquery-3.6.0.min.js"></script>
-<script>
 
-	//페이지 로딩되면 자동커서
-	$(function(){
-		$('#id').focus();
-	});	
-
-	function goLogin(){
-		var id = document.getElementById("id").value.trim();
-		var pwd = document.getElementById("pwd").value.trim();
-		//유효성 검사
-		if(id==''){
-			alert("아이디를 입력해 주세요");
-			return;
-		}
-		
-		if(pwd==''){
-			alert("비밀번호를 입력해주세요");
-			return;
-		}
-		
-		var url = "goLogin.do";
-		var param = "id=" + id + "&pwd=" + pwd;
-		sendRequest(url, param, cb, "POST");
-	}
-	
-	function cb(){
-		if(xhr.readyState==4 && xhr.status==200){
-			var data = xhr.responseText;
-			var json = (new Function('return'+data))();			
-			
-			if(json[0].param=='n'){
-				alert("아이디나 비밀번호를 확인해 주세요");
-				var id = document.getElementById("id");
-				id.focus();
-				id.value = "";
-				document.getElementById("pwd").value="";
-				
-			}else{
-				alert("어서오세요 회원님~");
-				location.href="#############";
-			}
-		}
-	}
-</script>
 </head>
 <body>
-	<form method="POST" action="########" align="center">
-	<p>로그인</p>
+
+	<h3>로그인</h3>
+
+	<c:if test="${empty vo.id}">
+	<div id="logon">
+	<form method="POST" align="center">
 		<div>
 			<label>아이디</label>
 			<input type="text" name="id" id="id">
@@ -67,12 +32,121 @@
 		</div>
 		<div>			
 			<input type="button" value="로그인" onclick="goLogin()">
-			<input type="button" value="회원가입" onclick="location.href='joinView2.do'">
 		</div>
 		<div>
-			<a href="" target="_blank">아이디 찾기</a>
-			<a href="" target="_blank">비밀번호 찾기</a>
+			<span>계정이 없으신가요? <a href="term.do">회원가입</a></span>
+		</div>
+			<!-- <input type="button" value="회원가입" onclick="location.href='term.do'"> -->
+		<div>
+			<span style="cursor:pointer; text-decoration:underline;" onclick="IDpopup()">아이디 찾기</span>&emsp;
+			<span style="cursor:pointer; text-decoration:underline;" onclick="PWDpopup()">비밀번호 찾기</span>
 		</div>
 	</form>
+	</div>
+	</c:if>
+	<c:if test="${not empty vo.id}">
+		<div id="logout">
+			[${vo.name}]님 환영합니다!
+			<a href="####################">로그아웃</a>
+		</div>
+	</c:if>
 </body>
+<script>
+	//페이지 로딩되면 자동커서
+	$(function(){
+		$('#id').focus();
+	});	
+
+	function goLogin(){
+		var id = document.getElementById("id");
+		var idVal = id.value.trim();
+		var pwd = document.getElementById("pwd");
+		var pwdVal = pwd.value.trim();
+		//유효성 검사
+		if(idVal==''){
+			alert("아이디를 입력해 주세요");
+			id.focus();
+			return;
+		}
+		
+		if(pwdVal==''){
+			alert("비밀번호를 입력해주세요");
+			pwd.focus();
+			return;
+		}
+		
+		var url = "goLogin.do";
+		var param = "id=" + idVal + "&pwd=" + pwdVal;
+		sendRequest(url, param, cb, "POST");
+	}
+	
+	function cb(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var data = xhr.responseText;
+			var json = (new Function('return'+data))();			
+			
+			if(json[0].param==0){
+				alert("아이디나 비밀번호를 확인해 주세요");
+				var id = document.getElementById("id");
+				id.focus();
+				id.value = "";
+				document.getElementById("pwd").value="";
+				
+			}else{
+				alert("어서오세요 회원님~");
+				var idx = json[0].param;
+				console.log(idx);
+				window.location="money.do?idx="+idx;
+			}
+		}
+	}
+	
+	//팝업창 세팅인데 함수 안에 넣으면 팝업창 생성이 안됨
+	/* function popupSetting(url, name, width, height){
+		document.domain = "localhost";
+		this.url = url;
+		this.name = name;
+		this.width = width;
+		this.height = height;
+		//화면 중앙에 위치
+		var left = Math.ceil((window.screen.width - width)/2); 
+		var top = 100;
+		//var top = Math.ceil((window.screen.height - height)/2);
+		var option = 
+			"width="+width+",height="+height+", scrollbars=yes, resizable=no, left="+left+", top="+top;
+		window.open(url, name, option);
+	} */
+	
+	//아이디 찾기
+	function IDpopup(){
+		//console.log(document.domain);으로 확인함
+		document.domain = "localhost";
+		var url = "/camp/searchIDView.do";
+		var name = "FIND MY ID";
+		var width = 570;
+		var height = 420;
+		//화면 중앙에 위치
+		var left = Math.ceil((window.screen.width - width)/2); 
+		var top = 100;
+		//var top = Math.ceil((window.screen.height - height)/2);
+		var option = 
+			"width="+width+",height="+height+", scrollbars=yes, resizable=no, left="+left+", top="+top;
+		window.open(url, name, option);
+	}
+	
+	//비밀번호 찾기
+	function PWDpopup(){
+		document.domain = "localhost";
+		var url = "/camp/searchPwdView.do";
+		var name = "FIND MY PWD";
+		var width = 570;
+		var height = 420;
+		//화면 중앙에 위치
+		var left = Math.ceil((window.screen.width - width)/2); 
+		var top = 100;
+		var option = 
+			"width="+width+",height="+height+", scrollbars=yes, resizable=no, left="+left+", top="+top;
+		window.open(url, name, option);
+	} 	
+</script>
 </html>
