@@ -18,6 +18,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 (IDX, MEMBERID, PRODUCTID, TITLE, CONTENT, FILENAME, PWD, REGDATE, READHIT, JOAYO)
 VALUES(SEQ_Review.nextVal, #{memberid}, #{productid}, #{title}, #{content}, #{filename}, #{pwd}, SYSDATE, 0, 0)
 	</insert>
+	
+
+		<!-- 게시글 삭제하기 -->
+	<delete id="reviewDelete" parameterType="java.util.HashMap">
+		delete from reviewtable where idx=#{idx} and pwd=#{pwd}
+	</delete>
+	
+	<update id="readhitCount">
+		update reviewtable set
+			readhit = readhit + 1
+			where
+			idx = #{idx}
+	</update>
+
+	
+<!--	애초에 수정할거면 글을 안쓰는게 맞습니다. 그래서 없앤겁니다 어려워서 뺀거 아닙니다.
+ 		 게시글 수정을 위한 한건 조회 
+	<select id="reviewSelect" resultType="reviewVO" parameterType="int">
+		select * from reviewtable where idx=#{idx}
+	</select>
+	
+		게시글 수정하기
+	<update id="reviewUpdate" parameterType="reviewVO">
+		update reviewtable
+		set productid=#{productid},
+		title=#{title},
+		content=#{content},
+		pwd=#{pwd},
+		filename=#{filename},
+		regdate=sysdate
+		where idx=#{idx}
+	</update>
+	 -->
 
 	
 </mapper>
