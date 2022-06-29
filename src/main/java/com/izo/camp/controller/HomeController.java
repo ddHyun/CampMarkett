@@ -82,4 +82,13 @@ public class HomeController {
 		session.setAttribute("sessionLon", 126.72414);
 		return "home_real";
 	}
+	
+	@RequestMapping("/makeSampleId")
+	public String makeSampleLogin() {
+		
+		session.setAttribute("loginId", "SampleID");
+		session.setAttribute("loginIdx", 4);
+		System.out.println("샘플 로그인이 완료되었습니다. ");
+		return "home_real";
+	}
 }
