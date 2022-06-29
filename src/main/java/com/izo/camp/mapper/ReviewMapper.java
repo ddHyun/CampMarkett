@@ -24,17 +24,30 @@ public interface ReviewMapper {
 	//insert는 건수로 받기때문에 int
 	public int reviewInsert(ReviewVO vo);
 	
-
+	// 게시글 삭제
 	public int reviewDelete(HashMap map);
 	
+	// 조회수 증가
 	public int readhitCount(int idx);
 
-
+	// 게시글 수정 해당건 조회
+	public ReviewVO reviewSelect(int idx);
+	  
+	// 게시글 수정
+	public int reviewUpdate(ReviewVO vo);
 	
+	public int countbyJoayo(HashMap hashMap);
 	
-	/*애초에 수정할거면 글을 안쓰는게 맞습니다. 그래서 없앤겁니다 어려워서 뺀거 아닙니다.
-	 * public ReviewVO reviewSelect(int idx);
-	 * 
-	 * public int reviewUpdate(ReviewVO vo);
-	 */
+	public int create(HashMap hashMap);
+	
+	public int joayo_check(HashMap hashMap);
+	
+	public int joayo_check_cancel(HashMap hashMap);
+	
+	public JoayoVO read (HashMap hashMap);
+	
+	public int deletebyIdx(int idx);
+	
+	public int deletebyId(String id);
+	
 }

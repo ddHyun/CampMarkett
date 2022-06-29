@@ -2,12 +2,8 @@ Manifest-Version: 1.0
 <<<<<<< Updated upstream
 
 
-
-Build-Jdk: 1.8.0_281
-
 Built-By: Administrator
-
-Build-Jdk: 1.8.0_202
+Build-Jdk: 1.8.0_281
 
 =======
 Built-By: Lece6
