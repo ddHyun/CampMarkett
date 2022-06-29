@@ -2,6 +2,8 @@ package com.izo.camp.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,12 +19,7 @@ public class MemberController {
 
 	@Autowired
 	MemberService memberService;
-	
-//	@RequestMapping(value = "/memberCheck.do")
-//	public String memberCheck(Model model) {
-//		model.addAttribute("list", memberService.list());
-//		return "join/memberCheck";
-//	}
+	HttpSession session;
 	
 	//약관동의 페이지로 이동
 	@RequestMapping("/term.do")
@@ -60,18 +57,13 @@ public class MemberController {
 	@RequestMapping("checkID.do")
 	@ResponseBody
 	public String checkId(@ModelAttribute("id") String id) {		
-		int idx = memberService.idIdx(id);
-		
-		System.out.println(idx);
-		
-		String param = "n";
-		
+		int idx = memberService.idIdx(id);		
+		System.out.println(idx);		
+		String param = "n";		
 		if(idx > 0) {
 			param = "y";
-		}
-		
-		String result = String.format("[{'param':'%s'}]", param);		
-		
+		}		
+		String result = String.format("[{'param':'%s'}]", param);				
 		return result;
 	}
 	
@@ -92,18 +84,13 @@ public class MemberController {
 	//회원가입 유무 확인
 	@ResponseBody
 	@RequestMapping("/memberOrNot.do")
-	public String search(MemberVO vo) {
-		
-		int idx = memberService.getMemberIdx(vo);
-		
-		String param = "n";
-		
+	public String search(MemberVO vo) {		
+		int idx = memberService.getMemberIdx(vo);		
+		String param = "n";		
 		if(idx > 0) {
 			param = "y";
-		}
-		
-		String result = String.format("[{'param':'%s'}]", param);
-		
+		}		
+		String result = String.format("[{'param':'%s'}]", param);		
 		return result;
 	}
 	
@@ -117,21 +104,15 @@ public class MemberController {
 	//로그인하기
 	@ResponseBody
 	@RequestMapping("/goLogin.do")
-	public String goLogin(MemberVO vo) {
-		
-		int idx = memberService.getIdxFromId(vo);
-		
-		String param = "n";
-		
+	public String goLogin(MemberVO vo) {		
+		int idx = memberService.getIdxFromId(vo);		
+		int param = 0;		
 		if(idx > 0) {
-			param = "y";
-		}
-		
-		System.out.println(idx);
-		System.out.println(param);
-		
-		String result = String.format("[{'param':'%s'}]", param);
-		
+			param = idx;
+			MemberVO vo1 = memberService.userInfo(idx); 
+			session.setAttribute("vo", vo1);
+		}		
+		String result = String.format("[{'param':'%d'}]", param);		
 		return result;
 	}
 	

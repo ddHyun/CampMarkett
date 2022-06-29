@@ -14,6 +14,9 @@ public interface MemberMapper {
 	@Select("select * from membertable")
 	public List<MemberVO> list();
 	
+	@Select("select * from membertable where idx=#{idx}")
+	public MemberVO userInfo(int idx);
+	
 	//MemberMapper.xml의  id와 메서드명 동일하게 만들어서 쿼리문 작성하기
 	public List<MemberVO> memberlist();
 	
