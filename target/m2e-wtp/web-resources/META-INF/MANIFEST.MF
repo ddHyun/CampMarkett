@@ -1,13 +1,8 @@
 Manifest-Version: 1.0
-<<<<<<< Updated upstream
-
 
 Built-By: Administrator
 Build-Jdk: 1.8.0_281
 
-=======
-Built-By: Lece6
-Build-Jdk: 1.8.0_333
->>>>>>> Stashed changes
+
 Created-By: Maven Integration for Eclipse
 
