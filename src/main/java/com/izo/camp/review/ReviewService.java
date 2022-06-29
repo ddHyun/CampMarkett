@@ -59,17 +59,66 @@ public class ReviewService {
 
 	
 	
-	/* 애초에 수정할거면 글을 안쓰는게 맞습니다. 그래서 없앤겁니다 어려워서 뺀거 아닙니다.
-	 * public ReviewVO selectReview(int idx) {
-	 * 
-	 * return reviewMapper.reviewSelect(idx);
-	 * 
-	 * }
-	 * 
-	 * public int updateReview(ReviewVO vo) {
-	 * 
-	 * return reviewMapper.reviewUpdate(vo); }
-	 */
-
+	 
+	public ReviewVO selectReview(int idx) {
+	  
+	return reviewMapper.reviewSelect(idx);
 	
+	}
+	  
+	public int updateReview(ReviewVO vo) {
+	  
+	return reviewMapper.reviewUpdate(vo); 
+	
+	}
+	
+	public int countbyJoayo(HashMap hashMap) {
+		
+		int count = reviewMapper.countbyJoayo(hashMap);
+		
+		return count;
+	}
+	
+	public int create(HashMap hashMap) {
+		
+		int count = reviewMapper.create(hashMap);
+		
+		return count;
+	}
+	
+	public int joayo_check(HashMap hashMap) {
+		
+		int count = reviewMapper.joayo_check(hashMap);
+		
+		return count;
+	}
+	
+	public int joayo_check_cancel(HashMap hashMap) {
+		
+		int count = reviewMapper.joayo_check_cancel(hashMap);
+		
+		return count;
+	}
+	
+	public JoayoVO read(HashMap hashMap) {
+		
+		JoayoVO vo = reviewMapper.read(hashMap);
+		
+		return vo;
+		
+	}
+	
+	public int deletebyIdx(int idx) {
+		
+		int count = reviewMapper.deletebyIdx(idx);
+		
+		return count;
+	}
+	
+	public int deletebyId(String id) {
+		
+		int count = reviewMapper.deletebyId(id);
+		
+		return count;
+	}
 }

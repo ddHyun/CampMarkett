@@ -16,7 +16,7 @@
 
 
 <script>
-
+	// 게시글 삭제
 	function del(f){
 		
 		var pwd = f.pwd.value;
@@ -48,40 +48,81 @@
 				
 				if(json[0].res =='no'){
 					alert("삭제실패");
-				} //if
+				} 
 				
 				alert("삭제 성공");
 				location.href="reviewMain.do";
 				
-			}//if
-		}//resultfn
-		
-	function modify(f){
-		
-		var ori_pwd = f.ori_pwd.value.trim();
-		var pwd = f.pwd.value.trim();
-			
-		if(ori_pwd != pwd){
-				
-			alert("비밀번호가 일치하지 않습니다");
-				
-			return;
-				
+			}
 		}
-			
-		f.action = "reviewSelect.do";
-		f.method = "POST";
-		f.submit();
-			
 	}
+	// 게시글 수정
+		function modify2(f){
+			 		
+					var ori_pwd = f.ori_pwd.value.trim();
+					var pwd = f.pwd.value.trim();
+						
+					if(ori_pwd != pwd){
+							
+						alert("비밀번호가 일치하지 않습니다");
+							
+						return;
+							
+					}
+						
+					f.action = "reviewSelect.do";
+					f.method = "POST";
+					f.submit(); 
+					
+						
+				}
+
+		
+		// 좋아요 기능 
+	function joayoFunc(){
+		
+		var revDetail = $('#revDetail');
+		var idx = $('idx', revDetail).val();
+		
+		$.ajax({
+			url:"../joayo/joayo.do",
+			type:"GET",
+			cache:false,
+			dataType:"json",
+			data:'idx='+idx,
+			success:function(data){
+				
+				var msg='';
+				var joayoImg='';
+				msg += data.msg;
+				alert(msg);
+				
+				
+				if(data.joayo_check == 0){
+					
+					joayoImg = "/resources/assets/img/joayo/heart.svg";
+			
+				} else{
+					
+					joayoImg = "/resources/assets/img/joayo/heart-fill.svg";
+					
+				}
+				$('#joayoImg', revDetail).attr('src', joayoImg);
+				$('#joayo').html(data.joayo);
+				$('#joayo_check').html(data.joayo_check);
+			},
+			error: function(request,status,error){
+				alert("code:"+request.status+"\n" + "message:"+request.responseText+"\n"+"error:"+error);
+			}
+		
+	});
 		
 }
-
 
 </script>
 </head>
 <body>
-	<table border="1" align="center" width="700">
+	<table id="revDetail" border="1" align="center" width="700">
 		<tr>
 			<th>제목</th>
 				<td>${vo.title}</td>
@@ -116,9 +157,22 @@
 		</tr>
 		
 		<tr>
-			<th>추천수</th>
-			<td>${vo.joayo}</td>
+			<th> 추천수</th>
+				<td>
+					<div class="div1">
+		 
+		   <c:choose>
+		    <c:when test="${id ne null}">
+		     <a href='javascript: joayoFunc();'><img src='resources/assets/img/joayo/heart-fill.svg'></a>
+		    </c:when>
+		    <c:otherwise>
+		     <a href=<!-- 'javascript: loginNeed();' -->><img src='resources/assets/img/joayo/heart.svg' id='joayo_img'></a>
+		    </c:otherwise>
+		   </c:choose>
+		   </div>
+				</td>
 		</tr>
+		
 	</table>
 	<div align="center">
 		<form>
@@ -126,9 +180,12 @@
 			<input type="hidden" name="ori_pwd" value="${vo.pwd}">
 			비밀번호<input type="password" name="pwd">
 			<input type="button" value="삭제" width="100" height="100" onclick="del(this.form)">
-			<!-- <input type="button" value="수정" width="100" height="100" onclick="modify(this.form)"> -->
+			<input type="button" value="수정" width="100" height="100" onclick="modify2(this.form)">
 			<input type="button" value="목록으로" width="100" height="100" onclick="location.href='reviewMain.do'">
 		</form>
 	</div>
+		
+	 <!--  좋아요  -->
+		
 </body>
 </html>

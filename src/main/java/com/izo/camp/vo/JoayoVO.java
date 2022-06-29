@@ -2,20 +2,19 @@ package com.izo.camp.vo;
 
 public class JoayoVO {
 
-	private String memberid;
-	private int idx, joayo;
-	
-	
-	@Override
-	public String toString() {
-		return "JoayoVO [memberid=" + memberid + ", idx=" + idx + ", joayo=" + joayo + "]";
+	private String id;
+	private int joayono, idx, joayo_check;
+	public String getId() {
+		return id;
 	}
-	
-	public String getMemberid() {
-		return memberid;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public void setMemberid(String memberid) {
-		this.memberid = memberid;
+	public int getJoayono() {
+		return joayono;
+	}
+	public void setJoayono(int joayono) {
+		this.joayono = joayono;
 	}
 	public int getIdx() {
 		return idx;
@@ -23,11 +22,13 @@ public class JoayoVO {
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	public int getJoayo() {
-		return joayo;
+	public int getJoayo_check() {
+		return joayo_check;
 	}
-	public void setJoayo(int joayo) {
-		this.joayo = joayo;
+	public void setJoayo_check(int joayo_check) {
+		this.joayo_check = joayo_check;
 	}
+	
+	
 	
 }
