@@ -21,6 +21,9 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 	
+	@Autowired
+	HttpSession session;
+	
 	//약관동의 페이지로 이동
 	@RequestMapping("/term.do")
 	public String term(MemberVO vo, Model model) {
@@ -109,13 +112,19 @@ public class MemberController {
 		int idx = memberService.getIdxFromId(vo);		
 		int param = 0;	
 		String name = "none";
+		String id = "none";
 		if(idx > 0) {
 			param = idx;
 			MemberVO vo1 = memberService.userInfo(idx);
 			name = vo1.getName();
-		}		
+			id = vo1.getId();
+			//로그인 성공하면 세션에 바로 묶어서 결과 보내주고 사용할 페이지에서 ${sessionScope.key값} 으로 사용하기
+			//바로 사용하는 게 아니라 컨트롤러에서 활용할 용도라면 session.getAttribute()
+			session.setAttribute("loginId", id);
+			session.setAttribute("loginIdx", idx);
+		}
 		System.out.println("로그인버튼 클릭시 접속자 이름: " +name);
-		String result = String.format("[{'param':'%d'}, {'name':'%s'}]", param, name);		
+		String result = String.format("[{'param':'%d'}, {'name':'%s'}, {'id':'%s'}]", param, name, id);		
 		return result;
 	}
 	

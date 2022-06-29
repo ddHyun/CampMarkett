@@ -13,7 +13,7 @@
 <body>
 	
 	<div>
-	<form method="POST" align="center">
+	<form name="f" method="POST" align="center" action="money.do">
 	<h3>로그인</h3>
 		<div>
 			<label>아이디</label>
@@ -33,6 +33,8 @@
 			<span style="cursor:pointer; text-decoration:underline;" onclick="IDpopup()">아이디 찾기</span>&emsp;
 			<span style="cursor:pointer; text-decoration:underline;" onclick="PWDpopup()">비밀번호 찾기</span>
 		</div>
+		<!-- <input type="hidden" name="idx" id="idx">
+		<input type="hidden" name="loginId" id="loginId"> -->
 	</form>
 	</div>	
 </body>
@@ -81,14 +83,17 @@
 			}else{
 				var name = json[1].name;
 				alert("환영합니다 "+name+" 회원님~");
-				var idx = json[0].param;
-				console.log(json);
-				console.log("data"+data);
-				console.log("length : "+json.length);
-				console.log("json[0].param:"+json[0].param);
-				console.log("json[1].name:"+json[1].name);
-				console.log("name : "+name);
-				//window.location="money.do?idx="+idx;
+				/* var idxVal = json[0].param;
+				var idVal = json[2].id;
+				var idx = document.getElementById("idx");
+				idx.value = idxVal;
+				console.log("idx value: "+idx.value); */
+				
+				var f = document.f;
+				f.id.value = idVal;
+				console.log(f.id.value);
+				document.f.submit();	
+				
 			}
 		}
 	}
