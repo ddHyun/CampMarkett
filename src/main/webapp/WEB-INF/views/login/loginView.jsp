@@ -5,12 +5,162 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>:::Everyday 캠프마켓:::</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="icon" href="resources/assets/images/favicon.ico">
+     <link rel="shortcut icon" href="resources/assets/images/favicon.ico" />
+     <link rel="stylesheet" href="resources/assets/css/style.css">
+	  <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
+     <link rel="stylesheet" href="resources/assets/css/prettyPhoto.css">
+     <link rel="stylesheet" href="resources/assets/css/login.css">
+     <script src="resources/assets/js/jquery.js"></script>
+     <script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
+     <script src="resources/assets/js/superfish.js"></script>
+     <script src="resources/assets/js/jquery.easing.1.3.js"></script>
+     <script src="resources/assets/js/sForm.js"></script>
+     <script src="resources/assets/js/jquery.prettyPhoto.js"></script>
+	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
 <script src="resources/assets/js/httpRequest.js"></script>
 <script src="resources/assets/js/jquery-3.6.0.min.js"></script>
-
+     <script>      
+        $(document).ready(function(){
+    $("a[data-gal^='prettyPhoto']").prettyPhoto({theme:'facebook'});    
+    });      
+</script>
 </head>
-<body>
+<div class="main">
+<!--==============================header=================================-->
+  <header> 
+  <div class="zerogrid">
+    <div class="col-full">
+	<div class="wrap-col">
+    <h1><a href="index.html"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
+    
+         <div class="menu_block">
+           <nav>
+            <ul class="sf-menu">
+                   <li><a href="index.html">Home</a></li>
+                   <li class="with_ul"><a href="index-1.html">About Us</a>
+				   	<ul>
+                         <li><a href="#"> cuisine</a></li>
+                         <li><a href="#">Good rest</a></li>
+                         <li><a href="#">Services</a></li>
+                     </ul>
+				   </li>
+                   <li><a href="index-2.html">Menu</a></li>
+                   <li><a href="index-3.html">Portfolio</a></li>
+                   <li><a href="index-4.html">News </a></li>
+                   <li class="current"><a href="index-5.html">로그인 / 회원가입</a></li>
+                 </ul>
+           </nav>
+           <div class="clear"></div>
+           </div>
+           <div class="clear"></div>
+		</div>
+      </div>
+    </div>
+</header>
+<!--=======content================================-->
+
+<div class="content">
+  <div class="zerogrid">
+    <div class="col-full">
+      <h2></h2>
+    </div>
+    <div class="clear"></div>	
+	<div class="row">
+    <div class="portfolio">  
+    
+    
+    <main id="img">
+       <form id="form" name="form" class="form_class" action="money.do" method="post">
+            <div class="form_div">
+                <label>아이디</label>
+                <input class="field_class" name="id" id="id" type="text" autofocus><br>
+                <label>비밀번호</label>
+                <input id="pwd" class="field_class" name="pwd" type="password">
+            </div>
+            <div class="info_div" style="display:flex;">
+            <a style="border:none; box-shadow:none; background:none;
+           	text-decoration:underline; width:200px; margin: 10px auto;" onclick="IDpopup()">
+           	아이디 찾기</a>
+           	<a style="border:none; box-shadow:none; background:none;
+           	text-decoration:underline; width:200px; margin: 10px auto;" onclick="PWDpopup()">
+           	비밀번호 찾기</a>           
+            </div>  
+            <div class="info_div">          
+                <input class="submit_class" type="button" form="form" value="로그인"
+                onclick="goLogin()">
+            </div>
+            <div class="info_div" style="margin-top:10px">
+               	<p>아직 계정이 없으신가요?
+               	<a style="border:none; box-shadow:none; background:none;
+               	text-decoration:underline; width:200px; margin: 10px auto;" href="term.do">
+               	회원가입하러 가기</a></p>
+            </div>
+        </form>
+     </main>   
+        
+        
+        
+    </div>
+    </div>
+   
+    <div class="row">
+    <div class="bottom_block">
+      <div class="col-1-2">
+        <h3>Follow Us</h3>
+        <div class="socials">
+          <a href="#"></a>
+          <a href="#"></a>
+          <a href="#"></a>
+        </div>
+        <nav><ul>
+                   <li><a href="index.html">Home</a></li>
+                   <li><a href="index-1.html">About Us</a></li>
+                   <li><a href="index-2.html">Menu</a></li>
+                   <li class="current"><a href="index-3.html">Portfolio</a></li>
+                   <li><a href="index-4.html">News </a></li>
+                   <li><a href="index-5.html">Contacts</a></li>
+                 </ul></nav>
+      </div>
+      <div class="col-1-2">
+        <h3>Email Updates</h3>
+        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
+        <form id="newsletter">
+                  <div class="success">Your subscribe request has been sent!</div>
+                  <label class="email">
+                       <input type="email" value="Enter e-mail address" >
+                       <a href="#" class="btn" data-type="submit">subscribe</a> 
+                        <span class="error">*This is not a valid email address.</span>
+                  </label> 
+              </form> 
+          </div>
+      </div>
+	  </div>
+    </div>
+  </div>
+</div>
+<!--==============================footer=================================-->
+
+<footer>    
+  <div class="zerogrid">
+    <div class="col-full">
+		<div class="wrap-col">
+     Gourmet © 2013  &nbsp;&nbsp; |&nbsp;&nbsp;   <a href="#">Privacy Policy</a>    &nbsp;&nbsp;|&nbsp;&nbsp;  Designed by <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster</a> - <a href="https://www.zerotheme.com/" title="free website templates">ZEROTHEME</a>
+	 	</div>
+    </div>
+  </div>
+</footer>
+</body>
+
+
+
+
+
+
+<!-- <body>
 	
 	<div>
 	<form name="f" method="POST" align="center" action="money.do">
@@ -35,13 +185,13 @@
 		</div>		
 	</form>
 	</div>	
-</body>
+</body> -->
 <script>
 	//페이지 로딩되면 자동커서
 	$(function(){
 		$('#id').focus();
 	});	
-
+	
 	function goLogin(){
 		var id = document.getElementById("id");
 		var idVal = id.value.trim();
@@ -81,8 +231,8 @@
 			}else{
 				var name = json[1].name;
 				alert("환영합니다 "+name+" 회원님~");				
-				var f = document.f;			
-				document.f.submit();	
+				//var form = document.form;			
+				document.form.submit();	
 				
 			}
 		}
