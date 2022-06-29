@@ -10,7 +10,9 @@
 </head>
 <body>
 	<form align="center">
-		<h1>마이페이지1</h1>
+		<h1>${sessionScope.loginId}님 마이페이지1</h1>
+		
+		<p> 이제 vo 확인 ${vo.name}</p>
 		<label></label>
 		<div>
 			<label for="regist" id="registCard" style="cursor:pointer">카드등록</label>&emsp;&emsp;
@@ -42,13 +44,15 @@
 				</div>
 				<div>
 					<input type="button" value="등록하기" onclick="registCard()">
-					<img src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/000000/external-question-mark-web-flaticons-flat-flat-icons-3.png"/>
+					<img src="resources/assets/img/images/questionmark.png"/>
 				</div>
 			</div>
 		</div>
 	</form>
 </body>
 <script>
+	
+	
 	function showForm(){
 		document.getElementById('regist').display = 'block';
 	}
