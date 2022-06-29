@@ -166,7 +166,7 @@
 		     <a href='javascript: joayoFunc();'><img src='resources/assets/img/joayo/heart-fill.svg'></a>
 		    </c:when>
 		    <c:otherwise>
-		     <a href=<!-- 'javascript: loginNeed();' -->><img src='resources/assets/img/joayo/heart.svg' id='joayo_img'></a>
+		     <!-- <a href='javascript: loginNeed();'><img src='resources/assets/img/joayo/heart.svg' id='joayo_img'></a> -->
 		    </c:otherwise>
 		   </c:choose>
 		   </div>
