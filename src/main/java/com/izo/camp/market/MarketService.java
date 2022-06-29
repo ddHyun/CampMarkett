@@ -18,4 +18,8 @@ public class MarketService {
 	public List<ProductVO> getList(){
 		return productMapper.getList();
 	}
+
+	public ProductVO getProductByIdx(int idx) {
+		return productMapper.getOne(idx);
+	}
 }

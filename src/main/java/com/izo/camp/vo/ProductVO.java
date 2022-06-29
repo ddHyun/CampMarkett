@@ -13,6 +13,7 @@ public class ProductVO {
 	private String productId;
 	private Integer price;
 	private Integer stock;
+	private String imgName;
 	
 	public ProductVO() {
 		// TODO Auto-generated constructor stub
@@ -40,6 +41,12 @@ public class ProductVO {
 	}
 	public void setStock(Integer stock) {
 		this.stock = stock;
+	}
+	public String getImgName() {
+		return imgName;
+	}
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
 	}
 	
 }

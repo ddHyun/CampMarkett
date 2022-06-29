@@ -12,4 +12,7 @@ public interface ProductMapper {
 	
 	@Select("SELECT * FROM ProductTABLE")
 	public List<ProductVO> getList();
+	
+	@Select("SELECT * FROM ProductTABLE WHERE idx = #{idx}")
+	public ProductVO getOne(int idx);
 }
