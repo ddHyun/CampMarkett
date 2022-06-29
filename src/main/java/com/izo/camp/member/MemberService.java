@@ -20,6 +20,13 @@ public class MemberService {
 		return memberMapper.list();
 	}
 	
+	//회원 한명 정보 조회
+	public MemberVO userInfo(int idx){
+		MemberVO vo = memberMapper.userInfo(idx);
+		System.out.println(vo.getName());
+		return memberMapper.userInfo(idx);
+	}
+	
 	//아이디 idx 찾기
 	public int idIdx(String id) {
 		return memberMapper.idIdx(id);
