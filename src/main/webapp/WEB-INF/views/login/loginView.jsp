@@ -23,10 +23,10 @@
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
 <script src="resources/assets/js/httpRequest.js"></script>
 <script src="resources/assets/js/jquery-3.6.0.min.js"></script>
-     <script>      
-        $(document).ready(function(){
+<script>      
+     $(document).ready(function(){
     /* $("a[data-gal^='prettyPhoto']").prettyPhoto({theme:'facebook'}); */   
-        	$('#bgImg').css('transition', 'opacity 1s ease-in-out');
+        	$('#form').fadeIn(4000);
     });      
 </script>
 </head>
@@ -75,14 +75,14 @@
     <div class="portfolio">  
     
     
-    <main id"bgImg"  style="display: flex;
+    <main  style="display: flex;
     align-items: center;
     justify-content: center;
     height: 75vh;
     width: 100%;
     background: url('resources/assets/img/images/bbq.jpg') no-repeat center center;
     background-size: cover;">
-       <form id="form" name="form" class="form_class" action="money.do" method="post">
+       <form id="form" name="form" class="form_class" action="money.do" method="post" style="display:none">
             <div class="form_div">
                 <label>아이디</label>
                 <input class="field_class" name="id" id="id" type="text" autofocus><br>
