@@ -10,4 +10,16 @@ import com.izo.camp.vo.BasketVO;
 public interface BasketMapper {
 	
 	public List<BasketVO> getBasketById(String loginId);
+
+	public BasketVO findBasket(BasketVO basketVO);
+
+	public int upDateBasket(BasketVO vo);
+
+	public int insertBasket(BasketVO basketVO);
+
+	public int deleteProduct(BasketVO basketVO);
+
+	public int changePcsPM(BasketVO basketVO);
+
+	public int getTotalPrice(BasketVO basketVO);
 }
