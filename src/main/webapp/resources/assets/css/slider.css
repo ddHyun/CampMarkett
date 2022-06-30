@@ -32,7 +32,7 @@
 .slider .banner{
 	position: absolute;
 	z-index: 1 !important;
-	background: url(../images/banner_bg.png) 0 0 repeat;
+	background: url(..../img/images/banner_bg.png) 0 0 repeat;
 	left: 0;
 	width: 210px;
 	color: #fff;
@@ -84,7 +84,7 @@ z-index: 999;
 	-o-transition: 0s ease;
 	-webkit-transition: 0s ease;
 	height: 23px;
-	background: url(../images/pagination.png) right 0 no-repeat;
+	background: url(../img/images/pagination.png) right 0 no-repeat;
 }
 
 .pagination li a:hover, .pagination li.current a {

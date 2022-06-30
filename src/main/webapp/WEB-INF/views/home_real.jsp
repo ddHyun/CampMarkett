@@ -99,7 +99,7 @@ height: 'auto',
                          <li><a href="makeSampleId">샘플 로그인!</a></li>
                      </ul>
 				   </li>
-                   <li><a href="Login_Temp">로그인</a></li>
+                   <li><a href="login_Temp">로그인</a></li>
              </ul>
            </nav>
            <div class="clear"></div>

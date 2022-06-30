@@ -5,15 +5,157 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="resources/assets/js/httpRequest.js"></script>
-<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
-<script>
+<title>:::Everyday 캠프마켓:::</title>
+     <meta charset="utf-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="icon" href="resources/assets/img/images/favicon.ico">
+     <link rel="shortcut icon" href="resources/assets/img/images/favicon.ico" />
+     <link rel="stylesheet" href="resources/assets/css/style.css">
+     <link rel="stylesheet" href="resources/assets/css/login.css">
+     <link rel="stylesheet" href="resources/assets/css/popup.css">
+     <link rel="stylesheet" href="resources/assets/css/slider.css">
+	 <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
+     <script src="resources/assets/js/jquery.js"></script>
+     <script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
+     <script src="resources/assets/js/superfish.js"></script>
+     <script src="resources/assets/js/jquery.easing.1.3.js"></script>
+     <script src="resources/assets/js/sForm.js"></script>
+     <script src="resources/assets/js/jquery.carouFredSel-6.1.0-packed.js"></script>
+     <script src="resources/assets/js/tms-0.4.1.js"></script>
+	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
+	<script src="resources/assets/js/httpRequest.js"></script>
+	<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 
-	$(function(){
-		$('#name').focus();
+</head>
+<body>
+<div class="main">
+<!-- ==============================header================================= -->
+  <header> 
+  <div class="zerogrid">
+    <div class="col-full">
+	<div class="wrap-col">
+    <h1><a href="index.html"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
+    
+         <div class="menu_block">
+           <nav>
+            <ul class="sf-menu">
+                   <li><a href="home2">Home</a></li>
+                   
+                   <li><a href="resources/assets/html/index-2.html">밀키트</a></li>
+                   <li><a href="resources/assets/html/index-3.html">후기</a></li>
+                   <li><a href="resources/assets/html/index-4.html">주변 캠핑장 </a></li>
+                   <li class="with_ul"><a href="resources/assets/html/index-1.html">회원 정보</a>
+				   	<ul>
+                         <li><a href="#"> cuisine</a></li>
+                         <li><a href="#">Good rest</a></li>
+                         <li><a href="#">Services</a></li>
+                     </ul>
+				   </li>
+                   <li class="current"><a href="resources/assets/html/index-4.html">로그인 / 회원가입</a></li>
+                 </ul>
+           </nav>
+           <div class="clear"></div>
+           </div>
+           <div class="clear"></div>
+		</div>
+      </div>
+    </div>
+</header>
+<!-- =======content================================ -->
+
+<div class="content">
+  <div class="zerogrid" style="width:100%">
+   <!--  <div class="col-full" style="margin:0>
+      <h2">회원가입 유무 확인</h2>
+    </div> -->
+    <div class="clear"></div>	
+	<div class="row">
+    <div class="portfolio">  
+    
+    
+    <main  style="display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+    width: 100%;
+    background: url('resources/assets/img/images/bbq3.jpg') no-repeat center center;
+    background-size: cover;">
+    <div class="main2" style="width:800px;
+  margin:160px auto;
+  text-align:center;">
+       <form id="form" name="form" class="form_class" action="money.do" method="post" style="display:none;">
+            <div class="form_div">
+                <label>이름</label>
+                <input class="field_class" name="name" id="name" type="text" autofocus><br>
+                <label>이메일</label>
+                <input id="email" class="field_class" name="email" type="text">
+            </div>        
+            <div class="info_div">          
+                <input class="submit_class" type="button" form="form" value="가입 확인하기"
+                onclick="checkMember()">
+            </div>           
+        </form>
+	</div>
+</main>         
+</div>
+</div>
+   
+    <div class="row">
+    <div class="bottom_block">
+      <div class="col-1-2">
+        <h3>Follow Us</h3>
+        <div class="socials">
+          <a href="#"></a>
+          <a href="#"></a>
+          <a href="#"></a>
+        </div>
+        <nav><ul>
+                   <li><a href="index.html">Home</a></li>
+                   <li><a href="index-1.html">About Us</a></li>
+                   <li><a href="index-2.html">Menu</a></li>
+                   <li class="current"><a href="index-3.html">Portfolio</a></li>
+                   <li><a href="index-4.html">News </a></li>
+                   <li><a href="index-5.html">Contacts</a></li>
+                 </ul></nav>
+      </div>
+     <div class="col-1-2">
+        <h3>Email Updates</h3>
+        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
+        <form id="newsletter">
+                  <div class="success">Your subscribe request has been sent!</div>
+                  <label class="email">
+                       <input type="email" value="Enter e-mail address" >
+                       <a href="#" class="btn" data-type="submit">subscribe</a> 
+                        <span class="error">*This is not a valid email address.</span>
+                  </label> 
+              </form> 
+          </div>
+      </div>
+	  </div>
+    </div>
+  </div>
+</div>
+<!-- ==============================footer================================= -->
+
+<footer>    
+  <div class="zerogrid">
+    <div class="col-full">
+		<div class="wrap-col">
+     Gourmet © 2013  &nbsp;&nbsp; |&nbsp;&nbsp;   <a href="#">Privacy Policy</a>    &nbsp;&nbsp;|&nbsp;&nbsp;  Designed by <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster</a> - <a href="https://www.zerotheme.com/" title="free website templates">ZEROTHEME</a>
+	 	</div>
+    </div>
+  </div>
+</footer>
+</body>
+
+<script>
+//input창 띄우기
+	$(document).ready(function(){
+	   	$('#form').fadeIn(1000);
 	});
 
+	//회원유무 확인하기
 	function checkMember(){
 	var name = document.getElementById("name").value.trim();
 	var email = document.getElementById("email").value.trim();
@@ -68,7 +210,7 @@
 					email.value="";
 				}else{	
 					//파라미터 값 다른 페이지로 넘기기
-					var f = document.f;
+					var f = document.form;
 					f.action = "term.do";
 					f.method = "post";
 					console.log("멤버체크페이지에서/이름: "+name.value+"이메일: "+email.value);
@@ -78,28 +220,11 @@
 				if(!confirm("정보가 존재합니다. 로그인 페이지로 이동합니다.")){
 					return;
 				}else{
-					location.href="loginView.do";
+					location.href="login_Temp";
 				}
 			}
 		}
 	}
 		
 </script>
-</head>
-<body>
-	<p align="center">회원가입 유무 확인</p>
-	<form name="f" align="center">
-		<div>
-			<label>이름</label>
-			<input type="text" name="name" id="name">
-		</div>
-		<div>
-			<label>이메일</label>
-			<input type="text" name="email" id="email" placeholder="예)abc@def.com">
-		</div>
-		<div>				
-			<input type="button" value="가입 확인하기" onclick="checkMember()">			
-		</div>
-	</form>
-</body>
 </html>
