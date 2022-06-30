@@ -1,7 +1,5 @@
 package com.izo.camp.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +25,7 @@ public class MemberController {
 	//가입여부 확인 페이지 ->약관동의 페이지
 	@RequestMapping("/term.do")
 	public String term(MemberVO vo, Model model) {			
-		model.addAttribute("vo", vo);
+		//model.addAttribute("vo", vo);
 		String name = vo.getName();
 		String email = vo.getEmail();
 		session.setAttribute("wannaName", name);

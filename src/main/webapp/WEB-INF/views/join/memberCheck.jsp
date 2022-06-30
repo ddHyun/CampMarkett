@@ -66,9 +66,9 @@
 
 <div class="content">
   <div class="zerogrid" style="width:100%">
-    <div class="col-full">
-      <h2></h2>
-    </div>
+   <!--  <div class="col-full" style="margin:0>
+      <h2">회원가입 유무 확인</h2>
+    </div> -->
     <div class="clear"></div>	
 	<div class="row">
     <div class="portfolio">  
@@ -77,7 +77,7 @@
     <main  style="display: flex;
     align-items: center;
     justify-content: center;
-    height: 75vh;
+    height: 85vh;
     width: 100%;
     background: url('resources/assets/img/images/bbq3.jpg') no-repeat center center;
     background-size: cover;">
@@ -86,101 +86,20 @@
   text-align:center;">
        <form id="form" name="form" class="form_class" action="money.do" method="post" style="display:none;">
             <div class="form_div">
-                <label>아이디</label>
-                <input class="field_class" name="id" id="id" type="text" autofocus><br>
-                <label>비밀번호</label>
-                <input id="pwd" class="field_class" name="pwd" type="password">
-            </div>
-            <div class="info_div" style="display:flex;">
-         <!--    <a style="border:none; box-shadow:none; background:none; cursor:pointer;
-           	text-decoration:underline; width:200px; margin: 10px auto;" onclick="IDpopup()">
-           	아이디 찾기</a> -->
-  			<a class="info_div popup-btn" href="#">아이디 찾기</a>
-           	<!-- <a style="border:none; box-shadow:none; background:none; cursor:pointer;
-           	text-decoration:underline; width:200px; margin: 10px auto;" onclick="PWDpopup()">
-           	비밀번호 찾기</a>  -->          
-  			<a class="info_div popup-btn" href="#">비밀번호 찾기</a>
-            </div>  
-            <div class="info_div">          
-                <input class="submit_class" type="button" form="form" value="로그인"
-                onclick="goLogin()">
-            </div>
-            <div class="info_div" style="margin-top:10px">
-               	<p>아직 계정이 없으신가요?
-               	<a style="border:none; box-shadow:none; background:none;
-               	text-decoration:underline; width:200px; margin: 10px auto;" href="memberCheck.do">
-               	회원가입하러 가기</a></p>
-            </div>
-        </form>
-	</div>
-</main> 
-
-  
-	<!-- 아이디찾기 팝업 -->
-      <div class="popup-wrap">
-    <div class="popup-box">
-      <form id="form1" name="form1" class="form_class" method="post">
-            <div class="form_div">
                 <label>이름</label>
                 <input class="field_class" name="name" id="name" type="text" autofocus><br>
-                 <label>생년월일</label>
-                <input class="field_class" name="birth" id="birth" placeholder="예)990101" type="text"><br>
                 <label>이메일</label>
-                <input class="field_class" name="email" type="text" id="email" placeholder="예)abc@def.com">
-            </div>
-            <div class="info_div" id="idDiv">          
-                <input class="submit_class" type="button" form="form" value="아이디 찾기"
-                onclick="searchID()">
-            </div>
-            <div  class="info_div" style="display:flex; display:none; margin:20 auto" id="idText">
-				<label>아이디 :&emsp;<span id="searchId" style="color:#e2827e; font-size:20px"></span></label>&emsp;		
-			</div>          
-		      <div style="margin-top:15px">
-		      	<a class="close-btn popup-close" href="#">로그인 화면으로 이동</a>
-		      </div>
+                <input id="email" class="field_class" name="email" type="text">
+            </div>        
+            <div class="info_div">          
+                <input class="submit_class" type="button" form="form" value="가입 확인하기"
+                onclick="checkMember()">
+            </div>           
         </form>
-    </div>
-  </div>  
-  
-  
-  <!-- 비밀번호 찾기 팝업 -->
-      <div class="popup-wrap">
-    <div class="popup-box">
-      <form id="form2" name="form2" class="form_class" method="post">
-       	<div class="form_div">
-            <label>아이디</label>
-            <input class="field_class" name="id" id="id" type="text" autofocus><br>
-            <label>이름</label>
-            <input class="field_class" name="name" id="name" type="text"><br>
-            <label>이메일</label>
-            <input class="field_class" name="email" type="text" id="email" placeholder="예)abc@def.com">
-       	</div>
-       	<div class="info_div" id="pwdDiv">          
-                <input class="submit_class" type="button" form="form" value="비밀번호 찾기"
-                onclick="searchPwd()">
-        </div>
-         <div  class="info_div" style="display:flex; display:none; margin:20 auto" id="pwdDiv2">
-         	<div class="form_div">
-				<label>새로운 비밀번호</label>
-	            <input class="field_class" name="pwd11" id="pwd11" type="password" autofocus><br>
-				<label>비밀번호 확인</label>
-	            <input class="field_class" name="pwd22" id="pwd22" type="password"><br>           
-       		</div>
-       		<div class="info_div" id="pwdDiv3">          
-                <input class="submit_class" type="button" form="form" value="비밀번호 변경하기"
-                onclick="changePwd()">
-        	</div>
-        	<input type="hidden" id="idx">
-		</div>          
-	    <div style="margin-top:15px">
-	      	<a class="close-btn popup-close" href="#">로그인 화면으로 이동</a>
-	    </div>				 
-	</form>
-    </div>
-  </div>        
-        
-    </div>
-    </div>
+	</div>
+</main>         
+</div>
+</div>
    
     <div class="row">
     <div class="bottom_block">
@@ -228,51 +147,15 @@
     </div>
   </div>
 </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<p align="center">회원가입 유무 확인</p>
-	<form name="f" align="center">
-		<div>
-			<label>이름</label>
-			<input type="text" name="name" id="name">
-		</div>
-		<div>
-			<label>이메일</label>
-			<input type="text" name="email" id="email" placeholder="예)abc@def.com">
-		</div>
-		<div>				
-			<input type="button" value="가입 확인하기" onclick="checkMember()">			
-		</div>
-	</form>
 </body>
+
 <script>
+//input창 띄우기
+	$(document).ready(function(){
+	   	$('#form').fadeIn(1000);
+	});
 
-$(document).ready(function(){
-   	$('#form').fadeIn(1000);
-});
-
+	//회원유무 확인하기
 	function checkMember(){
 	var name = document.getElementById("name").value.trim();
 	var email = document.getElementById("email").value.trim();
@@ -327,7 +210,7 @@ $(document).ready(function(){
 					email.value="";
 				}else{	
 					//파라미터 값 다른 페이지로 넘기기
-					var f = document.f;
+					var f = document.form;
 					f.action = "term.do";
 					f.method = "post";
 					console.log("멤버체크페이지에서/이름: "+name.value+"이메일: "+email.value);
@@ -337,7 +220,7 @@ $(document).ready(function(){
 				if(!confirm("정보가 존재합니다. 로그인 페이지로 이동합니다.")){
 					return;
 				}else{
-					location.href="loginView.do";
+					location.href="login_Temp";
 				}
 			}
 		}
