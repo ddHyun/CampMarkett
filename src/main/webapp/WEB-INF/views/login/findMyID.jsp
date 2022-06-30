@@ -7,12 +7,12 @@
 <title>:::Everyday 캠프마켓:::</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="shortcut icon" href="resources/assets/img/images/favicon.ico" />
-<link rel="stylesheet" href="resources/assets/css/style.css">
-<link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
-<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
-<link rel="stylesheet" href="resources/assets/css/prettyPhoto.css">
-<link rel="stylesheet" href="resources/assets/css/login.css">
+<!-- <link rel="shortcut icon" href="resources/assets/img/images/favicon.ico" /> -->
+<!-- <link rel="stylesheet" href="resources/assets/css/style.css"> -->
+<!-- <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen"> -->
+<!-- <link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> --> 
+<!-- <link rel="stylesheet" href="resources/assets/css/prettyPhoto.css"> -->
+<link rel="stylesheet" href="resources/assets/css/loginpopup.css">
 <script src="resources/assets/js/jquery.js"></script>
 <script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
 <script src="resources/assets/js/superfish.js"></script>
@@ -22,8 +22,6 @@
 <script src="resources/assets/js/css3-mediaqueries.js"></script>
 <script src="resources/assets/js/httpRequest.js"></script>
 <script src="resources/assets/js/jquery-3.6.0.min.js"></script>
-<script src="resources/assets/js/httpRequest.js"></script>
-<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
@@ -31,65 +29,26 @@
 
  <form id="form" name="form" class="form_class" action="money.do" method="post">
             <div class="form_div">
-                <label>아이디</label>
-                <input class="field_class" name="id" id="id" type="text" autofocus><br>
-                <label>비밀번호</label>
-                <input id="pwd" class="field_class" name="pwd" type="password">
+                <label>이름</label>
+                <input class="field_class" name="name" id="name" type="text" autofocus><br>
+                 <label>생년월일</label>
+                <input class="field_class" name="birth" id="birth" placeholder="예)990101" type="text" autofocus><br>
+                <label>이메일</label>
+                <input class="field_class" name="email" type="text" id="email" placeholder="예)abc@def.com">
             </div>
-            <div class="info_div" style="display:flex;">
-            <a style="border:none; box-shadow:none; background:none;
-           	text-decoration:underline; width:200px; margin: 10px auto;" onclick="IDpopup()">
-           	아이디 찾기</a>
-           	<a style="border:none; box-shadow:none; background:none;
-           	text-decoration:underline; width:200px; margin: 10px auto;" onclick="PWDpopup()">
-           	비밀번호 찾기</a>           
-            </div>  
-            <div class="info_div">          
-                <input class="submit_class" type="button" form="form" value="로그인"
-                onclick="goLogin()">
+            <div class="info_div" id="idDiv">          
+                <input class="submit_class" type="button" form="form" value="아이디 찾기"
+                onclick="searchID()">
             </div>
-            <div class="info_div" style="margin-top:10px">
-               	<p>아직 계정이 없으신가요?
-               	<a style="border:none; box-shadow:none; background:none;
-               	text-decoration:underline; width:200px; margin: 10px auto;" href="term.do">
-               	회원가입하러 가기</a></p>
-            </div>
+            <div  class="info_div" style="display:flex; display:none; margin:auto" id="idText">
+				<label>아이디 :&emsp;<span id="id" style="color:red"></span></label>&emsp;
+				<input type="button" class="submit_class" 
+					value="로그인하러 가기" 	onclick="selfCloseSubmit()">
+				
+			</div>          
         </form>
-
-
-
-
-
-
-
-
-
-
-
-	<form action="loginView.do" method="POST" name="f" align="center">
-	<p>아이디 찾기</p>
-		<div>
-			<label>이름</label>
-			<input type="text" name="name" id="name">
-		</div>
-		<div>
-			<label>생년월일</label>
-			<input type="text" name="birth" id="birth" placeholder="예)990101">
-		</div>
-		<div>
-			<label>이메일</label>
-			<input type="text" name="email" id="email" placeholder="예)abc@de.com">
-		</div>
-		<br>
-		<div>
-			<input type="button" value="아이디 찾기" id="idFindBtn" onclick="searchID()">
-		</div>		
-		<div id="idText" style="display:none">
-			<label>아이디 :&emsp;<span id="id" style="color:red"></span></label>&emsp;
-			<input type="button" value="로그인하러 가기" onclick="selfCloseSubmit()">
-		</div>
-	</form>
 </body>
+
 <script>
 	//페이지 로딩되면 자동커서	
 	$(function(){
@@ -98,7 +57,7 @@
 	
 	//팝업창 사라지고 부모창으로 이동
 	function selfCloseSubmit(){
-		var f = document.forms.f;
+		var f = document.forms.form;
 		document.domain = "localhost";
 		opener.name = "DDD";
 		f.target = opener.name;
@@ -108,10 +67,10 @@
 	
 	//아이디찾기
 	function searchID(){
-		var f = document.f;
-		var name = f.name;
-		var birth = f.birth;
-		var email = f.email;
+		var form = document.form;
+		var name = form.name;
+		var birth = form.birth;
+		var email = form.email;
 		var nameVal = name.value.trim();
 		var birthVal = birth.value.trim();
 		var emailVal = email.value.trim();
@@ -150,9 +109,9 @@
 				name.focus();
 				return;
 			}else{
+				$('#idDiv').hide();
 				document.getElementById('idText').style.display = 'block';
 				document.getElementById('id').innerHTML = json[0].id;
-				//$('#id').text(json[0].id);
 			}
 		}
 	}		
