@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>:::Everyday 캠프마켓:::</title>
-<title>Home</title>
      <meta charset="utf-8">
 	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      <link rel="icon" href="resources/assets/img/images/favicon.ico">
