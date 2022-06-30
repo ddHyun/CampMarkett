@@ -102,8 +102,8 @@
                 <input class="submit_class" type="button" form="form" value="로그인"
                 onclick="goLogin()">
             </div>
-            <div class="info_div" style="margin-top:10px">
-               	<p>아직 계정이 없으신가요?
+            <div class="info_div" style="margin-top:10px;">
+               	<p style="color: #FFB5C8">아직 계정이 없으신가요?
                	<a style="border:none; box-shadow:none; background:none;
                	text-decoration:underline; width:200px; margin: 10px auto;" href="memberCheck.do">
                	회원가입하러 가기</a></p>
