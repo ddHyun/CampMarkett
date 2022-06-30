@@ -27,6 +27,8 @@ public class MarketController {
 	@Autowired
 	HttpSession session;
 	
+	
+	//마켓메인이동
 	@RequestMapping("/marketMain_Temp")
 	public String goMarketMain(Model model) {
 		
@@ -34,6 +36,8 @@ public class MarketController {
 		
 		return "market/marketMain";
 	}
+	
+	
 	
 	@RequestMapping("/marketDetail")
 	public String goDetail(int idx, Model model) {
