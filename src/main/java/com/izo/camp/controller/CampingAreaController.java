@@ -11,11 +11,13 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.filefilter.FalseFileFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.izo.camp.infomation.CampInfoService;
 import com.izo.camp.infomation.WeatherService;
@@ -133,40 +135,40 @@ public class CampingAreaController {
 		
 		HttpSession session = request.getSession();
 		
-		//campInfoService.getKakaoApiFromAddress("");
-		String address = "경원대로 1397, 학원";
-		
-		//주어진 정보가 있다면 위치 session 에 session 값 추가
-		if(lat!=0) {
-			session.setAttribute("sessionLat", lat);
-			session.setAttribute("sessionLon", lon);
-		}
-		
 		//현재 위치 xy 좌표
 		Map<String,Double> getXY = new HashMap<String, Double>();
-		//로그인이 되어있지 않은 상태라면 
-		if(session.getAttribute("loginId")==null || session.getAttribute("loginId").equals("null")) {
+		
+		/////////////////////////////////////////////////////////
+		//처음 접속 or 위치 선택을 안했을때는
+		//주어진 정보가 있다면 
+		if(lat!=0) {
+			getXY.put("lat", lat);
+			getXY.put("lon", lon);
+		}
+		//주어진 정보가 없고 세션도 null이면  자신의주소
+		else if(session.getAttribute("sessionLat")==null) {
+			//자신의 주소로 위치 확인 
+			String address="인천 부평구 시장로 7, 학원빌딩";//(임시주소)
+			getXY = campInfoService.getKakaoApiFromAddress(address);
+			
+		}//주어진 정보가 없고 세션이 null이 아니면
+		else {
 			getXY.put("lat", (Double) session.getAttribute("sessionLat"));
 			getXY.put("lon", (Double) session.getAttribute("sessionLon"));
 		}
 		
-		//로그인이 되어 있다면
-		else {
-			address="영종대로 190, 아이고";
-			getXY = campInfoService.getKakaoApiFromAddress(address);
-		}
-		
+		//세션에 위치 바인딩
+		session.setAttribute("sessionLat", getXY.get("lat"));
+		session.setAttribute("sessionLon", getXY.get("lon"));
+		/////////////////////////////////////////////////////////
 		//가까운 캠핑장 목록
 		List<CampInfoVO> list  = 
-				campInfoService.getNearCampingArea( getXY);
+				campInfoService.getNearCampingArea(getXY);
 		//현재 위치 바인딩
 		model.addAttribute("lat", getXY.get("lat"));
 		model.addAttribute("lon", getXY.get("lon"));
 		
-		if(session.getAttribute("sessionLat") != null) {
-			model.addAttribute("lat", session.getAttribute("sessionLat"));
-			model.addAttribute("lon", session.getAttribute("sessionLon"));
-		}
+		
 		
 		//페이징 처리
 		
@@ -180,6 +182,35 @@ public class CampingAreaController {
 	    model.addAttribute("nowPage", page);
 		
 		return "campingArea/areaMain";
+	}
+	
+	
+	//포지션테스트
+	@RequestMapping("movePosition")
+	@ResponseBody
+	public List<CampInfoVO> movePosition(Double lat,Double lon){
+			Map<String,Double> getXY = new HashMap<String, Double>();
+			System.out.println("ajax 구동중");
+			getXY.put("lat", lat);
+			getXY.put("lon", lon);
+			List<CampInfoVO> list  = 
+					campInfoService.getNearCampingArea(getXY);
+			list = list.subList(0, 10);
+		return list;
+	}
+	@RequestMapping("/moveTest")
+	public String moveTest(Model model,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
+		Map<String,Double> getXY = new HashMap<String, Double>();
+		getXY.put("lat", (Double) session.getAttribute("sessionLat"));
+		getXY.put("lon", (Double) session.getAttribute("sessionLon"));
+		
+		List<CampInfoVO> list  = 
+				campInfoService.getNearCampingArea(getXY);
+		list = list.subList(0, 10);
+		model.addAttribute("camplist", list);
+		return "campingArea/moveLocation";
 	}
 	
 }
