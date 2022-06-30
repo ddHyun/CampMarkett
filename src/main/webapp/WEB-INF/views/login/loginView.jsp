@@ -6,33 +6,31 @@
 <head>
 <meta charset="UTF-8">
 <title>:::Everyday 캠프마켓:::</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<title>Home</title>
+     <meta charset="utf-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="icon" href="resources/assets/img/images/favicon.ico">
      <link rel="shortcut icon" href="resources/assets/img/images/favicon.ico" />
      <link rel="stylesheet" href="resources/assets/css/style.css">
-	  <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
-     <link rel="stylesheet" href="resources/assets/css/prettyPhoto.css">
      <link rel="stylesheet" href="resources/assets/css/login.css">
+     <link rel="stylesheet" href="resources/assets/css/slider.css">
+	 <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
      <script src="resources/assets/js/jquery.js"></script>
      <script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
      <script src="resources/assets/js/superfish.js"></script>
      <script src="resources/assets/js/jquery.easing.1.3.js"></script>
      <script src="resources/assets/js/sForm.js"></script>
-     <script src="resources/assets/js/jquery.prettyPhoto.js"></script>
+     <script src="resources/assets/js/jquery.carouFredSel-6.1.0-packed.js"></script>
+     <script src="resources/assets/js/tms-0.4.1.js"></script>
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
-<script src="resources/assets/js/httpRequest.js"></script>
-<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
-<script>      
-     $(document).ready(function(){
-    /* $("a[data-gal^='prettyPhoto']").prettyPhoto({theme:'facebook'}); */   
-        	$('#form').fadeIn(4000);
-    });      
-</script>
+	<script src="resources/assets/js/httpRequest.js"></script>
+	<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
 <div class="main">
-<!--==============================header=================================-->
+<!-- ==============================header================================= -->
   <header> 
   <div class="zerogrid">
     <div class="col-full">
@@ -63,14 +61,14 @@
       </div>
     </div>
 </header>
-<!--=======content================================-->
+<!-- =======content================================ -->
 
 <div class="content">
   <div class="zerogrid">
-   <!--  <div class="col-full">
-      <h2>로그인</h2>
+    <div class="col-full">
+      <h2></h2>
     </div>
-    <div class="clear"></div> -->	
+    <div class="clear"></div>	
 	<div class="row">
     <div class="portfolio">  
     
@@ -82,7 +80,7 @@
     width: 100%;
     background: url('resources/assets/img/images/bbq.jpg') no-repeat center center;
     background-size: cover;">
-       <form id="form" name="form" class="form_class" action="money.do" method="post" style="display:none">
+       <form id="form" name="form" class="form_class" action="money.do" method="post" style="display:none;">
             <div class="form_div">
                 <label>아이디</label>
                 <input class="field_class" name="id" id="id" type="text" autofocus><br>
@@ -90,10 +88,10 @@
                 <input id="pwd" class="field_class" name="pwd" type="password">
             </div>
             <div class="info_div" style="display:flex;">
-            <a style="border:none; box-shadow:none; background:none;
+            <a style="border:none; box-shadow:none; background:none; cursor:pointer;
            	text-decoration:underline; width:200px; margin: 10px auto;" onclick="IDpopup()">
            	아이디 찾기</a>
-           	<a style="border:none; box-shadow:none; background:none;
+           	<a style="border:none; box-shadow:none; background:none; cursor:pointer;
            	text-decoration:underline; width:200px; margin: 10px auto;" onclick="PWDpopup()">
            	비밀번호 찾기</a>           
             </div>  
@@ -150,7 +148,7 @@
     </div>
   </div>
 </div>
-<!--==============================footer=================================-->
+<!-- ==============================footer================================= -->
 
 <footer>    
   <div class="zerogrid">
@@ -162,12 +160,14 @@
   </div>
 </footer>
 </body>
+
 <script>
-	//페이지 로딩되면 자동커서
-	$(function(){
-		$('#id').focus();
-	});	
+
+$(document).ready(function(){
+       	$('#form').fadeIn(2000);
+   });
 	
+	//로그인하기
 	function goLogin(){
 		var id = document.getElementById("id");
 		var idVal = id.value.trim();
@@ -235,7 +235,7 @@
 		//console.log(document.domain);으로 확인함
 		document.domain = "localhost";
 		var url = "/camp/searchIDView.do";
-		var name = "FIND MY ID";
+		var name = "DDD";
 		var width = 570;
 		var height = 420;
 		//화면 중앙에 위치
@@ -251,7 +251,7 @@
 	function PWDpopup(){
 		document.domain = "localhost";
 		var url = "/camp/searchPwdView.do";
-		var name = "FIND MY PWD";
+		var name = "DDD";
 		var width = 570;
 		var height = 420;
 		//화면 중앙에 위치
