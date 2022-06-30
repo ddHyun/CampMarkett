@@ -30,6 +30,9 @@ public interface ReviewMapper {
 	// 조회수 증가
 	public int readhitCount(int idx);
 	
+	// 좋아요 증가
+	public int joayoPush(int idx);
+	
 	// 게시글 수정 해당건 조회
 	public ReviewVO reviewSelect(int idx);
 	  

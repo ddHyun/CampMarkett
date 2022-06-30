@@ -114,18 +114,20 @@
 			<th>조회수</th>
 			<td>${vo.readhit}</td>	
 		</tr>
-		
 		<tr>
 			<th> 추천수</th>
 				<td>
-
-					<input type="button" value="👍" onclick="">
-					${vo.joayo}
+					
+					<a href="joayoPush.do?idx=${vo.idx}">
+					<font color="black">👍${vo.joayo}</font>  <!-- 글 제목  -->
+					</a>
+				
 
 
 
 				</td>
 		</tr>
+
 		
 	</table>
 	<div align="center">

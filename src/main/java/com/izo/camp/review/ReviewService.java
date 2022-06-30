@@ -53,18 +53,23 @@ public class ReviewService {
 		
 		
 	return reviewMapper.readhitCount(idx);
+	
+	}
+	
+	public int joayoPush(int idx) {
+		
+		return reviewMapper.joayoPush(idx);
+		
 	}
 	
 	public ReviewVO selectReview(int idx) {
 	  
-		
 	return reviewMapper.reviewSelect(idx);
 	
 	}
 	  
 	public int updateReview(ReviewVO vo) {
 	  
-		
 	return reviewMapper.reviewUpdate(vo);
 	
 	}
