@@ -1,13 +1,10 @@
 package com.izo.camp.controller;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.izo.camp.review.ReviewService;
-import com.izo.camp.vo.JoayoVO;
 import com.izo.camp.vo.ReviewVO;
 
 @Controller
@@ -148,68 +144,62 @@ public class ReviewController {
 		  @RequestMapping(value="/reviewSelect.do",method=RequestMethod.POST)
 		  public String reviewSelect(int idx, Model model) {
 		  
-		  ReviewVO vo = reviewService.selectReview(idx); model.addAttribute("vo",
-		  reviewService.selectReview(idx));
+		  ReviewVO vo = reviewService.selectReview(idx); 
+		  model.addAttribute("vo", vo);
 		  
 		  return "review/reviewModify"; 
 		  }
 		  
 		  
 		  @RequestMapping("/reviewUpdate.do")
-		  public String reviewUpdate(ReviewVO vo,
-		  HttpServletRequest request) {
+		  public String reviewUpdate(ReviewVO vo, Model model) {
 		  
-		  int res = reviewService.updateReview(vo);
+			  String webPath = "/resources/upload/";
+			  String savePath = request.getSession().getServletContext().getRealPath(webPath);
+			  
+			  MultipartFile file = vo.getFile();
+				 
+			  String filename = "no_file";
+				 
+			  // 업로드된 파일 있을경우
+			  if(!file.isEmpty()) {
+				 
+			  // 업로드된 실제 파일명
+			  filename = file.getOriginalFilename();
+					 
+			  File saveFile = new File(savePath, filename);
+					
+			  if(saveFile.exists()) {
+						 
+			  saveFile.mkdirs();
+						 
+			  } else {
+						 
+			  // 파일명 중복방지
+			  long time = System.currentTimeMillis();
+			  filename = String.format("%d_%s", time, filename);
+			  saveFile = new File(savePath, filename);
+						 
+			  }
+					 
+			  try {
+		      file.transferTo(saveFile);
+			  } catch (Exception e) {
+			  e.printStackTrace();
+			  }
+					 
+			}
+				 
+			vo.setFilename(filename);
+			  
+			 
+	
 		  
-		  return "redirect:reviewMain.do"; 
+		  model.addAttribute("vo", reviewService.updateReview(vo));
+		  //reviewMain에서 list를 받아서 보여주니까 list에도 묶어서 전달
+		  model.addAttribute("list", reviewService.list());
+		  
+		  return "/review/reviewMain"; 
 		 
 		  }
-		  
-		  @ResponseBody
-		  @RequestMapping(value="/joayo/joayo.do", method=RequestMethod.GET, produces="text/plain;charset=UTF-8")
-		  public String joayo(int idx, HttpSession session) {
-			  
-			  String id = (String)session.getAttribute("id");
-			  JSONObject obj = new JSONObject();
-			  
-			  ArrayList<String> msgs = new ArrayList<String>();
-			  HashMap<String, Object> hashMap = new HashMap<String, Object>();
-			  hashMap.put("idx", idx);
-			  hashMap.put("id", id);
-			  JoayoVO vo = reviewService.read(hashMap);
-			  
-			  ReviewVO vo2 = reviewService.getReviewIdx(idx);
-			  int joayo = vo2.getJoayo();
-			  int joayo_check = 0;
-			  joayo_check = vo.getJoayo_check();
-			  
-			  if(reviewService.countbyJoayo(hashMap)==0) {
-				  
-				  reviewService.create(hashMap);
-				  
-			  }
-			  
-			  if(joayo_check == 0) {
-				  
-				  msgs.add("좋아요");
-				  reviewService.joayo_check(hashMap);
-				  joayo_check++;
-				  joayo++;
-
-			  } else {
-				  msgs.add("좋아요 취소");
-				  reviewService.joayo_check_cancel(hashMap);
-				  joayo_check--;
-				  joayo--;
-			  }
-			  obj.put("idx", vo.getIdx());
-			  obj.put("joayo_check", joayo_check);
-			  obj.put("joayo", joayo);
-			  obj.put("msg", msgs);
-			  
-			  return obj.toJSONString();
-			  
-		  }
-	 
-
 }

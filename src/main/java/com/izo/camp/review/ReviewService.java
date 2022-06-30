@@ -52,73 +52,22 @@ public class ReviewService {
 	public int readhitCount(int idx) {
 		
 		
-		return reviewMapper.readhitCount(idx);
+	return reviewMapper.readhitCount(idx);
 	}
 	
-	
-
-	
-	
-	 
 	public ReviewVO selectReview(int idx) {
 	  
+		
 	return reviewMapper.reviewSelect(idx);
 	
 	}
 	  
 	public int updateReview(ReviewVO vo) {
 	  
-	return reviewMapper.reviewUpdate(vo); 
+		
+	return reviewMapper.reviewUpdate(vo);
 	
 	}
 	
-	public int countbyJoayo(HashMap hashMap) {
-		
-		int count = reviewMapper.countbyJoayo(hashMap);
-		
-		return count;
-	}
-	
-	public int create(HashMap hashMap) {
-		
-		int count = reviewMapper.create(hashMap);
-		
-		return count;
-	}
-	
-	public int joayo_check(HashMap hashMap) {
-		
-		int count = reviewMapper.joayo_check(hashMap);
-		
-		return count;
-	}
-	
-	public int joayo_check_cancel(HashMap hashMap) {
-		
-		int count = reviewMapper.joayo_check_cancel(hashMap);
-		
-		return count;
-	}
-	
-	public JoayoVO read(HashMap hashMap) {
-		
-		JoayoVO vo = reviewMapper.read(hashMap);
-		
-		return vo;
-		
-	}
-	
-	public int deletebyIdx(int idx) {
-		
-		int count = reviewMapper.deletebyIdx(idx);
-		
-		return count;
-	}
-	
-	public int deletebyId(String id) {
-		
-		int count = reviewMapper.deletebyId(id);
-		
-		return count;
-	}
+
 }

@@ -4,16 +4,70 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Insert title here</title>
-<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
+     <link rel="icon" href="images/favicon.ico">
+     <link rel="shortcut icon" href="images/favicon.ico" />
+     <link rel="stylesheet" href="resources/assets/css/style.css">
+	 <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
+	 <link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
+     <script src="resources/assets/js/jquery.js"></script>
+     <script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
+     <script src="resources/assets/js/superfish.js"></script>
+     <script src="resources/assets/js/jquery.easing.1.3.js"></script>
+     <script src="resources/assets/js/sForm.js"></script>
+	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
+	<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
+	<script src="resources/assets/js/httpRequest.js"></script>
+	<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<form align="center" name="f">
-	<h1>약관동의</h1>	
+<div class="main">
+<!--==============================header=================================-->
+ <header> 
+  <div class="zerogrid">
+    <div class="col-full">
+	<div class="wrap-col">
+    <h1><a href="index.html"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
+    
+         <div class="menu_block">
+           <nav>
+            <ul class="sf-menu">
+                   <li><a href="home2">Home</a></li>
+                   
+                   <li><a href="resources/assets/html/index-2.html">밀키트</a></li>
+                   <li><a href="resources/assets/html/index-3.html">후기</a></li>
+                   <li><a href="resources/assets/html/index-4.html">주변 캠핑장 </a></li>
+                   <li class="with_ul"><a href="resources/assets/html/index-1.html">회원 정보</a>
+				   	<ul>
+                         <li><a href="#"> cuisine</a></li>
+                         <li><a href="#">Good rest</a></li>
+                         <li><a href="#">Services</a></li>
+                     </ul>
+				   </li>
+                   <li class="current"><a href="resources/assets/html/index-4.html">로그인 / 회원가입</a></li>
+                 </ul>
+           </nav>
+           <div class="clear"></div>
+           </div>
+           <div class="clear"></div>
+		</div>
+      </div>
+    </div>
+</header>
+<!--=======content================================-->
+
+<div class="content">
+  <div class="zerogrid">
+  	<div class="row">
+	<form action="joinView.do" name="saveForm" align="center">
+	<div class="row">
+	<h2>약관동의</h2>	
 	<p style="font-size:12px">
 	CampMarket의 서비스를 이용하기 위해 이용자는 이용 약관을 읽어보시고 동의하셔야 합니다.<br>
 	회원가입은 무료이며, 가입 즉시 서비스를 이용하실 수 있습니다. 아래의 이용 약관을 반드시 읽고 동의해 주십시오.
 	</p>
+	</div>	
 	<h2>이용약관</h2>
 	<div>
 		<textarea rows="20" cols="100">
@@ -256,8 +310,8 @@
 		</textarea>
 	</div>
 	<div>
-		<input type="checkbox" id="term" class="terms">위의 "이용약관"에 동의 합니다.
-	</div>
+		<input type="checkbox" id="term" class="terms" style="margin-top:10px">위의 "이용약관"에 동의 합니다.
+	</div><br>
 	<h2>개인정보수집 및 활용에 대한 동의</h2>
 	<div>
 		<textarea rows="20" cols="100">
@@ -325,18 +379,83 @@
 		</textarea>
 	</div>
 	<div>
-		<input type="checkbox" id="term2" class="terms">위의 "개인정보 수집이용"에 동의 합니다.
+		<input type="checkbox" id="term2" class="terms" style="margin-top:10px">위의 "개인정보 수집이용"에 동의 합니다.
 	</div>
 	<br>
-	<div>
+	<div  style="margin-top:20px">
 		<input type="checkbox" id="term3" class="terms">
 		<span style="font-size:20px">이용약관과 개인정보처리방침사항에 모두 동의합니다.</span><br><br>
-		<input type="button" value="다음 단계" onclick="moveToJoin()">
+		<a href="joinView.do" class="btn" data-type="submit" 
+		style="width:200px; height:30px; margin-top:5px; font-size:15px; vertical-align:middle">다음 단계</a>	
+		<!-- <input style="width:200px; height:30px; margin-top:5px; font-size:15px;" class="btn" type="button" value="다음 단계" id="goJoinBtn"> -->
 		<input type="hidden" name="name" id="name" value="${vo.name}">
 		<input type="hidden" name="email" id="email" value="${vo.email}">
 	</div>
-	<div style="margin-top:100px"></div>
+	<div style="margin-top:50px"></div>
 </form>
+
+	</div>
+	
+    <div class="row">
+    <div class="bottom_block">
+      <div class="col-1-2">
+        <h3>Follow Us</h3>
+        <div class="socials">
+          <a href="#"></a>
+          <a href="#"></a>
+          <a href="#"></a>
+        </div>
+        <nav><ul>
+                   <li><a href="index.html">Home</a></li>
+                   <li><a href="index-1.html">About Us</a></li>
+                   <li><a href="index-2.html">Menu</a></li>
+                   <li><a href="index-3.html">Portfolio</a></li>
+                   <li class="current"><a href="index-4.html">News </a></li>
+                   <li><a href="index-5.html">Contacts</a></li>
+                 </ul></nav>
+      </div>
+      <div class="col-1-2">
+        <h3>Email Updates</h3>
+        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
+        <form id="newsletter">
+                  <div class="success">Your subscribe request has been sent!</div>
+                  <label class="email">
+                       <input type="email" value="Enter e-mail address" >
+                       <a href="#" class="btn">subscribe</a> 
+                        <span class="error">*This is not a valid email address.</span>
+                  </label> 
+              </form> 
+          </div>
+      </div>
+	  </div>
+    </div>
+  </div>
+</div>
+<!--==============================footer=================================-->
+
+<footer>    
+  <div class="zerogrid">
+    <div class="col-full">
+		<div class="wrap-col">
+     Gourmet © 2013  &nbsp;&nbsp; |&nbsp;&nbsp;   <a href="#">Privacy Policy</a>    &nbsp;&nbsp;|&nbsp;&nbsp;  Designed by <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster</a> - <a href="https://www.zerotheme.com/" title="free website templates">ZEROTHEME</a>
+	 	</div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 <script>
 	
@@ -349,11 +468,11 @@
 		}
 	});
 	
-	function moveToJoin(){
-		var f = document.f;
-		f.action = "joinView.do";
-		f.method = "POST";
-		f.submit();
-	}
+	//이름, 이메일 정보 가지고 회원가입 페이지로 이동
+	/* $('#goJoinBtn').on('click', function(){
+		console.log("텀에서 회원가입페이지 이동중/이름 : "+name+"이메일: "+email);
+		$('#saveForm').submit();
+	}) */
+
 </script>
 </html>

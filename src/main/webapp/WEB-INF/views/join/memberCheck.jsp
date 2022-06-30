@@ -42,7 +42,7 @@
 		var emailPattern =
 			 /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		if(!emailPattern.test(email)){
-			alert("생년월일은 6자로 입력해주세요    예)990101");
+			alert("이메일 형식이 올바르지 않습니다");
 			email1.value="";
 			email1.focus();
 			return;
@@ -62,7 +62,7 @@
 			var email = document.getElementById("email");				
 			
 			if(json[0].param=='n'){
-				if(!confirm("아직 회원이 아니시군요? 회원가입하러 가시죠~!")){
+				if(!confirm("회원정보가 존재하지 않습니다. 회원가입 창으로 이동하시겠습니까?")){
 					$('#name').focus();
 					name.value="";
 					email.value="";
@@ -71,6 +71,7 @@
 					var f = document.f;
 					f.action = "term.do";
 					f.method = "post";
+					console.log("멤버체크페이지에서/이름: "+name.value+"이메일: "+email.value);
 					f.submit();
 				}
 			}else{

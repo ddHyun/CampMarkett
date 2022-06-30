@@ -15,28 +15,28 @@
 		f.method = "POST";
 		f.submit();
 		
-	}
+		}
 
 	</script>
 </head>
 <body>
-	<form>
+	<form method="inform" enctype="multipart/form-data">
 		<input type="hidden" name="idx" value="${vo.idx}">
 		<table border="1" align="center">
 		
 			<tr>
 				<th>작성자</th>
-				<td><input name="memberid">${vo.memberid}</td>
+				<td><input name="memberid" value="${vo.memberid}"></td>
 			</tr>
 			
 			<tr>
 				<th>상품명</th>
-				<td><input name="productid">${vo.productid}</td>
+				<td><input name="productid" value="${vo.productid}"></td>
 			</tr>
 			
 			<tr>
 				<th>제목</th>
-				<td><input name="title">${vo.title}</td>
+				<td><input name="title" value="${vo.title}"></td>
 			</tr>
 					
 			<tr>
@@ -46,12 +46,27 @@
 			
 			<tr>
 				<th>비밀번호</th>
-				<td><input name="pwd" type="password" value="${vo.pwd}">${vo.pwd}</td>
+				<td><input name="pwd" type="password" value="${vo.pwd}"></td>
 			</tr>
 			
 			<tr>
-				<th>업로드</th>
-				<td><input type="file" name="file">${vo.filename}</td>
+				<th>사진</th>
+				<td><input type="file" name="file" value="${vo.filename}" ></td>
+			</tr>
+			
+			<tr>
+				<th>작성일</th>
+					<td>${vo.regdate}</td>
+			</tr>
+			
+			<tr>
+				<th>조회수</th>
+					<td>${vo.readhit}</td>
+			</tr>
+			
+			<tr>
+				<th>작성일</th>
+					<td>${vo.joayo}</td>
 			</tr>
 			
 			<tr>
