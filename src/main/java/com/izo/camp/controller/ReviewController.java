@@ -202,4 +202,16 @@ public class ReviewController {
 		  return "/review/reviewMain"; 
 		 
 		  }
+		  
+		  @RequestMapping("/joayoPush.do")
+		  public String joayoPush(int idx, Model model, ReviewVO vo) {
+			  
+			  model.addAttribute("vo", vo);
+			  
+			  reviewService.joayoPush(vo.getIdx());
+			  
+			  model.addAttribute("vo", reviewService.getReviewIdx(idx));
+			  
+			  return "/review/reviewRead";
+		  }
 }

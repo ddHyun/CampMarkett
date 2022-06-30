@@ -25,6 +25,8 @@ VALUES(SEQ_Review.nextVal, #{memberid}, #{productid}, #{title}, #{content}, #{fi
 		delete from reviewtable where idx=#{idx} and pwd=#{pwd}
 	</delete>
 	
+	
+	<!-- 조회수 증가 -->
 	<update id="readhitCount">
 		update reviewtable set
 			readhit = readhit + 1
@@ -57,11 +59,13 @@ VALUES(SEQ_Review.nextVal, #{memberid}, #{productid}, #{title}, #{content}, #{fi
 		
 	</update>
 	
-	<update id="joayoPush">
-		update reviewtable set
-			joayo = joayo + 1
-			where
-			idx = #{idx}
+	<update id="joayoPush" parameterType="int">
+			
+		UPDATE REVIEWTABLE
+		SET JOAYO=JOAYO+1
+		WHERE 
+		IDX=#{IDX}
+		
 	</update>
 	
 	
