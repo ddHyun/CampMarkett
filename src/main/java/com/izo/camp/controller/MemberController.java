@@ -24,10 +24,14 @@ public class MemberController {
 	@Autowired
 	HttpSession session;
 	
-	//약관동의 페이지로 이동
+	//가입여부 확인 페이지 ->약관동의 페이지
 	@RequestMapping("/term.do")
-	public String term(MemberVO vo, Model model) {
+	public String term(MemberVO vo, Model model) {			
 		model.addAttribute("vo", vo);
+		String name = vo.getName();
+		String email = vo.getEmail();
+		session.setAttribute("wannaName", name);
+		session.setAttribute("wannaEmail", email);
 		return "join/term";
 	}
 	
@@ -37,18 +41,13 @@ public class MemberController {
 		return "join/memberCheck";
 	}
 		
-	//회원가입 유무확인 페이지 -> 회원가입 페이지
+	//약관 페이지 -> 회원가입 페이지
 	@RequestMapping("/joinView.do")
 	public String joinView(MemberVO vo, Model model) {
+		System.out.println("name: "+vo.getName()+"email: "+vo.getEmail());
 		model.addAttribute("vo", vo);
 		return "join/joinView";
-	}
-	
-	//로그인 페이지 -> 회원가입 페이지
-		@RequestMapping("/joinView2.do")
-		public String joinView() {
-			return "join/joinView";
-		}
+	}	
 	
 	//주소찾기 이동
 	@RequestMapping("/jusoPopup.do")

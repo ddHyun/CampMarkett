@@ -99,12 +99,12 @@ public class CampInfoService {
 					campInfoVO.setAddress(address);
 					campInfoVO.setTell((String)camp.get("야영장전화번호"));
 					
-					System.out.println(campInfoVO.getName());
+					
 					
 					//이미지 파일 이름
 					idx++;
 					String imgName = String.format("campingArea%02d.jpg", idx%30 + 1 );
-					System.out.println(imgName);
+					
 					campInfoVO.setImgName(imgName);
 					
 					campInfoMapper.addNewCamp(campInfoVO);

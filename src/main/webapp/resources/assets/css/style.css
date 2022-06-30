@@ -1,5 +1,5 @@
 /**/
-@import "resources/assets/css/reset.css";
+@import "../css/reset.css";
 @import "../css/superfish.css";
 @import url(//fonts.googleapis.com/css?family=Noto+Sans);
 @import url(//fonts.googleapis.com/css?family=Lobster);
@@ -85,7 +85,7 @@ ul {
 }
 
 ul.list li{
-	background: url(../images/marker.png) 0 8px no-repeat;
+	background: url(../img/images/marker.png) 0 8px no-repeat;
 	padding-left: 11px;
 	color: #464646;
 	margin-bottom: 5.5px;
@@ -200,7 +200,7 @@ a.btn.m1 {
 }
 
 .hor_separator {
-	background: url(../images/hor_separator.png) 0 bottom no-repeat;
+	background: url(../img/images/hor_separator.png) 0 bottom no-repeat;
 	height: 40px;
 }
 /*header*/
@@ -255,7 +255,7 @@ header h1 a img {
 }
 .content.page1 {
 	padding-top: 50px;
-	background: url(../images/hor_separator.png) center 50px no-repeat;
+	background: url(../img/images/hor_separator.png) center 50px no-repeat;
 }
 
 .content.page1 h2 {
@@ -337,7 +337,7 @@ header h1 a img {
 }
 
 .prev {
-	background: url(../images/prevnext.png) 0 bottom no-repeat;
+	background: url(../img/images/prevnext.png) 0 bottom no-repeat;
 	display: block;
 	position: absolute;
 	right: 42px;
@@ -352,7 +352,7 @@ header h1 a img {
 }
 
 .next {
-	background: url(../images/prevnext.png) right bottom no-repeat;
+	background: url(../img/images/prevnext.png) right bottom no-repeat;
 	display: block;
 	z-index: 999;
 	position: absolute;
@@ -367,7 +367,7 @@ header h1 a img {
 }
 
 .bottom_block {
-	background: url(../images/hor_separator.png) center 38px no-repeat;
+	background: url(../img/images/hor_separator.png) center 38px no-repeat;
 	padding-top: 38px;
 	font-size: 12px;
 	padding-bottom: 34px;
@@ -414,7 +414,7 @@ header h1 a img {
 
 
 .socials a {
-	background: url(../images/socials.png) 0 0 no-repeat;
+	background: url(../img/images/socials.png) 0 0 no-repeat;
 	width: 26px;
 	float: left;
 	display: block;
@@ -431,11 +431,11 @@ header h1 a img {
 }
 
 .socials a:first-child+a {
-	background: url(../images/socials.png) -38px 0 no-repeat;
+	background: url(../img/images/socials.png) -38px 0 no-repeat;
 }
 
 .socials a:first-child+a+a {
-	background: url(../images/socials.png) right 0 no-repeat;
+	background: url(../img/images/socials.png) right 0 no-repeat;
 }
 
 
@@ -466,7 +466,7 @@ header h1 a img {
 
 
 .prev1 {
-	background: url(../images/prevnext.png) 0 bottom no-repeat;
+	background: url(../img/images/prevnext.png) 0 bottom no-repeat;
 	display: block;
 	float: left;
 	width: 32px;
@@ -480,7 +480,7 @@ header h1 a img {
 }
 
 .next1 {
-	background: url(../images/prevnext.png) right bottom no-repeat;
+	background: url(../img/images/prevnext.png) right bottom no-repeat;
 	display: block;
 	z-index: 999;
 	float: left;

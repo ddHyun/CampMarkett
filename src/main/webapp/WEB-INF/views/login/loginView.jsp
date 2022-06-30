@@ -109,7 +109,7 @@
             <div class="info_div" style="margin-top:10px">
                	<p>아직 계정이 없으신가요?
                	<a style="border:none; box-shadow:none; background:none;
-               	text-decoration:underline; width:200px; margin: 10px auto;" href="term.do">
+               	text-decoration:underline; width:200px; margin: 10px auto;" href="memberCheck.do">
                	회원가입하러 가기</a></p>
             </div>
         </form>
@@ -120,12 +120,12 @@
 	<!-- 아이디찾기 팝업 -->
       <div class="popup-wrap">
     <div class="popup-box">
-      <form id="form1" name="form1" class="form_class" action="money.do" method="post">
+      <form id="form1" name="form1" class="form_class" method="post">
             <div class="form_div">
                 <label>이름</label>
                 <input class="field_class" name="name" id="name" type="text" autofocus><br>
                  <label>생년월일</label>
-                <input class="field_class" name="birth" id="birth" placeholder="예)990101" type="text" autofocus><br>
+                <input class="field_class" name="birth" id="birth" placeholder="예)990101" type="text"><br>
                 <label>이메일</label>
                 <input class="field_class" name="email" type="text" id="email" placeholder="예)abc@def.com">
             </div>
@@ -142,7 +142,43 @@
         </form>
     </div>
   </div>  
-        
+  
+  
+  <!-- 비밀번호 찾기 팝업 -->
+      <div class="popup-wrap">
+    <div class="popup-box">
+      <form id="form2" name="form2" class="form_class" method="post">
+       	<div class="form_div">
+            <label>아이디</label>
+            <input class="field_class" name="id" id="id" type="text" autofocus><br>
+            <label>이름</label>
+            <input class="field_class" name="name" id="name" type="text"><br>
+            <label>이메일</label>
+            <input class="field_class" name="email" type="text" id="email" placeholder="예)abc@def.com">
+       	</div>
+       	<div class="info_div" id="pwdDiv">          
+                <input class="submit_class" type="button" form="form" value="비밀번호 찾기"
+                onclick="searchPwd()">
+        </div>
+         <div  class="info_div" style="display:flex; display:none; margin:20 auto" id="pwdDiv2">
+         	<div class="form_div">
+				<label>새로운 비밀번호</label>
+	            <input class="field_class" name="pwd11" id="pwd11" type="password" autofocus><br>
+				<label>비밀번호 확인</label>
+	            <input class="field_class" name="pwd22" id="pwd22" type="password"><br>           
+       		</div>
+       		<div class="info_div" id="pwdDiv3">          
+                <input class="submit_class" type="button" form="form" value="비밀번호 변경하기"
+                onclick="changePwd()">
+        	</div>
+        	<input type="hidden" id="idx">
+		</div>          
+	    <div style="margin-top:15px">
+	      	<a class="close-btn popup-close" href="#">로그인 화면으로 이동</a>
+	    </div>				 
+	</form>
+    </div>
+  </div>        
         
     </div>
     </div>
@@ -165,7 +201,7 @@
                    <li><a href="index-5.html">Contacts</a></li>
                  </ul></nav>
       </div>
-      <div class="col-1-2">
+     <div class="col-1-2">
         <h3>Email Updates</h3>
         <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
         <form id="newsletter">
@@ -313,18 +349,107 @@
 	}	
 	
 	//비밀번호 찾기
-	function PWDpopup(){
-		document.domain = "localhost";
-		var url = "/camp/searchPwdView.do";
-		var name = "DDD";
-		var width = 570;
-		var height = 420;
-		//화면 중앙에 위치
-		var left = Math.ceil((window.screen.width - width)/2); 
-		var top = 100;
-		var option = 
-			"width="+width+",height="+height+", scrollbars=yes, resizable=no, left="+left+", top="+top;
-		window.open(url, name, option);
-	} 	
+	function searchPwd(){
+		var form = document.form2;
+		var name = form.name;
+		var id = form.id;
+		var email = form.email;
+		var nameVal = name.value.trim();
+		var idVal = id.value.trim();
+		var emailVal = email.value.trim();
+		
+		if(nameVal==''){
+			alert("이름을 입력해 주세요");
+			name.focus();
+			return;
+		}
+		if(idVal==''){
+			alert("아이디를 입력해 주세요");
+			id.focus();		
+			return;
+		}
+		if(emailVal==''){
+			alert("이메일을 입력해 주세요");
+			email.focus();
+			return;
+		}
+		
+		var url = "searchPwd.do";
+		var param = "name="+nameVal+"&id="+idVal+"&email="+emailVal;
+		sendRequest(url, param, cb1, "POST");
+	}
+	
+	function cb1(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var data = xhr.responseText;
+			var json = (new Function('return'+data))();
+			//회원정보가 없다면
+			if(json[0].param == 0){
+				alert("일치하는 정보가 없습니다. 다시 시도해 주세요");
+				$('#name').val('');
+				id.value="";
+				email.value="";
+				id.focus();
+				return;
+			}else{//회원정보가 있다면	
+				$('#pwdDiv').hide();
+				document.getElementById('pwdDiv2').style.display = 'block';
+				document.getElementById('idx').value= json[0].idx;
+				console.log(document.getElementById('idx').value);
+			}
+		}
+	}
+	
+	//비밀번호 변경하기
+	function changePwd() {
+		var pwdPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}$/;
+		var pwd = document.getElementById("pwd11");
+		var pwd2 = document.getElementById("pwd22");
+		var pwdVal = pwd.value.trim();
+		var pwd2Val = pwd2.value.trim();
+		
+		if(pwdVal==''){
+			alert("비밀번호를 입력해 주세요");
+			return;
+		}
+		if(!pwdPattern.test(pwdVal)){//정규표현식 형식과 일치하지 않을 때
+			alert("8~15자리의 영문과 숫자를 모두 사용해 입력해야 합니다(특수문자 제외)");
+			pwd.value="";
+			pwd.focus();
+			return;
+		}else{//비밀번호 형식 통과 후
+			if(pwdVal!=pwd2Val){//비밀번호 불일치시 
+				alert("비밀번호가 일치하지 않습니다. 다시 시도해 주세요");
+				pwd.value="";
+				pwd2.value="";
+				pwd.focus();
+				return;
+			}else{//비밀번호 일치시
+				var idx = document.getElementById('idx').value; 
+				url = "changePwd.do";
+				param = "pwd="+pwdVal+ "&idx="+idx;
+				console.log("pwd: "+pwdVal+"/idx: "+idx);
+				sendRequest(url, param, cb2, "POST");
+			}
+		}		
+	}
+	
+	function cb2(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var data = xhr.responseText;
+			var json = (new Function('return'+data))();
+			if(json[0].param=='y'){
+				alert("비밀번호가 정상적으로 변경되었습니다");
+	/* 			document.getElementById('loginField').style.display = 'block';
+				document.getElementById('pwdField2').style.display = 'none'; */
+				$('#pwd11').attr('disabled', true);
+				$('#pwd22').attr('disabled', true);
+			}else{
+				alert("비밀번호가 변경되지 못했습니다. 다시 시도해주세요");
+				return;
+			}
+		}		
+		
+	}//cb2끝
 </script>
 </html>
