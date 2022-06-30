@@ -5,12 +5,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.izo.camp.mapper.BasketMapper">
 
 	<select id="getBasketById" resultType="basketVO">
-		SELECT IDX, MEMBERID, PRODUCTID, PCS
+		SELECT IDX, MEMBERID, PRODUCTID, PCS, PRICE, TOTALPRICE
 		FROM BASKETTABLE WHERE MEMBERID = #{loginId}
 	</select>
 	
+	<select id="findBasket" resultType="basketVO" parameterType="basketVO">
+		SELECT IDX, MEMBERID, PRODUCTID, PCS, PRICE, TOTALPRICE FROM BASKETTABLE
+		WHERE MEMBERID = #{memberId} AND PRODUCTID = #{productId}	
+	</select>
 	
+	<insert id="insertBasket">
+		INSERT INTO TEST_PM.BASKETTABLE
+		(IDX, MEMBERID, PRODUCTID, PCS, PRICE, TOTALPRICE)
+		VALUES(seq_basket.NEXTVAL, #{memberId}, #{productId}, 1, #{price}, #{totalPrice})
+	</insert>
 	
+	<update id="upDateBasket">
+		UPDATE TEST_PM.BASKETTABLE
+		SET PCS=#{pcs}
+		WHERE MEMBERID = #{memberId} AND PRODUCTID = #{productId}
+	</update>
+	
+	<delete id="deleteProduct">
+		DELETE FROM BASKETTABLE
+		WHERE MEMBERID = #{memberId} AND PRODUCTID = #{productId}
+	</delete>
+	
+	<update id="changePcsPM">
+		UPDATE TEST_PM.BASKETTABLE
+		SET PCS=PCS + #{pcs}, TOTALPRICE = TOTALPRICE + (PRICE * #{pcs})
+		WHERE MEMBERID = #{memberId} AND PRODUCTID = #{productId}
+	</update>
+	
+	<select id="getTotalPrice" resultType="_int">
+		SELECT TOTALPRICE FROM BASKETTABLE
+		WHERE MEMBERID = #{memberId} AND PRODUCTID = #{productId}
+	</select>
 </mapper>
 
 

@@ -121,6 +121,7 @@ height: 'auto',
 <div class="zerogrid2">
 	<h2 class="head2">장바구니</h2>
 	
+	<div id=basketMain>
 	<c:choose>
 	<c:when test="${empty basketProduct}">
 		<p>장바구니가 비어있습니다 <p>
@@ -131,18 +132,31 @@ height: 'auto',
 			<br>
 				제품이름<br>
 			<c:forEach var="product" items="${basketProduct}">
-				<div id="${product.productId}div">
+				<div id="${product.idx}div">
 				${product.productId}
 				구매수량
-				<input type="button" value="-" onclick="minusPcs('${product.productId}')" >
-				<input type="text" id="${product.productId}pcs" value="${product.pcs}"readonly> 개
-				<input type="button" value="+" onclick="plusPcs(${product.productId})">
+				<input type="button" value="-" onclick="changePcs(${product.idx},'${product.productId}',-1)" >
+				<input type="text" id="${product.idx}pcs" value="${product.pcs}"readonly> 개
+				<input type="button" value="+" onclick="changePcs(${product.idx},'${product.productId}',1)">
+				<input type="text" id="${product.idx}price" value="${product.totalPrice}원">
 				</div>
 			</c:forEach>
+			
+			<div id="row"  style= "height:100px;">
+				
+				
+					
+			</div>
+			<div id="row"  style= "height:40px;">
+				<input id="totalPrice" value="${totalPrice}">
+				
+				<button style="float:right;">구매하기</button>
+			</div> 		
 		</c:otherwise>
 		
 	</c:choose>
-
+	</div>
+	
 	
 </div>
 </div>
@@ -161,30 +175,54 @@ height: 'auto',
 </body>
 <script>
 
-function minusPcs(productId){
-	alert($("#"+productId+"pcs").val());
-	let nowPcs = $("#"+productId+"pcs").val();
-	if(nowPcs == 10 ){
-		alert("삭제하시겠습니까?");
-		let newPcs = nowPcs - 1;
-		$("#"+productId+"pcs").val(newPcs);
+function changePcs(idx,productId,num){
+	let loginId = "${sessionScope.loginId}";
+	//현재 갯수
+	var nowPcs = parseInt($("#"+idx+"pcs").val());
+	
+	if(nowPcs == 1 && num == -1){
+		if(confirm("삭제하시겠습니까?")){
+			/* fetch("deleteBasket?memberId=" + loginId + "&productId=" + productId);
+			$("#"+idx+"div").hide(); */
+			
+			$.ajax({
+				url: "deleteBasket?memberId=" + loginId + "&productId=" + productId,
+				type: "GET",
+				success: function(totalPrice){
+					console.log(totalPrice);
+					$("#totalPrice").val(totalPrice);
+					$("#"+idx+"div").hide();
+					if(totalPrice==0){
+						$("#basketMain").hide();
+					}
+				}
+			});
+		}
+		
 	}else{
 		/* 숫자 하나 내리고 업데이트 */
-		let newPcs = nowPcs - 1;
-
-		alert("ajax 실행?");
-		
+		var newPcs = nowPcs + num;
 		$.ajax({
 			url: "plusMinusPcs",
 			type: "POST",
-			data: {"productId": productId , "changePcs": -1 },
-			success: function(agrs){
-				console.log(agrs);
-				$("#"+productId+"pcs").val(newPcs);
-				
+			data: {"memberId": loginId ,"productId": productId , "pcs": num },
+			success: function(price){
+				$("#"+idx+"price").val(price);
+				$("#"+idx+"pcs").val(newPcs);
+				$.ajax({
+					url: "findTotalPrice",
+					type: "POST",
+					data : {"memberId": loginId},
+					success: function(totalPrice){
+						console.log(totalPrice);
+						$("#totalPrice").val(totalPrice);
+					}
+				});
 			}
 		});
 	}
+	//총 가격 갱신 
+	
 }
 
 

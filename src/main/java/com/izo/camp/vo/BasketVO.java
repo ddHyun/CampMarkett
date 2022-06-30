@@ -1,8 +1,9 @@
 package com.izo.camp.vo;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class BasketVO {
 //	idx number(6) PRIMARY KEY,
 //	memberID VARCHAR2(50),
@@ -13,6 +14,9 @@ public class BasketVO {
 	private String memberId;
 	private String productId;
 	private Integer pcs;
+	private Integer price;
+	private Integer totalPrice;
+	
 	
 	public BasketVO() {
 	
@@ -49,5 +53,22 @@ public class BasketVO {
 	public void setPcs(Integer pcs) {
 		this.pcs = pcs;
 	}
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+
+	public Integer getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Integer totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	
 	
 }

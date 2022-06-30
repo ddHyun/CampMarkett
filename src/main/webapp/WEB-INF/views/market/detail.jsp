@@ -122,7 +122,7 @@ height: 'auto',
 	<h2 class="head2">${product.productId}</h2>
 	<img src="resources/assets/img/food/${product.imgName}.jpg" width=700px>
 	<div class="clear"><br></div>
-	<button onclick="location.href='goBasket'">장바구니 추가</button>
+	<button onclick="addBasket('${product.productId}')" >장바구니 추가</button>
 	<button>구매하기</button>
 	
 </div>
@@ -140,7 +140,28 @@ height: 'auto',
   </div>
 </footer>
 </body>
+<script>
+	function addBasket(productId){
+		let loginId = "${sessionScope.loginId}";
+		
+		if(loginId==null || loginId=="none"){
+			alert("로그인 후 이용해 주세요.")
+		}else{
+			if(confirm("장바구니에 추가 하시겠습니까")){
+				
+				//location.href="addBasket?memberId=" + loginId + "&productId=" + productId;
+				//메소드만 실행
+				fetch("addBasket?memberId=" + loginId + "&productId=" + productId);
+				
+				 if(confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?")){
+					location.href="goBasket";
+				} 
+			}
+		}
+		
+	}
 
+</script>
 
 
 </html>
