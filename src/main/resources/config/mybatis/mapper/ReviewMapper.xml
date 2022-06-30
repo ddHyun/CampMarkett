@@ -52,9 +52,7 @@ VALUES(SEQ_Review.nextVal, #{memberid}, #{productid}, #{title}, #{content}, #{fi
 		CONTENT=#{title},
 		FILENAME=#{filename},
 		PWD=#{pwd},
-		REGDATE=SYSDATE, 
-		READHIT=0, 
-		JOAYO=0
+		REGDATE=SYSDATE 
 		WHERE IDX=#{idx}
 		
 	</update>
