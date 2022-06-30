@@ -165,7 +165,7 @@
 			<tr>
 				<th><span style="color:red">*</span>이름</th>
 				<td>
-					<input type="text" name="name" id="name" value="${vo.name}">
+					<input type="text" name="name" id="name" value="${sessionScope.wannaName}">
 					<!-- 성별 -->
 					<input type="checkbox" name="gender" value="남자" onclick="chooseGender(this)" checked>남자
 					<input type="checkbox" name="gender" value="여자" onclick="chooseGender(this)">여자&emsp;
@@ -183,7 +183,7 @@
 			<tr>
 				<th><span style="color:red">*</span>이메일</th>
 				<td>
-				<input name="email" id="email" value="${vo.email}">
+				<input name="email" id="email" value="${sessionScope.wannaEmail}">
 				<input type="button" value="이메일 확인" onclick="verifyEmail()">
 				<span id="emailErrorMsg" style="color:red">올바른 형식이 아닙니다</span><br>
 				<span style="color:#787878">비밀번호 초기화 메일 수신 등에 반드시 필요한 정보이므로 정확히 입력해주세요.</span>
