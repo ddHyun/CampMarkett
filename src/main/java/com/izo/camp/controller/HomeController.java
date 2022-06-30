@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.izo.camp.infomation.CampInfoService;
 import com.izo.camp.mapper.DeptMapper;
 import com.izo.camp.member.MemberService;
 import com.izo.camp.vo.DeptVO;
@@ -24,6 +25,8 @@ import com.izo.camp.vo.DeptVO;
 @Controller
 public class HomeController {
 	
+	@Autowired
+	CampInfoService campInfoService;
 	@Autowired
 	DeptMapper deptMapper;
 	@Autowired
@@ -78,6 +81,7 @@ public class HomeController {
 	//테스트 Home 페이지로 이동
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String homeGo() {
+		campInfoService.hasCamping();
 		session.setAttribute("sessionLat", 37.49051);
 		session.setAttribute("sessionLon", 126.72414);
 		return "home_real";
@@ -87,7 +91,7 @@ public class HomeController {
 	public String makeSampleLogin() {
 		
 		session.setAttribute("loginId", "SampleID");
-		session.setAttribute("loginIdx", 4);
+		session.setAttribute("loginIdx", 1);
 		System.out.println("샘플 로그인이 완료되었습니다. ");
 		return "home_real";
 	}

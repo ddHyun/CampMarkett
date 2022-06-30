@@ -148,7 +148,7 @@ height: 'auto',
 					
 			</div>
 			<div id="row"  style= "height:40px;">
-				<input id="totalPrice" value="${totalPrice}">
+				<input id="totalPrice" value="${totalPrice}원">
 				
 				<button style="float:right;">구매하기</button>
 			</div> 		
@@ -190,7 +190,7 @@ function changePcs(idx,productId,num){
 				type: "GET",
 				success: function(totalPrice){
 					console.log(totalPrice);
-					$("#totalPrice").val(totalPrice);
+					$("#totalPrice").val(totalPrice+"원");
 					$("#"+idx+"div").hide();
 					if(totalPrice==0){
 						$("#basketMain").hide();
@@ -207,15 +207,15 @@ function changePcs(idx,productId,num){
 			type: "POST",
 			data: {"memberId": loginId ,"productId": productId , "pcs": num },
 			success: function(price){
-				$("#"+idx+"price").val(price);
+				$("#"+idx+"price").val(price+"원");
 				$("#"+idx+"pcs").val(newPcs);
 				$.ajax({
 					url: "findTotalPrice",
 					type: "POST",
 					data : {"memberId": loginId},
 					success: function(totalPrice){
-						console.log(totalPrice);
-						$("#totalPrice").val(totalPrice);
+						console.log(totalPrice+"원");
+						$("#totalPrice").val(totalPrice+"원");
 					}
 				});
 			}
