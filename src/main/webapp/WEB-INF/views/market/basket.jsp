@@ -4,7 +4,7 @@
 
 <html>
 <head>
-     <title>밀키트 구매하기</title>
+     <title>상세보기</title>
      <meta charset="utf-8">
 	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      <link rel="icon" href="resources/assets/img/images/favicon.ico">
@@ -73,6 +73,14 @@ height: 'auto',
       <link rel="stylesheet" media="screen" href="resources/assets/css/ie.css">
 
     <![endif]-->
+    <style>
+    .zerogrid2{ width: 900px; position: relative; margin: 0 auto; padding: 0px;}
+   	button{
+   		width:350px;	
+   		height:30px;
+   	}
+    </style>
+    
      </head>
      <body>
        <div class="main">
@@ -108,108 +116,50 @@ height: 'auto',
       </div>
     </div>
 </header>
-<!--  <div class="slider-relative">
-    <div class="slider-block">
-      <div class="slider">
-        <ul class="items">
-          <li><img src="resources/assets/img/images/slide.jpg" alt=""></li>
-          <li><img src="resources/assets/img/images/slide1.jpg" alt=""></li>
-          <li class="mb0"><img src="resources/assets/img/images/slide2.jpg" alt=""></li>
-        </ul>
-      </div>
-    </div>
- </div> -->
-<!--=======content================================-->
-
-<div class="content page1">
-  <div class="zerogrid">
-      
-      
-	  <div class="row">
-      <div class="col-full">
-	  	<div class="wrap-col">
-        <div class="car_wrap">
-        <h2>Best Choice</h2>
-        <a href="#" class="prev"></a><a href="#" class="next"></a>
-        <ul class="carousel1">
-          <li><div><img src="resources/assets/img/images/page1_img1.jpg" alt="">
-          <div class="col1 upp"> <a href="#">kim Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img2.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img3.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img4.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img3.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet kim</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-        </ul>
-        <div style="margin: 0 auto;">	
-        	 <c:forEach var="product" items="${productList}">
-				<div class="temp" style="float:left; margin:10px; border:1px solid black; width:27%"<%--  onclick="popupDetail(${camp.idx})" --%> style="cursor:pointer;">
-				<img src="resources/assets/img/food/${product.imgName}.jpg" height="200px" width="300px">
-				<br>
-				<span> 상품이름 : ${product.productId}</span>
-				<br>
-				 <input type="button" onclick="purchase(${product.idx})" class="purchase" value="구매하기">
-				 <input type="button" onclick="location.href='marketDetail?idx=${product.idx}'" class="purchase" value="상세보기">
-				 <div class="price">${product.price}원</div>
+<!--==============================content=================================-->
+<div class="content">
+<div class="zerogrid2">
+	<h2 class="head2">장바구니</h2>
+	
+	<div id=basketMain>
+	<c:choose>
+	<c:when test="${empty basketProduct}">
+		<p>장바구니가 비어있습니다 <p>
+	</c:when>
+	
+		<c:otherwise>
+				비어있지 않아요!
+			<br>
+				제품이름<br>
+			<c:forEach var="product" items="${basketProduct}">
+				<div id="${product.idx}div">
+				${product.productId}
+				구매수량
+				<input type="button" value="-" onclick="changePcs(${product.idx},'${product.productId}',-1)" >
+				<input type="text" id="${product.idx}pcs" value="${product.pcs}"readonly> 개
+				<input type="button" value="+" onclick="changePcs(${product.idx},'${product.productId}',1)">
+				<input type="text" id="${product.idx}price" value="${product.totalPrice}원">
 				</div>
 			</c:forEach>
-			</div> 
-        </div>
-      </div>
-	  </div>
-    </div>
+			
+			<div id="row"  style= "height:100px;">
+				
+				
+					
+			</div>
+			<div id="row"  style= "height:40px;">
+				<input id="totalPrice" value="${totalPrice}">
+				
+				<button style="float:right;">구매하기</button>
+			</div> 		
+		</c:otherwise>
+		
+	</c:choose>
 	</div>
-	<div class="row">
-    <div class="bottom_block">
-      <div class="col-1-2">
-        <h3>Follow Us</h3>
-        <div class="socials">
-          <a href="#"></a>
-          <a href="#"></a>
-          <a href="#"></a>
-        </div>
-        <nav><ul>
-                   <li class="current"><a href="home">Home</a></li>
-                   <li ><a href="resources/assets/html/index-1.html">About Us</a></li>
-                   <li><a href="resources/assets/html/index-2.html">Menu</a></li>
-                   <li><a href="resources/assets/html/index-3.html">Portfolio</a></li>
-                   <li><a href="resources/assets/html/index-4.html">News </a></li>
-                   <li><a href="resources/assets/html/index-5.html">Contacts</a></li>
-                 </ul></nav>
-      </div>
-      <div class="col-1-2">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn" data-type="submit">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
-          </div>
-      </div>
-	  </div>
-    </div>
-  </div>
+	
+	
+</div>
+</div>
 </div>
 <!--==============================footer=================================-->
 
@@ -224,16 +174,59 @@ height: 'auto',
 </footer>
 </body>
 <script>
-	function purchase(idx){
-		if("${sessionScope.loginIdx}"){
-			alert("로그인이 확인되었습니다.")
-		}else{
-			alert("로그인이 필요합니다" + idx)
-		}
-	}
+
+function changePcs(idx,productId,num){
+	let loginId = "${sessionScope.loginId}";
+	//현재 갯수
+	var nowPcs = parseInt($("#"+idx+"pcs").val());
 	
+	if(nowPcs == 1 && num == -1){
+		if(confirm("삭제하시겠습니까?")){
+			/* fetch("deleteBasket?memberId=" + loginId + "&productId=" + productId);
+			$("#"+idx+"div").hide(); */
+			
+			$.ajax({
+				url: "deleteBasket?memberId=" + loginId + "&productId=" + productId,
+				type: "GET",
+				success: function(totalPrice){
+					console.log(totalPrice);
+					$("#totalPrice").val(totalPrice);
+					$("#"+idx+"div").hide();
+					if(totalPrice==0){
+						$("#basketMain").hide();
+					}
+				}
+			});
+		}
+		
+	}else{
+		/* 숫자 하나 내리고 업데이트 */
+		var newPcs = nowPcs + num;
+		$.ajax({
+			url: "plusMinusPcs",
+			type: "POST",
+			data: {"memberId": loginId ,"productId": productId , "pcs": num },
+			success: function(price){
+				$("#"+idx+"price").val(price);
+				$("#"+idx+"pcs").val(newPcs);
+				$.ajax({
+					url: "findTotalPrice",
+					type: "POST",
+					data : {"memberId": loginId},
+					success: function(totalPrice){
+						console.log(totalPrice);
+						$("#totalPrice").val(totalPrice);
+					}
+				});
+			}
+		});
+	}
+	//총 가격 갱신 
+	
+}
+
+
 
 </script>
-
 
 </html>

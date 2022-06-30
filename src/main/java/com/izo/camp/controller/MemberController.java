@@ -189,4 +189,10 @@ public class MemberController {
 		String result = String.format("[{'param':'%s'}]", param);
 		return result;
 	}
+	
+	//test
+	@RequestMapping("/test")
+	public String test() {
+		return "login/popup";
+	}
 }

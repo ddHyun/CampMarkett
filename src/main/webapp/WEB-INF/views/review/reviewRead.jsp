@@ -118,8 +118,12 @@
 		<tr>
 			<th> 추천수</th>
 				<td>
+
 					<input type="button" value="👍" onclick="">
 					${vo.joayo}
+
+
+
 				</td>
 		</tr>
 		

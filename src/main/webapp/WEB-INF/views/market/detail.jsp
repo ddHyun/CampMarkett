@@ -4,7 +4,7 @@
 
 <html>
 <head>
-     <title>Home</title>
+     <title>상세보기</title>
      <meta charset="utf-8">
 	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      <link rel="icon" href="resources/assets/img/images/favicon.ico">
@@ -75,7 +75,10 @@ height: 'auto',
     <![endif]-->
     <style>
     .zerogrid2{ width: 900px; position: relative; margin: 0 auto; padding: 0px;}
-   
+   	button{
+   		width:350px;	
+   		height:30px;
+   	}
     </style>
     
      </head>
@@ -118,7 +121,10 @@ height: 'auto',
 <div class="zerogrid2">
 	<h2 class="head2">${product.productId}</h2>
 	<img src="resources/assets/img/food/${product.imgName}.jpg" width=700px>
-
+	<div class="clear"><br></div>
+	<button onclick="addBasket('${product.productId}')" >장바구니 추가</button>
+	<button>구매하기</button>
+	
 </div>
 </div>
 </div>
@@ -134,7 +140,28 @@ height: 'auto',
   </div>
 </footer>
 </body>
+<script>
+	function addBasket(productId){
+		let loginId = "${sessionScope.loginId}";
+		
+		if(loginId==null || loginId=="none"){
+			alert("로그인 후 이용해 주세요.")
+		}else{
+			if(confirm("장바구니에 추가 하시겠습니까")){
+				
+				//location.href="addBasket?memberId=" + loginId + "&productId=" + productId;
+				//메소드만 실행
+				fetch("addBasket?memberId=" + loginId + "&productId=" + productId);
+				
+				 if(confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?")){
+					location.href="goBasket";
+				} 
+			}
+		}
+		
+	}
 
+</script>
 
 
 </html>
