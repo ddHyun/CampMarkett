@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>Insert title here</title>
+<title>:::Everyday 캠프마켓:::</title>
      <link rel="icon" href="images/favicon.ico">
      <link rel="shortcut icon" href="images/favicon.ico" />
      <link rel="stylesheet" href="resources/assets/css/style.css">
@@ -386,10 +386,8 @@
 		<input type="checkbox" id="term3" class="terms">
 		<span style="font-size:20px">이용약관과 개인정보처리방침사항에 모두 동의합니다.</span><br><br>
 		<a href="joinView.do" class="btn" data-type="submit" 
-		style="width:200px; height:30px; inline-height:30px; margin-top:5px; font-size:15px; vertical-align:middle">다음 단계</a>	
-		<!-- <input style="width:200px; height:30px; margin-top:5px; font-size:15px;" class="btn" type="button" value="다음 단계" id="goJoinBtn"> -->
-		<%-- <input type="hidden" name="name" id="name" value="${vo.name}">
-		<input type="hidden" name="email" id="email" value="${vo.email}"> --%>
+		style="width:200px; height:30px; line-height:30px; 
+		margin-top:5px; font-size:20px; font-weight:bold; letter-spacing:2px">다음 단계</a>			
 	</div>
 	<div style="margin-top:50px"></div>
 </form>
