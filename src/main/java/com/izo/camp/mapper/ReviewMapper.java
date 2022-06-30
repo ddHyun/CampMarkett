@@ -29,25 +29,12 @@ public interface ReviewMapper {
 	
 	// 조회수 증가
 	public int readhitCount(int idx);
-
+	
 	// 게시글 수정 해당건 조회
 	public ReviewVO reviewSelect(int idx);
 	  
 	// 게시글 수정
 	public int reviewUpdate(ReviewVO vo);
 	
-	public int countbyJoayo(HashMap hashMap);
-	
-	public int create(HashMap hashMap);
-	
-	public int joayo_check(HashMap hashMap);
-	
-	public int joayo_check_cancel(HashMap hashMap);
-	
-	public JoayoVO read (HashMap hashMap);
-	
-	public int deletebyIdx(int idx);
-	
-	public int deletebyId(String id);
 	
 }

@@ -41,27 +41,30 @@ VALUES(SEQ_Review.nextVal, #{memberid}, #{productid}, #{title}, #{content}, #{fi
 	
 		<!-- 게시글 수정하기 -->
 	<update id="reviewUpdate" parameterType="reviewVO">
-		update reviewtable
-		set productid=#{productid},
-		title=#{title},
-		content=#{content},
-		pwd=#{pwd},
-		filename=#{filename},
-		regdate=sysdate
-		where idx=#{idx}
+	
+		
+		UPDATE REVIEWTABLE
+		SET MEMBERID=#{memberid},
+		PRODUCTID=#{productid},
+		TITLE=#{title},
+		CONTENT=#{title},
+		FILENAME=#{filename},
+		PWD=#{pwd},
+		REGDATE=SYSDATE, 
+		READHIT=0, 
+		JOAYO=0
+		WHERE IDX=#{idx}
+		
 	</update>
 	
-	<update id="joayo_check" parameterType="HashMap">
-		update joayo
-			set joayo_check = joayo_check+1
-			where id=#{id} and idx={idx}
+	<update id="joayoPush">
+		update reviewtable set
+			joayo = joayo + 1
+			where
+			idx = #{idx}
 	</update>
-
-	<update id="joayo_check_cancel" parameterType="HashMap">
-		update joayo
-			set joayo_check = 0
-			where id=#{id} and idx=#{idx}
-	</update>
+	
+	
 
 	
 </mapper>

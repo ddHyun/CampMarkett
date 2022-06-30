@@ -76,48 +76,7 @@
 					
 						
 				}
-
-		
-		// 좋아요 기능 
-	function joayoFunc(){
-		
-		var revDetail = $('#revDetail');
-		var idx = $('idx', revDetail).val();
-		
-		$.ajax({
-			url:"../joayo/joayo.do",
-			type:"GET",
-			cache:false,
-			dataType:"json",
-			data:'idx='+idx,
-			success:function(data){
-				
-				var msg='';
-				var joayoImg='';
-				msg += data.msg;
-				alert(msg);
-				
-				
-				if(data.joayo_check == 0){
-					
-					joayoImg = "/resources/assets/img/joayo/heart.svg";
-			
-				} else{
-					
-					joayoImg = "/resources/assets/img/joayo/heart-fill.svg";
-					
-				}
-				$('#joayoImg', revDetail).attr('src', joayoImg);
-				$('#joayo').html(data.joayo);
-				$('#joayo_check').html(data.joayo_check);
-			},
-			error: function(request,status,error){
-				alert("code:"+request.status+"\n" + "message:"+request.responseText+"\n"+"error:"+error);
-			}
-		
-	});
-		
-}
+	
 
 </script>
 </head>
@@ -159,17 +118,8 @@
 		<tr>
 			<th> 추천수</th>
 				<td>
-					<div class="div1">
-		 
-		   <c:choose>
-		    <c:when test="${id ne null}">
-		     <a href='javascript: joayoFunc();'><img src='resources/assets/img/joayo/heart-fill.svg'></a>
-		    </c:when>
-		    <c:otherwise>
-		     <a href=<!-- 'javascript: loginNeed();' -->><img src='resources/assets/img/joayo/heart.svg' id='joayo_img'></a>
-		    </c:otherwise>
-		   </c:choose>
-		   </div>
+					<input type="button" value="👍" onclick="">
+					${vo.joayo}
 				</td>
 		</tr>
 		
