@@ -2,15 +2,6 @@
 @import url(//fonts.googleapis.com/css?family=Noto+Sans);
 @import url(//fonts.googleapis.com/css?family=Lobster);
 
-main #img{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 75vh;
-    width: 100%;
-    background: src("resources/assets/img/images/login.webp") no-repeat center center;
-    background-size: cover;
-}
 .form_class {
 	margin:auto;
 	font-weight: normal;

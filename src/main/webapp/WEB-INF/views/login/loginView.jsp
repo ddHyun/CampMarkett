@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>:::Everyday 캠프마켓:::</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-     <link rel="icon" href="resources/assets/images/favicon.ico">
-     <link rel="shortcut icon" href="resources/assets/images/favicon.ico" />
+     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+     <link rel="shortcut icon" href="resources/assets/img/images/favicon.ico" />
      <link rel="stylesheet" href="resources/assets/css/style.css">
 	  <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
@@ -23,12 +23,14 @@
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
 <script src="resources/assets/js/httpRequest.js"></script>
 <script src="resources/assets/js/jquery-3.6.0.min.js"></script>
-     <script>      
-        $(document).ready(function(){
-    $("a[data-gal^='prettyPhoto']").prettyPhoto({theme:'facebook'});    
+<script>      
+     $(document).ready(function(){
+    /* $("a[data-gal^='prettyPhoto']").prettyPhoto({theme:'facebook'}); */   
+        	$('#form').fadeIn(4000);
     });      
 </script>
 </head>
+<body>
 <div class="main">
 <!--==============================header=================================-->
   <header> 
@@ -65,16 +67,22 @@
 
 <div class="content">
   <div class="zerogrid">
-    <div class="col-full">
-      <h2></h2>
+   <!--  <div class="col-full">
+      <h2>로그인</h2>
     </div>
-    <div class="clear"></div>	
+    <div class="clear"></div> -->	
 	<div class="row">
     <div class="portfolio">  
     
     
-    <main id="img">
-       <form id="form" name="form" class="form_class" action="money.do" method="post">
+    <main  style="display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    width: 100%;
+    background: url('resources/assets/img/images/bbq.jpg') no-repeat center center;
+    background-size: cover;">
+       <form id="form" name="form" class="form_class" action="money.do" method="post" style="display:none">
             <div class="form_div">
                 <label>아이디</label>
                 <input class="field_class" name="id" id="id" type="text" autofocus><br>
@@ -154,38 +162,6 @@
   </div>
 </footer>
 </body>
-
-
-
-
-
-
-<!-- <body>
-	
-	<div>
-	<form name="f" method="POST" align="center" action="money.do">
-	<h3>로그인</h3>
-		<div>
-			<label>아이디</label>
-			<input type="text" name="id" id="id" required>
-		</div>
-		<div>
-			<label>비밀번호</label>
-			<input type="password" name="pwd" id="pwd" required>
-		</div>
-		<div>			
-			<input type="button" value="로그인" onclick="goLogin()">
-		</div>
-		<div>
-			<span>계정이 없으신가요? <a href="term.do">회원가입</a></span>
-		</div>
-		<div>
-			<span style="cursor:pointer; text-decoration:underline;" onclick="IDpopup()">아이디 찾기</span>&emsp;
-			<span style="cursor:pointer; text-decoration:underline;" onclick="PWDpopup()">비밀번호 찾기</span>
-		</div>		
-	</form>
-	</div>	
-</body> -->
 <script>
 	//페이지 로딩되면 자동커서
 	$(function(){

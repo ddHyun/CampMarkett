@@ -4,11 +4,68 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>:::Everyday 캠프마켓:::</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="shortcut icon" href="resources/assets/img/images/favicon.ico" />
+<link rel="stylesheet" href="resources/assets/css/style.css">
+<link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
+<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
+<link rel="stylesheet" href="resources/assets/css/prettyPhoto.css">
+<link rel="stylesheet" href="resources/assets/css/login.css">
+<script src="resources/assets/js/jquery.js"></script>
+<script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
+<script src="resources/assets/js/superfish.js"></script>
+<script src="resources/assets/js/jquery.easing.1.3.js"></script>
+<script src="resources/assets/js/sForm.js"></script>
+<script src="resources/assets/js/jquery.prettyPhoto.js"></script>
+<script src="resources/assets/js/css3-mediaqueries.js"></script>
+<script src="resources/assets/js/httpRequest.js"></script>
+<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 <script src="resources/assets/js/httpRequest.js"></script>
 <script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+
+
+
+ <form id="form" name="form" class="form_class" action="money.do" method="post">
+            <div class="form_div">
+                <label>아이디</label>
+                <input class="field_class" name="id" id="id" type="text" autofocus><br>
+                <label>비밀번호</label>
+                <input id="pwd" class="field_class" name="pwd" type="password">
+            </div>
+            <div class="info_div" style="display:flex;">
+            <a style="border:none; box-shadow:none; background:none;
+           	text-decoration:underline; width:200px; margin: 10px auto;" onclick="IDpopup()">
+           	아이디 찾기</a>
+           	<a style="border:none; box-shadow:none; background:none;
+           	text-decoration:underline; width:200px; margin: 10px auto;" onclick="PWDpopup()">
+           	비밀번호 찾기</a>           
+            </div>  
+            <div class="info_div">          
+                <input class="submit_class" type="button" form="form" value="로그인"
+                onclick="goLogin()">
+            </div>
+            <div class="info_div" style="margin-top:10px">
+               	<p>아직 계정이 없으신가요?
+               	<a style="border:none; box-shadow:none; background:none;
+               	text-decoration:underline; width:200px; margin: 10px auto;" href="term.do">
+               	회원가입하러 가기</a></p>
+            </div>
+        </form>
+
+
+
+
+
+
+
+
+
+
+
 	<form action="loginView.do" method="POST" name="f" align="center">
 	<p>아이디 찾기</p>
 		<div>
