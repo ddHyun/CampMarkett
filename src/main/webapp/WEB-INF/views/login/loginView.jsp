@@ -6,33 +6,32 @@
 <head>
 <meta charset="UTF-8">
 <title>:::Everyday 캠프마켓:::</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<title>Home</title>
+     <meta charset="utf-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="icon" href="resources/assets/img/images/favicon.ico">
      <link rel="shortcut icon" href="resources/assets/img/images/favicon.ico" />
      <link rel="stylesheet" href="resources/assets/css/style.css">
-	  <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
-     <link rel="stylesheet" href="resources/assets/css/prettyPhoto.css">
      <link rel="stylesheet" href="resources/assets/css/login.css">
+     <link rel="stylesheet" href="resources/assets/css/popup.css">
+     <link rel="stylesheet" href="resources/assets/css/slider.css">
+	 <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
      <script src="resources/assets/js/jquery.js"></script>
      <script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
      <script src="resources/assets/js/superfish.js"></script>
      <script src="resources/assets/js/jquery.easing.1.3.js"></script>
      <script src="resources/assets/js/sForm.js"></script>
-     <script src="resources/assets/js/jquery.prettyPhoto.js"></script>
+     <script src="resources/assets/js/jquery.carouFredSel-6.1.0-packed.js"></script>
+     <script src="resources/assets/js/tms-0.4.1.js"></script>
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
-<script src="resources/assets/js/httpRequest.js"></script>
-<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
-<script>      
-     $(document).ready(function(){
-    /* $("a[data-gal^='prettyPhoto']").prettyPhoto({theme:'facebook'}); */   
-        	$('#form').fadeIn(4000);
-    });      
-</script>
+	<script src="resources/assets/js/httpRequest.js"></script>
+	<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
 <div class="main">
-<!--==============================header=================================-->
+<!-- ==============================header================================= -->
   <header> 
   <div class="zerogrid">
     <div class="col-full">
@@ -42,18 +41,19 @@
          <div class="menu_block">
            <nav>
             <ul class="sf-menu">
-                   <li><a href="index.html">Home</a></li>
-                   <li class="with_ul"><a href="index-1.html">About Us</a>
+                   <li><a href="home2">Home</a></li>
+                   
+                   <li><a href="resources/assets/html/index-2.html">밀키트</a></li>
+                   <li><a href="resources/assets/html/index-3.html">후기</a></li>
+                   <li><a href="resources/assets/html/index-4.html">주변 캠핑장 </a></li>
+                   <li class="with_ul"><a href="resources/assets/html/index-1.html">회원 정보</a>
 				   	<ul>
                          <li><a href="#"> cuisine</a></li>
                          <li><a href="#">Good rest</a></li>
                          <li><a href="#">Services</a></li>
                      </ul>
 				   </li>
-                   <li><a href="index-2.html">Menu</a></li>
-                   <li><a href="index-3.html">Portfolio</a></li>
-                   <li><a href="index-4.html">News </a></li>
-                   <li class="current"><a href="index-5.html">로그인 / 회원가입</a></li>
+                   <li class="current"><a href="resources/assets/html/index-4.html">로그인 / 회원가입</a></li>
                  </ul>
            </nav>
            <div class="clear"></div>
@@ -63,14 +63,14 @@
       </div>
     </div>
 </header>
-<!--=======content================================-->
+<!-- =======content================================ -->
 
 <div class="content">
-  <div class="zerogrid">
-   <!--  <div class="col-full">
-      <h2>로그인</h2>
+  <div class="zerogrid" style="width:100%">
+    <div class="col-full">
+      <h2></h2>
     </div>
-    <div class="clear"></div> -->	
+    <div class="clear"></div>	
 	<div class="row">
     <div class="portfolio">  
     
@@ -82,7 +82,10 @@
     width: 100%;
     background: url('resources/assets/img/images/bbq.jpg') no-repeat center center;
     background-size: cover;">
-       <form id="form" name="form" class="form_class" action="money.do" method="post" style="display:none">
+    <div class="main2" style="width:800px;
+  margin:160px auto;
+  text-align:center;">
+       <form id="form" name="form" class="form_class" action="money.do" method="post" style="display:none;">
             <div class="form_div">
                 <label>아이디</label>
                 <input class="field_class" name="id" id="id" type="text" autofocus><br>
@@ -90,12 +93,14 @@
                 <input id="pwd" class="field_class" name="pwd" type="password">
             </div>
             <div class="info_div" style="display:flex;">
-            <a style="border:none; box-shadow:none; background:none;
+         <!--    <a style="border:none; box-shadow:none; background:none; cursor:pointer;
            	text-decoration:underline; width:200px; margin: 10px auto;" onclick="IDpopup()">
-           	아이디 찾기</a>
-           	<a style="border:none; box-shadow:none; background:none;
+           	아이디 찾기</a> -->
+  			<a class="info_div popup-btn" href="#">아이디 찾기</a>
+           	<!-- <a style="border:none; box-shadow:none; background:none; cursor:pointer;
            	text-decoration:underline; width:200px; margin: 10px auto;" onclick="PWDpopup()">
-           	비밀번호 찾기</a>           
+           	비밀번호 찾기</a>  -->          
+  			<a class="info_div popup-btn" href="#">비밀번호 찾기</a>
             </div>  
             <div class="info_div">          
                 <input class="submit_class" type="button" form="form" value="로그인"
@@ -108,8 +113,35 @@
                	회원가입하러 가기</a></p>
             </div>
         </form>
-     </main>   
-        
+	</div>
+</main> 
+
+  
+	<!-- 아이디찾기 팝업 -->
+      <div class="popup-wrap">
+    <div class="popup-box">
+      <form id="form1" name="form1" class="form_class" action="money.do" method="post">
+            <div class="form_div">
+                <label>이름</label>
+                <input class="field_class" name="name" id="name" type="text" autofocus><br>
+                 <label>생년월일</label>
+                <input class="field_class" name="birth" id="birth" placeholder="예)990101" type="text" autofocus><br>
+                <label>이메일</label>
+                <input class="field_class" name="email" type="text" id="email" placeholder="예)abc@def.com">
+            </div>
+            <div class="info_div" id="idDiv">          
+                <input class="submit_class" type="button" form="form" value="아이디 찾기"
+                onclick="searchID()">
+            </div>
+            <div  class="info_div" style="display:flex; display:none; margin:20 auto" id="idText">
+				<label>아이디 :&emsp;<span id="searchId" style="color:#e2827e; font-size:20px"></span></label>&emsp;		
+			</div>          
+		      <div style="margin-top:15px">
+		      	<a class="close-btn popup-close" href="#">로그인 화면으로 이동</a>
+		      </div>
+        </form>
+    </div>
+  </div>  
         
         
     </div>
@@ -150,7 +182,7 @@
     </div>
   </div>
 </div>
-<!--==============================footer=================================-->
+<!-- ==============================footer================================= -->
 
 <footer>    
   <div class="zerogrid">
@@ -162,12 +194,28 @@
   </div>
 </footer>
 </body>
+
 <script>
-	//페이지 로딩되면 자동커서
-	$(function(){
-		$('#id').focus();
-	});	
+
+	$(document).ready(function(){
+       	$('#form').fadeIn(1000);
+   });
+   
+	$('.popup-btn').click(function(e) {
+    $('.popup-wrap').fadeIn(500);
+    $('.popup-box').removeClass('transform-out').addClass('transform-in');
+
+    e.preventDefault();
+  });
+
+  $('.popup-close').click(function(e) {
+    $('.popup-wrap').fadeOut(500);
+    $('.popup-box').removeClass('transform-in').addClass('transform-out');
+
+    e.preventDefault();
+  });
 	
+	//로그인하기
 	function goLogin(){
 		var id = document.getElementById("id");
 		var idVal = id.value.trim();
@@ -208,50 +256,67 @@
 				var name = json[1].name;
 				alert("환영합니다 "+name+" 회원님~");				
 				//var form = document.form;			
-				document.form.submit();	
-				
+				document.form.submit();					
 			}
 		}
+	}	
+	
+	//아이디찾기
+	function searchID(){
+		var form = document.form1;
+		var name = form.name;
+		var birth = form.birth;
+		var email = form.email;
+		var nameVal = name.value.trim();
+		var birthVal = birth.value.trim();
+		var emailVal = email.value.trim();
+		
+		if(nameVal==''){
+			alert("이름을 입력해 주세요");
+			name.focus();
+			return;
+		}
+		if(birthVal==''){
+			alert("생년월일을 입력해 주세요");
+			birth.focus();		
+			return;
+		}
+		if(emailVal==''){
+			alert("이메일을 입력해 주세요");
+			email.focus();
+			return;
+		}
+		
+		var url = "searchID.do";
+		var param = "name="+nameVal+"&birth="+birthVal+"&email="+emailVal;
+		sendRequest(url, param, cb, "POST");
 	}
 	
-	//팝업창 세팅인데 함수 안에 넣으면 팝업창 생성이 안됨
-	/* function popupSetting(url, name, width, height){
-		document.domain = "localhost";
-		this.url = url;
-		this.name = name;
-		this.width = width;
-		this.height = height;
-		//화면 중앙에 위치
-		var left = Math.ceil((window.screen.width - width)/2); 
-		var top = 100;
-		//var top = Math.ceil((window.screen.height - height)/2);
-		var option = 
-			"width="+width+",height="+height+", scrollbars=yes, resizable=no, left="+left+", top="+top;
-		window.open(url, name, option);
-	} */
-	
-	//아이디 찾기
-	function IDpopup(){
-		//console.log(document.domain);으로 확인함
-		document.domain = "localhost";
-		var url = "/camp/searchIDView.do";
-		var name = "FIND MY ID";
-		var width = 570;
-		var height = 420;
-		//화면 중앙에 위치
-		var left = Math.ceil((window.screen.width - width)/2); 
-		var top = 100;
-		//var top = Math.ceil((window.screen.height - height)/2);
-		var option = 
-			"width="+width+",height="+height+", scrollbars=yes, resizable=no, left="+left+", top="+top;
-		window.open(url, name, option);
-	}
+	function cb(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var data = xhr.responseText;
+			var json = (new Function('return'+data))();
+			//회원정보가 없다면
+			if(json[0].id == 'none'){
+				alert("입력하신 정보와 일치하는 아이디가 존재하지 않습니다. 다시 시도해 주세요");
+				$('#name').val('');
+				birth.value="";
+				email.value="";
+				name.focus();
+				return;
+			}else{
+				$('#idDiv').hide();
+				document.getElementById('idText').style.display = 'block';
+				document.getElementById('searchId').innerHTML = json[0].id;
+			}
+		}
+	}	
 	
 	//비밀번호 찾기
 	function PWDpopup(){
 		document.domain = "localhost";
 		var url = "/camp/searchPwdView.do";
-		var name = "FIND MY PWD";
+		var name = "DDD";
 		var width = 570;
 		var height = 420;
 		//화면 중앙에 위치
