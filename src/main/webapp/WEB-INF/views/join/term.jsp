@@ -33,19 +33,19 @@
          <div class="menu_block">
            <nav>
             <ul class="sf-menu">
-                   <li><a href="home2">Home</a></li>
+                   <li class="current"><a href="home">Home</a></li>
                    
-                   <li><a href="resources/assets/html/index-2.html">밀키트</a></li>
-                   <li><a href="resources/assets/html/index-3.html">후기</a></li>
-                   <li><a href="resources/assets/html/index-4.html">주변 캠핑장 </a></li>
-                   <li class="with_ul"><a href="resources/assets/html/index-1.html">회원 정보</a>
-				   	<ul>
+                   <li><a href="marketMain_Temp">밀키트</a></li>
+                   <li><a href="reviewMain_Temp">후기</a></li>
+                   <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
+                   <li class="with_ul"><a href="money.do">회원 정보</a>
+				   <ul>
                          <li><a href="#"> cuisine</a></li>
                          <li><a href="#">Good rest</a></li>
                          <li><a href="#">Services</a></li>
-                     </ul>
+                   </ul>
 				   </li>
-                   <li class="current"><a href="resources/assets/html/index-4.html">로그인 / 회원가입</a></li>
+                   <li class="current"><a href="login_Temp">로그인</a></li>
                  </ul>
            </nav>
            <div class="clear"></div>

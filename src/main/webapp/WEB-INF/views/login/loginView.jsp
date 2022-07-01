@@ -40,11 +40,11 @@
          <div class="menu_block">
            <nav>
             <ul class="sf-menu">
-                   <li><a href="home2">Home</a></li>                   
-                   <li><a href="resources/assets/html/index-2.html">밀키트</a></li>
-                   <li><a href="resources/assets/html/index-3.html">후기</a></li>
-                   <li><a href="resources/assets/html/index-4.html">주변 캠핑장 </a></li>
-                   <li class="with_ul"><a href="resources/assets/html/index-1.html">회원 정보</a>
+                   <li><a href="home">Home</a></li>                   
+                   <li><a href="marketMain_Temp">밀키트</a></li>
+                   <li><a href="reviewMain_Temp">후기</a></li>
+                   <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
+                   <li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
 				   	<ul>
                          <li><a href="#"> cuisine</a></li>
                          <li><a href="#">Good rest</a></li>
@@ -52,7 +52,7 @@
                          <li><a href="makeSampleId">샘플 로그인!</a></li>
                      </ul>
 				   </li>
-                   <li class="current"><a href="resources/assets/html/index-4.html">로그인/회원가입</a></li>
+                   <li class="current"><a href="login_Temp">로그인</a></li>
                  </ul>
            </nav>
            <div class="clear"></div>
@@ -82,6 +82,7 @@
     background: url('resources/assets/img/images/bbq.jpg') no-repeat center center;
     background-size: cover;">
     <div class="main2" style="width:800px; margin:160px auto; text-align:center;">
+       <!-- <form id="form" name="form" class="form_class" action="marketMain_Temp" method="post" style="display:none;"> -->
        <form id="form" name="form" class="form_class" action="money.do" method="post" style="display:none;">
             <div class="form_div">
                 <label>아이디</label>
@@ -89,15 +90,9 @@
                 <label>비밀번호</label>
                 <input id="pwd" class="field_class" name="pwd" type="password">
             </div>
-            <div class="info_div" style="display:flex;">
-         <!--    <a style="border:none; box-shadow:none; background:none; cursor:pointer;
-           	text-decoration:underline; width:200px; margin: 10px auto;" onclick="IDpopup()">
-           	아이디 찾기</a> -->
-  			<a class="info_div popup-btn" href="#">아이디 찾기</a>
-           	<!-- <a style="border:none; box-shadow:none; background:none; cursor:pointer;
-           	text-decoration:underline; width:200px; margin: 10px auto;" onclick="PWDpopup()">
-           	비밀번호 찾기</a>  -->          
-  			<a class="info_div popup-btn" href="#">비밀번호 찾기</a>
+            <div class="info_div" style="display:flex;">        
+  			<a class="info_div popup-btn" href="#">아이디 찾기</a>                    
+  			<a class="info_div popup-btn1" href="#">비밀번호 찾기</a>
             </div>  
             <div class="info_div">          
                 <input class="submit_class" type="button" form="form" value="로그인"
@@ -142,8 +137,8 @@
   
   
   <!-- 비밀번호 찾기 팝업 -->
-    <div class="popup-wrap">
-    <div class="popup-box">
+    <div class="popup-wrap1">
+    <div class="popup-box1">
       <form id="popPwdForm" name="popPwdForm" class="form_class" method="post">
        	<div class="form_div">
             <label>아이디</label>
@@ -171,7 +166,7 @@
         	<input type="hidden" id="idx">
 		</div>          
 	    <div style="margin-top:15px">
-	      	<a class="close-btn popup-close" href="##">로그인 화면으로 이동</a>
+	      	<a class="close-btn popup-close1" href="##">로그인 화면으로 이동</a>
 	    </div>				 
 	</form>
     </div>
@@ -234,6 +229,7 @@
        	$('#form').fadeIn(1000);
    });
    
+	//아이디찾기 팝업
 	$('.popup-btn').click(function(e) {
     $('.popup-wrap').fadeIn(500);
     $('.popup-box').removeClass('transform-out').addClass('transform-in');
@@ -247,6 +243,21 @@
 
     e.preventDefault();
   });
+  
+  //비밀번호 찾기 팝업
+  $('.popup-btn1').click(function(e) {
+	    $('.popup-wrap1').fadeIn(500);
+	    $('.popup-box1').removeClass('transform-out1').addClass('transform-in1');
+
+	    e.preventDefault();
+	  });
+
+	  $('.popup-close1').click(function(e) {
+	    $('.popup-wrap1').fadeOut(500);
+	    $('.popup-box1').removeClass('transform-in1').addClass('transform-out1');
+
+	    e.preventDefault();
+	  });
 	
 	//로그인하기
 	function goLogin(){
@@ -273,7 +284,7 @@
 		sendRequest(url, param, cb, "POST");
 	}
 	
-	function cb(){
+	function cb(){	
 		if(xhr.readyState==4 && xhr.status==200){
 			var data = xhr.responseText;
 			var json = (new Function('return'+data))();			
@@ -287,6 +298,7 @@
 				
 			}else{
 				var name = json[1].name;
+				console.log(name);
 				alert("환영합니다 "+name+" 회원님~");				
 				//var form = document.form;			
 				document.form.submit();					
@@ -322,10 +334,10 @@
 		
 		var url = "searchID.do";
 		var param = "name="+nameVal+"&birth="+birthVal+"&email="+emailVal;
-		sendRequest(url, param, cb, "POST");
+		sendRequest(url, param, cb1, "POST");
 	}
 	
-	function cb(){
+	function cb1(){
 		if(xhr.readyState==4 && xhr.status==200){
 			var data = xhr.responseText;
 			var json = (new Function('return'+data))();
@@ -373,10 +385,10 @@
 		
 		var url = "searchPwd.do";
 		var param = "name="+nameVal+"&id="+idVal+"&email="+emailVal;
-		sendRequest(url, param, cb1, "POST");
+		sendRequest(url, param, cb2, "POST");
 	}
 	
-	function cb1(){
+	function cb2(){
 		if(xhr.readyState==4 && xhr.status==200){
 			var data = xhr.responseText;
 			var json = (new Function('return'+data))();
@@ -426,12 +438,12 @@
 				url = "changePwd.do";
 				param = "pwd="+pwdVal+ "&idx="+idx;
 				console.log("pwd: "+pwdVal+"/idx: "+idx);
-				sendRequest(url, param, cb2, "POST");
+				sendRequest(url, param, cb3, "POST");
 			}
 		}		
 	}
 	
-	function cb2(){
+	function cb3(){
 		if(xhr.readyState==4 && xhr.status==200){
 			var data = xhr.responseText;
 			var json = (new Function('return'+data))();
@@ -447,6 +459,6 @@
 			}
 		}		
 		
-	}//cb2끝
+	}
 </script>
 </html>
