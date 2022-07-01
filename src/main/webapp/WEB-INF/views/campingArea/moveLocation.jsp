@@ -8,13 +8,12 @@
 <title>내 위치 선택하기</title>
 
 </head>
-<!-- <body> -->
-<body onload='resizeWindow(this)'>
-<button onclick='closeb()'><strong>지도의 위치로 위치 변경하기</strong></button>
-<div id="map" style="width:600px;height:600px;"></div>
+<body>
+<div id="map" style="width:700px;height:700px;"></div>
 
 <br> 
-
+<div id="clickLatlng"></div>
+<button onclick='closeb()'>위치 결정</button>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=981d10b9423551ea1989e7ef7415c980"></script>
 <script src="resources/assets/js/jquery.js"></script>
 <script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
@@ -33,22 +32,16 @@
 	var centerPosition = new kakao.maps.LatLng(${sessionScope.sessionLat}, ${sessionScope.sessionLon});
     var mapOption = { 
         center: centerPosition, // 지도의 중심좌표
-        level: 6 // 지도의 확대 레벨
+        level: 8 // 지도의 확대 레벨
     };
 	
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-	var imageSrc = 'resources/assets/img/campingArea/redMarker.png',     
-	imageSize = new kakao.maps.Size(40, 46), 
-	imageOption = {offset: new kakao.maps.Point(17, 46)}; 
-
-	//마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-	var markerImage2 = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
-	
+	console.log("${sessionScope.sessionLat}");
+	console.log("${sessionScope.sessionLon}");
 	// 지도를 클릭한 위치에 표출할 마커입니다
 	var myMarker = new kakao.maps.Marker({ 
 	    // 지도 중심좌표에 마커를 생성합니다 
-	    position: map.getCenter(),
-	    image: markerImage2
+	    position: map.getCenter() 
 	}); 
 	// 지도에 마커를 표시합니다
 	myMarker.setMap(map);

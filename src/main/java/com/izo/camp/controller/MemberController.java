@@ -24,8 +24,7 @@ public class MemberController {
 	
 	//가입여부 확인 페이지 ->약관동의 페이지
 	@RequestMapping("/term.do")
-	public String term(MemberVO vo, Model model) {			
-		//model.addAttribute("vo", vo);
+	public String term(MemberVO vo) {			
 		String name = vo.getName();
 		String email = vo.getEmail();
 		session.setAttribute("wannaName", name);
@@ -42,7 +41,6 @@ public class MemberController {
 	//약관 페이지 -> 회원가입 페이지
 	@RequestMapping("/joinView.do")
 	public String joinView(MemberVO vo, Model model) {
-		System.out.println("name: "+vo.getName()+"email: "+vo.getEmail());
 		model.addAttribute("vo", vo);
 		return "join/joinView";
 	}	
@@ -95,7 +93,7 @@ public class MemberController {
 	}
 	
 	
-	//로그인페이지로 이동
+	//로그인 메인 이동
 	@RequestMapping(value="/login_Temp")
 	public String loginView() {
 		return "login/loginView";

@@ -21,6 +21,7 @@
      <script src="resources/assets/js/jquery.carouFredSel-6.1.0-packed.js"></script>
      <script src="resources/assets/js/tms-0.4.1.js"></script>
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
+	 <script src="resources/assets/js/menuBar.js"></script>
      <script>
       $(window).load(function(){
       $('.slider')._TMS({
@@ -59,7 +60,8 @@ height: 'auto',
     
     
     });      
-
+	
+     
      </script>
      <!--[if lt IE 8]>
        <div style=' clear: both; text-align:center; position: relative;'>
@@ -93,12 +95,12 @@ height: 'auto',
                    <li class="current"><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
                    <li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
 				   	<ul>
-                         <li><a href="#"> cuisine</a></li>
+                         <li><a href="#" onclick="goMyBasket()"> 장바구니 </a></li>
                          <li><a href="#">Good rest</a></li>
                          <li><a href="#">Services</a></li>
                      </ul>
 				   </li>
-                   <li><a href="Login_Temp">로그인</a></li>
+                   <li><a href="login_Temp">로그인</a></li>
              </ul>
            </nav>
            <div class="clear"></div>

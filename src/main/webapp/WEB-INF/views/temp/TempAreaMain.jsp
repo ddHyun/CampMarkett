@@ -4,7 +4,7 @@
 
 <html>
 <head>
-     <title>Home</title>
+     <title>주변 캠핑장</title>
      <meta charset="utf-8">
 	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      <link rel="icon" href="resources/assets/img/images/favicon.ico">
@@ -81,16 +81,16 @@ height: 'auto',
   <div class="zerogrid">
     <div class="col-full">
 	<div class="wrap-col">
-    <h1><a href="home"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
+    <h1><a href="home"><img src="resources/assets/img/images/logo2.png" alt="EXTERIOR"></a> </h1>
     
          <div class="menu_block">
            <nav>
             <ul class="sf-menu">
                    <li><a href="home">Home</a></li>
                    
-                   <li class="current"><a href="marketMain_Temp">밀키트</a></li>
+                   <li><a href="marketMain_Temp">밀키트</a></li>
                    <li><a href="reviewMain_Temp">후기</a></li>
-                   <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
+                   <li class="current"><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
                    <li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
 				   	<ul>
                          <li><a href="#"> cuisine</a></li>
@@ -108,91 +108,34 @@ height: 'auto',
       </div>
     </div>
 </header>
-<!--  <div class="slider-relative">
-    <div class="slider-block">
-      <div class="slider">
-        <ul class="items">
-          <li><img src="resources/assets/img/images/slide.jpg" alt=""></li>
-          <li><img src="resources/assets/img/images/slide1.jpg" alt=""></li>
-          <li class="mb0"><img src="resources/assets/img/images/slide2.jpg" alt=""></li>
-        </ul>
-      </div>
-    </div>
- </div> -->
-<!--=======content================================-->
 
-<div class="content page1">
+<!--=======content================================-->
+<div class="content">
   <div class="zerogrid">
-      
-      <c:forEach var="product" items="#{productList}">
-		<div class="temp" style="border:1px solid black; width:30%"<%--  onclick="popupDetail(${camp.idx})" --%> style="cursor:pointer;">
-		<%-- <img src="resources/assets/img/campingArea/${camp.imgName}" height="200px" width="300px"> --%>
-		상품이름 : ${product.productId}
-		<br>
-		상품가격 : ${product.price}
-		</div>
-		<br>
-		<br>
-	</c:forEach>
-      
-	  <div class="row">
-      <div class="col-full">
-	  	<div class="wrap-col">
-        <div class="car_wrap">
-        <h2>Best Choice</h2>
-        <a href="#" class="prev"></a><a href="#" class="next"></a>
-        <ul class="carousel1">
-          <li><div><img src="resources/assets/img/images/page1_img1.jpg" alt="">
-          <div class="col1 upp"> <a href="#">kim Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img2.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img3.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img4.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img3.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet kim</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-        </ul>
-      </div>
-	  </div>
+    <div class="col-full">
+      <h2>주변 캠핑장</h2>
+      <button onclick="popupLocation()">위치 설정</button>
     </div>
-	</div>
+    <div class="clear"></div>
+	
 	<div class="row">
-    <div class="bottom_block">
-      <div class="col-1-2">
-        <h3>Follow Us</h3>
-        <div class="socials">
-          <a href="#"></a>
-          <a href="#"></a>
-          <a href="#"></a>
-        </div>
-        <nav><ul>
-                   <li class="current"><a href="home">Home</a></li>
-                   <li ><a href="resources/assets/html/index-1.html">About Us</a></li>
-                   <li><a href="resources/assets/html/index-2.html">Menu</a></li>
-                   <li><a href="resources/assets/html/index-3.html">Portfolio</a></li>
-                   <li><a href="resources/assets/html/index-4.html">News </a></li>
-                   <li><a href="resources/assets/html/index-5.html">Contacts</a></li>
-                 </ul></nav>
-      </div>
+   		
+	    <div class="portfolio">
+	    	<c:forEach var="camp" items="${camplist}">
+	   	   <div class="col-1-2">
+		  		<div class="wrap-col" onclick="popupDetail(${camp.idx})" style="cursor:pointer;">
+		  			<img src="resources/assets/img/campingArea/${camp.imgName}" alt="">
+		  			<h3>${camp.name}</h3>
+		  			<p>캠핑장 거리  ${camp.distance}km</p>
+				</div>
+			</div>
+			</c:forEach>
+	    </div>
+	    
+	    </div>
+	    
+	   
     
-      </div>
-	  </div>
     </div>
   </div>
 </div>
@@ -208,4 +151,54 @@ height: 'auto',
   </div>
 </footer>
 </body>
+<script>
+	
+	var windowX = window.screen.width;
+	var windowY = window.screen.height;
+	
+	//상세보기 페이지 띄우기
+	function popupDetail(idx){
+		var popUpWidth = windowX / 3 ;
+		var popUpheight = (windowY * 3 ) / 4 ;
+		var top =  ((windowY / 2) - (popUpheight / 2));
+		var left = ((windowX / 2) - (popUpWidth / 2));
+	
+		
+		
+	/* 	var pop = window.open("/camp/campDetail?idx="+e,"pop","width=650,height=800, scrollbars=yes, resizable=no");  */
+		var pop = window.open(
+				"/camp/campDetail?idx="+idx,
+						"pop",
+						"width=" + popUpWidth 
+						+ ", height = " + popUpheight 
+						+ ", top = " + top
+						+ ", left = " + left
+						+ " ,scrollbars=yes, resizable=no"); 	
+		
+	}
+	
+	//위치설정 페이지 띄우기
+	function popupLocation(){
+		var popUpWidth = windowX / 3 ;
+		var popUpheight = windowY / 2 ;
+		var top =  ((windowY / 2) - (popUpheight / 2));
+		var left = ((windowX / 2) - (popUpWidth / 2));
+		var win = this.window;
+		
+		var pop = window.open(
+				"/camp/makeLocation",
+						"pop",
+						"width = 1200" 
+						+ ", height = 1600" 
+						+ ", top = " + top
+						+ ", left = " + left
+						+ " ,scrollbars=yes, resizable=no"); 	
+		
+		//팝업창이 닫힐때 발생하는 이벤트
+		 pop.onbeforeunload = function() {
+			 document.getElementById('user_barcode').focus();
+			}; 
+	}
+	
+</script>
 </html>

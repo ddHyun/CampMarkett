@@ -78,11 +78,11 @@
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 mapOption = { 
     center: new kakao.maps.LatLng(${campInfo.latitude}, ${campInfo.longitude}), // 지도의 중심좌표
-    level: 3 // 지도의 확대 레벨
+    level: 8 // 지도의 확대 레벨
 };
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
+/* 
 //마커가 표시될 위치입니다 
 var markerPosition  = new kakao.maps.LatLng(${campInfo.latitude}, ${campInfo.longitude}); 
 
@@ -92,7 +92,44 @@ position: markerPosition
 });
 
 //마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
+marker.setMap(map); */
+
+var imageSrc = 'resources/assets/img/campingArea/tentMarker.png', // 마커이미지의 주소입니다    
+imageSize = new kakao.maps.Size(40, 46), // 마커이미지의 크기입니다
+imageOption = {offset: new kakao.maps.Point(17, 46)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+//마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+var markerImage1 = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+markerPosition = new kakao.maps.LatLng(${campInfo.latitude}, ${campInfo.longitude}); // 마커가 표시될 위치입니다
+
+//마커를 생성합니다
+var marker1 = new kakao.maps.Marker({
+position: markerPosition,
+image: markerImage1 // 마커이미지 설정 
+});
+
+//마커가 지도 위에 표시되도록 설정합니다
+marker1.setMap(map);  
+
+
+
+
+var imageSrc = 'resources/assets/img/campingArea/redMarker.png',     
+imageSize = new kakao.maps.Size(40, 46), 
+imageOption = {offset: new kakao.maps.Point(17, 46)}; 
+
+//마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+var markerImage2 = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+markerPosition = new kakao.maps.LatLng(${sessionScope.sessionLat}, ${sessionScope.sessionLon}); // 마커가 표시될 위치입니다
+
+//나의 위치 마커를 생성합니다
+var marker2 = new kakao.maps.Marker({
+position: markerPosition,
+image: markerImage2 // 마커이미지 설정 
+});
+
+//마커가 지도 위에 표시되도록 설정합니다
+marker2.setMap(map);  
 
 </script>
 
