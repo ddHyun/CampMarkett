@@ -119,14 +119,23 @@ public class CampingAreaController {
 	
 	//나의 위치 선택하기
 	@RequestMapping("/makeLocation")
-	public String goMakeLocation() {
+	public String goMakeLocation(HttpServletRequest request,Model model) {
+		HttpSession session = request.getSession();
 		
+		Map<String,Double> getXY = new HashMap<String, Double>();
+		getXY.put("lat", (Double) session.getAttribute("sessionLat"));
+		getXY.put("lon", (Double) session.getAttribute("sessionLon"));
+		
+		List<CampInfoVO> list  = 
+				campInfoService.getNearCampingArea(getXY);
+		list = list.subList(0, 10);
+		model.addAttribute("camplist", list);
 		return "campingArea/popupLocation";
 	}
 	
 	
 	
-	//==============================================임시
+	//==============================================임시  ==> 메인
 	@RequestMapping("campingAreaMain_Temp")
 	public String goAreaMaingo(@RequestParam(required=false, defaultValue="0")Double lat,
 			@RequestParam(required=false, defaultValue="0")Double lon,
@@ -190,7 +199,7 @@ public class CampingAreaController {
 	@ResponseBody
 	public List<CampInfoVO> movePosition(Double lat,Double lon){
 			Map<String,Double> getXY = new HashMap<String, Double>();
-			System.out.println("ajax 구동중");
+			
 			getXY.put("lat", lat);
 			getXY.put("lon", lon);
 			List<CampInfoVO> list  = 
@@ -198,6 +207,9 @@ public class CampingAreaController {
 			list = list.subList(0, 10);
 		return list;
 	}
+	
+	
+	
 	@RequestMapping("/moveTest")
 	public String moveTest(Model model,HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -210,6 +222,7 @@ public class CampingAreaController {
 				campInfoService.getNearCampingArea(getXY);
 		list = list.subList(0, 10);
 		model.addAttribute("camplist", list);
+		
 		return "campingArea/moveLocation";
 	}
 	

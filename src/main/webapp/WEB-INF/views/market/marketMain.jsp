@@ -21,6 +21,7 @@
      <script src="resources/assets/js/jquery.carouFredSel-6.1.0-packed.js"></script>
      <script src="resources/assets/js/tms-0.4.1.js"></script>
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
+	 <script src="resources/assets/js/menuBar.js"></script>	
      <script>
       $(window).load(function(){
       $('.slider')._TMS({
@@ -29,11 +30,11 @@
               prevBu:'.prev',
               nextBu:'.next',
               playBu:false,
-              duration:800,
+              duration:600,
               preset:'fade', 
               pagination:true,//'.pagination',true,'<ul></ul>'
               pagNums:false,
-              slideshow:8000,
+              slideshow:4000,
               numStatus:false,
               banners:false,
           waitBannerAnimation:false,
@@ -96,6 +97,7 @@ height: 'auto',
                          <li><a href="#"> cuisine</a></li>
                          <li><a href="#">Good rest</a></li>
                          <li><a href="#">Services</a></li>
+                         <li><a href="#" onclick="goMyBasket(${sessionScope.loginId eq null})"> 장바구니 </a></li>
                      </ul>
 				   </li>
                    <li><a href="Login_Temp">로그인</a></li>
@@ -108,66 +110,43 @@ height: 'auto',
       </div>
     </div>
 </header>
-<!--  <div class="slider-relative">
-    <div class="slider-block">
-      <div class="slider">
+
+<!-- =========================광고 ========================= -->
+
+  <div class="slider-relative" style="witdh: height:470px">
+    <div class="slider-block" style="height:470px">
+      <div class="slider" style="height:470px">
         <ul class="items">
-          <li><img src="resources/assets/img/images/slide.jpg" alt=""></li>
-          <li><img src="resources/assets/img/images/slide1.jpg" alt=""></li>
-          <li class="mb0"><img src="resources/assets/img/images/slide2.jpg" alt=""></li>
+          <li><img src="resources/assets/img/adImg/marketMainAd04.jpg" alt=""></li>
+          <li><img src="resources/assets/img/adImg/marketMainAd03.jpg" alt=""></li>
+          <li><img src="resources/assets/img/adImg/marketMainAd01.jpg" alt=""></li>
+          <li class="mb0"><img src="resources/assets/img/adImg/marketMainAd02.jpg" alt=""></li>
         </ul>
       </div>
     </div>
- </div> -->
+ </div>
+
 <!--=======content================================-->
+
 
 <div class="content page1">
   <div class="zerogrid">
-      
-      
-	  <div class="row">
+        
+     <div class="row">
       <div class="col-full">
 	  	<div class="wrap-col">
-        <div class="car_wrap">
-        <h2>Best Choice</h2>
-        <a href="#" class="prev"></a><a href="#" class="next"></a>
-        <ul class="carousel1">
-          <li><div><img src="resources/assets/img/images/page1_img1.jpg" alt="">
-          <div class="col1 upp"> <a href="#">kim Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img2.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img3.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img4.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img3.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet kim</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-        </ul>
+        <div class="car_wrap" style="margin-left: 200px">
+        <h2>상품</h2>
         <div style="margin: 0 auto;">	
         	 <c:forEach var="product" items="${productList}">
-				<div class="temp" style="float:left; margin:10px; border:1px solid black; width:27%"<%--  onclick="popupDetail(${camp.idx})" --%> style="cursor:pointer;">
-				<img src="resources/assets/img/food/${product.imgName}.jpg" height="200px" width="300px">
+				<div class="temp" style="float:left; margin:auto; border:1px solid black; width:27%"<%--  onclick="popupDetail(${camp.idx})" --%> style="cursor:pointer;">
+					<img src="resources/assets/img/food/${product.imgName}.jpg" height="200px" width="300px">
 				<br>
-				<span> 상품이름 : ${product.productId}</span>
+				<span> ${product.productId}</span>
 				<br>
-				 <input type="button" onclick="purchase(${product.idx})" class="purchase" value="구매하기">
-				 <input type="button" onclick="location.href='marketDetail?idx=${product.idx}'" class="purchase" value="상세보기">
-				 <div class="price">${product.price}원</div>
+				<div class="price">${product.price}원</div>
+				<a href="#" class="btn" onclick="purchase(${product.idx})">구매하기</a>
+				<a href="#" class="btn" onclick="location.href='marketDetail?idx=${product.idx}'">상세보기</a>
 				</div>
 			</c:forEach>
 			</div> 
@@ -175,42 +154,12 @@ height: 'auto',
       </div>
 	  </div>
     </div>
+    
 	</div>
-	<div class="row">
-    <div class="bottom_block">
-      <div class="col-1-2">
-        <h3>Follow Us</h3>
-        <div class="socials">
-          <a href="#"></a>
-          <a href="#"></a>
-          <a href="#"></a>
-        </div>
-        <nav><ul>
-                   <li class="current"><a href="home">Home</a></li>
-                   <li ><a href="resources/assets/html/index-1.html">About Us</a></li>
-                   <li><a href="resources/assets/html/index-2.html">Menu</a></li>
-                   <li><a href="resources/assets/html/index-3.html">Portfolio</a></li>
-                   <li><a href="resources/assets/html/index-4.html">News </a></li>
-                   <li><a href="resources/assets/html/index-5.html">Contacts</a></li>
-                 </ul></nav>
-      </div>
-      <div class="col-1-2">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn" data-type="submit">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
-          </div>
-      </div>
-	  </div>
+	
     </div>
   </div>
-</div>
+
 <!--==============================footer=================================-->
 
 <footer>    

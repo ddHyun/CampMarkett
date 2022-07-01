@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- 사용하지 않습니다. -->
 <title>주변 캠핑장</title>
 </head>
 <body>
@@ -78,8 +79,8 @@
 		var pop = window.open(
 				"/camp/makeLocation",
 						"pop",
-						"width=" + popUpWidth 
-						+ ", height = " + popUpheight 
+						"width = 900 "
+						+ ", height = 1000"
 						+ ", top = " + top
 						+ ", left = " + left
 						+ " ,scrollbars=yes, resizable=no"); 	
@@ -90,36 +91,7 @@
 			}; 
 	}	
 	
-	//없어도됨
-	window.onload = function(){
-		let ranking = document.getElementById("weather");
-		let xhr = new XMLHttpRequest();
-		let obj;
-		let str;
-		let words = new Array();
-		/* 내 위치 받아서 우선 뿌려주기 */
-		console.log(${lat});
-		console.log(${lon});
-		let url = "https://api.openweathermap.org/data/2.5/weather?"
-				+ "lat=${lat}&lon=${lon}"
-				+ "&appid=69e06beb30084da3eabe041e57096ba5&units=metric&lang=kr";
-		xhr.open("GET",url, true);
-		xhr.send();
-		
-		xhr.onreadystatechange = function(){
-			if(xhr.readyState == 4){
-				if(xhr.status == 200){
-					obj = JSON.parse(xhr.responseText);
-					console.log(obj);
-					ranking.innerHTML = "온도" + obj.main.temp
-								+"<br>" + obj.weather[0].main +  "   현재 날씨";
-								
-				}
-			}
-		}
-		
-		let i = 0;
-	}
+
 	
 	
 </script>
