@@ -49,6 +49,7 @@
                          <li><a href="#"> cuisine</a></li>
                          <li><a href="#">Good rest</a></li>
                          <li><a href="#">Services</a></li>
+                         <li><a href="makeSampleId">샘플 로그인!</a></li>
                      </ul>
 				   </li>
                    <li class="current"><a href="resources/assets/html/index-4.html">로그인/회원가입</a></li>
