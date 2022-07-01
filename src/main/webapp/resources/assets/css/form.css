@@ -122,3 +122,7 @@
 .success_wrapper {
 	position: relative;	
 }
+
+.moveNumber{
+	width: 70px;
+}
