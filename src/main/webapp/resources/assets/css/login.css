@@ -4,7 +4,8 @@
 
 .form_class {
 	margin:auto;
-	font-weight: normal;
+	font-weight: 500;
+	color: #79302b;
     width: 500px;
     padding: 40px;
     border-radius: 8px;
@@ -30,7 +31,7 @@
 .field_class {
     width: 100%;
     border-radius: 6px;
-    border-style: solid;
+    border-style: solid #79302b;;
     border-width: 1px;
     padding: 5px 0px;
     text-indent: 6px;

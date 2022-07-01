@@ -61,10 +61,10 @@
 </header>
 <!--=======content================================-->
 
-<div class="content" style="width"800px;">
+<div class="content">
   <div class="zerogrid">
   	<div class="row">
-	<form action="joinView.do" name="form" style="width:75%; margin:auto">
+	<form action="joinView.do" name="form" style="width:60%; margin:auto">
 	<div class="row">
 	<h2>약관동의</h2>	
 	<p style="font-size:12px; color: #79302b;">

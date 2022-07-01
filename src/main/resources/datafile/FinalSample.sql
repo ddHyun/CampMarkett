@@ -87,3 +87,28 @@ SEQ_REVIEW.NEXTVAL,
  
 /*=============================================================================*/
 /*추가된 샘플*/
+DROP TABLE loadmoneytable;
+DROP SEQUENCE seq_loadmoney;
+
+
+create sequence seq_addmoney;
+
+create table addmoneytable(
+	idx number(3) primary key,
+	id varchar2(50),
+	cardNo number(20),
+	cvcNo number(3),
+	simplePwd number(6),
+	addedMoney number(7),
+	totalMoney number(7),
+	validCardDate number(4),
+	addMoneyDate date default sysdate,
+	FOREIGN KEY (id)
+ 		REFERENCES MEMBERTABLE (ID) ON DELETE CASCADE 
+);
+
+INSERT INTO ADDMONEYTABLE
+(IDX, ID, CARDNO, CVCNO, SIMPLEPWD, ADDEDMONEY, totalMoney, VALIDCARDDATE, ADDMONEYDATE)
+VALUES(seq_addmoney.nextval, 'SampleID', 1111222233334444, 111, 111111, 30000, 30000, 0124, sysdate);
+
+SELECT * FROM ADDMONEYTABLE;
