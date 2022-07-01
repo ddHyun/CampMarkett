@@ -40,8 +40,7 @@
          <div class="menu_block">
            <nav>
             <ul class="sf-menu">
-                   <li><a href="home2">Home</a></li>
-                   
+                   <li><a href="home2">Home</a></li>                   
                    <li><a href="resources/assets/html/index-2.html">밀키트</a></li>
                    <li><a href="resources/assets/html/index-3.html">후기</a></li>
                    <li><a href="resources/assets/html/index-4.html">주변 캠핑장 </a></li>
@@ -53,7 +52,7 @@
                          <li><a href="makeSampleId">샘플 로그인!</a></li>
                      </ul>
 				   </li>
-                   <li class="current"><a href="resources/assets/html/index-4.html">로그인 / 회원가입</a></li>
+                   <li class="current"><a href="resources/assets/html/index-4.html">로그인/회원가입</a></li>
                  </ul>
            </nav>
            <div class="clear"></div>
@@ -67,9 +66,9 @@
 
 <div class="content">
   <div class="zerogrid" style="width:100%">
-    <div class="col-full">
+    <!-- <div class="col-full">
       <h2></h2>
-    </div>
+    </div> -->
     <div class="clear"></div>	
 	<div class="row">
     <div class="portfolio">  
@@ -78,13 +77,11 @@
     <main  style="display: flex;
     align-items: center;
     justify-content: center;
-    height: 75vh;
+   	height: 85vh;
     width: 100%;
     background: url('resources/assets/img/images/bbq.jpg') no-repeat center center;
     background-size: cover;">
-    <div class="main2" style="width:800px;
-  margin:160px auto;
-  text-align:center;">
+    <div class="main2" style="width:800px; margin:160px auto; text-align:center;">
        <form id="form" name="form" class="form_class" action="money.do" method="post" style="display:none;">
             <div class="form_div">
                 <label>아이디</label>
@@ -106,8 +103,8 @@
                 <input class="submit_class" type="button" form="form" value="로그인"
                 onclick="goLogin()">
             </div>
-            <div class="info_div" style="margin-top:10px">
-               	<p>아직 계정이 없으신가요?
+            <div class="info_div" style="margin-top:10px;">
+               	<p style="color: #FFB5C8">아직 계정이 없으신가요?
                	<a style="border:none; box-shadow:none; background:none;
                	text-decoration:underline; width:200px; margin: 10px auto;" href="memberCheck.do">
                	회원가입하러 가기</a></p>
@@ -120,14 +117,14 @@
 	<!-- 아이디찾기 팝업 -->
       <div class="popup-wrap">
     <div class="popup-box">
-      <form id="form1" name="form1" class="form_class" method="post">
+      <form id="popForm" name="popForm" class="form_class" method="post">
             <div class="form_div">
                 <label>이름</label>
-                <input class="field_class" name="name" id="name" type="text" autofocus><br>
+                <input class="field_class" name="popName" id="popName" type="text" autofocus><br>
                  <label>생년월일</label>
-                <input class="field_class" name="birth" id="birth" placeholder="예)990101" type="text"><br>
+                <input class="field_class" name="popBirth" id="popBirth" placeholder="예)990101" type="text"><br>
                 <label>이메일</label>
-                <input class="field_class" name="email" type="text" id="email" placeholder="예)abc@def.com">
+                <input class="field_class" name="popEmail" type="text" id="popEmail" placeholder="예)abc@def.com">
             </div>
             <div class="info_div" id="idDiv">          
                 <input class="submit_class" type="button" form="form" value="아이디 찾기"
@@ -145,16 +142,16 @@
   
   
   <!-- 비밀번호 찾기 팝업 -->
-      <div class="popup-wrap">
+    <div class="popup-wrap">
     <div class="popup-box">
-      <form id="form2" name="form2" class="form_class" method="post">
+      <form id="popPwdForm" name="popPwdForm" class="form_class" method="post">
        	<div class="form_div">
             <label>아이디</label>
-            <input class="field_class" name="id" id="id" type="text" autofocus><br>
+            <input class="field_class" name="popPwdId" id="popPwdId" type="text" autofocus><br>
             <label>이름</label>
-            <input class="field_class" name="name" id="name" type="text"><br>
+            <input class="field_class" name="popPwdName" id="popPwdName" type="text"><br>
             <label>이메일</label>
-            <input class="field_class" name="email" type="text" id="email" placeholder="예)abc@def.com">
+            <input class="field_class" name="popPwdEmail" type="text" id="popPwdEmail" placeholder="예)abc@def.com">
        	</div>
        	<div class="info_div" id="pwdDiv">          
                 <input class="submit_class" type="button" form="form" value="비밀번호 찾기"
@@ -163,9 +160,9 @@
          <div  class="info_div" style="display:flex; display:none; margin:20 auto" id="pwdDiv2">
          	<div class="form_div">
 				<label>새로운 비밀번호</label>
-	            <input class="field_class" name="pwd11" id="pwd11" type="password" autofocus><br>
+	            <input class="field_class" name="newPwd" id="newPwd" type="password" autofocus><br>
 				<label>비밀번호 확인</label>
-	            <input class="field_class" name="pwd22" id="pwd22" type="password"><br>           
+	            <input class="field_class" name="newPwd2" id="newPwd2" type="password"><br>           
        		</div>
        		<div class="info_div" id="pwdDiv3">          
                 <input class="submit_class" type="button" form="form" value="비밀번호 변경하기"
@@ -174,11 +171,11 @@
         	<input type="hidden" id="idx">
 		</div>          
 	    <div style="margin-top:15px">
-	      	<a class="close-btn popup-close" href="#">로그인 화면으로 이동</a>
+	      	<a class="close-btn popup-close" href="##">로그인 화면으로 이동</a>
 	    </div>				 
 	</form>
     </div>
-  </div>        
+  </div>     
         
     </div>
     </div>
@@ -299,10 +296,10 @@
 	
 	//아이디찾기
 	function searchID(){
-		var form = document.form1;
-		var name = form.name;
-		var birth = form.birth;
-		var email = form.email;
+		var form = document.popForm;
+		var name = form.popName;
+		var birth = form.popBirth;
+		var email = form.popEmail;
 		var nameVal = name.value.trim();
 		var birthVal = birth.value.trim();
 		var emailVal = email.value.trim();
@@ -335,7 +332,7 @@
 			//회원정보가 없다면
 			if(json[0].id == 'none'){
 				alert("입력하신 정보와 일치하는 아이디가 존재하지 않습니다. 다시 시도해 주세요");
-				$('#name').val('');
+				$('#popName').val('');
 				birth.value="";
 				email.value="";
 				name.focus();
@@ -350,10 +347,10 @@
 	
 	//비밀번호 찾기
 	function searchPwd(){
-		var form = document.form2;
-		var name = form.name;
-		var id = form.id;
-		var email = form.email;
+		var form = document.popPwdForm;
+		var name = form.popPwdName;
+		var id = form.popPwdId;
+		var email = form.popPwdEmail;
 		var nameVal = name.value.trim();
 		var idVal = id.value.trim();
 		var emailVal = email.value.trim();
@@ -386,7 +383,7 @@
 			//회원정보가 없다면
 			if(json[0].param == 0){
 				alert("일치하는 정보가 없습니다. 다시 시도해 주세요");
-				$('#name').val('');
+				$('#popPwdName').val('');
 				id.value="";
 				email.value="";
 				id.focus();
@@ -403,8 +400,8 @@
 	//비밀번호 변경하기
 	function changePwd() {
 		var pwdPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,15}$/;
-		var pwd = document.getElementById("pwd11");
-		var pwd2 = document.getElementById("pwd22");
+		var pwd = document.getElementById("newPwd");
+		var pwd2 = document.getElementById("newPwd2");
 		var pwdVal = pwd.value.trim();
 		var pwd2Val = pwd2.value.trim();
 		
