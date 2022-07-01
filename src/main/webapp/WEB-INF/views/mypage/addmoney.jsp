@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="icon" href="images/favicon.ico">
 <link rel="shortcut icon" href="images/favicon.ico" />
+<link href="resources/assets/css/layout.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="resources/assets/css/style.css">
 <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
 <link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
@@ -20,8 +21,9 @@
 <script src="resources/assets/js/sForm.js"></script>
 <script src="resources/assets/js/forms.js"></script>
 <script src="resources/assets/js/css3-mediaqueries.js"></script>
-<script src="resources/assets/resources/assets/js/httpRequest.js"></script>
-<script src="resources/assets/resources/assets/js/jquery-3.6.0.min.js"></script>
+<script src="resources/assets/js/httpRequest.js"></script>
+<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
+<script src="https://kit.fontawesome.com/c89215f053.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="main">
@@ -60,28 +62,127 @@
 </header>
 <!--=======content================================-->
 
+
+
+
+<div class="wrapper row3">
+  <main class="hoc container clear" style="height: 350px"> 
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <section id="introblocks">
+      <ul class="nospace group btmspace-80 elements elements-four">
+        <li class="one_quarter">
+          <article><a href="#"><i class="fas fa-turkey"></i></a>
+            <h6 class="heading_card">카드정보</h6>
+          </article>
+        </li>
+        <li class="one_quarter">
+          <article><a href="#section2"><i class="fas fa-dover"></i></a>
+            <h6 class="heading_card">카드등록</h6>
+          </article>
+        </li>
+        <li class="one_quarter">
+          <article><a href="#"><i class="fas fa-histrory"></i></a>
+            <h6 class="heading_card">충전하기</h6>
+          </article>
+        </li>
+        <li class="one_quarter">
+          <article><a href="#"><i class="fas fa-hearrtbeat"></i></a>
+            <h6 class="heading_card">이용내역</h6>
+          </article>
+        </li>
+      </ul>
+    </section>
+    <!-- ################################################################################################ -->
+   
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    <div class="clear"></div>
+  </main>
+</div>
+
+<div class="wrapper row2">
+  <section id="ctdetails" class="hoc container clear"> 
+    <!-- ################################################################################################ -->
+    <div class="sectiontitle"  id="section2">
+      <p class="nospace font-xs"></p>
+      <h6 class="heading font-x2" style="font:35px Arial, Helvetica, sans-serif; 
+	font-weight:600; letter-spacing:4px;">카드등록</h6>
+    </div>
+    <figure class="one_half first">
+    <p class="nospace font-xs" style="line-height: 25px">
+    CVC 번호란 신용카드 번호와는 별도로 인쇄되어 있는 3자리 또는 4자리 숫자로, 
+   	 카드 이용 명세서 등에는 인쇄되지 않습니다. 
+    CVC 번호를 입력함으로써 카드를 소지하고 있다는 사실을 확인하고
+         제3자에 의한 부정 사용을 방지할 수 있습니다.   
+    </p>
+    <img src="resources/assets/img/images/cvcImg.png" style="margin-left:30px; margin-top: 5px">      
+    </figure>
+    <article class="one_half">     
+    
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Newsletter:</legend>
+          <input type="text" value="" id="cardNo" name="cardno" placeholder="카드번호 ('-'제외한 숫자 16자리)">
+          <input type="text" value="" id="validCardDate" name="validcarddate" placeholder="유효기간   (예) 0524(월/연도))">
+          <input type="password" value="" id="cvcNo" name="cvcno" placeholder="CVC번호 (숫자 3~4자리)"> 
+          <input type="password" id="simplePwd1" name="simplepwd" placeholder="결제시 사용할 비밀번호 (숫자 6자리)">
+          <input type="password" id="simplePwd2" placeholder="결제 비밀번호 재입력">
+          <!-- <input type="text" class="moveNumber" id="cardno1" 
+          onKeyup="moveNumber(this);" maxlength="4">&nbsp;&nbsp;-&nbsp;
+		  <input type="text" class="moveNumber" id="cardno2" 
+		  onKeyup="moveNumber(this);" maxlength="4">&nbsp;&nbsp;-&nbsp;
+		  <input type="text" class="moveNumber" id="cardno3" 
+		  onKeyup="moveNumber(this);" maxlength="4">&nbsp;&nbsp;-&nbsp;
+		  <input type="password" class="moveNumber" id="cardno4" maxlength="4"> -->
+          <button type="submit" value="submit">Submit</button>
+        </fieldset>
+      </form>
+      
+    </article>
+    <!-- ################################################################################################ -->
+  </section>
+</div>
+
+
+
+
+
+
+
+
 <div class="content">
   <div class="zerogrid">
   	<div class="row">
   	
+  	<!-- 2사분면 -->
   	<div class="col-2-5">
 	<div class="wrap-col">
-      <div class="success_wrapper">
-       <div class="success">Contact form submitted!<br>
-      <strong>We will be in touch soon.</strong></div></div>
+      <div>
+			<label for="regist" id="registCard" style="cursor:pointer">카드등록</label>&emsp;&emsp;
+			<label>카드정보</label>&emsp;&emsp;
+			<label>충전하기</label>&emsp;&emsp;
+			<label>이용내역</label>
+		</div>
       <h2>카드 등록</h2>
-      <form id="form">
+      <form id="form_money">
       <fieldset>
       <label class="name">
+      <input type="text" value="카드번호:" >
+      <!-- <br class="clear"> -->
+      <span class="error error-empty">*This is not a valid name.</span><span class="empty error-empty">*This field is required.</span> </label>
       	<input type="text" class="moveNumber" id="cardno1" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
 		<input type="text" class="moveNumber" id="cardno2" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
 		<input type="text" class="moveNumber" id="cardno3" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
 		<input type="password" class="moveNumber" id="cardno4" maxlength="4"/>
 		<input type="hidden" name="cardno" id="cardno">
-      <input type="text" value="Name:">
-      <br class="clear">
-      <span class="error error-empty">*This is not a valid name.</span><span class="empty error-empty">*This field is required.</span> </label>
       <label class="email">
+      <input type="text" value="E-mail:" style="width: 400px;">
+      <br class="clear">
+      <input type="text" value="E-mail:">
+      <br class="clear">
+      <input type="text" value="E-mail:">
+      <br class="clear">
       <input type="text" value="E-mail:">
       <br class="clear">
       <span class="error error-empty">*This is not a valid email address.</span><span class="empty error-empty">*This field is required.</span> </label>
@@ -96,6 +197,9 @@
       <div class="clear"></div>
       <div class="btns"><a data-type="reset" class="btn">clear</a><a data-type="submit" class="btn">send</a>
       <div class="clear"></div>
+      <div class="success_wrapper">
+       <div class="success">Contact form submitted!<br>
+      <strong>We will be in touch soon.</strong></div></div>
       </div></fieldset></form>
       
       
@@ -212,7 +316,7 @@
           </div>
 	</div>
     </div>
-	<div class="col-1-5"><div class="wrap-col"><!--empty--></div></div>
+<!-- 	<div class="col-1-5"><div class="wrap-col">empty</div></div> -->
     <div class="col-2-5">
 	<div class="wrap-col">
       <h2>Contact Us</h2>
@@ -316,6 +420,20 @@
 		}
 	}	
 
+	$('#cardNo').keyup(function(){
+		var cardNoLength = $(this).val().length;
+		$(this).val('');
+		if(cardNoLength > 16){
+			alert("카드번호는 16자를 초과할 수 없습니다");
+			return;
+		}
+		if(!/^[0-9]*$/.test($(this))){
+			alert("숫자만 입력이 가능합니다");
+			$(this).val('');
+			return;
+		}		
+	})
+	
 	//cvc번호 안내
 	$('#cvcMsgBtn').on('click', function(){
 		if($('#cvcMsg').css('display')=='block'){
