@@ -93,7 +93,7 @@ public class MemberController {
 	}
 	
 	
-	//로그인페이지로 이동
+	//로그인 메인 이동
 	@RequestMapping(value="/login_Temp")
 	public String loginView() {
 		return "login/loginView";

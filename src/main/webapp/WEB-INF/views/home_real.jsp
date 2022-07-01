@@ -91,16 +91,16 @@ height: 'auto',
                    <li><a href="marketMain_Temp">밀키트</a></li>
                    <li><a href="reviewMain_Temp">후기</a></li>
                    <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
-                   <li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
-				   	<ul>
+                   <li class="with_ul"><a href="money.do">회원 정보</a>
+				   <ul>
                          <li><a href="#"> cuisine</a></li>
                          <li><a href="#">Good rest</a></li>
                          <li><a href="#">Services</a></li>
-                         <li><a href="makeSampleId">샘플 로그인!</a></li>
-                     </ul>
+                         <li><a href="makeSampleId">샘플로그인</a></li>
+                   </ul>
 				   </li>
                    <li><a href="login_Temp">로그인</a></li>
-             </ul>
+                 </ul>
            </nav>
            <div class="clear"></div>
            </div>
