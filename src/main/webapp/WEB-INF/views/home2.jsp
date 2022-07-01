@@ -96,6 +96,7 @@ height: 'auto',
                          <li><a href="#"> cuisine</a></li>
                          <li><a href="#">Good rest</a></li>
                          <li><a href="#">Services</a></li>
+                         <li><a href="makeSampleId">샘플로그인</a></li>
                      </ul>
 				   </li>
                    <li><a href="resources/assets/html/index-4.html">로그인</a></li>

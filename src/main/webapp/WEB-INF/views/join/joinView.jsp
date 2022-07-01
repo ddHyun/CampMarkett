@@ -37,19 +37,19 @@
          <div class="menu_block">
            <nav>
             <ul class="sf-menu">
-                   <li><a href="home2">Home</a></li>
+                   <li class="current"><a href="home">Home</a></li>
                    
-                   <li><a href="resources/assets/html/index-2.html">밀키트</a></li>
-                   <li><a href="resources/assets/html/index-3.html">후기</a></li>
-                   <li><a href="resources/assets/html/index-4.html">주변 캠핑장 </a></li>
-                   <li class="with_ul"><a href="resources/assets/html/index-1.html">회원 정보</a>
-				   	<ul>
+                   <li><a href="marketMain_Temp">밀키트</a></li>
+                   <li><a href="reviewMain_Temp">후기</a></li>
+                   <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
+                   <li class="with_ul"><a href="money.do">회원 정보</a>
+				   <ul>
                          <li><a href="#"> cuisine</a></li>
                          <li><a href="#">Good rest</a></li>
                          <li><a href="#">Services</a></li>
-                     </ul>
+                   </ul>
 				   </li>
-                   <li class="current"><a href="resources/assets/html/index-4.html">로그인 / 회원가입</a></li>
+                   <li class="current"><a href="login_Temp">로그인</a></li>
                  </ul>
            </nav>
            <div class="clear"></div>
@@ -65,17 +65,24 @@
   <div class="zerogrid">
   	<div class="row">
 	<form action="joinView.do" name="form" style="width:60%; margin:auto">
-	<div class="row">
-	<h2>약관동의</h2>	
-	<p style="font-size:12px; color: #79302b;">
-	CampMarket의 서비스를 이용하기 위해 이용자는 이용 약관을 읽어보시고 동의하셔야 합니다.<br>
-	회원가입은 무료이며, 가입 즉시 서비스를 이용하실 수 있습니다. 아래의 이용 약관을 반드시 읽고 동의해 주십시오.
-	</p>
+	<div class="row"><br><br><br>
+	<p style="color: #79302b; font-size: 25px">기본정보 입력</p>	
 	</div>	
 	
-	<div class="form_div">
-        <label>아이디</label>
-        <input class="field_class" name="id" id="id" type="text" autofocus><br>
+	
+
+	
+	<div class="form_div" style="color: #79302b; font-weight:500">
+        <label class="join_label">아이디<span style="color:red">(필수)</span></label>
+		<span style="color:#787878">5~15자리의 영문자와 숫자만 입력이 가능합니다(시작은 영문자)</span>
+        <input class="field_class_join" name="id" id="id" type="text" autofocus>
+        <a class="btn_join" id="idCheckBtn">중복확인</a><br>	
+       
+       
+       
+       
+       
+        <!-- <a href="joinView.do" class="btn_join" data-type="submit">중복확인</a> -->       
         <label>비밀번호</label>
         <input class="field_class" name="pwd" id="pwd" type="password">
         <label>비밀번호</label>
@@ -98,7 +105,7 @@
 	<div  style="margin-top:20px">
 		<input type="checkbox" id="term3" class="terms">
 		<span style="font-size:20px">이용약관과 개인정보처리방침사항에 모두 동의합니다.</span><br><br>
-		<a href="joinView.do" class="btn" data-type="submit" 
+		<a href="joinView.do" class="btn_join" data-type="submit" 
 		style="width:200px; height:30px; line-height:30px; 
 		margin-top:5px; font-size:20px; font-weight:bold; letter-spacing:2px">다음 단계</a>			
 	</div>
