@@ -60,17 +60,17 @@
 <div class="content">
   <div class="zerogrid">
   	<div class="row">
-	<form action="joinView.do" name="saveForm" align="center">
-	<div class="row">
+	<form action="joinView.do" name="saveForm" style="width:60%; margin:auto">
+	<div class="row" style="text-align:center">
 	<h2>약관동의</h2>	
-	<p style="font-size:12px">
+	<p style="font-size:14px">
 	CampMarket의 서비스를 이용하기 위해 이용자는 이용 약관을 읽어보시고 동의하셔야 합니다.<br>
 	회원가입은 무료이며, 가입 즉시 서비스를 이용하실 수 있습니다. 아래의 이용 약관을 반드시 읽고 동의해 주십시오.
 	</p>
 	</div>	
 	<h2>이용약관</h2>
 	<div>
-		<textarea rows="20" cols="100">
+		<textarea rows="20" cols="108">
 제1조 (목적)
 
 이 약관은 (주)캠핑가즈아가 운영하는 CampMarket(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리의무 및 책임사항을 규정함을 목적으로 합니다.
@@ -309,12 +309,12 @@
 ②“몰”과 이용자간에 제기된 전자상거래 소송에는 한국법을 적용합니다.
 		</textarea>
 	</div>
-	<div>
-		<input type="checkbox" id="term" class="terms" style="margin-top:10px">위의 "이용약관"에 동의 합니다.
+	<div style="width: 100%; align-items:center">
+		<input type="checkbox" id="term" class="terms" style="margin: 15px auto; text-align:center">위의 "이용약관"에 동의 합니다.
 	</div><br>
 	<h2>개인정보수집 및 활용에 대한 동의</h2>
 	<div>
-		<textarea rows="20" cols="100">
+		<textarea rows="20" cols="108">
 'CampMarket'은 회원님께서 ㈜캠핑가즈아가 운영하는 웹사이트(이하 "몰"이라고 함)의 각종 서비스를 이용하거나  상품을 주문하는데 있어, 본인확인, 원활한 서비스 제공 및 주문 접수, 물품 배송, 대금 결제, 회원님에게 유용한 맞춤정보 제공 등을 위하여 필요한 최소한의 개인정보를 필수 사항으로 수집합니다.
 
 제1항 (수집하는 개인정보 항목 및 방법)
@@ -379,10 +379,10 @@
 		</textarea>
 	</div>
 	<div>
-		<input type="checkbox" id="term2" class="terms" style="margin-top:10px">위의 "개인정보 수집이용"에 동의 합니다.
+		<input type="checkbox" id="term2" class="terms" style="margin-top:10px; text-align:center">위의 "개인정보 수집이용"에 동의 합니다.
 	</div>
 	<br>
-	<div  style="margin-top:20px">
+	<div  style="margin-top:20px; text-align:center">
 		<input type="checkbox" id="term3" class="terms">
 		<span style="font-size:20px">이용약관과 개인정보처리방침사항에 모두 동의합니다.</span><br><br>
 		<a href="joinView.do" class="btn" data-type="submit" 
