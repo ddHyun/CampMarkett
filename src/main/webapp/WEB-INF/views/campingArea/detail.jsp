@@ -78,7 +78,7 @@
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 mapOption = { 
     center: new kakao.maps.LatLng(${campInfo.latitude}, ${campInfo.longitude}), // 지도의 중심좌표
-    level: 7 // 지도의 확대 레벨
+    level: 8 // 지도의 확대 레벨
 };
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
@@ -114,7 +114,7 @@ marker1.setMap(map);
 
 
 
-var imageSrc = 'resources/assets/img/campingArea/bluemarker.png',     
+var imageSrc = 'resources/assets/img/campingArea/redMarker.png',     
 imageSize = new kakao.maps.Size(40, 46), 
 imageOption = {offset: new kakao.maps.Point(17, 46)}; 
 
@@ -122,7 +122,7 @@ imageOption = {offset: new kakao.maps.Point(17, 46)};
 var markerImage2 = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
 markerPosition = new kakao.maps.LatLng(${sessionScope.sessionLat}, ${sessionScope.sessionLon}); // 마커가 표시될 위치입니다
 
-//마커를 생성합니다
+//나의 위치 마커를 생성합니다
 var marker2 = new kakao.maps.Marker({
 position: markerPosition,
 image: markerImage2 // 마커이미지 설정 

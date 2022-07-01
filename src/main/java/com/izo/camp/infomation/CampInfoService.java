@@ -191,7 +191,6 @@ public class CampInfoService {
 		//경도
 		coordination.put("limitLon",0.45);
 		
-		System.out.println(coordination);
 		
 		List<CampInfoVO> campList = campInfoMapper.nearCampArea(coordination);
 		
