@@ -12,12 +12,14 @@ public class TempController {
 //		
 //		return "temp/marketMain";
 //	}
+
 	
-	@RequestMapping("reviewMain_Temp")
-	public String goReviewMain(){
-		
-		return "temp/reviewMain";
-	}
+	//옮김
+//	@RequestMapping("reviewMain_Temp")
+//	public String goReviewMain(){
+//		
+//		return "temp/reviewMain";
+//	}
 
 // 옮김
 //	@RequestMapping("campingAreaMain_Temp")
