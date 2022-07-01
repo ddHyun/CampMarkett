@@ -22,6 +22,10 @@ public class ReviewService {
 		return reviewMapper.list();
 	}
 	
+	public List<ReviewVO> reviewlist(){
+		return reviewMapper.reviewlist();
+	}
+	
 	public ReviewVO getReviewIdx(int idx) {
 		
 		

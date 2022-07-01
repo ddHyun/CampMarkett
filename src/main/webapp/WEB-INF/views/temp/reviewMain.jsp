@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
      <title>Home</title>
@@ -86,10 +86,10 @@ height: 'auto',
          <div class="menu_block">
            <nav>
             <ul class="sf-menu">
-                   <li class="current"><a href="home">Home</a></li>
+                   <li><a href="home">Home</a></li>
                    
                    <li><a href="marketMain_Temp">밀키트</a></li>
-                   <li><a href="reviewMain_Temp">후기</a></li>
+                   <li class="current"><a href="reviewMain_Temp">후기</a></li>
                    <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
                    <li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
 				   	<ul>
@@ -121,81 +121,37 @@ height: 'auto',
  </div>
 <!--=======content================================-->
 
-<div class="content page1">
-  <div class="zerogrid">
-      
-	  <div class="row">
-      <div class="col-full">
-	  	<div class="wrap-col">
-        <div class="car_wrap">
-        <h2>Best Choice</h2>
-        <a href="#" class="prev"></a><a href="#" class="next"></a>
-        <ul class="carousel1">
-          <li><div><img src="resources/assets/img/images/page1_img1.jpg" alt="">
-          <div class="col1 upp"> <a href="#">kim Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img2.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img3.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img4.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img3.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet kim</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-        </ul>
-      </div>
-	  </div>
-    </div>
+	<table border="1" align="center"  width="700">
+		<tr>
+			<th><!-- <i class="bi bi-diagram-2-fill"></i> --></th>
+			<th width="250">제목</th>
+			<th width="100">후기상품</th>
+			<th width="150">작성자</th>
+			<th width="100">작성일</th>
+			<th width="40">조회수</th>
+			<th width="40">추천수</th>
+		</tr>
+		
+		<c:forEach var="vo" items="${list}">
+		<tr>
+			<td align="center">${vo.idx}</td> <!-- 글 번호 -->
+			
+			<td align="center">
+				<a href="reviewRead.do?idx=${vo.idx}">
+				<font color="black">${vo.title}</font>  <!-- 글 제목  -->
+				</a>
+			</td>
+			<td align="center">${vo.productid}</td> 
+			<td align="center">${vo.memberid}</td>
+			<td align="center">${fn:split(vo.regdate,' ')[0]}</td>
+			<td align="center">${vo.readhit}</td>
+			<td align="center">${vo.joayo}</td>
+		</tr>
+		</c:forEach>	
+	</table>
+	<div class="inform_box" align="center">
+			<input type="button" value="리뷰쓰기" onclick="location.href='reviewInform.do'">
 	</div>
-	<div class="row">
-    <div class="bottom_block">
-      <div class="col-1-2">
-        <h3>Follow Us</h3>
-        <div class="socials">
-          <a href="#"></a>
-          <a href="#"></a>
-          <a href="#"></a>
-        </div>
-        <nav><ul>
-                   <li class="current"><a href="home">Home</a></li>
-                   <li ><a href="resources/assets/html/index-1.html">About Us</a></li>
-                   <li><a href="resources/assets/html/index-2.html">Menu</a></li>
-                   <li><a href="resources/assets/html/index-3.html">Portfolio</a></li>
-                   <li><a href="resources/assets/html/index-4.html">News </a></li>
-                   <li><a href="resources/assets/html/index-5.html">Contacts</a></li>
-                 </ul></nav>
-      </div>
-      <div class="col-1-2">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn" data-type="submit">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
-          </div>
-      </div>
-	  </div>
-    </div>
-  </div>
-</div>
 <!--==============================footer=================================-->
 
 <footer>    

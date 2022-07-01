@@ -28,9 +28,18 @@ public class ReviewController {
 	HttpServletRequest request;
 	
 
+	@RequestMapping("reviewMain_Temp")
+	public String goReviewMain(Model model){
+		
+		model.addAttribute("list", reviewService.reviewlist());
+		
+		return "review/reviewMain";
+	}
+	
+	// 후기 메인화면
 	@RequestMapping("/reviewMain.do")
 	public String reviewMain(Model model) {
-		model.addAttribute("list", reviewService.list());
+		model.addAttribute("list", reviewService.reviewlist());
 		return "review/reviewMain";
 	}
 
@@ -108,7 +117,7 @@ public class ReviewController {
 		 model.addAttribute("vo",reviewService.setReviewVO(vo));
 		 
 		 //reviewMain에서 list를 받아서 보여주니까 list에도 묶어서 전달
-		 model.addAttribute("list",reviewService.list());
+		 model.addAttribute("list", reviewService.reviewlist());
 		 
 		 
 		 return "review/reviewMain";
@@ -116,7 +125,7 @@ public class ReviewController {
 	 }
 	 
 	 // reviewRead화면에서 글 삭제하기
-	 @RequestMapping("/reviewDelete.do")
+	 @RequestMapping(value="/reviewDelete.do",method= RequestMethod.POST)
 	 @ResponseBody
 	 public String reviewDelete(int idx, String pwd) {
 		 
@@ -140,7 +149,7 @@ public class ReviewController {
 
 		
 	 
-
+	 	// 수정할 글 선택
 		  @RequestMapping(value="/reviewSelect.do",method=RequestMethod.POST)
 		  public String reviewSelect(int idx, Model model) {
 		  
@@ -150,7 +159,7 @@ public class ReviewController {
 		  return "review/reviewModify"; 
 		  }
 		  
-		  
+		  // 게시글 수정
 		  @RequestMapping("/reviewUpdate.do")
 		  public String reviewUpdate(ReviewVO vo, Model model) {
 		  
@@ -197,12 +206,13 @@ public class ReviewController {
 		  
 		  model.addAttribute("vo", reviewService.updateReview(vo));
 		  //reviewMain에서 list를 받아서 보여주니까 list에도 묶어서 전달
-		  model.addAttribute("list", reviewService.list());
+		  model.addAttribute("list", reviewService.reviewlist());
 		  
 		  return "/review/reviewMain"; 
 		 
 		  }
 		  
+		  // 좋아요 누르기(중복허용)
 		  @RequestMapping("/joayoPush.do")
 		  public String joayoPush(int idx, Model model, ReviewVO vo) {
 			  

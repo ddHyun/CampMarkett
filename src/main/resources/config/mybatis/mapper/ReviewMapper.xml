@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.izo.camp.mapper.ReviewMapper">
 
 	<select id="reviewlist" resultType="reviewVO">
-		select * from reviewtable
+		select * from reviewtable order by joayo desc
 	</select>
 	
 	<select id="reviewIdx" resultType="reviewVO">
