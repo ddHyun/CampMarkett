@@ -22,6 +22,14 @@
      <script src="resources/assets/js/tms-0.4.1.js"></script>
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
 	 <script src="resources/assets/js/menuBar.js"></script>	
+	 
+		<!-- 부트 스트랩 -->
+	<!-- <link rel="stylesheet" href="//unpkg.com/bootstrap@4/dist/css/bootstrap.min.css"> -->
+	
+	<script src='//unpkg.com/popper.js@1/dist/umd/popper.min.js'></script>
+	<script src='//unpkg.com/bootstrap@4/dist/js/bootstrap.min.js'></script>
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/minty/bootstrap.min.css" integrity="sha384-H4X+4tKc7b8s4GoMrylmy2ssQYpDHoqzPa9aKXbDwPoPUA3Ra8PA5dGzijN+ePnH" crossorigin="anonymous">		 
      <script>
       $(window).load(function(){
       $('.slider')._TMS({
@@ -117,10 +125,10 @@ height: 'auto',
     <div class="slider-block" style="height:470px">
       <div class="slider" style="height:470px">
         <ul class="items">
-          <li><img src="resources/assets/img/adImg/marketMainAd04.jpg" alt=""></li>
-          <li><img src="resources/assets/img/adImg/marketMainAd03.jpg" alt=""></li>
-          <li><img src="resources/assets/img/adImg/marketMainAd01.jpg" alt=""></li>
-          <li class="mb0"><img src="resources/assets/img/adImg/marketMainAd02.jpg" alt=""></li>
+          <li><img src="resources/assets/img/adImg/marketMainAd04.png" alt=""></li>
+          <li><img src="resources/assets/img/adImg/marketMainAd03.png" alt=""></li>
+          <li><img src="resources/assets/img/adImg/marketMainAd01.png" alt=""></li>
+          <li class="mb0"><img src="resources/assets/img/adImg/marketMainAd02.png" alt=""></li>
         </ul>
       </div>
     </div>
@@ -141,10 +149,8 @@ height: 'auto',
         	 <c:forEach var="product" items="${productList}">
 				<div class="temp" style="float:left; margin:auto; border:1px solid black; width:27%"<%--  onclick="popupDetail(${camp.idx})" --%> style="cursor:pointer;">
 					<img src="resources/assets/img/food/${product.imgName}.jpg" height="200px" width="300px">
-				<br>
-				<span> ${product.productId}</span>
-				<br>
-				<div class="price">${product.price}원</div>
+				<h2> ${product.productId}</h2>
+				<p class="mb-0">${product.price}원</p>
 				<a href="#" class="btn" onclick="purchase(${product.idx})">구매하기</a>
 				<a href="#" class="btn" onclick="location.href='marketDetail?idx=${product.idx}'">상세보기</a>
 				</div>
@@ -159,7 +165,7 @@ height: 'auto',
 	
     </div>
   </div>
-
+<button type="button" class="btn btn-secondary">Secondary</button>
 <!--==============================footer=================================-->
 
 <footer>    
