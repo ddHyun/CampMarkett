@@ -136,21 +136,19 @@
 					</div>
 				</div>
 				<div class="zerogrid2">
-				
-					<div class="btn-group" role="group"
-						aria-label="Basic checkbox toggle button group">
-						<input type="checkbox" class="btn-check" id="btncheck1" checked=""
-							autocomplete="off"> <label class="btn btn-primary"
-							for="btncheck1">Checkbox 1</label> <input type="checkbox"
-							class="btn-check" id="btncheck2" autocomplete="off"> <label
-							class="btn btn-primary" for="btncheck2">Checkbox 2</label> <input
-							type="checkbox" class="btn-check" id="btncheck3"
-							autocomplete="off"> <label class="btn btn-primary"
-							for="btncheck3">Checkbox 3</label>
+					<p>test2</p>
+					
+					<div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%">
+					  <input type="radio" style="display:none; height:50px;" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" >
+					  <label style="height:50px;" class="btn btn-outline-primary" for="btnradio1"><h3>상세 보기</h3></label>
+					  <input type="radio" style="display:none; height:50px;" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" >
+					  <label style="height:50px;" class="btn btn-outline-primary" for="btnradio2"><h3>구매 후기</h3></label>
 					</div>
+										
 
 					<!-- =============== 후기 게시판==================== -->
-					<table style="margin-top: 20px;" class="table table-hover">
+					<div 	id="review" style="display:none;">
+					<table style="margin-top: 20px;" class="table table-hover"	>
 						<thead>
 							<tr class="table-success">
 								<th scope="col">Type</th>
@@ -222,6 +220,7 @@
 							</tr>
 						</tbody>
 					</table>
+					</div>
 				</div>
 			</div>
 		</div>
