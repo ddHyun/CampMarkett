@@ -443,12 +443,17 @@ table a, #comments a{background-color:inherit;}
 
 
 .heading_card{
-	font:23px Arial, Helvetica, sans-serif; 
+	font:40px 'Do Hyeon', sans-serif; 
 	font-weight:600; 
 	letter-spacing:4px;
 }
 
-
+#registCardBtn{	
+	padding: 3px;
+	font: 23px 'Do Hyeon', sans-serif;
+	font-weight:600; 
+	letter-spacing:4px;
+}
 
 
 /* ------------------------------------------------------------------------------------------------------------ */

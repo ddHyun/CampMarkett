@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
 <link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
 <link rel="stylesheet" href="resources/assets/css/form.css">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 <script src="resources/assets/js/jquery.js"></script>
 <script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
 <script src="resources/assets/js/superfish.js"></script>
@@ -110,32 +111,29 @@
 	font-weight:600; letter-spacing:4px;">카드등록</h6>
     </div>
     <figure class="one_half first">
+    <div style="width:90%; margin-left: 35px">
     <p class="nospace font-xs" style="line-height: 25px">
     CVC 번호란 신용카드 번호와는 별도로 인쇄되어 있는 3자리 또는 4자리 숫자로, 
    	 카드 이용 명세서 등에는 인쇄되지 않습니다. 
     CVC 번호를 입력함으로써 카드를 소지하고 있다는 사실을 확인하고
          제3자에 의한 부정 사용을 방지할 수 있습니다.   
     </p>
+    </div>
     <img src="resources/assets/img/images/cvcImg.png" style="margin-left:30px; margin-top: 5px">      
     </figure>
     <article class="one_half">     
     
       <form action="#" method="post">
         <fieldset>
-          <legend>Newsletter:</legend>
-          <input type="text" value="" id="cardNo" name="cardno" placeholder="카드번호 ('-'제외한 숫자 16자리)">
-          <input type="text" value="" id="validCardDate" name="validcarddate" placeholder="유효기간   (예) 0524(월/연도))">
-          <input type="password" value="" id="cvcNo" name="cvcno" placeholder="CVC번호 (숫자 3~4자리)"> 
-          <input type="password" id="simplePwd1" name="simplepwd" placeholder="결제시 사용할 비밀번호 (숫자 6자리)">
-          <input type="password" id="simplePwd2" placeholder="결제 비밀번호 재입력">
-          <!-- <input type="text" class="moveNumber" id="cardno1" 
-          onKeyup="moveNumber(this);" maxlength="4">&nbsp;&nbsp;-&nbsp;
-		  <input type="text" class="moveNumber" id="cardno2" 
-		  onKeyup="moveNumber(this);" maxlength="4">&nbsp;&nbsp;-&nbsp;
-		  <input type="text" class="moveNumber" id="cardno3" 
-		  onKeyup="moveNumber(this);" maxlength="4">&nbsp;&nbsp;-&nbsp;
-		  <input type="password" class="moveNumber" id="cardno4" maxlength="4"> -->
-          <button type="submit" value="submit">Submit</button>
+          <legend>카드정보 입력</legend>
+          <input type="text" onKeyup="moveNumber(this)" id="cardNo" name="cardno" placeholder="카드번호 ('-'제외한 숫자 16자리)" maxlength="16">
+          <input type="text"onKeyup="moveNumber(this)" id="validDate" name="validcarddate" placeholder="유효기간   (예) 0524(월/연도))" maxlength="4">
+          <input type="password" onKeyup="moveNumber(this)" id="cvcNo" name="cvcno" placeholder="CVC번호 (숫자 3자리)"  maxlength="3"> 
+          <input type="password" id="simplePwd1" onKeyup="moveNumber(this)" name="simplepwd" placeholder="결제시 사용할 비밀번호 (숫자 6자리)"  maxlength="6">
+          <input type="password" id="simplePwd2" onKeyup="moveNumber(this)" placeholder="결제 비밀번호 재입력"  maxlength="6">
+<!--           <button type="submit" id="registCardBtn" value="submit">Submit</button> -->
+          <input type="button" id="registCardBtn" value="등록하기"
+           style="background-color:#A197BD">
         </fieldset>
       </form>
       
@@ -171,11 +169,11 @@
       <input type="text" value="카드번호:" >
       <!-- <br class="clear"> -->
       <span class="error error-empty">*This is not a valid name.</span><span class="empty error-empty">*This field is required.</span> </label>
-      	<input type="text" class="moveNumber" id="cardno1" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
+      	<!-- <input type="text" class="moveNumber" id="cardno1" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
 		<input type="text" class="moveNumber" id="cardno2" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
 		<input type="text" class="moveNumber" id="cardno3" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
 		<input type="password" class="moveNumber" id="cardno4" maxlength="4"/>
-		<input type="hidden" name="cardno" id="cardno">
+		<input type="hidden" name="cardno" id="cardno"> -->
       <label class="email">
       <input type="text" value="E-mail:" style="width: 400px;">
       <br class="clear">
@@ -210,7 +208,7 @@
       
       
       <div id="regist" style="display:none">
-			<form id="form" action="" method="POST">
+			<!-- <form id="form" action="" method="POST">
 				<div>
 					<label>카드번호</label>
 					<input type="text" class="moveNumber" id="cardno1" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
@@ -266,7 +264,7 @@
 				<div>
 					<input type="button" value="등록하기" onclick="registCard()">
 				</div>
-				</form>
+				</form> -->
 			</div>
       
       
@@ -417,64 +415,43 @@
 
 		if(num.value.length >= max) {
 			num.nextElementSibling.focus();
-		}
-	}	
-
-	$('#cardNo').keyup(function(){
-		var cardNoLength = $(this).val().length;
-		$(this).val('');
-		if(cardNoLength > 16){
-			alert("카드번호는 16자를 초과할 수 없습니다");
-			return;
-		}
-		if(!/^[0-9]*$/.test($(this))){
-			alert("숫자만 입력이 가능합니다");
-			$(this).val('');
-			return;
 		}		
-	})
+	}
 	
-	//cvc번호 안내
-	$('#cvcMsgBtn').on('click', function(){
-		if($('#cvcMsg').css('display')=='block'){
-			$('#cvcMsg').css('display', 'none');
-		}else{
-			$('#cvcMsg').css('display', 'block');
+	//카드등록하기
+	$('#registCardBtn').on('click', function(){
+		if($('#simplePwd2').val() != $('#simplePwd1').val()){
+			alert("비밀번호가 일치하지 않습니다. 다시 입력해 주세요");
+			$('#simplePwd2').focus();
+			$('#simplePwd2').val('');
+			return false;
 		}
-	});
-	
-	//카드비밀번호 안내
-	$('#pwdMsgBtn').on('click', function(){
-		if($('#pwdErrorMsg').css('display')=='block'){
-		$('#pwdErrorMsg').css('display', 'none');
-		}else{
-		$('#pwdErrorMsg').css('display', 'block');
-		}
-	});	
-	
-	//꼭 알아두세요
-	$('#infoMsgBtn').on('click', function(){
-		if($('#infoMsg').css('display')=='block'){
-			$('#infoMsg').css('display', 'none');
-		}else{
-			$('#infoMsg').css('display', 'block');
-		}
+		if($('#cardNo').val('')){
+			alert("모든 항목을 다 채워주세요");	
+			$('#cardNo').val('');
+			$('#validDate').val('');
+			$('#cvcNo').val('');
+			$('#simplePwd1').val('');
+			$('#simplePwd2').val('');
+			return false;
+		};
+		
 	})
 	
 	
 	//카드 등록
-	function registCard() {	
+	/* function registCard() {	
 		var cardNo1 = document.getElementById("cardNo1").value;
 		var cardNo2 = document.getElementById("cardNo2").value;
 		var cardNo3 = document.getElementById("cardNo3").value;
 		var cardNo4 = document.getElementById("cardNo4").value;
 		var cardno = cardNo1 + cardNo2 + cardNo3 + cardNo4;
-		var idx = document.getElementById("idx").value;
+		var idx = document.getElementById("idx").value; */
 	
 		/* var f = document.f;
 		f.action = "registCard.do?idx="+idx+"cardno"+cardno;
 		f.method = "post";
 		f.submit();		 */
-	}
+	/* } */
 </script>
 </html>
