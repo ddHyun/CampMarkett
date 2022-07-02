@@ -4,14 +4,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cosmo/bootstrap.min.css" integrity="sha384-5QFXyVb+lrCzdN228VS3HmzpiE7ZVwLQtkt+0d9W43LQMzz4HBnnqvVxKg6O+04d" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>내 위치 선택하기</title>
 
 </head>
+
 <!-- <body> -->
-<body onload='resizeWindow(this)'>
-<button onclick='closeb()'><strong>지도의 위치로 위치 변경하기</strong></button>
-<div id="map" style="width:600px;height:600px;"></div>
+<body>
+<button class="btn btn-lg btn-primary" onclick='closeb()'><strong>지도의 위치로 위치 변경하기</strong></button>
+<div style="background-color: green; padding:10px; width:620px;">
+	<div id="map" style="width:600px;height:500px;"></div>
+</div>
+
+
 
 <br> 
 
@@ -34,7 +40,7 @@
     var mapOption = { 
         center: centerPosition, // 지도의 중심좌표
         level: 6 // 지도의 확대 레벨
-    };
+    };	
 	
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 	var imageSrc = 'resources/assets/img/campingArea/redMarker.png',     
@@ -77,7 +83,8 @@
 		
 		var infoWindow = new kakao.maps.InfoWindow({
 		    position : campPosition, 
-		    content : '<div>${camp.name}</div>'
+		    content : /* '<div>${camp.name}</div>' */
+		    	 '<input type="text" style="width:100%;" class="btn btn-success disabled" value='+'${camp.name}'+'>'
 		});
 		
 	//	infoWindow.open(map,marker); 
@@ -129,11 +136,13 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 				
 				var infoWindow = new kakao.maps.InfoWindow({
 				    position : new kakao.maps.LatLng(item.latitude, item.longitude), 
-				    content : '<div>' + item.name + '</div>'
+				    content : /* '<div>' + item.name + '</div>' */ 
+				    '<input type="text" style="width:100%;" class="btn btn-success disabled" value=' + item.name + '>'
 				});
 				infoWindow.open(map,marker);  //close를 위한 배열 필요
 				infoWindows.push(infoWindow);
 			});
+			map.setCenter(latlng);
 			
 		}
 	});
