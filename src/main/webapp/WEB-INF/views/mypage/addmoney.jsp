@@ -123,16 +123,16 @@
     </figure>
     <article class="one_half">     
     
-      <form id="registCardForm" action="registCard.do" method="post">       
+      <form id="registCardForm">       
        <!-- <fieldset> 
           <legend>카드정보 입력</legend> -->
-           
+          <input type="hidden" id="cardId" name="id" value="${sessionScope.loginId}"> 
           <input type="text" onKeyup="moveNumber(this)" id="cardNo" name="cardno" placeholder="카드번호 ('-'제외한 숫자 16자리)" maxlength="16">
           <input type="text" onKeyup="moveNumber(this)" id="validDate" name="validcarddate" placeholder="유효기간   (예) 0524(월/연도))" maxlength="4">
           <input type="password" onKeyup="moveNumber(this)" id="cvcNo" name="cvcno" placeholder="CVC번호 (숫자 3자리)"  maxlength="3"> 
           <input type="password" id="simplePwd1" onKeyup="moveNumber(this)" name="simplepwd" placeholder="결제시 사용할 비밀번호 (숫자 6자리)"  maxlength="6">
           <input type="password" id="simplePwd2" onKeyup="moveNumber(this)" placeholder="결제 비밀번호 재입력"  maxlength="6">
-          <input type="button" id="registCardBtn" value="등록하기" style="background-color:#A197BD">
+          <input type="button" id="registCardBtn" value="등록하기" style="background-color:#A197BD; cursor:pointer">
        <!-- </fieldset>  -->
       </form>
       
@@ -277,7 +277,7 @@
   	
     <div class="col-2-5">
 		<div class="wrap-col">
-            <h1 style="font-size: 20px">${sessionScope.loginId}님 마이페이지1</h1>
+           <%--  <h1 style="font-size: 20px">${sessionScope.loginId}님 마이페이지1</h1> --%>
       
             <div class="map">
             
@@ -400,6 +400,7 @@
 	
 	$(function(){
 		$('#regist').css('display','block');
+		console.log("카드등록페이지 로그인된 아이디: "+$('#cardId').val());
 	});
 		
 //카드번호 자동 커서이동
@@ -446,14 +447,33 @@
 			$('#simplePwd1').focus();
 			return;
 		}
-		
 	
-		
-		console.log("타입변환 전 : "+typeof $('#cardNo').val());
-/* 		var cardno = parseInt($('#cardNo').val()); 
-		console.log("타입변환 후 : "+typeof cardno);
-		 ; */
-		$('#registCardForm').submit();
+		$.ajax({
+			url: "registCard.do",
+			data: 	{id: '${sessionScope.loginId}',
+					cardno: $('#cardNo').val(), 
+					validcarddate: $('#validDate').val(),
+					cvcno: $('#cvcNo').val(),
+					simplepwd: $('#simplePwd1').val()},
+			datatype: "json",
+			type: "post"
+		}).done(function(data){
+			var json = (new Function('return'+data))();
+			if(json[0].param=='y'){
+				console.log(json[0].param);
+				alert("카드 등록이 완료되었습니다");
+				$('#simplePwd2').val('');
+				$('#simplePwd1').val('');
+				$('#cvcNo').val('');
+				$('#validDate').val('');
+				$('#cardNo').val('');
+			}else{
+				alert("카드 등록이 실패했습니다. 관리자에게 문의 바랍니다");
+				return;
+			}
+		}).fail(function(){
+			alert("fail");
+		})
 	})
 	
 	
