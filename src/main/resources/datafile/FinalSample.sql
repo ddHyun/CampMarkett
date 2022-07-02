@@ -112,3 +112,12 @@ INSERT INTO ADDMONEYTABLE
 VALUES(seq_addmoney.nextval, 'SampleID', 1111222233334444, 111, 111111, 30000, 30000, 0124, sysdate);
 
 SELECT * FROM ADDMONEYTABLE;
+
+
+/*================================================================================*/
+/*0702 변경된 내용*/
+ALTER TABLE ADDMONEYTABLE MODIFY cardno varchar2(20);
+
+INSERT INTO ADDMONEYTABLE
+(IDX, ID, CARDNO, CVCNO, SIMPLEPWD, ADDEDMONEY, totalMoney, VALIDCARDDATE, ADDMONEYDATE)
+VALUES(seq_addmoney.nextval, 'SampleID', '1111222233334444', 111, 111111, 50000, 50000, 0124, sysdate);

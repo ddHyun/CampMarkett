@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.izo.camp.addmoney.AddmoneyService;
 import com.izo.camp.member.MemberService;
+import com.izo.camp.vo.AddmoneyVO;
 import com.izo.camp.vo.MemberVO;
 
 @Controller
@@ -35,9 +36,10 @@ public class AddmoneyController {
 		return "mypage/addmoney";
 	}
 	
-	@RequestMapping("/registCard.do")
-	public void registCare() {
-		
+	@RequestMapping(value="/registCard.do", method=RequestMethod.POST)
+	public void registCard(AddmoneyVO vo) {
+		System.out.println("카드등록 컨트롤러 들어옴");
+		System.out.println(vo.getCardno());
 	}
 	
 }
