@@ -132,7 +132,7 @@
           <input type="password" onKeyup="moveNumber(this)" id="cvcNo" name="cvcno" placeholder="CVC번호 (숫자 3자리)"  maxlength="3"> 
           <input type="password" id="simplePwd1" onKeyup="moveNumber(this)" name="simplepwd" placeholder="결제시 사용할 비밀번호 (숫자 6자리)"  maxlength="6">
           <input type="password" id="simplePwd2" onKeyup="moveNumber(this)" placeholder="결제 비밀번호 재입력"  maxlength="6">
-          <input type="button" id="registCardBtn" value="등록하기" style="background-color:#A197BD; cursor:pointer">
+          <input type="button" id="registCardBtn" value="등록하기" style="background-color:#A197BD; cursor:pointer; border-radius: 8px">
        <!-- </fieldset>  -->
       </form>
       
@@ -467,6 +467,14 @@
 				$('#cvcNo').val('');
 				$('#validDate').val('');
 				$('#cardNo').val('');
+			}else if(json[0].param=='yesData'){
+				alert("이미 등록된 카드입니다. 다른 카드로 시도해 주세요");
+				$('#simplePwd2').val('');
+				$('#simplePwd1').val('');
+				$('#cvcNo').val('');
+				$('#validDate').val('');
+				$('#cardNo').val('');
+				return;
 			}else{
 				alert("카드 등록이 실패했습니다. 관리자에게 문의 바랍니다");
 				return;
@@ -474,22 +482,8 @@
 		}).fail(function(){
 			alert("fail");
 		})
-	})
+	});
+		
 	
-	
-	//카드 등록
-	/* function registCard() {	
-		var cardNo1 = document.getElementById("cardNo1").value;
-		var cardNo2 = document.getElementById("cardNo2").value;
-		var cardNo3 = document.getElementById("cardNo3").value;
-		var cardNo4 = document.getElementById("cardNo4").value;
-		var cardno = cardNo1 + cardNo2 + cardNo3 + cardNo4;
-		var idx = document.getElementById("idx").value; */
-	
-		/* var f = document.f;
-		f.action = "registCard.do?idx="+idx+"cardno"+cardno;
-		f.method = "post";
-		f.submit();		 */
-	/* } */
 </script>
 </html>

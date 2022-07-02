@@ -19,9 +19,10 @@ public class AddmoneyService {
 		return addmoneyMapper.registCard(vo);
 	}
 
-	public String searchCardNo(String inputCardNo) {
+	//카드번호 조회
+	public String searchCardNo(AddmoneyVO vo) {
 		// TODO Auto-generated method stub
-		return addmoneyMapper.searchCardNo(inputCardNo);
+		return addmoneyMapper.searchCardNo(vo);
 	}
 	
 	

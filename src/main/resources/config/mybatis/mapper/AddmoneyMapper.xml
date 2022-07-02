@@ -12,6 +12,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		0, 0, #{validcarddate}, null)
 	</insert>
 	
+	<!-- 카드 조회하기 -->
+	<select id="searchCardNo" resultType="String" parameterType="addmoneyVO">
+		select nvl(cardno, 'none') from addmoneytable 
+		right outer join dual on id=#{id} and cardno=#{cardno}
+	</select>
 </mapper>
 
 

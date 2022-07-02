@@ -41,13 +41,14 @@ public class AddmoneyController {
 	@ResponseBody
 	@RequestMapping(value="/registCard.do", produces = "application/text; charset=UTF-8", method=RequestMethod.POST)
 	public String registCard(AddmoneyVO vo) {
-		String inputCardNo = vo.getCardno();
-		String dbCardNo = addmoneyService.searchCardNo(inputCardNo);
-		int cnt = addmoneyService.registCard(vo);
-		System.out.println("카드등록 결과 : "+cnt);
-		String param = "n";
-		if(cnt>0) {
-			param = "y";
+		String param = "yesData";
+		String dbCardNo = addmoneyService.searchCardNo(vo);
+		if(dbCardNo.equals("none")) {//일치데어터 없음 : 등록 가능한 상태
+			int cnt = addmoneyService.registCard(vo);
+				param = "n";//DB에 저장 안됨
+			if(cnt>0) {
+				param = "y";//DB에 저장됨
+			}
 		}
 		String result = String.format("[{'param':'%s'}]", param);
 		return result;

@@ -10,6 +10,7 @@ public interface AddmoneyMapper {
 	//카드 등록하기
 	int registCard(AddmoneyVO vo);
 
-	String searchCardNo(String inputCardNo);
+	//카드번호 조회
+	String searchCardNo(AddmoneyVO vo);
 	
 }
