@@ -1,14 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cosmo/bootstrap.min.css" integrity="sha384-5QFXyVb+lrCzdN228VS3HmzpiE7ZVwLQtkt+0d9W43LQMzz4HBnnqvVxKg6O+04d" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>내 위치 선택하기</title>
 
 </head>
 <body>
+
+<div class="d-grid gap-2">
+  <button class="btn btn-lg btn-primary" type="button">Block button</button>
+  <button class="btn btn-lg btn-primary" type="button">Block button</button>
+</div>
+
 <div id="map" style="width:700px;height:700px;"></div>
 
 <br> 

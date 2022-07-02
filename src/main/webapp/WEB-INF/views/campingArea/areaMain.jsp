@@ -196,8 +196,8 @@ height: 'auto',
 	
 	//위치설정 페이지 띄우기
 	function popupLocation(){
-		var popUpWidth = windowX / 3 ;
-		var popUpheight = windowY / 2 ;
+		var popUpWidth = windowX / 2 ;
+		var popUpheight = ( windowY * 2 )/ 3 ;
 		var top =  ((windowY / 2) - (popUpheight / 2));
 		var left = ((windowX / 2) - (popUpWidth / 2));
 		var win = this.window;
@@ -212,9 +212,7 @@ height: 'auto',
 						+ " ,scrollbars=yes, resizable=no"); 	
 		
 		//팝업창이 닫힐때 발생하는 이벤트
-		 pop.onbeforeunload = function() {
-			 document.getElementById('user_barcode').focus();
-			}; 
+		
 	}
 	
 </script>

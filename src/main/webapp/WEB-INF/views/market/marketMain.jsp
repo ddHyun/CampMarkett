@@ -108,7 +108,7 @@ height: 'auto',
                          <li><a href="#" onclick="goMyBasket(${sessionScope.loginId eq null})"> 장바구니 </a></li>
                      </ul>
 				   </li>
-                   <li><a href="Login_Temp">로그인</a></li>
+                   <li><a href="login_Temp">로그인</a></li>
              </ul>
            </nav>
            <div class="clear"></div>
@@ -124,11 +124,11 @@ height: 'auto',
   <div class="slider-relative" style="witdh: height:470px">
     <div class="slider-block" style="height:470px">
       <div class="slider" style="height:470px">
-        <ul class="items">
-          <li><img src="resources/assets/img/adImg/marketMainAd04.png" alt=""></li>
-          <li><img src="resources/assets/img/adImg/marketMainAd03.png" alt=""></li>
-          <li><img src="resources/assets/img/adImg/marketMainAd01.png" alt=""></li>
-          <li class="mb0"><img src="resources/assets/img/adImg/marketMainAd02.png" alt=""></li>
+        <ul class="items">	
+          <li><img src="resources/assets/img/adImg/marketMainAd04.jpg" alt=""></li>
+          <li><img src="resources/assets/img/adImg/marketMainAd03.jpg" alt=""></li>
+          <li><img src="resources/assets/img/adImg/marketMainAd01.jpg" alt=""></li>
+          <li class="mb0"><img src="resources/assets/img/adImg/marketMainAd02.jpg" alt=""></li>
         </ul>
       </div>
     </div>
@@ -143,19 +143,41 @@ height: 'auto',
      <div class="row">
       <div class="col-full">
 	  	<div class="wrap-col">
-        <div class="car_wrap" style="margin-left: 200px">
+        <div class="car_wrap" style="margin-left: 160px">
         <h2>상품</h2>
-        <div style="margin: 0 auto;">	
+        	<div style="margin: 0 auto;">	
         	 <c:forEach var="product" items="${productList}">
-				<div class="temp" style="float:left; margin:auto; border:1px solid black; width:27%"<%--  onclick="popupDetail(${camp.idx})" --%> style="cursor:pointer;">
+				<%-- <div class="temp" style="float:left; margin:auto; border:1px solid black; width:27%" onclick="popupDetail(${camp.idx})" style="cursor:pointer;">
 					<img src="resources/assets/img/food/${product.imgName}.jpg" height="200px" width="300px">
 				<h2> ${product.productId}</h2>
 				<p class="mb-0">${product.price}원</p>
 				<a href="#" class="btn" onclick="purchase(${product.idx})">구매하기</a>
 				<a href="#" class="btn" onclick="location.href='marketDetail?idx=${product.idx}'">상세보기</a>
+				</div> --%>
+			
+				 <!--  -->
+				<div class="temp" style="float:left; margin: 10px;  width:27%"<%--  onclick="popupDetail(${camp.idx})" --%> style="cursor:pointer;">
+				<div class="card mb-3">
+				 <img style="margin:6px;"src="resources/assets/img/food/${product.imgName}.jpg" height="200px" width="300px">
+				   <h3 class="card-header">${product.productId}</h3>
+				  <div class="card-body">
+				  <figure class="text-end" >
+				  <blockquote class="blockquote" style="margin-bottom: 3px">
+				    <strong class="mb-0">${product.price}원</strong>
+				  </blockquote>
+				  </figure>
+				  	<input type="button" class="btn btn-primary" onclick="purchase(${product.idx})" value="구매하기">
+				  	<input type="button" class="btn btn-primary" onclick="location.href='marketDetail?idx=${product.idx}'" value="상세보기">
+				  </div>
 				</div>
+				</div>
+			<!--  -->
 			</c:forEach>
+			
 			</div> 
+			
+			
+			
         </div>
       </div>
 	  </div>
