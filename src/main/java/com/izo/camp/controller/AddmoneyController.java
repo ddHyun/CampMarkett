@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.izo.camp.addmoney.AddmoneyService;
 import com.izo.camp.member.MemberService;
@@ -36,10 +37,20 @@ public class AddmoneyController {
 		return "mypage/addmoney";
 	}
 	
-	@RequestMapping(value="/registCard.do", method=RequestMethod.POST)
-	public void registCard(AddmoneyVO vo) {
-		System.out.println("카드등록 컨트롤러 들어옴");
-		System.out.println(vo.getCardno());
+	//카드 등록하기
+	@ResponseBody
+	@RequestMapping(value="/registCard.do", produces = "application/text; charset=UTF-8", method=RequestMethod.POST)
+	public String registCard(AddmoneyVO vo) {
+		String inputCardNo = vo.getCardno();
+		String dbCardNo = addmoneyService.searchCardNo(inputCardNo);
+		int cnt = addmoneyService.registCard(vo);
+		System.out.println("카드등록 결과 : "+cnt);
+		String param = "n";
+		if(cnt>0) {
+			param = "y";
+		}
+		String result = String.format("[{'param':'%s'}]", param);
+		return result;
 	}
 	
 }

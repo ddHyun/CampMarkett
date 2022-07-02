@@ -4,6 +4,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.izo.camp.mapper.AddmoneyMapper">
 	
+	<!-- 카드 등록하기 -->
+	<insert id="registCard" parameterType="addmoneyVO">
+		INSERT INTO TEST_PM.ADDMONEYTABLE(
+		IDX, ID, CARDNO, CVCNO, SIMPLEPWD, ADDEDMONEY, TOTALMONEY, VALIDCARDDATE, ADDMONEYDATE)
+		VALUES(seq_addmoney.nextval, #{id}, #{cardno}, #{cvcno}, #{simplepwd}, 
+		0, 0, #{validcarddate}, null)
+	</insert>
 	
 </mapper>
 
