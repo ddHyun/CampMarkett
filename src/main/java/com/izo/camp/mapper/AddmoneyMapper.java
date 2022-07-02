@@ -12,5 +12,8 @@ public interface AddmoneyMapper {
 
 	//카드번호 조회
 	String searchCardNo(AddmoneyVO vo);
+
+	//세션에 저장된 id로 충전테이블 정보 가져오기
+	AddmoneyVO getMoneyInfo(String id);
 	
 }

@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
 <link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
 <link rel="stylesheet" href="resources/assets/css/form.css">
+<script src="https://kit.fontawesome.com/c89215f053.js" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 <script src="resources/assets/js/jquery.js"></script>
 <script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
@@ -64,7 +65,6 @@
 <!--=======content================================-->
 
 
-<h1>${vo.name}</h1>
 
 <div class="wrapper row3">
   <main class="hoc container clear" style="height: 350px"> 
@@ -173,17 +173,20 @@
     <article class="one_half">     
     
       <form id="registCardForm">   
-          <input type="text" placeholder="충전할 금액을 입력하세요" style="margin-bottom:0px"
-           maxlength="7" onkeyup="numberFormat(this)" id="numberFormat" name="addedmoney">
-          <a class="btnA blue" href="#">+10만원</a>
-		  <a class="btnA red" href="#">+5만원</a>
-		  <a class="btnA blue" href="#">+1만원</a>
-		  <label style="margin-bottom:10px; margin-top:15px" class="numberFormat">현재 잔액</label>
-          <input type="text" onkeyup="numberFormat()" 
-          disabled style="text-align:right" value="${vo.totalmoney}" name="totalmoney">
+          <input type="text" placeholder="충전할 금액을 입력하세요" style="margin-bottom:0px;" 
+          maxlength="7" onKeyup="numberFormat(this)" class="numFormat" 
+          id="addingMoney" name="addedmoney">
+          <a class="btnA" onclick="plus(10)">+10만원</a>
+		  <a class="btnA" onclick="plus(5)">+5만원</a>
+		  <a class="btnA" onclick="plus(1)">+1만원</a>
+		  <i class="fa-solid fa-rotate-left" style="color:#BDA697; cursor:pointer;
+		  margin:15px 0 0 10px; font-size: 43px" onclick="resetMoney()"></i>
+		  <label style="margin-bottom:10px; margin-top:15px">현재 잔액</label>
+          <input type="text" disabled value="${vo1.totalmoney}" name="totalmoney"
+           class="numFormat" id="totalmoney">
 		  <label style="margin-bottom:10px">충전 후 금액</label>
-          <input type="text" onKeyup="numberFormat()" disabled 
-          style="text-align:right"  class="numberFormat" id="afterAddedMoney"> 
+          <input type="text" disabled class="numFormat" 
+          id="afterAddedMoney" style="color:red"> 
           <input type="button" id="registCardBtn" value="충전하기" style="background-color:#BDA697; cursor:pointer; border-radius: 8px">
       </form>
       
@@ -193,7 +196,7 @@
 </div>
 
 
-<c:choose>
+<%-- <c:choose>
           	<c:when test="${vo.addedmoney eq null}">
 	          <input type="hidden" name="totalmoney" value="0">
           	</c:when>
@@ -201,7 +204,7 @@
 	          <input type="hidden" name="totalmoney" value="${vo.addedmoney}+${vo.totalmoney}">
 			</c:otherwise>
           </c:choose>
-
+ --%>
 
 
 
@@ -214,12 +217,7 @@
   	<!-- 2사분면 -->
   	<div class="col-2-5">
 	<div class="wrap-col">
-      <div>
-			<label for="regist" id="registCard" style="cursor:pointer">카드등록</label>&emsp;&emsp;
-			<label>카드정보</label>&emsp;&emsp;
-			<label>충전하기</label>&emsp;&emsp;
-			<label>이용내역</label>
-		</div>
+    
       <h2>카드 등록</h2>
       <form id="form_money">
       <fieldset>
@@ -265,70 +263,6 @@
       
       
       
-      <div id="regist" style="display:none">
-			<!-- <form id="form" action="" method="POST">
-				<div>
-					<label>카드번호</label>
-					<input type="text" class="moveNumber" id="cardno1" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
-					<input type="text" class="moveNumber" id="cardno2" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
-					<input type="text" class="moveNumber" id="cardno3" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
-					<input type="password" class="moveNumber" id="cardno4" maxlength="4"/>
-					<input type="hidden" name="cardno" id="cardno">
-				</div>
-				<div>
-					<label>유효기간</label>
-					<input type="text" class="carddate" name="carddate1" placeholder="월">&nbsp;&nbsp;/&nbsp;
-					<input type="text" class="carddate" name="carddate2" placeholder="년">
-				</div>
-				<div>
-					<label>CVC번호</label>
-					<input type="text" name="cardcvc" placeholder="숫자  3자리 입력">
-					<img src="resources/assets/img/images/questionmark.png" id="cvcMsgBtn" style="cursor:pointer"/>
-					<div id="cvcMsg" style="display:none">
-						<p>CVC번호 안내</p>
-						<img src="resources/assets/img/images/cvc_sample.png"><br>
-						<span>							
-							카드 뒷면 서명란에 인쇄된 숫자 중 끝 3자리 또는 카드 앞<br>
-							면에 인쇄된 숫자 3자리<br> 
-						</span>						
-					</div>
-				</div>
-				<div>
-					<label>결제시 사용할 비밀번호</label>
-					<input type="text" name="cardpwd" placeholder="숫자  4자리 입력">
-					<img src="resources/assets/img/images/questionmark.png" id="pwdMsgBtn" style="cursor:pointer"/>
-					<div id="pwdErrorMsg" style="display:none">
-						<p>비밀번호 오류안내</p>
-						<span>
-							카드 비밀번호를 3회 이상 잘못 입력한 경우 안전한 거래를<br>
-							위하여 비밀번호 이용이 필요한 모든 거래가 일시적으로 중<br>
-							지됩니다. 자세한 사항은 문의게시판을 확인해 주세요.
-						</span>						
-					</div>
-				</div>
-				<div>
-					<h3>
-					꼭! 알아두세요
-					<img src="resources/assets/img/images/down_arrow.png" id="infoMsgBtn" style="cursor:pointer">
-					</h3>
-					<div id="infoMsg" style="display:none">				
-						<p>
-							카드사용등록을 하는 즉시 충전을 할 수 있습니다.<br>
-							카드사용등록을 원하시는 카드번호와 다음 항목을 모두 정확히 입력해 주시기 바랍니다. [단, 법인카드제외]<br>
-							카드고유확인번호/비밀번호 등록오류 시 발급받은 카드회사에 문의 바랍니다.<br>
-						</p>
-					</div>
-				</div>
-				<div>
-					<input type="button" value="등록하기" onclick="registCard()">
-				</div>
-				</form> -->
-			</div>
-      
-      
-      
-      
-      
      
 	 </div>
     </div>
@@ -343,16 +277,7 @@
 		
 		<p> 이제 vo 확인 ${vo.name}</p>
 
-		<div>
-			<label for="regist" id="registCard" style="cursor:pointer">카드등록</label>&emsp;&emsp;
-			<label>카드정보</label>&emsp;&emsp;
-			<label>충전하기</label>&emsp;&emsp;
-			<label>이용내역</label>
-		</div>
-		<div><br><br>
-			
-		</div>
-            
+	
             
             <!-- <figure class="img_inner">
                           <iframe src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Brooklyn,+New+York,+NY,+United+States&amp;aq=0&amp;sll=37.0625,-95.677068&amp;sspn=61.282355,146.513672&amp;ie=UTF8&amp;hq=&amp;hnear=Brooklyn,+Kings,+New+York&amp;ll=40.649974,-73.950005&amp;spn=0.01628,0.025663&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
@@ -553,17 +478,32 @@
 		var numVal = parseInt(num.value.replace(',', ''));
 		var moneyFormat = numVal.toLocaleString('ko-KR');
 		console.log("numVal type: "+typeof numVal);	
-		console.log("최종확인: "+moneyFormat);
-		$('#numberFormat').val(moneyFormat);	
+		console.log("최종확인: "+moneyFormat); 
+		$('#addingMoney').val(moneyFormat);	
+		//충전 후 금액 표기
+		var totalVal = parseInt($('#totalmoney').val().replace(',',''));
+		console.log("input totalmoney type: "+typeof totalVal);
+		var totalMoney = numVal + totalVal;
+		console.log("totalMoney type: "+typeof totalMoney);	
+		console.log("total : " +totalMoney); 
+		$('#afterAddedMoney').val(totalMoney);
 	}
 	
-	function numberFormat(){
-		var numVal = parseInt($('#numberFormat').val().replace(',', ''));
-		var moneyFormat = numVal.toLocaleString('ko-KR');
-		console.log("numVal type: "+typeof numVal);	
-		console.log("최종확인: "+moneyFormat);
-		$('#numberFormat').val(moneyFormat);
+	/* function plus(money){
+		console.log(typeof money);
+		var moneyAfterBtn, sum; 
+		$('#addingMoney').val(money*10000);
+		var sum = 
+		$('#afterAddedMoney').val(totalMoney);
 	}
+	 */
+	function resetMoney(){
+		$('#addingMoney').val('');
+		var totalVal = parseInt($('#totalmoney').val().replace(',',''));
+		$('#afterAddedMoney').val(totalVal);
+	}
+	
+	
 	
 </script>
 </html>
