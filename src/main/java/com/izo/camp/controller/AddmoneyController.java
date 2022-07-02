@@ -32,8 +32,14 @@ public class AddmoneyController {
 	public String money(Model model) {
 		//세션으로 받은 정보로 필요한 거 활용할 때 
 		int idx = (Integer)session.getAttribute("loginIdx");
+		System.out.println("머니컨트롤러 idx : "+idx);
 		MemberVO vo = memberService.userInfo(idx);
+		String id = (String)session.getAttribute("loginId");
+		System.out.println("머니컨트롤러 세션저장 아이디: "+id);
+		AddmoneyVO vo1 = addmoneyService.getMoneyInfo(id);
+		System.out.println("머니컨트롤러 vo1.id : "+vo1.getId());
 		model.addAttribute("vo", vo);
+		model.addAttribute("vo1", vo1);
 		return "mypage/addmoney";
 	}
 	

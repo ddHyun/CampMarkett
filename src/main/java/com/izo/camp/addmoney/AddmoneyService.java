@@ -24,6 +24,12 @@ public class AddmoneyService {
 		// TODO Auto-generated method stub
 		return addmoneyMapper.searchCardNo(vo);
 	}
+
+	public AddmoneyVO getMoneyInfo(String id) {
+		// TODO Auto-generated method stub
+		System.out.println("머니서비스 들어옴");
+		return addmoneyMapper.getMoneyInfo(id);
+	}
 	
 	
 }

@@ -4,15 +4,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AddmoneyVO {
-	private int idx, cvcno, simplepwd, addedmoney, totalmoney, validcarddate, leftmoney;
+	private int idx, cvcno, simplepwd, addedmoney, totalmoney, validcarddate;
 	private String id, cardno, addmoneydate;
-
-	public int getLeftmoney() {
-		return leftmoney;
-	}
-	public void setLeftmoney(int leftmoney) {
-		this.leftmoney = leftmoney;
-	}
+	
 	public int getIdx() {
 		return idx;
 	}
