@@ -64,7 +64,7 @@
 <!--=======content================================-->
 
 
-
+<h1>${vo.name}</h1>
 
 <div class="wrapper row3">
   <main class="hoc container clear" style="height: 350px"> 
@@ -83,7 +83,7 @@
           </article>
         </li>
         <li class="one_quarter">
-          <article><a href="#"><i class="fas fa-histrory"></i></a>
+          <article><a href="#section3"><i class="fas fa-histrory"></i></a>
             <h6 class="heading_card">충전하기</h6>
           </article>
         </li>
@@ -102,6 +102,7 @@
   </main>
 </div>
 
+<!-- 카드등록섹션 -->
 <div class="wrapper row2">
   <section id="ctdetails" class="hoc container clear"> 
     <!-- ################################################################################################ -->
@@ -124,16 +125,22 @@
     <article class="one_half">     
     
       <form id="registCardForm">       
-       <!-- <fieldset> 
-          <legend>카드정보 입력</legend> -->
-          <input type="hidden" id="cardId" name="id" value="${sessionScope.loginId}"> 
-          <input type="text" onKeyup="moveNumber(this)" id="cardNo" name="cardno" placeholder="카드번호 ('-'제외한 숫자 16자리)" maxlength="16">
-          <input type="text" onKeyup="moveNumber(this)" id="validDate" name="validcarddate" placeholder="유효기간   (예) 0524(월/연도))" maxlength="4">
-          <input type="password" onKeyup="moveNumber(this)" id="cvcNo" name="cvcno" placeholder="CVC번호 (숫자 3자리)"  maxlength="3"> 
-          <input type="password" id="simplePwd1" onKeyup="moveNumber(this)" name="simplepwd" placeholder="결제시 사용할 비밀번호 (숫자 6자리)"  maxlength="6">
-          <input type="password" id="simplePwd2" onKeyup="moveNumber(this)" placeholder="결제 비밀번호 재입력"  maxlength="6">
-          <input type="button" id="registCardBtn" value="등록하기" style="background-color:#A197BD; cursor:pointer; border-radius: 8px">
-       <!-- </fieldset>  -->
+      
+      
+          <input type="hidden" id="cardId" name="id" value="${sessionScope.loginId}">           
+          <input type="text" onKeyup="moveNumber(this)" id="cardNo" name="cardno"
+           placeholder="카드번호 ('-'제외한 숫자 16자리)" maxlength="16">
+          <input type="text" onKeyup="moveNumber(this)" id="validDate" name="validcarddate" 
+          placeholder="유효기간   (예) 0524(월/연도))" maxlength="4">
+          <input type="password" onKeyup="moveNumber(this)" id="cvcNo" name="cvcno"
+           placeholder="CVC번호 (숫자 3자리)"  maxlength="3"> 
+          <input type="password" id="simplePwd1" onKeyup="moveNumber(this)" name="simplepwd" 
+          placeholder="결제시 사용할 비밀번호 (숫자 6자리)"  maxlength="6">
+          <input type="password" id="simplePwd2" onKeyup="moveNumber(this)" 
+          placeholder="결제 비밀번호 재입력"  maxlength="6">
+          <input type="button" id="registCardBtn" value="등록하기" 
+          style="background-color:#A197BD; cursor:pointer; border-radius: 8px">
+     
       </form>
       
     </article>
@@ -143,6 +150,57 @@
 
 
 
+<!-- 카드충전섹션 -->
+<div class="wrapper row2">
+  <section id="ctdetails" class="hoc container clear"> 
+    <!-- ################################################################################################ -->
+    <div class="sectiontitle"  id="section3">
+      <p class="nospace font-xs"></p>
+      <h6 class="heading font-x2" style="font:40px 'Do Hyeon', sans-serif; 
+	font-weight:600; letter-spacing:6px;">카드충전</h6>
+    </div>
+    <figure class="one_half first">
+    <div style="width:87%; margin-left: 35px; margin-bottom:15px; color:#826660;">
+    <p class="nospace font-xs" style="line-height: 25px" align="justify">
+    CVC 번호란 신용카드 번호와는 별도로 인쇄되어 있는 3자리 또는 4자리 숫자로, 
+   	 카드 이용 명세서 등에는 인쇄되지 않습니다. 
+    CVC 번호를 입력함으로써 카드를 소지하고 있다는 사실을 확인하고
+         제3자에 의한 부정 사용을 방지할 수 있습니다.   
+    </p>
+    </div>
+    <img src="resources/assets/img/images/cvcImg.png" style="margin-left:30px; margin-top: 5px">      
+    </figure>
+    <article class="one_half">     
+    
+      <form id="registCardForm">   
+          <input type="text" placeholder="충전할 금액을 입력하세요" style="margin-bottom:0px"
+           maxlength="7" onkeyup="numberFormat(this)" id="numberFormat" name="addedmoney">
+          <a class="btnA blue" href="#">+10만원</a>
+		  <a class="btnA red" href="#">+5만원</a>
+		  <a class="btnA blue" href="#">+1만원</a>
+		  <label style="margin-bottom:10px; margin-top:15px" class="numberFormat">현재 잔액</label>
+          <input type="text" onkeyup="numberFormat()" 
+          disabled style="text-align:right" value="${vo.totalmoney}" name="totalmoney">
+		  <label style="margin-bottom:10px">충전 후 금액</label>
+          <input type="text" onKeyup="numberFormat()" disabled 
+          style="text-align:right"  class="numberFormat" id="afterAddedMoney"> 
+          <input type="button" id="registCardBtn" value="충전하기" style="background-color:#BDA697; cursor:pointer; border-radius: 8px">
+      </form>
+      
+    </article>
+    <!-- ################################################################################################ -->
+  </section>
+</div>
+
+
+<c:choose>
+          	<c:when test="${vo.addedmoney eq null}">
+	          <input type="hidden" name="totalmoney" value="0">
+          	</c:when>
+			<c:otherwise>
+	          <input type="hidden" name="totalmoney" value="${vo.addedmoney}+${vo.totalmoney}">
+			</c:otherwise>
+          </c:choose>
 
 
 
@@ -407,7 +465,7 @@
 	function moveNumber(num){
 		//isFinite():유한한 수 -> true 반환 / 무한한 수 or 문자 -> false 반환
 		if(isFinite(num.value)==false){
-			alert("숫자만 입력이 가능합니다");
+			alert("숫자만 입력해 주세요");
 			num.value="";
 			return false;
 		}		
@@ -483,7 +541,29 @@
 			alert("fail");
 		})
 	});
-		
+	
+	
+	//금액 3자리마다 ,찍기 : input값이 string이라 int로 형변환 후 사용하기
+	 function numberFormat(num){
+		var numberPattern = /[0-9]/g;
+		if(!numberPattern.test(num.value)){
+			alert("숫자만 입력해 주세요");
+			num.value='';
+		}
+		var numVal = parseInt(num.value.replace(',', ''));
+		var moneyFormat = numVal.toLocaleString('ko-KR');
+		console.log("numVal type: "+typeof numVal);	
+		console.log("최종확인: "+moneyFormat);
+		$('#numberFormat').val(moneyFormat);	
+	}
+	
+	function numberFormat(){
+		var numVal = parseInt($('#numberFormat').val().replace(',', ''));
+		var moneyFormat = numVal.toLocaleString('ko-KR');
+		console.log("numVal type: "+typeof numVal);	
+		console.log("최종확인: "+moneyFormat);
+		$('#numberFormat').val(moneyFormat);
+	}
 	
 </script>
 </html>

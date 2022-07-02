@@ -455,6 +455,37 @@ table a, #comments a{background-color:inherit;}
 	letter-spacing:4px;
 }
 
+    .btnA{
+      width: 150px;
+      text-decoration: none;
+      font-size:2rem;
+      padding:10px 20px 10px 20px;
+      margin:14px;
+      text-align:center;
+      display:inline-block;
+      border-radius: 10px;
+      transition:all 0.1s;
+      text-shadow: 0px -2px rgba(0, 0, 0, 0.44);
+      font: 20px 'Do Hyeon', sans-serif;
+    }
+    .btnA:active{
+      transform: translateY(3px);
+    }
+    .btnA.blue{
+       background-color: #BDA697;
+     /*  border-bottom:5px solid #165195; */
+    }
+    .btnA.blue:active{
+      border-bottom:2px solid #165195;
+    }
+    .btnA.red{
+     background-color: #BDA697;
+     /*  border-bottom:5px solid #c1370e; */
+    }
+    .btnA.red:active{
+      border-bottom:2px solid #c1370e;
+    }
+
 
 /* ------------------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------------------ */
