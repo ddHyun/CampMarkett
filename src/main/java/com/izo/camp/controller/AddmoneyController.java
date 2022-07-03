@@ -27,7 +27,7 @@ public class AddmoneyController {
 	HttpSession session;
 	
 	//카드등록, 충전페이지로 이동
-	@RequestMapping(value="/money.do", produces = "application/text; charset=UTF-8", method=RequestMethod.POST)
+	@RequestMapping(value="/money.do", produces = "application/text; charset=UTF-8", method= {RequestMethod.POST, RequestMethod.GET})
 	public String money(Model model) {
 		//세션으로 받은 정보로 필요한 거 활용할 때 
 		int idx = (Integer)session.getAttribute("loginIdx");
@@ -38,8 +38,8 @@ public class AddmoneyController {
 		int totalmoney = 0;
 		
 		//카드충전 페이지 들어왔을 때 등록된 카드가 없으면 현재잔액에 0으로 세팅하기
-		int cnt = addmoneyService.getNumber(id);//아이디 갯수 반환
-		if(cnt>=1) {
+		int cardCnt = addmoneyService.getNumber(id);//아이디 갯수 반환
+		if(cardCnt>=1) {
 			AddmoneyVO vo1 = addmoneyService.getMoneyInfo(id);
 			totalmoney = vo1.getTotalmoney();
 			System.out.println("아이디의 카드가 여러개일때 잔액 - "+totalmoney);
@@ -51,12 +51,13 @@ public class AddmoneyController {
 
 		model.addAttribute("vo", vo);
 		model.addAttribute("totalmoney", totalmoney);
+		model.addAttribute("cardCnt", cardCnt);
 		return "mypage/addmoney";
 	}
 	
 	//카드 등록하기
 	@ResponseBody
-	@RequestMapping(value="/registCard.do", produces = "application/text; charset=UTF-8", method=RequestMethod.POST)
+	@RequestMapping(value="/registCard.do", produces = "application/text; charset=UTF-8", method= {RequestMethod.POST, RequestMethod.GET})
 	public String registCard(AddmoneyVO vo) {
 		String param = "yesData";
 		String dbCardNo = addmoneyService.searchCardNo(vo);
@@ -73,7 +74,7 @@ public class AddmoneyController {
 	
 	//충전하기
 	@ResponseBody
-	@RequestMapping(value="/addmoney.do", produces = "application/text; charset=UTF-8", method=RequestMethod.POST)
+	@RequestMapping(value="/addmoney.do", produces = "application/text; charset=UTF-8", method= {RequestMethod.POST, RequestMethod.GET})
 	public String addMoney(AddmoneyVO vo) {		
 		String param = "";
 		int totalMoney = 0;

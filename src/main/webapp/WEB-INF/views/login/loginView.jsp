@@ -65,7 +65,7 @@
 <!-- =======content================================ -->
 
 <div class="content">
-  <div class="zerogrid" style="width:100%">
+  <div class="zerogrid">
     <!-- <div class="col-full">
       <h2></h2>
     </div> -->
@@ -84,8 +84,8 @@
     <div class="main2" style="width:800px; margin:160px auto; text-align:center;">
     
        <!-- 로그인 통과하면 상품페이지로 이동 -->
-    <!--    <form id="form" name="form" class="form_class" action="marketMain_Temp" method="post" style="display:none;"> -->
-  			<form id="form" name="form" class="form_class" action="money.do" method="post" style="display:none;"> 
+       		 <form id="form" name="form" class="form_class" action="marketMain_Temp" method="post" style="display:none;"> 
+  			<!-- <form id="form" name="form" class="form_class" action="money.do" method="post" style="display:none;"> --> 
             <div class="form_div">
                 <label>아이디</label>
                 <input class="field_class" name="id" id="id" type="text" autofocus><br>
