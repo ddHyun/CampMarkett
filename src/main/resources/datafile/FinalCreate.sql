@@ -45,6 +45,23 @@ CREATE TABLE OrderTABLE (
  		   REFERENCES ProductTABLE(ProductID) ON DELETE CASCADE
 );
 
+/*===========================오더테이블 업데이트===============================*/
+CREATE SEQUENCE SEQ_Order;
+
+CREATE TABLE OrderTable(
+	OrderIdx NUMBER(5) PRIMARY KEY,
+	OrderNum NUMBER(5),
+	MemberID VARCHAR2(100),
+	ProductID VARCHAR2(1000),
+	pcs NUMBER(3),
+	TotalPrice NUMBER(7),
+	OrderDate DATE DEFAULT SYSDATE,
+	FOREIGN KEY (MemberID)
+ 		   REFERENCES MEMBERTABLE (ID) ON DELETE CASCADE,
+		FOREIGN KEY (ProductID)
+ 		   REFERENCES ProductTABLE(ProductID) ON DELETE CASCADE
+);
+
 
 /*==========================================================*/
 
