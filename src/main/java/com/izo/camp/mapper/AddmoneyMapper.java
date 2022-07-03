@@ -15,5 +15,11 @@ public interface AddmoneyMapper {
 
 	//세션에 저장된 id로 충전테이블 정보 가져오기
 	AddmoneyVO getMoneyInfo(String id);
+
+	//아이디와 결제비밀번호 일치 확인
+	int getIdxforMoney(AddmoneyVO vo);
+
+	//충전하기
+	int addMoney(AddmoneyVO vo);
 	
 }

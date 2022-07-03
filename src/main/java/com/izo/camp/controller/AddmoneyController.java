@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.izo.camp.addmoney.AddmoneyService;
@@ -35,9 +34,11 @@ public class AddmoneyController {
 		System.out.println("머니컨트롤러 idx : "+idx);
 		MemberVO vo = memberService.userInfo(idx);
 		String id = (String)session.getAttribute("loginId");
+		
 		System.out.println("머니컨트롤러 세션저장 아이디: "+id);
-		AddmoneyVO vo1 = addmoneyService.getMoneyInfo(id);
+	 	AddmoneyVO vo1 = addmoneyService.getMoneyInfo(id);
 		System.out.println("머니컨트롤러 vo1.id : "+vo1.getId());
+		System.out.println("컨트롤러단 현재잔액: "+vo1.getTotalmoney());
 		model.addAttribute("vo", vo);
 		model.addAttribute("vo1", vo1);
 		return "mypage/addmoney";
@@ -55,6 +56,36 @@ public class AddmoneyController {
 			if(cnt>0) {
 				param = "y";//DB에 저장됨
 			}
+		}
+		String result = String.format("[{'param':'%s'}]", param);
+		return result;
+	}
+	
+	//충전하기
+	@ResponseBody
+	@RequestMapping(value="/addmoney.do", produces = "application/text; charset=UTF-8", method=RequestMethod.POST)
+	public String addMoney(AddmoneyVO vo) {		
+		String param = "";
+		//아이디와 결제비밀번호가 일치하는 idx유무 확인
+		int idx = addmoneyService.getIdxforMoney(vo);
+		AddmoneyVO vo1 = addmoneyService.getMoneyInfo(vo.getId());//id로 가져온 충전테이블 정보
+		if(idx > 0) {//일치정보가 있다면 충전정보 추가하기			
+			int sumMoney =vo.getAddedmoney() + vo.getTotalmoney(); 
+			vo.setCardno(vo1.getCardno());
+			vo.setCvcno(vo1.getCvcno());
+			int date = vo1.getValidcarddate();
+			vo.setValidcarddate(date);
+			vo.setTotalmoney(sumMoney);
+			//충전금액 추가 쿼리 실행			
+			int cnt = addmoneyService.addMoney(vo);
+			param = "n";
+			if(cnt > 0) {//DB에 저장됐다면
+				param = "y";
+			}else {
+				param = "n";
+			}
+		}else {//카드번호 불일치
+			param = "noData";
 		}
 		String result = String.format("[{'param':'%s'}]", param);
 		return result;

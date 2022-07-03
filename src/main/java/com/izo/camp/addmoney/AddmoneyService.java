@@ -28,7 +28,23 @@ public class AddmoneyService {
 	public AddmoneyVO getMoneyInfo(String id) {
 		// TODO Auto-generated method stub
 		System.out.println("머니서비스 들어옴");
+		AddmoneyVO vo = addmoneyMapper.getMoneyInfo(id);
+		
+		System.out.println("서비스단 현재잔액: "+vo.getTotalmoney());
 		return addmoneyMapper.getMoneyInfo(id);
+	}
+
+	//아이디와 결제비밀번호 일치확인
+	public int getIdxforMoney(AddmoneyVO vo) {
+		// TODO Auto-generated method stub
+		return addmoneyMapper.getIdxforMoney(vo);
+	}
+	
+	//충전하기
+	public int addMoney(AddmoneyVO vo) {
+		// TODO Auto-generated method stub
+		System.out.println(vo.getValidcarddate());
+		return addmoneyMapper.addMoney(vo);
 	}
 	
 	
