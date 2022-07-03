@@ -74,7 +74,7 @@ height: 'auto',
 
     <![endif]-->
     <style>
-    .zerogrid2{ width: 900px; position: relative; margin: 0 auto; padding: 0px;}
+    .zerogrid2{ width: 900px; height:75%; position: relative; margin: 0 auto; padding: 0px;}
    	button{
    		width:350px;	
    		height:30px;
@@ -151,7 +151,7 @@ height: 'auto',
 			<div id="row"  style= "height:40px;">
 				<input id="totalPrice" value="${totalPrice}원">
 				
-				<button style="float:right;">구매하기</button>
+				<button style="float:right;" onclick="goOrderPage()">구매하기</button>
 			</div> 		
 		</c:otherwise>
 		
@@ -164,7 +164,7 @@ height: 'auto',
 </div>
 <!--==============================footer=================================-->
 
-<footer>    
+<footer style="height:70px; padding: 10px">    
   <div class="zerogrid">
     <div class="col-full">
 		<div class="wrap-col">
@@ -176,8 +176,9 @@ height: 'auto',
 </body>
 <script>
 
+let loginId = "${sessionScope.loginId}";
+
 function changePcs(idx,productId,num){
-	let loginId = "${sessionScope.loginId}";
 	//현재 갯수
 	var nowPcs = parseInt($("#"+idx+"pcs").val());
 	
@@ -226,7 +227,43 @@ function changePcs(idx,productId,num){
 	
 }
 
+function goOrderPage(){
+	var windowX = window.screen.width;
+	var windowY = window.screen.height;
+	var popUpWidth = windowX / 3 ;
+	var popUpheight = (windowY * 3 ) / 4 ;
+	var top =  ((windowY / 2) - (popUpheight / 2));
+	var left = ((windowX / 2) - (popUpWidth / 2));
+	//카드정보가 없다면 구매하기 페이지로 유도해야한다.	
+	$.ajax({
+		url:"checkHasCard?loginId=" + loginId,
+		type: "get",
+		success : function(hasCard){
+			if(hasCard){
+				var pop = window.open(
+						"goOrderPage",
+								"pop",
+								"width=" + popUpWidth 
+								+ ", height = " + popUpheight 
+								+ ", top = " + top
+								+ ", left = " + left
+								+ " ,scrollbars=yes, resizable=no");  	
+				
+			}else{
+				alert("카드가 등록되어있지 않습니다.\n 카드를 등록해 주세요");
+			}
+		}
+	});
+	
+	}
 
+
+	
+	
+/* 	var pop = window.open("/camp/campDetail?idx="+e,"pop","width=650,height=800, scrollbars=yes, resizable=no");  */
+function orderOk(){
+	location.href="orderOk";
+}
 
 </script>
 
