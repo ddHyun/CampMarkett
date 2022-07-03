@@ -135,14 +135,14 @@ height: 'auto',
 			<div class="slider-block" style="height: 470px">
 				<div class="slider" style="height: 470px">
 					<ul class="items">
-						<li><img src="resources/assets/img/adImg/marketMainAd04.jpg"
+						<li><img src="resources/assets/img/marketImg/marketMain04.jpg"
 							alt=""></li>
-						<li><img src="resources/assets/img/adImg/marketMainAd03.jpg"
+						<li><img src="resources/assets/img/marketImg/marketMain03.jpg"
 							alt=""></li>
-						<li><img src="resources/assets/img/adImg/marketMainAd01.jpg"
+						<li><img src="resources/assets/img/marketImg/marketMain01.jpg"
 							alt=""></li>
 						<li class="mb0"><img
-							src="resources/assets/img/adImg/marketMainAd02.jpg" alt=""></li>
+							src="resources/assets/img/marketImg/marketMain02.jpg" alt=""></li>
 					</ul>
 				</div>
 			</div>
@@ -177,18 +177,20 @@ height: 'auto',
 												<img style="margin: 6px;"
 													src="resources/assets/img/food/${product.imgName}.jpg"
 													height="200px" width="300px">
-												<h3 class="card-header">${product.productId}</h3>
-												<div class="card-body">
+												<h3 class="card-header" style="color:black;">${product.productId}</h3>
+												<div class="card-body" ">
 													<figure class="text-end">
 														<blockquote class="blockquote" style="margin-bottom: 3px">
 															<strong class="mb-0">${product.price}원</strong>
 														</blockquote>
 													</figure>
-													<input type="button" class="btn btn-primary"
-														onclick="purchase(${product.idx})" value="구매하기"> <input
-														type="button" class="btn btn-primary"
+													<div style="text-align: center;">
+													<input type="button" class="btn btn-primary" style="width:45%;"
+														onclick="addBasket('${product.productId}')" value="장바구니 담기"> 
+													<input type="button" class="btn btn-primary" style="width:45%;"
 														onclick="location.href='marketDetail?idx=${product.idx}'"
 														value="상세보기">
+													</div>
 												</div>
 											</div>
 										</div>
@@ -226,14 +228,28 @@ height: 'auto',
 	</footer>
 </body>
 <script>
-	function purchase(idx){
-		if("${sessionScope.loginIdx}"){
-			alert("로그인이 확인되었습니다.")
-		}else{
-			alert("로그인이 필요합니다" + idx)
-		}
-	}
+
 	
+	function addBasket(productId) {
+		let loginId = "${sessionScope.loginId}";
+
+		if (${sessionScope.loginIdx eq null}||loginId==""||loginId=="none") {
+			alert("로그인 후 이용해 주세요.")
+		} else {
+			if (confirm("장바구니에 추가 하시겠습니까")) {
+
+				//location.href="addBasket?memberId=" + loginId + "&productId=" + productId;
+				//메소드만 실행
+				fetch("addBasket?memberId=" + loginId + "&productId="
+						+ productId);
+
+				if (confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?")) {
+					location.href = "goBasket";
+				}
+			}
+		}
+
+	}
 
 </script>
 

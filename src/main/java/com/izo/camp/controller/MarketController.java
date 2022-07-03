@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.izo.camp.addmoney.AddmoneyService;
 import com.izo.camp.market.BasketService;
 import com.izo.camp.market.MarketService;
+import com.izo.camp.vo.AddmoneyVO;
 import com.izo.camp.vo.BasketVO;
 import com.izo.camp.vo.ProductVO;
 
@@ -23,6 +25,8 @@ public class MarketController {
 	MarketService marketService;
 	@Autowired
 	BasketService basketService;
+	@Autowired
+	AddmoneyService addmoneyService;
 	
 	@Autowired
 	HttpSession session;
@@ -82,15 +86,9 @@ public class MarketController {
 	@ResponseBody
 	@RequestMapping(value="/plusMinusPcs",method=RequestMethod.POST )
 	public int plusMinus(BasketVO basketVO) {
-		System.out.println(basketVO.getMemberId());
-		System.out.println(basketVO.getProductId());
-		System.out.println(basketVO.getPcs());
-		System.out.println("=========");
-		
+	
 		//chagePcs = 변한 토탈 가격을 반환한다.
 		int totalPrice = basketService.changePcs(basketVO);
-		
-		
 		
 		return totalPrice;
 	}
@@ -121,5 +119,39 @@ public class MarketController {
 		return totalPrice;
 	}
 	
+	//오더페이지 
+	@RequestMapping("/goOrderPage")
+	public String goOrderPage(Model model) {
+		String loginId = (String)session.getAttribute("loginId");
+		
+		List<BasketVO> basketList = basketService.getBasket(loginId);
+		int totolPrice = 0;
+		for(BasketVO vo : basketList) {
+			totolPrice += vo.getTotalPrice();
+		}
+		
+		AddmoneyVO addmoneyVO = addmoneyService.getMoneyInfo(loginId);
+		//getMoneyInfo
+		model.addAttribute("basketProduct", basketList);
+		model.addAttribute("totalPrice", totolPrice);
+		model.addAttribute("charge",addmoneyVO.getTotalmoney());
+		model.addAttribute("simplePwd",addmoneyVO.getSimplepwd());
+		
+		
+		return "market/order";
+	}
+	
+	@RequestMapping("checkHasCard")
+	@ResponseBody
+	public boolean checkHasCard(String loginId) {
+		return addmoneyService.getMoneyInfo(loginId) != null;
+	}
+	
+	@RequestMapping("orderOk")
+	public String orderOk() {
+		//구매 관련 DB 수정 구현
+		//order에 정보 삽입.
+		return "market/orderComplete";
+	}
 	
 }
