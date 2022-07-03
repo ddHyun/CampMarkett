@@ -64,7 +64,7 @@
 <div class="content">
   <div class="zerogrid">
   	<div class="row">
-	<form action="joinView.do" name="form" style="width:60%; margin:auto">
+	<form action="joinView.do" name="form" style="width:75%; margin:auto">
 	<div class="row"><br><br><br>
 	<p style="color: #79302b; font-size: 25px">기본정보 입력</p>	
 	</div>	

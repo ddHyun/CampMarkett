@@ -60,7 +60,7 @@
 <div class="content">
   <div class="zerogrid">
   	<div class="row">
-	<form action="joinView.do" name="saveForm" style="width:60%; margin:auto">
+	<form action="joinView.do" name="saveForm" style="width:75%; margin:auto">
 	<div class="row" style="text-align:center">
 	<h2>약관동의</h2>	
 	<p style="font-size:14px">
@@ -70,7 +70,7 @@
 	</div>	
 	<h2>이용약관</h2>
 	<div>
-		<textarea rows="20" cols="108">
+		<textarea rows="30" cols="130">
 제1조 (목적)
 
 이 약관은 (주)캠핑가즈아가 운영하는 CampMarket(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리의무 및 책임사항을 규정함을 목적으로 합니다.
@@ -314,7 +314,7 @@
 	</div><br>
 	<h2>개인정보수집 및 활용에 대한 동의</h2>
 	<div>
-		<textarea rows="20" cols="108">
+		<textarea rows="20" cols="130">
 'CampMarket'은 회원님께서 ㈜캠핑가즈아가 운영하는 웹사이트(이하 "몰"이라고 함)의 각종 서비스를 이용하거나  상품을 주문하는데 있어, 본인확인, 원활한 서비스 제공 및 주문 접수, 물품 배송, 대금 결제, 회원님에게 유용한 맞춤정보 제공 등을 위하여 필요한 최소한의 개인정보를 필수 사항으로 수집합니다.
 
 제1항 (수집하는 개인정보 항목 및 방법)
@@ -394,38 +394,7 @@
 
 	</div>
 	
-    <div class="row">
-    <div class="bottom_block">
-      <div class="col-1-2">
-        <h3>Follow Us</h3>
-        <div class="socials">
-          <a href="#"></a>
-          <a href="#"></a>
-          <a href="#"></a>
-        </div>
-        <nav><ul>
-                   <li><a href="index.html">Home</a></li>
-                   <li><a href="index-1.html">About Us</a></li>
-                   <li><a href="index-2.html">Menu</a></li>
-                   <li><a href="index-3.html">Portfolio</a></li>
-                   <li class="current"><a href="index-4.html">News </a></li>
-                   <li><a href="index-5.html">Contacts</a></li>
-                 </ul></nav>
-      </div>
-      <div class="col-1-2">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
-          </div>
-      </div>
-	  </div>
+   
     </div>
   </div>
 </div>
