@@ -155,7 +155,7 @@ public class MarketController {
 	
 	//주문완료 ! 
 	@RequestMapping("orderOk")
-	public String orderOk() {
+	public String orderOk(Model model) {
 		//구매 관련 DB 수정 구현
 		//session에 장바구니에 baskeVO 들을 가져옴 
 		String loginId = (String)session.getAttribute("loginId");
@@ -185,6 +185,9 @@ public class MarketController {
 		//카드에서 돈빼기
 		
 		
+		//
+		
+		model.addAttribute("orderList",basketList);
 		return "market/orderComplete";
 	}
 	

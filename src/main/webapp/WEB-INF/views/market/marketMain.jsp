@@ -171,7 +171,7 @@ height: 'auto',
 
 										<!--  -->
 										<div class="temp"
-											style="float: left; margin: 10px; width: 27%"
+											style="float: left; margin: 10px; width: 315px"
 											<%--  onclick="popupDetail(${camp.idx})" --%> style="cursor:pointer;">
 											<div class="card mb-3">
 												<img style="margin: 6px;"

@@ -11,10 +11,11 @@
 </head>
 
 <!-- <body> -->
-<body>
-<button class="btn btn-lg btn-primary" onclick='closeb()'><strong>지도의 위치로 위치 변경하기</strong></button>
-<div style="background-color: green; padding:10px; width:620px;">
-	<div id="map" style="width:600px;height:500px;"></div>
+<body style="background-color: white;">
+<button class="btn btn-lg btn-success btn-lg" onclick='closeb()' style="margin:5px;"><strong>지도의 위치로 위치 변경하기</strong></button>
+<div style="background-color: #5fa022; padding:10px; width:720px; 
+    margin: 0 auto; margin-top:10px;">
+	<div id="map" style="width:700px;height:570px;"></div>
 </div>
 
 
@@ -66,7 +67,7 @@
 // 지도에 클릭 이벤트를 등록합니다
 // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
 
-	var imageSrc = 'resources/assets/img/campingArea/tentMarker.png' // 마커이미지의 주소입니다    
+	var imageSrc = 'resources/assets/img/campingArea/testMarker.png' // 마커이미지의 주소입니다    
 	var imageSize = new kakao.maps.Size(40, 46) // 마커이미지의 크기입니다
 	var imageOption = {offset: new kakao.maps.Point(17, 46)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 	var markerImage1 = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
