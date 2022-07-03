@@ -1,6 +1,8 @@
 package com.izo.camp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.izo.camp.addmoney.AddmoneyService;
 import com.izo.camp.market.BasketService;
 import com.izo.camp.market.MarketService;
+import com.izo.camp.market.OrderService;
 import com.izo.camp.vo.AddmoneyVO;
 import com.izo.camp.vo.BasketVO;
+import com.izo.camp.vo.OrderVO;
 import com.izo.camp.vo.ProductVO;
 
 @Controller
@@ -27,6 +31,8 @@ public class MarketController {
 	BasketService basketService;
 	@Autowired
 	AddmoneyService addmoneyService;
+	@Autowired 
+	OrderService orderService;
 	
 	@Autowired
 	HttpSession session;
@@ -125,15 +131,15 @@ public class MarketController {
 		String loginId = (String)session.getAttribute("loginId");
 		
 		List<BasketVO> basketList = basketService.getBasket(loginId);
-		int totolPrice = 0;
+		int totalPrice = 0;
 		for(BasketVO vo : basketList) {
-			totolPrice += vo.getTotalPrice();
+			totalPrice += vo.getTotalPrice();
 		}
 		
 		AddmoneyVO addmoneyVO = addmoneyService.getMoneyInfo(loginId);
 		//getMoneyInfo
 		model.addAttribute("basketProduct", basketList);
-		model.addAttribute("totalPrice", totolPrice);
+		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("charge",addmoneyVO.getTotalmoney());
 		model.addAttribute("simplePwd",addmoneyVO.getSimplepwd());
 		
@@ -147,10 +153,38 @@ public class MarketController {
 		return addmoneyService.getMoneyInfo(loginId) != null;
 	}
 	
+	//주문완료 ! 
 	@RequestMapping("orderOk")
 	public String orderOk() {
 		//구매 관련 DB 수정 구현
+		//session에 장바구니에 baskeVO 들을 가져옴 
+		String loginId = (String)session.getAttribute("loginId");
+		
+		List<BasketVO> basketList = basketService.getBasket(loginId);
+		
+		//난수 발생 -주문번호 추후 수정필요
+		//주문번호를 생성후에
 		//order에 정보 삽입.
+		Integer orderNum = new Random().nextInt(100000);
+		int totalPrice = 0;
+		List<OrderVO> orderList = new ArrayList<OrderVO>();
+		for(BasketVO basketVO: basketList) {
+			OrderVO orderVO = new OrderVO();
+			orderVO.setMemberId(basketVO.getMemberId());
+			orderVO.setProductId(basketVO.getProductId());
+			orderVO.setOrderNum(orderNum);
+			orderVO.setPcs(basketVO.getPcs());
+			orderVO.setTotalPrice(basketVO.getTotalPrice());
+			totalPrice = basketVO.getTotalPrice();
+			orderList.add(orderVO);
+		}
+		orderService.orderAdd(orderList);
+	
+		
+		
+		//카드에서 돈빼기
+		
+		
 		return "market/orderComplete";
 	}
 	
