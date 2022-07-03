@@ -20,8 +20,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 세션에 저장된 아이디로 충전테이블 정보 가져오기 -->
 	<select id="getMoneyInfo" resultType="addmoneyVO" parameterType="String">
-		select * from addmoneytable where id=#{id}
+		SELECT * FROM ADDMONEYTABLE a WHERE id=#{id} and idx=(SELECT MAX(IDX) FROM ADDMONEYTABLE a2)
 	</select>
+	
+	<!-- 아이디와 결제비밀번호 일치 확인 -->
+	<select id="getIdxforMoney" resultType="int" parameterType="addmoneyVO">
+		select nvl(idx, 0) from addmoneytable 
+		right outer join dual on id=#{id} and simplepwd=#{simplepwd} 
+	</select>
+	
+	<!-- 충전하기 -->
+	<insert id="addMoney" parameterType="addmoneyVO">
+		INSERT INTO ADDMONEYTABLE
+		(IDX, ID, CARDNO, CVCNO, SIMPLEPWD, ADDEDMONEY, TOTALMONEY, VALIDCARDDATE, ADDMONEYDATE)
+		VALUES(seq_addmoney.nextval, #{id}, #{cardno}, #{cvcno}, #{simplepwd}, 
+				#{addedmoney}, #{totalmoney}, #{validcarddate}, sysdate)
+		
+	</insert>
 </mapper>
 
 
