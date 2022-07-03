@@ -25,12 +25,12 @@ public class AddmoneyService {
 		return addmoneyMapper.searchCardNo(vo);
 	}
 
+	//아이디와 일치하는 충전테이블 정보 가져오기
 	public AddmoneyVO getMoneyInfo(String id) {
 		// TODO Auto-generated method stub
 		System.out.println("머니서비스 들어옴");
 		AddmoneyVO vo = addmoneyMapper.getMoneyInfo(id);
 		
-		System.out.println("서비스단 현재잔액: "+vo.getTotalmoney());
 		return addmoneyMapper.getMoneyInfo(id);
 	}
 
@@ -45,6 +45,18 @@ public class AddmoneyService {
 		// TODO Auto-generated method stub
 		System.out.println(vo.getValidcarddate());
 		return addmoneyMapper.addMoney(vo);
+	}
+	
+	//아이디에 등록된 잔고 가져오기
+	public int searchId(String id) {
+		// TODO Auto-generated method stub
+		return addmoneyMapper.searchId(id);
+	}
+	
+	//아이디 정보 있는지 확인
+	public int getNumber(String id) {
+		// TODO Auto-generated method stub
+		return addmoneyMapper.getNumber(id);
 	}
 	
 	

@@ -35,12 +35,22 @@ public class AddmoneyController {
 		MemberVO vo = memberService.userInfo(idx);
 		String id = (String)session.getAttribute("loginId");
 		
-		System.out.println("머니컨트롤러 세션저장 아이디: "+id);
-	 	AddmoneyVO vo1 = addmoneyService.getMoneyInfo(id);
-		System.out.println("머니컨트롤러 vo1.id : "+vo1.getId());
-		System.out.println("컨트롤러단 현재잔액: "+vo1.getTotalmoney());
+		int totalmoney = 0;
+		
+		//카드충전 페이지 들어왔을 때 등록된 카드가 없으면 현재잔액에 0으로 세팅하기
+		int cnt = addmoneyService.getNumber(id);//아이디 갯수 반환
+		if(cnt>=1) {
+			AddmoneyVO vo1 = addmoneyService.getMoneyInfo(id);
+			totalmoney = vo1.getTotalmoney();
+			System.out.println("아이디의 카드가 여러개일때 잔액 - "+totalmoney);
+		}else {
+			totalmoney = addmoneyService.searchId(id);
+			System.out.println("아이디의 카드가 없을 때 잔액 - "+totalmoney);
+			
+		}
+
 		model.addAttribute("vo", vo);
-		model.addAttribute("vo1", vo1);
+		model.addAttribute("totalmoney", totalmoney);
 		return "mypage/addmoney";
 	}
 	

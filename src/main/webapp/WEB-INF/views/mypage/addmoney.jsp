@@ -45,13 +45,13 @@
                    <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
                    <li class="with_ul"><a href="memberInfo_Temp">마이페이지</a>
 				   	<ul>
-                         <li class="current"><a href="money.do"> 카드등록/충전</a></li>
+                         <li><a href="money.do"> 카드등록/충전</a></li>
                          <li><a href="#">Good rest</a></li>
                          <li><a href="#">Services</a></li>
                          <li><a href="makeSampleId">샘플 로그인!</a></li>
                      </ul>
 				   </li>
-				   		<li><a href="##############">로그아웃</a></li>					   	
+				   		<li><a onclick="logout()">로그아웃</a></li>					   	
 				   				   
                  </ul>
            </nav>
@@ -227,7 +227,7 @@
 		  <i class="fa-solid fa-rotate-left" style="color:#BDA697; cursor:pointer;
 		  margin:15px 0 0 10px; font-size: 43px" onclick="resetMoney()"></i>
 		  <label style="margin-bottom:10px; margin-top:15px">현재 잔액</label>
-          <input type="text" disabled value="${vo1.totalmoney}" name="totalmoney"
+          <input type="text" disabled value="${totalmoney}" name="totalmoney"
            class="numFormat" id="totalmoney">
 		  <label style="margin-bottom:10px">충전 후 금액</label>
           <input type="text" disabled class="numFormat" 
@@ -422,7 +422,7 @@
 	
 	
 	//충전하기
-	function addMoney(){
+	function addMoney(){		
 		if(confirm("충전하시겠습니까?")){
 		var id = '${sessionScope.loginId}';
 		var simplepwd = $('#simplepwd').val();
@@ -457,6 +457,12 @@
 				return;
 			}
 		}
+	}
+	
+	//로그아웃
+	function logout(){
+		//세션 삭제하기session.invalidate();
+		location.href="home";
 	}
 </script>
 </html>
