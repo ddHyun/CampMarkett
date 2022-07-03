@@ -65,7 +65,7 @@
 <!-- =======content================================ -->
 
 <div class="content">
-  <div class="zerogrid" style="width:100%">
+  <div class="zerogrid">
    <!--  <div class="col-full" style="margin:0>
       <h2">회원가입 유무 확인</h2>
     </div> -->
@@ -78,8 +78,8 @@
     align-items: center;
     justify-content: center;
     height: 85vh;
-    width: 100%;
-    background: url('resources/assets/img/images/bbq3.jpg') no-repeat center center;
+   width: 100%;
+    background: url('resources/assets/img/images/bbq6.jpg') no-repeat center center;
     background-size: cover;">
     <div class="main2" style="width:800px;
   margin:160px auto;
@@ -104,32 +104,11 @@
     <div class="row">
     <div class="bottom_block">
       <div class="col-1-2">
-        <h3>Follow Us</h3>
-        <div class="socials">
-          <a href="#"></a>
-          <a href="#"></a>
-          <a href="#"></a>
-        </div>
-        <nav><ul>
-                   <li><a href="index.html">Home</a></li>
-                   <li><a href="index-1.html">About Us</a></li>
-                   <li><a href="index-2.html">Menu</a></li>
-                   <li class="current"><a href="index-3.html">Portfolio</a></li>
-                   <li><a href="index-4.html">News </a></li>
-                   <li><a href="index-5.html">Contacts</a></li>
-                 </ul></nav>
+        
+       
       </div>
      <div class="col-1-2">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn" data-type="submit">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
+        
           </div>
       </div>
 	  </div>

@@ -422,7 +422,12 @@
 	
 	
 	//충전하기
-	function addMoney(){		
+	function addMoney(){	
+		if(${cardCnt}==0){
+			alert("등록된 카드가 없습니다. 카드등록 후 충전해 주세요");
+			location.href='#section2';
+			return;
+		}
 		if(confirm("충전하시겠습니까?")){
 		var id = '${sessionScope.loginId}';
 		var simplepwd = $('#simplepwd').val();
