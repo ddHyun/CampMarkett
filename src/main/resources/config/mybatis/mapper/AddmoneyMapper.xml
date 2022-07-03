@@ -24,10 +24,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 아이디와 결제비밀번호 일치 확인 -->
-	<select id="getIdxforMoney" resultType="int" parameterType="addmoneyVO">
-		select nvl(idx, 0) from addmoneytable 
+ 	<select id="getIdxforMoney" resultType="int" parameterType="addmoneyVO">
+		select nvl(max(idx), 0) from addmoneytable 
 		right outer join dual on id=#{id} and simplepwd=#{simplepwd} 
-	</select>
+	</select> 
 	
 	<!-- 충전하기 -->
 	<insert id="addMoney" parameterType="addmoneyVO">
