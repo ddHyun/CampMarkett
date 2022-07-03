@@ -112,3 +112,21 @@ CREATE TABLE basketTable(
 	price NUMBER(10),
 	totalPrice NUMBER(10)
 );
+
+/*==========================================================*/
+
+create sequence seq_addmoney;
+
+create table addmoneytable(
+	idx number(3) primary key,
+	id varchar2(50),
+	cardNo number(20),
+	cvcNo number(3),
+	simplePwd number(6),
+	addedMoney number(7),
+	totalMoney number(7),
+	validCardDate number(4),
+	addMoneyDate date default sysdate,
+	FOREIGN KEY (id)
+ 		REFERENCES MEMBERTABLE (ID) ON DELETE CASCADE 
+);

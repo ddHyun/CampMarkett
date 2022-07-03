@@ -108,6 +108,7 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     lat = latlng.getLat();
     lon = latlng.getLng();
     
+    var nowCenter = map.getCenter();
     /* Ajax 구동  */
     $.ajax({
 		url: "movePosition?lat=" + lat + "&lon=" + lon,
@@ -142,7 +143,8 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 				infoWindow.open(map,marker);  //close를 위한 배열 필요
 				infoWindows.push(infoWindow);
 			});
-			map.setCenter(latlng);
+			/* map.setCenter(latlng); */
+			map.setCenter(nowCenter);
 			
 		}
 	});
