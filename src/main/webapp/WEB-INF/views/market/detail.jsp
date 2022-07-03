@@ -96,7 +96,7 @@
 		<div class="content">
 			<div class="zerogrid2">
 				<div class="s"
-					style="margin: 0; padding: 0; width: 100%; border: 1px solid #33FF33; background-color: white;">
+					style="margin: 0; padding: 0; width: 100%; background-color: white;">
 					<h2 class="head2"></h2>
 					<div class="inner1_menu" style="float: left; width: 65%;">
 						<img src="resources/assets/img/food/${product.imgName}.jpg"
@@ -105,7 +105,7 @@
 
 					<div class="inner1_menu" style="float: left; width: 35%;">
 
-						<div class="card border-success mb-3" style="width: 100%;">
+						<div class="card border-success mb-3" style="width: 100%; border:none;">
 							<h2 class="card-header"
 								style="padding-top: 15px; margin-bottom: 5px;">${product.productId}</h2>
 							<div class="card-body" style="padding-top: 5px;">
@@ -120,7 +120,7 @@
 
 							<hr>
 							<div class="card-body" style="text-align: center;">
-								<button class="btn btn-success btn-lg" style="width: 90%;"
+								<button class="btn btn-success btn-lg" style="width: 90%; "
 									onclick="addBasket('${product.productId}')">장바구니 추가</button>
 								<%-- <button class="btn btn-success btn-lg"
 									style="width: 90%; margin-top: 10px;"
@@ -138,18 +138,18 @@
 				<div class="zerogrid2">
 				
 					
-					<div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%">
+					<div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%; border:1px black; margin-top:10px;">
 					  <input type="radio" style="display:none; height:50px;" class="btn-check" name="btnradio" id="btnradio1" value="detail" autocomplete="off" >
-					  <label style="height:40px;" class="btn btn-outline-primary" for="btnradio1"><h3>상세 보기</h3></label>
+					  <label style="height:40px; border:3px solid #5fa022;" class="btn btn-outline-success" for="btnradio1">상세 보기</label>
 					  <input type="radio" style="display:none; height:50px;" class="btn-check" name="btnradio" id="btnradio2" value="review" autocomplete="off" >
-					  <label style="height:40px;" class="btn btn-outline-primary" for="btnradio2"><h3>구매 후기</h3></label>
+					  <label style="height:40px; border:3px solid #5fa022;" class="btn btn-outline-success" for="btnradio2">구매 후기</label>
 					</div>
 					<!-- 상품 상세보기 창 -->
 					<div 	id="detail" style=" height:500px; background-color: white;">
 					</div>
 					<!-- =============== 후기 게시판==================== -->
 					<div 	id="review" >
-					<table style="margin-top: 20px;" class="table table-hover"	>
+					<table style="margin-top: 20px; margin-bottom: 30px;" class="table table-hover"	>
 						<thead>
 							<tr class="table-success">
 								<th scope="col">Type</th>

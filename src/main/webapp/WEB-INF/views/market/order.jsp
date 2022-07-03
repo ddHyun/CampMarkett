@@ -21,6 +21,8 @@
      <script src="resources/assets/js/jquery.carouFredSel-6.1.0-packed.js"></script>
      <script src="resources/assets/js/tms-0.4.1.js"></script>
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
+	 <script src="https://kit.fontawesome.com/d9e2783f4c.js" crossorigin="anonymous"></script>
+	 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/simplex/bootstrap.min.css" integrity="sha384-FYrl2Nk72fpV6+l3Bymt1zZhnQFK75ipDqPXK0sOR0f/zeOSZ45/tKlsKucQyjSp" crossorigin="anonymous">
     
     <style>
     .zerogrid2{ margin: 20px;width: 100%; height:600px; position: relative; margin: 0 auto; padding: 0px;}
@@ -31,7 +33,7 @@
     </style>
     
      </head>
-     <body>
+    <body style="background-color: #5fa022;">
        <div class="main">
 <!--==============================header=================================-->
  <header style="padding: 10px;"> 
@@ -47,50 +49,42 @@
     </div>
 </header>
 <!--==============================content=================================-->
+
+
+
 <div class="content">
-<div class="zerogrid2">
-	<h2 class="head2">장바구니</h2>
+<div class="zerogrid2">	
 	
 	<div id=basketMain>
-	<c:choose>
-	<c:when test="${empty basketProduct}">
-		<p>장바구니가 비어있습니다 <p>
-	</c:when>
+		<div style="margin:0 auto;width:90%; margin-top:10px;">
+			<h2><i class="fa-regular fa-credit-card"></i> 결제 하기</h2>
+		<div class="card border-dark mb-3" >
+		<c:forEach var="product" items="${basketProduct}">
+		  <div class="card-body" style="padding: 7px 5px 3px 5px; border-bottom: 1px solid #5fa022">
+		  <h4 style="color:black;">${product.productId}</h4>
+		  <p class="card-text" style="margin-bottom:3px; text-align:right;"> 수량 :${product.pcs}개  &#9; &#9; 가격 : ${product.totalPrice} 원 <p>
+		  </div>
+		  <!-- <hr style="margin:5px; border: 1px dotted #5fa022;"> -->
+		  <!-- <div class="card-body">
+		    <h4 class="card-title">Dark card title</h4>
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		  </div> -->
+		
+		</c:forEach>
+			<div class="card-header">
+		    <h4 style="text-align: right;" class="card-title">총 가격 : ${totalPrice}원</h4>
+		  </div>
+		
+		</div>
+		<button style="height:40px; width:50%;" class="btn btn-lg btn-light" type="button">잔여 포인트 : ${charge} 원</button>
+		<input style="height:40px; width:45%;" type="password" name="simplePwd" id="nowPwd" placeholder="간편 비밀번호">
+		<input style="float:right; height:40px; width:50%;" type="button" class="btn btn-outline-success btn-lg" onclick="doOrder()" value="구매하기">
+		
+		
 	
-		<c:otherwise>
-				비어있지 않아요!
-			<br>
-				제품이름<br>
-			<c:forEach var="product" items="${basketProduct}">
-				<div id="${product.idx}div">
-				${product.productId}
-				구매수량
-				<input type="button" value="-" onclick="changePcs(${product.idx},'${product.productId}',-1)" >
-				<input type="text" id="${product.idx}pcs" value="${product.pcs}"readonly> 개
-				<input type="button" value="+" onclick="changePcs(${product.idx},'${product.productId}',1)">
-				<input type="text" id="${product.idx}price" value="${product.totalPrice}원">
-				</div>
-			</c:forEach>
-			
-			
-			<div id="row"  style= "height:100px;">
-				
-				
-					
-			</div>
-			<div id="row"  style= "height:40px;">
-				<input id="totalPrice" value="${totalPrice}원">
-				
-			</div>
-		현재 잔액 : ${charge}<br>
-		간편비밀번호 : <input type="password" name="simplePwd" id="nowPwd">
-		<input type="button" onclick="doOrder()" value="구매하기">
-		
-		</c:otherwise>
-		
-	</c:choose>
+	
 	</div>
-	
+	</div>
 	
 </div>
 </div>
