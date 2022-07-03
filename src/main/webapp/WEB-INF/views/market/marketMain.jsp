@@ -228,18 +228,12 @@ height: 'auto',
 	</footer>
 </body>
 <script>
-	function purchase(idx){
-		if("${sessionScope.loginIdx}"){
-			alert("로그인이 확인되었습니다.")
-		}else{
-			alert("로그인이 필요합니다" + idx)
-		}
-	}
+
 	
 	function addBasket(productId) {
 		let loginId = "${sessionScope.loginId}";
 
-		if (loginId == null || loginId == "none") {
+		if (${sessionScope.loginIdx eq null}||loginId==""||loginId=="none") {
 			alert("로그인 후 이용해 주세요.")
 		} else {
 			if (confirm("장바구니에 추가 하시겠습니까")) {
