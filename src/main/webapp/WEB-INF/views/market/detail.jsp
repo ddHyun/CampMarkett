@@ -119,12 +119,12 @@
 							</div>
 
 							<hr>
-							<div class="card-body">
+							<div class="card-body" style="text-align: center;">
 								<button class="btn btn-success btn-lg" style="width: 90%;"
 									onclick="addBasket('${product.productId}')">장바구니 추가</button>
-								<button class="btn btn-success btn-lg"
+								<%-- <button class="btn btn-success btn-lg"
 									style="width: 90%; margin-top: 10px;"
-									onclick="addBasket('${product.productId}')">구매 하기</button>
+									onclick="addBasket('${product.productId}')">구매 하기</button> --%>
 							</div>
 						</div>
 
@@ -136,18 +136,19 @@
 					</div>
 				</div>
 				<div class="zerogrid2">
-					<p>test2</p>
+				
 					
 					<div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%">
-					  <input type="radio" style="display:none; height:50px;" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" >
-					  <label style="height:50px;" class="btn btn-outline-primary" for="btnradio1"><h3>상세 보기</h3></label>
-					  <input type="radio" style="display:none; height:50px;" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" >
-					  <label style="height:50px;" class="btn btn-outline-primary" for="btnradio2"><h3>구매 후기</h3></label>
+					  <input type="radio" style="display:none; height:50px;" class="btn-check" name="btnradio" id="btnradio1" value="detail" autocomplete="off" >
+					  <label style="height:40px;" class="btn btn-outline-primary" for="btnradio1"><h3>상세 보기</h3></label>
+					  <input type="radio" style="display:none; height:50px;" class="btn-check" name="btnradio" id="btnradio2" value="review" autocomplete="off" >
+					  <label style="height:40px;" class="btn btn-outline-primary" for="btnradio2"><h3>구매 후기</h3></label>
 					</div>
-										
-
+					<!-- 상품 상세보기 창 -->
+					<div 	id="detail" style=" height:500px; background-color: white;">
+					</div>
 					<!-- =============== 후기 게시판==================== -->
-					<div 	id="review" style="display:none;">
+					<div 	id="review" >
 					<table style="margin-top: 20px;" class="table table-hover"	>
 						<thead>
 							<tr class="table-success">
@@ -262,6 +263,20 @@
 		}
 
 	}
+  $(document).ready(function () {
+	  $('.btn-check').click(function(){
+		  var where = $("input[name='btnradio']:checked").val();
+		  if(where=='review'){
+		
+			  $('#detail').css('display', 'none');
+			  
+		  }else{
+			  $('#detail').css('display', 'block');
+		  }
+	   });   
+  });
+	
+	
 </script>
 
 
