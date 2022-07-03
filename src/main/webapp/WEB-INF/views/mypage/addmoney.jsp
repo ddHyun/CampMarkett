@@ -73,7 +73,7 @@
     <section id="introblocks">
       <ul class="nospace group btmspace-80 elements elements-four">
         <li class="one_quarter">
-          <article><a href="#"><i class="fas fa-turkey"></i></a>
+          <article><a href="#####"><i class="fas fa-turkey"></i></a>
             <h6 class="heading_card">카드정보</h6>
           </article>
         </li>
@@ -88,7 +88,7 @@
           </article>
         </li>
         <li class="one_quarter">
-          <article><a href="#"><i class="fas fa-hearrtbeat"></i></a>
+          <article><a href="#####"><i class="fas fa-hearrtbeat"></i></a>
             <h6 class="heading_card">이용내역</h6>
           </article>
         </li>
@@ -113,7 +113,7 @@
     </div>
     <figure class="one_half first">
     <div style="width:87%; margin-left: 35px; margin-bottom:15px; color:#826660;">
-    <p class="nospace font-xs" style="line-height: 25px" align="justify">
+    <p class="nospace font-xs" style="line-height: 25px;" align="justify">
     CVC 번호란 신용카드 번호와는 별도로 인쇄되어 있는 3자리 또는 4자리 숫자로, 
    	 카드 이용 명세서 등에는 인쇄되지 않습니다. 
     CVC 번호를 입력함으로써 카드를 소지하고 있다는 사실을 확인하고
@@ -161,7 +161,7 @@
     </div>
     <figure class="one_half first">
     <div style="width:87%; margin-left: 35px; margin-bottom:15px; color:#826660;">
-    <p class="nospace font-xs" style="line-height: 25px" align="justify">
+    <p class="nospace font-xs" style="line-height: 25px;" align="justify">
     CVC 번호란 신용카드 번호와는 별도로 인쇄되어 있는 3자리 또는 4자리 숫자로, 
    	 카드 이용 명세서 등에는 인쇄되지 않습니다. 
     CVC 번호를 입력함으로써 카드를 소지하고 있다는 사실을 확인하고
@@ -187,13 +187,30 @@
 		  <label style="margin-bottom:10px">충전 후 금액</label>
           <input type="text" disabled class="numFormat" 
           id="afterAddedMoney" style="color:red"> 
-          <input type="button" id="registCardBtn" value="충전하기" style="background-color:#BDA697; cursor:pointer; border-radius: 8px">
+          <input type="password" placeholder="결제 비밀번호 6자리를 입력하세요" id="simplepwd" 
+          name="simplepwd" class="numFormat" maxlength="6">
+          <input type="button" id="addMoneyBtn" value="충전하기" style="background-color:#BDA697; 
+          cursor:pointer; border-radius: 8px" class="numFormat" onclick="addMoney()">
       </form>
       
     </article>
     <!-- ################################################################################################ -->
   </section>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <%-- <c:choose>
@@ -382,9 +399,9 @@
 <script>
 	
 	$(function(){
-		$('#regist').css('display','block');
-		console.log("카드등록페이지 로그인된 아이디: "+$('#cardId').val());
-	});
+		 $('#regist').css('display','block'); 
+	}); 
+	
 		
 //카드번호 자동 커서이동
 	function moveNumber(num){
@@ -439,6 +456,7 @@
 					cvcno: $('#cvcNo').val(),
 					simplepwd: $('#simplePwd1').val()},
 			datatype: "json",
+			async: false,
 			type: "post"
 		}).done(function(data){
 			var json = (new Function('return'+data))();
@@ -465,23 +483,20 @@
 		}).fail(function(){
 			alert("fail");
 		})
-	});
+	}); 
 	
 	
-	//금액 3자리마다 ,찍기 : input값이 string이라 int로 형변환 후 사용하기
+	//키보드 입력시 금액 추가하기
 	 function numberFormat(num){
 		var numberPattern = /[0-9]/g;
 		if(!numberPattern.test(num.value)){
 			alert("숫자만 입력해 주세요");
 			num.value='';
 		}
-		var numVal = parseInt(num.value.replace(',', ''));
-		var moneyFormat = numVal.toLocaleString('ko-KR');
-		console.log("numVal type: "+typeof numVal);	
-		console.log("최종확인: "+moneyFormat); 
-		$('#addingMoney').val(moneyFormat);	
+ 		var numVal = Number($('#addingMoney').val());		
+		$('#addingMoney').val(numVal);
 		//충전 후 금액 표기
-		var totalVal = parseInt($('#totalmoney').val().replace(',',''));
+		var totalVal = Number($('#totalmoney').val());
 		console.log("input totalmoney type: "+typeof totalVal);
 		var totalMoney = numVal + totalVal;
 		console.log("totalMoney type: "+typeof totalMoney);	
@@ -489,21 +504,78 @@
 		$('#afterAddedMoney').val(totalMoney);
 	}
 	
-	/* function plus(money){
-		console.log(typeof money);
-		var moneyAfterBtn, sum; 
-		$('#addingMoney').val(money*10000);
-		var sum = 
-		$('#afterAddedMoney').val(totalMoney);
+	//버튼클릭으로 충전금액 넣기
+	function plus(money){
+		var moneyBtn, addMoneyInput ,sum, addMoneyVal, totalMoneyVal; 
+		addMoneyVal = Number($('#addingMoney').val());		
+		moneyBtn = money*10000;
+		addMoneyInput = addMoneyVal + moneyBtn;
+		$('#addingMoney').val(addMoneyInput);
+		totalMoneyVal = Number($('#totalmoney').val());
+		$('#afterAddedMoney').val(addMoneyInput + totalMoneyVal);
 	}
-	 */
+	
+	//충전금액창 리셋하기
 	function resetMoney(){
 		$('#addingMoney').val('');
 		var totalVal = parseInt($('#totalmoney').val().replace(',',''));
 		$('#afterAddedMoney').val(totalVal);
+	}	
+	
+	//충전하기
+	/* $('#addMoneyBtn').on('click', function(){
+		
+			$.ajax({
+				url: "addmoney.do",
+				data: {id: '${sessionScope.loginId}', 
+						simplepwd: $('#simplepwd').val(), 
+						totalmoney: Number($('#totalmoney').val()),
+						addedmoney: Number($('#addingMoney').val())},
+				dataType: "JSON",
+				async: false,
+				type: "POST"
+			}).done(function(data){
+				alert("성공"+data);
+			}).fail(function(){
+				alert("실패");
+			})			
+				
+	}); */
+	
+	
+	//충전하기
+	function addMoney(){
+		if(confirm("충전하시겠습니까?")){
+		var id = '${sessionScope.loginId}';
+		var simplepwd = $('#simplepwd').val();
+		var totalmoney = Number($('#totalmoney').val());
+		var addedmoney = Number($('#addingMoney').val());
+		
+		var url = "addmoney.do";
+		var param = "id="+id+"&simplepwd="+simplepwd+"&totalmoney="+totalmoney+"&addedmoney="+addedmoney;
+		sendRequest(url, param, cb, "POST");
+		}
 	}
 	
-	
-	
+	function cb() {
+		if(xhr.readyState==4 && xhr.status==200){
+			var data = xhr.responseText;
+			var json = (new Function('return'+data))();
+			if(json[0].param=='noData'){
+				alert("비밀번호가 일치하지 않습니다. 다시 시도해 주세요");
+				return;
+			}else if(json[0].param=='y'){
+				alert("충전이 정상적으로 완료되었습니다");
+				$('#simplepwd').val('');
+				$('#addingMoney').val('');
+				$('#afterAddedMoney').val('');
+				
+				/* $('#totalmoney').val('${vo1.totalmoney}'); */
+			}else{
+				alert("충전 실행 도중 문제가 생겼습니다. 카드사에 문의바랍니다.");
+				return;
+			}
+		}
+	}
 </script>
 </html>
