@@ -109,9 +109,9 @@ height: 'auto',
 									<li class="current"><a href="marketMain_Temp">밀키트</a></li>
 									<li><a href="reviewMain_Temp">후기</a></li>
 									<li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
-									<li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
+									<li class="with_ul"><a href="money.do">마이페이지</a>
 										<ul>
-											<li><a href="#"> cuisine</a></li>
+											<li><a href="money.do"> 카드등록/충전</a></li>
 											<li><a href="#">Good rest</a></li>
 											<li><a href="#">Services</a></li>
 											<li><a href="#"
