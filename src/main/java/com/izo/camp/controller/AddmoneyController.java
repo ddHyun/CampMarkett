@@ -66,6 +66,7 @@ public class AddmoneyController {
 	@RequestMapping(value="/addmoney.do", produces = "application/text; charset=UTF-8", method=RequestMethod.POST)
 	public String addMoney(AddmoneyVO vo) {		
 		String param = "";
+		int totalMoney = 0;
 		//아이디와 결제비밀번호가 일치하는 idx유무 확인
 		int idx = addmoneyService.getIdxforMoney(vo);
 		AddmoneyVO vo1 = addmoneyService.getMoneyInfo(vo.getId());//id로 가져온 충전테이블 정보
@@ -78,6 +79,8 @@ public class AddmoneyController {
 			vo.setTotalmoney(sumMoney);
 			//충전금액 추가 쿼리 실행			
 			int cnt = addmoneyService.addMoney(vo);
+			AddmoneyVO vo2 = addmoneyService.getMoneyInfo(vo.getId());
+			totalMoney = vo2.getTotalmoney();
 			param = "n";
 			if(cnt > 0) {//DB에 저장됐다면
 				param = "y";
@@ -87,7 +90,7 @@ public class AddmoneyController {
 		}else {//카드번호 불일치
 			param = "noData";
 		}
-		String result = String.format("[{'param':'%s'}]", param);
+		String result = String.format("[{'param':'%s'}, {'totalMoney':'%d'}]", param, totalMoney);
 		return result;
 	}
 	

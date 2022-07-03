@@ -563,14 +563,17 @@
 			var json = (new Function('return'+data))();
 			if(json[0].param=='noData'){
 				alert("비밀번호가 일치하지 않습니다. 다시 시도해 주세요");
+				$('#simplepwd').val('');
+				$('#addingMoney').val('');
+				$('#afterAddedMoney').val('');
 				return;
 			}else if(json[0].param=='y'){
 				alert("충전이 정상적으로 완료되었습니다");
 				$('#simplepwd').val('');
 				$('#addingMoney').val('');
 				$('#afterAddedMoney').val('');
-				
-				/* $('#totalmoney').val('${vo1.totalmoney}'); */
+				console.log("json[1].totalMoney: "+json[1].totalMoney);
+				$('#totalmoney').attr('value', (json[1].totalMoney));
 			}else{
 				alert("충전 실행 도중 문제가 생겼습니다. 카드사에 문의바랍니다.");
 				return;
