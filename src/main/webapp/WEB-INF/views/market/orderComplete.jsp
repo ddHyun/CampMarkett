@@ -21,9 +21,9 @@
      <script src="resources/assets/js/jquery.carouFredSel-6.1.0-packed.js"></script>
      <script src="resources/assets/js/tms-0.4.1.js"></script>
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
-     <script>
+
      
-    <style>
+        <style>
     .zerogrid2{ width: 900px; height:75%; position: relative; margin: 0 auto; padding: 0px;}
    	button{
    		width:350px;	
@@ -32,7 +32,7 @@
     </style>
     
      </head>
-     <body>
+<body>
        <div class="main">
 <!--==============================header=================================-->
  <header> 
@@ -69,8 +69,43 @@
 <!--==============================content=================================-->
 <div class="content">
 <div class="zerogrid2">
-	<div id=basketMain>
+	<h2 class="head2">구매가 완료 되었습니다.</h2>
 	
+	<div id=basketMain>
+	<c:choose>
+	<c:when test="${empty basketProduct}">
+		<p>장바구니가 비어있습니다 <p>
+	</c:when>
+	
+		<c:otherwise>
+				비어있지 않아요!
+			<br>
+				제품이름<br>
+			<c:forEach var="product" items="${basketProduct}">
+				<div id="${product.idx}div">
+				${product.productId}
+				구매수량
+				<input type="button" value="-" onclick="changePcs(${product.idx},'${product.productId}',-1)" >
+				<input type="text" id="${product.idx}pcs" value="${product.pcs}"readonly> 개
+				<input type="button" value="+" onclick="changePcs(${product.idx},'${product.productId}',1)">
+				<input type="text" id="${product.idx}price" value="${product.totalPrice}원">
+				</div>
+			</c:forEach>
+			
+			
+			<div id="row"  style= "height:100px;">
+				
+				
+					
+			</div>
+			<div id="row"  style= "height:40px;">
+				<input id="totalPrice" value="${totalPrice}원">
+				
+				<button style="float:right;" onclick="goOrderPage()">구매하기</button>
+			</div> 		
+		</c:otherwise>
+		
+	</c:choose>
 	</div>
 	
 	
