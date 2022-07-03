@@ -45,6 +45,23 @@ CREATE TABLE OrderTABLE (
  		   REFERENCES ProductTABLE(ProductID) ON DELETE CASCADE
 );
 
+/*===========================오더테이블 업데이트===============================*/
+CREATE SEQUENCE SEQ_Order;
+
+CREATE TABLE OrderTable(
+	OrderIdx NUMBER(5) PRIMARY KEY,
+	OrderNum NUMBER(5),
+	MemberID VARCHAR2(100),
+	ProductID VARCHAR2(1000),
+	pcs NUMBER(3),
+	TotalPrice NUMBER(7),
+	OrderDate DATE DEFAULT SYSDATE,
+	FOREIGN KEY (MemberID)
+ 		   REFERENCES MEMBERTABLE (ID) ON DELETE CASCADE,
+		FOREIGN KEY (ProductID)
+ 		   REFERENCES ProductTABLE(ProductID) ON DELETE CASCADE
+);
+
 
 /*==========================================================*/
 
@@ -111,4 +128,22 @@ CREATE TABLE basketTable(
 	pcs NUMBER(3),
 	price NUMBER(10),
 	totalPrice NUMBER(10)
+);
+
+/*==========================================================*/
+
+create sequence seq_addmoney;
+
+create table addmoneytable(
+	idx number(3) primary key,
+	id varchar2(50),
+	cardNo number(20),
+	cvcNo number(3),
+	simplePwd number(6),
+	addedMoney number(7),
+	totalMoney number(7),
+	validCardDate number(4),
+	addMoneyDate date default sysdate,
+	FOREIGN KEY (id)
+ 		REFERENCES MEMBERTABLE (ID) ON DELETE CASCADE 
 );
