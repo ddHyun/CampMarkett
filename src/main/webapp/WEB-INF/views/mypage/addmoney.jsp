@@ -27,7 +27,7 @@
 <script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 <script src="https://kit.fontawesome.com/c89215f053.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body  style="background-color:#5fa022">
 <div class="main">
 <!--==============================header=================================-->
  <header> 
@@ -43,9 +43,9 @@
                    <li><a href="marketMain_Temp">밀키트</a></li>
                    <li><a href="reviewMain_Temp">후기</a></li>
                    <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
-                   <li class="with_ul current"><a href="memberInfo_Temp">마이페이지</a>
+                   <li class="with_ul"><a href="memberInfo_Temp">마이페이지</a>
 				   	<ul>
-                         <li><a href="money.do"> 카드등록/충전</a></li>
+                         <li class="current"><a href="money.do"> 카드등록/충전</a></li>
                          <li><a href="#">Good rest</a></li>
                          <li><a href="#">Services</a></li>
                          <li><a href="makeSampleId">샘플 로그인!</a></li>
@@ -66,8 +66,12 @@
 
 
 
+
+
+
+
 <div class="wrapper row3">
-  <main class="hoc container clear" style="height: 350px"> 
+  <main class="hoc container clear" style="height: 350px" id="center"> 
     <!-- main body -->
     <!-- ################################################################################################ -->
     <section id="introblocks">
@@ -95,12 +99,23 @@
       </ul>
     </section>
     <!-- ################################################################################################ -->
-   
     <!-- ################################################################################################ -->
     <!-- / main body -->
+   
     <div class="clear"></div>
   </main>
 </div>
+<main  style="display: flex;
+    align-items: center;
+    justify-content: center;
+/*    	height: 85vh; */
+   	height: 50vh;
+   	margin-left: 185px;
+    width: 1140px;
+    background: url('resources/assets/img/images/camp.jpg') no-repeat center center;
+    background-size: cover;">
+   
+</main> 
 
 <!-- 카드등록섹션 -->
 <div class="wrapper row2">
@@ -109,7 +124,11 @@
     <div class="sectiontitle"  id="section2">
       <p class="nospace font-xs"></p>
       <h6 class="heading font-x2" style="font:40px 'Do Hyeon', sans-serif; 
-	font-weight:600; letter-spacing:6px;">카드등록</h6>
+	font-weight:600; letter-spacing:6px;">카드등록
+     <a href="#center"> <i class="fa-solid fa-circle-arrow-up" style="cursor:pointer; width:20px; height: 20px; 
+      cursor:pointer; margin-top:10px"></i></a>
+      </h6>
+
     </div>
     <figure class="one_half first">
     <div style="width:87%; margin-left: 35px; margin-bottom:15px; color:#826660;">
@@ -124,6 +143,7 @@
     </figure>
     <article class="one_half">     
     
+     
       <form id="registCardForm">       
       
       
@@ -142,11 +162,14 @@
           style="background-color:#A197BD; cursor:pointer; border-radius: 8px">
      
       </form>
-      
     </article>
     <!-- ################################################################################################ -->
   </section>
 </div>
+
+
+
+
 
 
 
@@ -157,19 +180,41 @@
     <div class="sectiontitle"  id="section3">
       <p class="nospace font-xs"></p>
       <h6 class="heading font-x2" style="font:40px 'Do Hyeon', sans-serif; 
-	font-weight:600; letter-spacing:6px;">카드충전</h6>
+	font-weight:600; letter-spacing:6px;">카드충전
+	 <a href="#center"> <i class="fa-solid fa-circle-arrow-up" style="cursor:pointer; width:20px; height: 20px; 
+      cursor:pointer; margin-top:10px"></i></a>
+	</h6>
     </div>
     <figure class="one_half first">
-    <div style="width:87%; margin-left: 35px; margin-bottom:15px; color:#826660;">
-    <p class="nospace font-xs" style="line-height: 25px;" align="justify">
-    CVC 번호란 신용카드 번호와는 별도로 인쇄되어 있는 3자리 또는 4자리 숫자로, 
-   	 카드 이용 명세서 등에는 인쇄되지 않습니다. 
-    CVC 번호를 입력함으로써 카드를 소지하고 있다는 사실을 확인하고
-         제3자에 의한 부정 사용을 방지할 수 있습니다.   
-    </p>
-    </div>
-    <img src="resources/assets/img/images/cvcImg.png" style="margin-left:30px; margin-top: 5px">      
+      <ul class="nospace clear">
+        <li class="block clear"><a id="infoBtn1" style="cursor:pointer;"><i class="fas fa-map-marker-alt" style="margin-top:-10px"></i></a> 
+        <span><strong>충전 한도액이 있나요?</strong></span></li>        
+        <li class="block clear infoMoney" id="info1"> 
+        <span><strong>1일 1회 최소 1000원 ~ 최대 99만원까지 가능합니다.</strong></span></li>
+       
+        <li class="block clear"><a id="infoBtn2" style="cursor:pointer"><i class="fas fa-map-marker-alt" style="margin-top:-10px"></i></a> 
+        <span><strong>충전 후 유상캐시가 확인되지 않습니다!</strong></span></li>
+        <li class="block clear infoMoney info2"> 
+        <span><strong>여러 광고 계정을 활용하고 계시다면, 타 광고계정에 입금한 것은 아닌지 확인하여 주시길 바랍니다.<br>
+		광고계정의 통해 입금한게 맞으시다면, 입금증을 첨부하여 문의 주시길 바랍니다.</strong></span></li>
+		
+		<li class="block clear"><a id="infoBtn3" style="cursor:pointer"><i class="fas fa-map-marker-alt" style="margin-top:-10px"></i></a> 
+		<span><strong>카드 결제가 실패되었습니다.</strong></span></li>
+        <li class="block clear infoMoney info3">
+        <span><strong>
+		설정한 자동결제 카드가 실패되는 원인은 아래 여러 원인에 해당 할 수 있습니다.<br>
+		1. 자동결제 가능한 최소한의 금액은 1000원입니다.<br>
+		1000원 미만인 경우 자동결제는 실패 될 수 있습니다.<br>
+		2. 등록하신 카드가 한도 초과, 사용 불가, 분실 카드일 경우, 결제가 거절됩니다.<br>
+		결제카드가 결제에 실패한 경우, 광고계정 내 추가된 예비카드로 결제가 진행됩니다.
+       
+        </strong></span></li>
+		
+		
+		
+      </ul>
     </figure>
+   
     <article class="one_half">     
     
       <form id="registCardForm">   
@@ -200,194 +245,14 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%-- <c:choose>
-          	<c:when test="${vo.addedmoney eq null}">
-	          <input type="hidden" name="totalmoney" value="0">
-          	</c:when>
-			<c:otherwise>
-	          <input type="hidden" name="totalmoney" value="${vo.addedmoney}+${vo.totalmoney}">
-			</c:otherwise>
-          </c:choose>
- --%>
-
-
-
-
-<!--           <button type="submit" id="registCardBtn" value="submit">Submit</button> -->
-<div class="content">
-  <div class="zerogrid">
-  	<div class="row">
-  	
-  	<!-- 2사분면 -->
-  	<div class="col-2-5">
-	<div class="wrap-col">
-    
-      <h2>카드 등록</h2>
-      <form id="form_money">
-      <fieldset>
-      <label class="name">
-      <input type="text" value="카드번호:" >
-      <!-- <br class="clear"> -->
-      <span class="error error-empty">*This is not a valid name.</span><span class="empty error-empty">*This field is required.</span> </label>
-      	<!-- <input type="text" class="moveNumber" id="cardno1" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
-		<input type="text" class="moveNumber" id="cardno2" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
-		<input type="text" class="moveNumber" id="cardno3" onKeyup="moveNumber(this);" maxlength="4"/>&nbsp;&nbsp;-&nbsp;
-		<input type="password" class="moveNumber" id="cardno4" maxlength="4"/>
-		<input type="hidden" name="cardno" id="cardno"> -->
-      <label class="email">
-      <input type="text" value="E-mail:" style="width: 400px;">
-      <br class="clear">
-      <input type="text" value="E-mail:">
-      <br class="clear">
-      <input type="text" value="E-mail:">
-      <br class="clear">
-      <input type="text" value="E-mail:">
-      <br class="clear">
-      <span class="error error-empty">*This is not a valid email address.</span><span class="empty error-empty">*This field is required.</span> </label>
-      <label class="phone">
-      <input type="tel" value="Phone:">
-      <br class="clear">
-      <span class="error error-empty">*This is not a valid phone number.</span><span class="empty error-empty">*This field is required.</span> </label>
-      <label class="message">
-      <textarea>Message:</textarea>
-      <br class="clear">
-      <span class="error">*The message is too short.</span> <span class="empty">*This field is required.</span> </label>
-      <div class="clear"></div>
-      <div class="btns"><a data-type="reset" class="btn">clear</a><a data-type="submit" class="btn">send</a>
-      <div class="clear"></div>
-      <div class="success_wrapper">
-       <div class="success">Contact form submitted!<br>
-      <strong>We will be in touch soon.</strong></div></div>
-      </div></fieldset></form>
-      
-      
-      
-      
-      
-      
-      
-      
-     
-	 </div>
-    </div>
-  	
-    <div class="col-2-5">
-		<div class="wrap-col">
-           <%--  <h1 style="font-size: 20px">${sessionScope.loginId}님 마이페이지1</h1> --%>
-      
-            <div class="map">
-            
-            
-		
-		<p> 이제 vo 확인 ${vo.name}</p>
-
-	
-            
-            <!-- <figure class="img_inner">
-                          <iframe src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Brooklyn,+New+York,+NY,+United+States&amp;aq=0&amp;sll=37.0625,-95.677068&amp;sspn=61.282355,146.513672&amp;ie=UTF8&amp;hq=&amp;hnear=Brooklyn,+Kings,+New+York&amp;ll=40.649974,-73.950005&amp;spn=0.01628,0.025663&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
-               </figure>
-              <address>
-                            <dl>
-                                <dt><p>The Company Name Inc.<br>
-                                    8901 Marmora Road,<br>
-                                    Glasgow, D04 89GR.</p>
-                                </dt>
-                                <dd><span>Freephone:</span>+1 800 559 6580</dd>
-                                <dd><span>Telephone:</span>+1 800 603 6035</dd>
-                                <dd><span>FAX:</span>+1 800 889 9898</dd>
-                            </dl>
-                         </address> -->
- 
-          </div>
-	</div>
-    </div>
-<!-- 	<div class="col-1-5"><div class="wrap-col">empty</div></div> -->
-    <div class="col-2-5">
-	<div class="wrap-col">
-      <h2>Contact Us</h2>
-      <form id="form">
-      <div class="success_wrapper">
-      <div class="success">Contact form submitted!<br>
-      <strong>We will be in touch soon.</strong> </div></div>
-      <fieldset>
-      <label class="name">
-      <input type="text" value="Name:">
-      <br class="clear">
-      <span class="error error-empty">*This is not a valid name.</span><span class="empty error-empty">*This field is required.</span> </label>
-      <label class="email">
-      <input type="text" value="E-mail:">
-      <br class="clear">
-      <span class="error error-empty">*This is not a valid email address.</span><span class="empty error-empty">*This field is required.</span> </label>
-      <label class="phone">
-      <input type="tel" value="Phone:">
-      <br class="clear">
-      <span class="error error-empty">*This is not a valid phone number.</span><span class="empty error-empty">*This field is required.</span> </label>
-      <label class="message">
-      <textarea>Message:</textarea>
-      <br class="clear">
-      <span class="error">*The message is too short.</span> <span class="empty">*This field is required.</span> </label>
-      <div class="clear"></div>
-      <div class="btns"><a data-type="reset" class="btn">clear</a><a data-type="submit" class="btn">send</a>
-      <div class="clear"></div>
-      </div></fieldset></form>
-	 </div>
-    </div>
-    </div>
-	
-    <div class="row">
-    <div class="bottom_block">
-      <div class="col-1-2">
-        <h3>Follow Us</h3>
-        <div class="socials">
-          <a href="#"></a>
-          <a href="#"></a>
-          <a href="#"></a>
-        </div>
-        <nav><ul>
-                   <li><a href="index.html">Home</a></li>
-                   <li><a href="index-1.html">About Us</a></li>
-                   <li><a href="index-2.html">Menu</a></li>
-                   <li><a href="index-3.html">Portfolio</a></li>
-                   <li><a href="index-4.html">News </a></li>
-                   <li class="current"><a href="index-5.html">Contacts</a></li>
-                 </ul></nav>
-      </div>
-      <div class="col-1-2">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn" data-type="submit">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
-          </div>
-      </div>
-	  </div>
-    </div>
-  </div>
 </div>
+
 <!--==============================footer=================================-->
 
 <footer>    
-  <div class="zerogrid">
-    <div class="col-full">
-		<div class="wrap-col">
+  <div class="zerogrid" style="background:#5fa022">
+    <div class="col-full" style="background-color:#5fa022">
+		<div class="wrap-col" style="background:#5fa022">
      Gourmet © 2013  &nbsp;&nbsp; |&nbsp;&nbsp;   <a href="#">Privacy Policy</a>    &nbsp;&nbsp;|&nbsp;&nbsp;  Designed by <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster</a> - <a href="https://www.zerotheme.com/" title="free website templates">ZEROTHEME</a>
 	 	</div>
     </div>
@@ -399,9 +264,22 @@
 <script>
 	
 	$(function(){
-		 $('#regist').css('display','block'); 
+		/*  $('#regist').css('display','block');  */
+		 $('.infoMoney').hide();
 	}); 
 	
+	//카드 충전 질문 클릭시 내용 보이기
+	$('#infoBtn1').on('click', function(){
+		$('#info1').toggle();
+	})	
+	
+	$('#infoBtn2').on('click', function(){
+		$('#info2').toggle();
+	})	
+	
+	$('#infoBtn3').on('click', function(){
+		$('#info3').toggle();
+	})	
 		
 //카드번호 자동 커서이동
 	function moveNumber(num){
