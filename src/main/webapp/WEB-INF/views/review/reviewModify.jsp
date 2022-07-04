@@ -121,17 +121,17 @@ height: 'auto',
       </div>
     </div>
 </header>
-<!--  <div class="slider-relative">
+ <div class="slider-relative">
     <div class="slider-block">
       <div class="slider">
         <ul class="items">
-          <li><img src="resources/assets/img/images/slide.jpg" alt=""></li>
-          <li><img src="resources/assets/img/images/slide1.jpg" alt=""></li>
-          <li class="mb0"><img src="resources/assets/img/images/slide2.jpg" alt=""></li>
+          <li><img src="resources/upload/caminoevent.jpg" alt="" ></li>
+          <li><img src="resources/upload/coleman_car.png" alt=""></li>
+          <li class="mb0"><img src="resources/upload/minibeam.jpg" alt=""></li>
         </ul>
       </div>
     </div>
- </div> -->
+ </div>
 <!--=======content================================-->
 
 <div class="content page1">
@@ -151,7 +151,7 @@ height: 'auto',
 				<td>
 				<div class="input-group mb-3">
   				<span class="input-group-text" id="inputGroup-sizing-default">작성자</span>
-  				<input value="${vo.memberid}" name="memberid" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  				<input value="${vo.memberid}" name="memberid" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"readonly/>
 				</div>
 				</td>
 			</tr>
@@ -160,7 +160,7 @@ height: 'auto',
 				<td>
 				<div class="input-group mb-3">
   				<span class="input-group-text" id="inputGroup-sizing-default">상품명</span>
-  				<input value="${vo.productid }" name="productid" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  				<input value="${vo.productid }" name="productid" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"readonly/>
 				</div>
 				</td>
 			</tr>
@@ -205,7 +205,7 @@ height: 'auto',
 				<td>
 				<div class="input-group mb-3">
   				<span class="input-group-text" id="inputGroup-sizing-default">작성일</span>
-  				<input value="${vo.regdate}" name="regdate" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  				<input value="${vo.regdate}" name="regdate" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"readonly/>
 				</div>
 				</td>
 			</tr>
@@ -214,7 +214,7 @@ height: 'auto',
 				<td>
 				<div class="input-group mb-3">
   				<span class="input-group-text" id="inputGroup-sizing-default">조회수</span>
-  				<input value="${vo.readhit}" name="readhit" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  				<input value="${vo.readhit}" name="readhit" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"readonly/>
 				</div>
 				</td>
 			</tr>
@@ -223,7 +223,7 @@ height: 'auto',
 				<td>
 				<div class="input-group mb-3">
   				<span class="input-group-text" id="inputGroup-sizing-default">작성일</span>
-  				<input value="${vo.joayo}" name="joayo" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  				<input value="${vo.joayo}" name="joayo" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"readonly/>
 				</div>
 				</td>
 			</tr>

@@ -181,17 +181,7 @@ height: 'auto',
       </div>
     </div>
 </header>
- <!-- <div class="slider-relative">
-    <div class="slider-block">
-      <div class="slider">
-        <ul class="items">
-          <li><img src="resources/assets/img/images/slide.jpg" alt=""></li>
-          <li><img src="resources/assets/img/images/slide1.jpg" alt=""></li>
-          <li class="mb0"><img src="resources/assets/img/images/slide2.jpg" alt=""></li>
-        </ul>
-      </div>
-    </div>
- </div> -->
+
 <!--=======content================================-->
 
 <div class="content page1">
@@ -212,9 +202,9 @@ height: 'auto',
     		<p class="card-text">${vo.content}</p>
   		</div>
   	<ul class="list-group list-group-flush">
-    	<li class="list-group-item">${vo.productid }</li>
-   		<li class="list-group-item">${fn:split(vo.regdate,' ')[0]}</li>
-    	<li class="list-group-item">${vo.readhit}</li>
+    	<li class="list-group-item"> ${vo.productid }</li>
+   		<li class="list-group-item">📅 ${fn:split(vo.regdate,' ')[0]}</li>
+    	<li class="list-group-item">👀${vo.readhit}</li>
     	<li class="list-group-item"><a href="joayoPush.do?idx=${vo.idx}">
 									<font color="black">👍${vo.joayo}</font>  <!-- 글 제목  -->
 									</a></li>
