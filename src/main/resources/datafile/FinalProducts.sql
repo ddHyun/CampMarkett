@@ -1,0 +1,96 @@
+/*상품 1 */
+INSERT INTO TEST_PM.PRODUCTTABLE
+(IDX, PRODUCTID, PRICE, STOCK, IMGNAME)
+VALUES(SEQ_PRODUCT.NEXTVAL, '부대찌개', 13000, 300, 'foodNum01');
+/*================================상품 디테일 ============================*/
+INSERT INTO TEST_PM.P_DETAILTABLE
+(IDX, PRODUCTID, CONTENT, WEIGHT, DETAILIMG1, DETAILIMG2, DETAILIMG3, DETAILIMG4, DETAILIMG5)
+VALUES(SEQ_P_Detail, '부대찌개', '', '', '', '', '', '', '');
+
+
+/*상품 2 */
+INSERT INTO TEST_PM.PRODUCTTABLE
+(IDX, PRODUCTID, PRICE, STOCK, IMGNAME)
+VALUES(SEQ_PRODUCT.NEXTVAL, '삼겹살', 15000, 200, 'foodNum02');
+/*================================상품 디테일 ============================*/
+INSERT INTO TEST_PM.P_DETAILTABLE
+(IDX, PRODUCTID, CONTENT, WEIGHT, DETAILIMG1, DETAILIMG2, DETAILIMG3, DETAILIMG4, DETAILIMG5)
+VALUES(SEQ_P_Detail, '삼겹살', '', '', '', '', '', '', '');
+
+
+/*상품 3 */
+INSERT INTO TEST_PM.PRODUCTTABLE
+(IDX, PRODUCTID, PRICE, STOCK, IMGNAME)
+VALUES(SEQ_PRODUCT.NEXTVAL, '오삼불고기', 13000, 200, 'foodNum03');
+/*================================상품 디테일 ============================*/
+INSERT INTO TEST_PM.P_DETAILTABLE
+(IDX, PRODUCTID, CONTENT, WEIGHT, DETAILIMG1, DETAILIMG2, DETAILIMG3, DETAILIMG4, DETAILIMG5)
+VALUES(SEQ_P_Detail, '오삼불고기', '', '', '', '', '', '', '');
+
+
+/*상품 4 */
+INSERT INTO TEST_PM.PRODUCTTABLE
+(IDX, PRODUCTID, PRICE, STOCK, IMGNAME)
+VALUES(SEQ_PRODUCT.NEXTVAL, '사천마라탕', 15000, 200, 'foodNum04');
+/*================================상품 디테일 ============================*/
+INSERT INTO TEST_PM.P_DETAILTABLE
+(IDX, PRODUCTID, CONTENT, WEIGHT, DETAILIMG1, DETAILIMG2, DETAILIMG3, DETAILIMG4, DETAILIMG5)
+VALUES(SEQ_P_Detail, '사천마라탕', '', '', '', '', '', '', '');
+
+
+
+/*상품 5 */
+INSERT INTO TEST_PM.PRODUCTTABLE
+(IDX, PRODUCTID, PRICE, STOCK, IMGNAME)
+VALUES(SEQ_PRODUCT.NEXTVAL, '우삼겹 된장찌개', 12000, 300, 'foodNum05');
+/*================================상품 디테일 ============================*/
+INSERT INTO TEST_PM.P_DETAILTABLE
+(IDX, PRODUCTID, CONTENT, WEIGHT, DETAILIMG1, DETAILIMG2, DETAILIMG3, DETAILIMG4, DETAILIMG5)
+VALUES(SEQ_P_Detail, '우삼겹 된장찌개', '', '', '', '', '', '', '');
+
+
+/*상품 6 */
+INSERT INTO TEST_PM.PRODUCTTABLE
+(IDX, PRODUCTID, PRICE, STOCK, IMGNAME)
+VALUES(SEQ_PRODUCT.NEXTVAL, '스테이크 플래터', 17000, 200, 'foodNum06');
+/*================================상품 디테일 ============================*/
+INSERT INTO TEST_PM.P_DETAILTABLE
+(IDX, PRODUCTID, CONTENT, WEIGHT, DETAILIMG1, DETAILIMG2, DETAILIMG3, DETAILIMG4, DETAILIMG5)
+VALUES(SEQ_P_Detail, '스테이크 플래터', '', '', '', '', '', '', '');
+
+
+/*상품 7 */
+INSERT INTO TEST_PM.PRODUCTTABLE
+(IDX, PRODUCTID, PRICE, STOCK, IMGNAME)
+VALUES(SEQ_PRODUCT.NEXTVAL, '밀푀유나베', 15000, 200, 'foodNum07');
+/*================================상품 디테일 ============================*/
+INSERT INTO TEST_PM.P_DETAILTABLE
+(IDX, PRODUCTID, CONTENT, WEIGHT, DETAILIMG1, DETAILIMG2, DETAILIMG3, DETAILIMG4, DETAILIMG5)
+VALUES(SEQ_P_Detail, '밀푀유나베', '', '', '', '', '', '', '');
+
+
+
+/*상품 8 */
+INSERT INTO TEST_PM.PRODUCTTABLE
+(IDX, PRODUCTID, PRICE, STOCK, IMGNAME)
+VALUES(SEQ_PRODUCT.NEXTVAL, '감바스 알아히요', 14000, 200, 'foodNum08');
+/*================================상품 디테일 ============================*/
+INSERT INTO TEST_PM.P_DETAILTABLE
+(IDX, PRODUCTID, CONTENT, WEIGHT, DETAILIMG1, DETAILIMG2, DETAILIMG3, DETAILIMG4, DETAILIMG5)
+VALUES(SEQ_P_Detail, '감바스 알아히요', '', '', '', '', '', '', '');
+
+
+/*상품 9 */
+INSERT INTO TEST_PM.PRODUCTTABLE
+(IDX, PRODUCTID, PRICE, STOCK, IMGNAME)
+VALUES(SEQ_PRODUCT.NEXTVAL, '만두전골', 12000, 200, 'foodNum09');
+/*================================상품 디테일 ============================*/
+INSERT INTO TEST_PM.P_DETAILTABLE
+(IDX, PRODUCTID, CONTENT, WEIGHT, DETAILIMG1, DETAILIMG2, DETAILIMG3, DETAILIMG4, DETAILIMG5)
+VALUES(SEQ_P_Detail, '만두전골', '', '', '', '', '', '', '');
+
+
+
+
+SELECT * FROM PRODUCTTABLE p ;
+
