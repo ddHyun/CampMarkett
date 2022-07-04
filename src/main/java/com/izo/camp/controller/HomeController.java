@@ -45,23 +45,11 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
-		
-		
+				
 		model.addAttribute("serverTime", formattedDate );
 
-<<<<<<< Updated upstream
 		campInfoService.hasCamping();
 		
-		
-=======
-		for(DeptVO deptVO : deptMapper.dept()) {
-			System.out.println(deptVO.getDeptno());
-		}
-		session.setAttribute("loginId", "SampleID");
-		session.setAttribute("loginIdx", 1);
-		System.out.println("샘플 로그인이 완료되었습니다. ");
-		
->>>>>>> Stashed changes
 		return "home_real";
 
 	}

@@ -17,10 +17,8 @@ import com.izo.camp.addmoney.AddmoneyService;
 import com.izo.camp.market.BasketService;
 import com.izo.camp.market.MarketService;
 import com.izo.camp.market.OrderService;
-<<<<<<< Updated upstream
 import com.izo.camp.member.MemberService;
-=======
->>>>>>> Stashed changes
+
 import com.izo.camp.review.ReviewService;
 import com.izo.camp.vo.AddmoneyVO;
 import com.izo.camp.vo.BasketVO;
@@ -42,13 +40,9 @@ public class MarketController {
 	OrderService orderService;
 	@Autowired
 	ReviewService reviewService;
-<<<<<<< Updated upstream
+
 	@Autowired
-	MemberService memberService;
-=======
-	
->>>>>>> Stashed changes
-	
+	MemberService memberService;	
 	
 	@Autowired
 	HttpSession session;
@@ -208,7 +202,6 @@ public class MarketController {
 		AddmoneyVO addmoneyVO = new AddmoneyVO();
 		addmoneyVO.setId(loginId);
 		addmoneyVO.setTotalmoney(totalPrice);
-<<<<<<< Updated upstream
 		
 		String address = memberService.getAddress(loginId);
 		String resultMessage = "";
@@ -222,14 +215,7 @@ public class MarketController {
 		
 		model.addAttribute("resultMessage", resultMessage);
 		model.addAttribute("address",address);
-=======
-		if(addmoneyService.minusPoint(addmoneyVO)) {
-			System.out.println("출금완료");
-		}
-		
-		//
-		
->>>>>>> Stashed changes
+
 		model.addAttribute("orderList",basketList);
 		
 		return "market/orderComplete";
