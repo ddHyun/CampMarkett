@@ -92,12 +92,11 @@ height: 'auto',
                    <li><a href="marketMain_Temp">밀키트</a></li>
                    <li><a href="reviewMain_Temp">상품후기</a></li>
                    <li><a href="campingAreaMain_Temp">캠핑장 </a></li>
-                   <li class="with_ul"><a href="#">마이페이지</a>
+                   <li class="with_ul"  id="menuLi"><a href="#">마이페이지</a>
 				   <ul>
                          <li><a href="money.do">카드등록</a></li>
                          <li><a href="money.do">카드충전</a></li>
                          <li><a href="goBasket">장바구니</a></li>
-                         <li><a href="makeSampleId">샘플로그인</a></li>
                    </ul>
 				   </li>
                    <li><a href="login_Temp">로그인</a></li>
@@ -112,7 +111,7 @@ height: 'auto',
 </header>
  <div class="slider-relative">
     <div class="slider-block">
-      <div class="slider">
+      <div class="slider" style="margin-right:0px">
         <ul class="items">
           <li><img src="resources/assets/img/mainImg/main3.jpg" alt=""></li>
           <li><img src="resources/assets/img/mainImg/main10.jpg" alt=""></li>

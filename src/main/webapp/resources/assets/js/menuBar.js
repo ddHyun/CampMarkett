@@ -8,3 +8,9 @@ function goMyBasket(check){
     	 }
     	 location.href="goBasket";
 }
+
+window.onload=function(){	
+	
+	document.getElementById("menuLi").style.display='none';
+	
+}
