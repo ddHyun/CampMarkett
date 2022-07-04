@@ -18,6 +18,7 @@ import com.izo.camp.market.BasketService;
 import com.izo.camp.market.MarketService;
 import com.izo.camp.market.OrderService;
 import com.izo.camp.member.MemberService;
+
 import com.izo.camp.review.ReviewService;
 import com.izo.camp.vo.AddmoneyVO;
 import com.izo.camp.vo.BasketVO;
@@ -39,9 +40,9 @@ public class MarketController {
 	OrderService orderService;
 	@Autowired
 	ReviewService reviewService;
+
 	@Autowired
-	MemberService memberService;
-	
+	MemberService memberService;	
 	
 	@Autowired
 	HttpSession session;
@@ -214,6 +215,7 @@ public class MarketController {
 		
 		model.addAttribute("resultMessage", resultMessage);
 		model.addAttribute("address",address);
+
 		model.addAttribute("orderList",basketList);
 		
 		return "market/orderComplete";
