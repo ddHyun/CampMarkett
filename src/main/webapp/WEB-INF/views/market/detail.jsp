@@ -117,10 +117,10 @@
 								<br>
 								<p class="card-text">
 
-									 63 뷔페 파빌리온에서 맛보던 스테이크를 캠핑장에서도 만나볼 수 있는 밀키트<br><br>
+									 ${pDetail.content}<br><br>
 									<span style="font-size:13px">무료배송<br>
 									30000원 이상 구매시<br><br>
-									개당 중량 x 수량 : 1068g x 1팩<br>
+									개당 중량  : ${pDetail.weight}<br>
 									유통기한 : 2022년 10-10이거나 그 이후인 상품<br>
 									보관방법 : 냉동보관</span> 
 								
@@ -165,13 +165,13 @@
 					</div>
 					<!-- 상품 상세보기 창 -->
 					<div id="detail" style="background-color: white;">
-						<img src="resources/assets/img/food/F1/steak1.jpg"
+						<img src="resources/assets/img/food/detail/${pDetail.detailImg1}"
 							style="width: 120%"> <img
-							src="resources/assets/img/food/F1/steak2.jpg" style="width: 120%">
-						<img src="resources/assets/img/food/F1/steak3.jpg"
+							src="resources/assets/img/food/detail/${pDetail.detailImg2}" style="width: 120%">
+						<img src="resources/assets/img/food/detail/${pDetail.detailImg3}"
 							style="width: 120%"> <img
-							src="resources/assets/img/food/F1/steak4.jpg" style="width: 120%">
-						<img src="resources/assets/img/food/F1/steak5.jpg"
+							src="resources/assets/img/food/detail/${pDetail.detailImg4}" style="width: 120%">
+						<img src="resources/assets/img/food/detail/${pDetail.detailImg5}"
 							style="width: 120%">
 					</div>
 					

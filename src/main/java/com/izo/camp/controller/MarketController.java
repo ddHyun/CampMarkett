@@ -21,6 +21,7 @@ import com.izo.camp.review.ReviewService;
 import com.izo.camp.vo.AddmoneyVO;
 import com.izo.camp.vo.BasketVO;
 import com.izo.camp.vo.OrderVO;
+import com.izo.camp.vo.PDetailVO;
 import com.izo.camp.vo.ProductVO;
 import com.izo.camp.vo.ReviewVO;
 
@@ -57,10 +58,12 @@ public class MarketController {
 	public String goDetail(int idx, Model model) {
 		
 		ProductVO product = marketService.getProductByIdx(idx);
+		PDetailVO pDetail = marketService.getPDetail(product.getProductId());
 		
 		List<ReviewVO> reviewList = reviewService.getListById(product.getProductId());
 		
 		model.addAttribute("product", product);
+		model.addAttribute("pDetail", pDetail);
 		
 		model.addAttribute("reviewList", reviewList);
 		

@@ -17,7 +17,7 @@ VALUES(SEQ_PRODUCT.NEXTVAL, '부대찌개', 13000, 300, 'boodeMain');
 INSERT INTO TEST_PM.P_DETAILTABLE
 (IDX, PRODUCTID, CONTENT, WEIGHT, DETAILIMG1, DETAILIMG2, DETAILIMG3, DETAILIMG4, DETAILIMG5)
 VALUES(SEQ_P_Detail.NEXTVAL, '부대찌개', '입맛 당기는 짭조름한 건더기가 가득해 자주 찾게 되는 부대찌개. 간편한 조리로 맛있는 부대찌개를 만들 수 있는 밀 키트를 추천해 드려요.', '868g',
-'boode01.JPG', 'boode02.JPG', 'boode03.JPG', 'boode04.JPG', 'boode05.JPG');
+'boode01.jpg', 'boode02.jpg', 'boode03.jpg', 'boode04.jpg', 'boode05.jpg');
 
 /*상품 3 */
 INSERT INTO TEST_PM.PRODUCTTABLE
@@ -39,7 +39,7 @@ VALUES(SEQ_PRODUCT.NEXTVAL, '사천마라탕', 15000, 200, 'maraMain');
 INSERT INTO TEST_PM.P_DETAILTABLE
 (IDX, PRODUCTID, CONTENT, WEIGHT, DETAILIMG1, DETAILIMG2, DETAILIMG3, DETAILIMG4, DETAILIMG5)
 VALUES(SEQ_P_Detail.NEXTVAL, '사천마라탕', '독특한 향신료로 입안을 얼얼하게 사로잡는 사천요리 마라탕. 매콤한 국물 속 여러 재료를 골라 먹는 재미가 있는 별미예요.', '380g', 
-'mara01.JPG', 'mara02.JPG', 'mara03.JPG', 'mara04.JPG', 'mara05.JPG');
+'mara01.jpg', 'mara02.jpg', 'mara03.jpg', 'mara04.jpg', 'mara05.jpg');
 
 
 
@@ -64,7 +64,7 @@ VALUES(SEQ_PRODUCT.NEXTVAL, '만두전골', 12000, 200, 'mandooMain');
 INSERT INTO TEST_PM.P_DETAILTABLE
 (IDX, PRODUCTID, CONTENT, WEIGHT, DETAILIMG1, DETAILIMG2, DETAILIMG3, DETAILIMG4, DETAILIMG5)
 VALUES(SEQ_P_Detail.NEXTVAL, '만두전골', '담백하고 구수한 감칠맛이 일품인 만두전골이에요. 만두와 소고기, 아삭한 알배추 등이 어우러져 다채로운 식감을 선사하죠.', '968g',
-'mandoo01.JPG', 'mandoo02.JPG', 'mandoo03.JPG', 'mandoo04.JPG', 'mandoo05.JPG');
+'mandoo01.jpg', 'mandoo02.jpg', 'mandoo03.jpg', 'mandoo04.jpg', 'mandoo05.jpg');
 
 
 
@@ -80,7 +80,6 @@ VALUES(SEQ_P_Detail.NEXTVAL, '토마호크스테이크', '소갈비뼈가 통째
 'toma1.jpg', 'toma2.jpg', 'toma3.jpg', 'toma4.jpg', 'toma5.jpg');
 
 
-
 /*상품 8 */
 INSERT INTO TEST_PM.PRODUCTTABLE
 (IDX, PRODUCTID, PRICE, STOCK, IMGNAME)
@@ -89,7 +88,7 @@ VALUES(SEQ_PRODUCT.NEXTVAL, '밀푀유나베', 15000, 200, 'nabeMain');
 INSERT INTO TEST_PM.P_DETAILTABLE
 (IDX, PRODUCTID, CONTENT, WEIGHT, DETAILIMG1, DETAILIMG2, DETAILIMG3, DETAILIMG4, DETAILIMG5)
 VALUES(SEQ_P_Detail.NEXTVAL, '밀푀유나베', '육수에 소고기와 다채로운 야채가 더해져 깊은 맛이 일품인 밀푀유 나베. 재료 준비와 손질부터 번거로워 쉽게 도전하지 못하셨다면 밀키트 밀푀유 나베를 만나보세요.', '966g',
-'nabe01.JPG', 'nabe02.JPG', 'nabe03.JPG', 'nabe04.JPG', 'nabe05.JPG');
+'nabe01.jpg', 'nabe02.jpg', 'nabe03.jpg', 'nabe04.jpg', 'nabe05.jpg');
 
 
 /*상품 9 */
