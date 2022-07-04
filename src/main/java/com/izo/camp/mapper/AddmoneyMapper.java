@@ -30,5 +30,7 @@ public interface AddmoneyMapper {
 	//아이디정보 있는지 확인
 	@Select("SELECT count(idx) FROM ADDMONEYTABLE WHERE id=#{id}")
 	int getNumber(String id);
+
+	public int minusPoint(AddmoneyVO addmoneyVO);
 	
 }

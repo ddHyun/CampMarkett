@@ -39,6 +39,8 @@ public class MarketController {
 	@Autowired
 	ReviewService reviewService;
 	
+	
+	
 	@Autowired
 	HttpSession session;
 	
@@ -194,7 +196,12 @@ public class MarketController {
 		
 		
 		//카드에서 돈빼기
-		
+		AddmoneyVO addmoneyVO = new AddmoneyVO();
+		addmoneyVO.setId(loginId);
+		addmoneyVO.setTotalmoney(totalPrice);
+		if(addmoneyService.minusPoint(addmoneyVO)) {
+			System.out.println("출금완료");
+		}
 		
 		//
 		
