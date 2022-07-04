@@ -25,6 +25,30 @@
      <script src="resources/assets/js/tms-0.4.1.js"></script>
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
      <script>
+     $(document).ready(function() {
+
+    		// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+    		var floatPosition = parseInt($("#floatMenu").css('top'));
+    		// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+    		$(window).scroll(function() {
+    			// 현재 스크롤 위치를 가져온다.
+    			var scrollTop = $(window).scrollTop();
+    			var newPosition = scrollTop + floatPosition + "px";
+
+    			/* 애니메이션 없이 바로 따라감
+    			 $("#floatMenu").css('top', newPosition);
+    			 */
+
+    			$("#floatMenu").stop().animate({
+    				"top" : newPosition
+    			}, 500);
+
+    		}).scroll();
+
+    	});
+     </script>
+     <script>
       $(window).load(function(){
       $('.slider')._TMS({
               show:0,
@@ -102,25 +126,25 @@ height: 'auto',
   <div class="zerogrid">
     <div class="col-full">
 	<div class="wrap-col">
-    <h1><a href="home"><img src="resources/assets/img/images/logo2.png" alt="EXTERIOR"></a> </h1>
+    <h1><a href="home" style="text-decoration-line:none;"><img src="resources/assets/img/images/logo2.png" alt="EXTERIOR"></a> </h1>
     
          <div class="menu_block">
            <nav>
             <ul class="sf-menu">
-                   <li><a href="home">Home</a></li>
+                   <li><a style="text-decoration-line:none;" href="home">Home</a></li>
                    
-                   <li><a href="marketMain_Temp">밀키트</a></li>
-                   <li class="current"><a href="reviewMain_Temp">후기</a></li>
-                   <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
-                   <li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
+                   <li><a style="text-decoration-line:none;" href="marketMain_Temp">밀키트</a></li>
+                   <li class="current"><a style="text-decoration-line:none;" href="reviewMain_Temp">후기</a></li>
+                   <li><a style="text-decoration-line:none;" href="campingAreaMain_Temp">주변 캠핑장 </a></li>
+                   <li class="with_ul"><a style="text-decoration-line:none;" href="memberInfo_Temp">회원 정보</a>
 				   	<ul>
-                         <li><a href="#"> cuisine</a></li>
-                         <li><a href="#">Good rest</a></li>
-                         <li><a href="#">Services</a></li>
-                         <li><a href="makeSampleId">샘플 로그인!</a></li>
+                         <li><a style="text-decoration-line:none;" href="#"> cuisine</a></li>
+                         <li><a style="text-decoration-line:none;" href="#">Good rest</a></li>
+                         <li><a style="text-decoration-line:none;" href="#">Services</a></li>
+                         <li><a style="text-decoration-line:none;" href="makeSampleId">샘플 로그인!</a></li>
                      </ul>
 				   </li>
-                   <li><a href="login_Temp">로그인</a></li>
+                   <li><a style="text-decoration-line:none;" href="login_Temp">로그인</a></li>
              </ul>
            </nav>
            <div class="clear"></div>
@@ -149,8 +173,27 @@ height: 'auto',
 	  <div class="row">
       <div class="col-full">
 	  	<div class="wrap-col">
-        <div class="car_wrap">
-        <div class="review" align="center">
+        <div class="car_wrap" align="center" style="height:730px;">
+        <br>
+        
+	<div class="review" align="center" style="width:890px; ">
+	    <div style="height:auto; position:absolute; width:200px; left:0; top:center;">
+ 
+ 			<div id="floatMenu">
+				<a href="http://www.coleman.co.kr/shop/board/view.php?id=notice&no=48" onclick="clickBanner('http://www.coleman.co.kr/shop/board/view.php?id=notice&no=48')" target="_blank">
+ 				<img style="width:240px; height:800px" src="resources/upload/coleman.png" alt="">
+				</a>
+			</div>
+		</div>  
+		
+			    <div style="height:auto; position:absolute; width:200px; right:0; top:center;">
+ 
+ 			<div id="floatMenu">
+				<a href="https://smartstore.naver.com/yaliyali/products/4986415701?n_media=27758&n_query=MOBICOOL&n_rank=1&n_ad_group=grp-a001-02-000000016396587&n_ad=nad-a001-02-000000100232202&n_campaign_type=2&n_mall_id=ncp_1nsy9r_01&n_mall_pid=4986415701&n_ad_group_type=2&NaPm=ct%3Dl56mvra8%7Cci%3D0A80003GMa9w36qGI10%5F%7Ctr%3Dpla%7Chk%3Da05087ab918bc0b76f7893ebf884d0151b18a136" onclick="clickBanner('https://smartstore.naver.com/yaliyali/products/4986415701?n_media=27758&n_query=MOBICOOL&n_rank=1&n_ad_group=grp-a001-02-000000016396587&n_ad=nad-a001-02-000000100232202&n_campaign_type=2&n_mall_id=ncp_1nsy9r_01&n_mall_pid=4986415701&n_ad_group_type=2&NaPm=ct%3Dl56mvra8%7Cci%3D0A80003GMa9w36qGI10%5F%7Ctr%3Dpla%7Chk%3Da05087ab918bc0b76f7893ebf884d0151b18a136')" target="_blank">
+ 				<img style="width:240px; height:800px" src="resources/upload/dometic.png" alt="">
+				</a>
+			</div>
+		</div>  
         <hr>
 		<form  enctype="multipart/form-data">
 		<table border="1">
@@ -168,15 +211,15 @@ height: 'auto',
 				<div class="form-floating">
   		<select class="form-select" name="productid" aria-label="Floating label select example" style="padding:0px; height:38px;">
     		<option selected name="productid" style="text-align:center;">후기상품을 고르세요</option>
-    		<option value="바베큐폭립">바베큐폭립</option>
-    		<option value="부대찌개">부대찌개</option>
-    		<option value="감바스 알 아히요">감바스 알 아히요</option>
-    		<option value="사천마라탕">사천마라탕</option>
-    		<option value="스테이크 플래터">스테이크 플래터</option>
-    		<option value="만두전골">만두전골</option>
-    		<option value="토마호크스테이크">토마호크스테이크</option>
-    		<option value="밀푀유나베">밀푀유나베</option>
-    		<option value="꼬치구이 세트">꼬치구이 세트</option>
+    		<option value="바베큐폭립" style="text-align:center;">바베큐폭립</option>
+    		<option value="부대찌개" style="text-align:center;">부대찌개</option>
+    		<option value="감바스 알 아히요" style="text-align:center;">감바스 알 아히요</option>
+    		<option value="사천마라탕" style="text-align:center;">사천마라탕</option>
+    		<option value="스테이크 플래터" style="text-align:center;">스테이크 플래터</option>
+    		<option value="만두전골" style="text-align:center;">만두전골</option>
+    		<option value="토마호크스테이크" style="text-align:center;">토마호크스테이크</option>
+    		<option value="밀푀유나베" style="text-align:center;">밀푀유나베</option>
+    		<option value="꼬치구이 세트" style="text-align:center;">꼬치구이 세트</option>
   		</select>
   	<!-- 	<label for="floatingSelect">상품명</label> -->
 				</div>
@@ -237,45 +280,12 @@ height: 'auto',
 			</tr>
 		</table>
 	</form>
-	
+	</div>
 	</div>
       </div>
 	  </div>
     </div>
 	</div>
-	<div class="row">
-    <div class="bottom_block">
-      <div class="col-1-2">
-        <h3>Follow Us</h3>
-        <div class="socials">
-          <a href="#"></a>
-          <a href="#"></a>
-          <a href="#"></a>
-        </div>
-        <nav><ul>
-                   <li class="current"><a href="home">Home</a></li>
-                   <li ><a href="resources/assets/html/index-1.html">About Us</a></li>
-                   <li><a href="resources/assets/html/index-2.html">Menu</a></li>
-                   <li><a href="resources/assets/html/index-3.html">Portfolio</a></li>
-                   <li><a href="resources/assets/html/index-4.html">News </a></li>
-                   <li><a href="resources/assets/html/index-5.html">Contacts</a></li>
-                 </ul></nav>
-      </div>
-      <div class="col-1-2">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn" data-type="submit">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
-          </div>
-      </div>
-	  </div>
-    </div>
   </div>
 </div>
 <!--==============================footer=================================-->
@@ -284,7 +294,11 @@ height: 'auto',
   <div class="zerogrid">
     <div class="col-full">
 		<div class="wrap-col">
-     Gourmet © 2013  &nbsp;&nbsp; |&nbsp;&nbsp;   <a href="#">Privacy Policy</a>    &nbsp;&nbsp;|&nbsp;&nbsp;  Designed by <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster</a> - <a href="https://www.zerotheme.com/" title="free website templates">ZEROTHEME</a>
+		  					Gourmet © 2013 &nbsp;&nbsp; |&nbsp;&nbsp; <a href="#">Privacy
+						Policy</a> &nbsp;&nbsp;|&nbsp;&nbsp; Designed by <a
+						href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster</a>
+					- <a href="https://www.zerotheme.com/"
+						title="free website templates">ZEROTHEME</a>
 	 	</div>
     </div>
   </div>
