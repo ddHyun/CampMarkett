@@ -17,6 +17,7 @@
 		<typeAlias type="com.izo.camp.vo.BasketVO" alias="basketVO"/>	
 		<typeAlias type="com.izo.camp.vo.AddmoneyVO" alias="addmoneyVO"/>	
 		<typeAlias type="com.izo.camp.vo.OrderVO" alias="orderVO"/>	
+		<typeAlias type="com.izo.camp.vo.PDetailVO" alias="pDetailVO"/>
 	</typeAliases>
 <!-- 	<mappers>
 		<mapper resource="config/mybatis/mapper/DeptMapper.xml" />
