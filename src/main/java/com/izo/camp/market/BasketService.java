@@ -58,5 +58,9 @@ public class BasketService {
 		
 		return basketMapper.getTotalPrice(basketVO);
 	}
+
+	public void clearBasket(String loginId) {
+		basketMapper.removeBasket(loginId);
+	}
 	
 }

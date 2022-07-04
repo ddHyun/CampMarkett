@@ -41,6 +41,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT TOTALPRICE FROM BASKETTABLE
 		WHERE MEMBERID = #{memberId} AND PRODUCTID = #{productId}
 	</select>
+	
+	<delete id="removeBasket">
+		DELETE FROM BASKETTABLE
+		WHERE MEMBERID = #{loginId}
+	</delete>
 </mapper>
 
 

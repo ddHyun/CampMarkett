@@ -72,23 +72,26 @@
 	<h2 class="head2">구매가 완료 되었습니다.</h2>
 	
 	<div id=basketMain>
-	<c:choose>
-	<c:when test="${empty basketProduct}">
-		<p>장바구니가 비어있습니다 <p>
-	</c:when>
 	
+		<!-- model.addAttribute("resultMessage", resultMessage);
+		model.addAttribute("address",address);
+		model.addAttribute("orderList",basketList);
+		 -->
+		 
+	<h1>${resultMessage}</h1>
+	<c:choose>
+	<c:when test="${empty orderList}">
+		<p>구매 품목이 없습니다. <p>
+	</c:when>
+		
 		<c:otherwise>
-				비어있지 않아요!
 			<br>
 				제품이름<br>
-			<c:forEach var="product" items="${basketProduct}">
+			<c:forEach var="product" items="${orderList}">
 				<div id="${product.idx}div">
 				${product.productId}
 				구매수량
-				<input type="button" value="-" onclick="changePcs(${product.idx},'${product.productId}',-1)" >
 				<input type="text" id="${product.idx}pcs" value="${product.pcs}"readonly> 개
-				<input type="button" value="+" onclick="changePcs(${product.idx},'${product.productId}',1)">
-				<input type="text" id="${product.idx}price" value="${product.totalPrice}원">
 				</div>
 			</c:forEach>
 			
@@ -99,9 +102,7 @@
 					
 			</div>
 			<div id="row"  style= "height:40px;">
-				<input id="totalPrice" value="${totalPrice}원">
-				
-				<button style="float:right;" onclick="goOrderPage()">구매하기</button>
+				<h3>배송주소 : ${address}</h3>
 			</div> 		
 		</c:otherwise>
 		
