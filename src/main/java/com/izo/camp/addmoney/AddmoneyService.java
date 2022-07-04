@@ -58,6 +58,14 @@ public class AddmoneyService {
 		// TODO Auto-generated method stub
 		return addmoneyMapper.getNumber(id);
 	}
+
+	public boolean minusPoint(AddmoneyVO addmoneyVO) {
+		int check = addmoneyMapper.minusPoint(addmoneyVO);
+		
+		return check==1;
+	}
+
+	
 	
 	
 }
