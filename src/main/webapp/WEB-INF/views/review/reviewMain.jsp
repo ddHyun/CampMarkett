@@ -4,7 +4,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
-     <title>Home</title>
+<title>:::Everyday 캠프마켓:::</title>
+<style>
+	.sf-menu>li>a{
+		text-decoration: none;
+	}
+	
+.sf-menu li ul li a {
+    text-decoration: none;
+    margin-top: 0;
+}
+
+</style>
      <meta charset="utf-8">
 	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      <link rel="icon" href="resources/assets/img/images/favicon.ico">
@@ -25,6 +36,7 @@
      <script src="resources/assets/js/jquery.carouFredSel-6.1.0-packed.js"></script>
      <script src="resources/assets/js/tms-0.4.1.js"></script>
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
+	 	 <script src="resources/assets/js/menuBar.js"></script>
      <script>
      $(document).ready(function() {
 
@@ -110,27 +122,29 @@ height: 'auto',
   <div class="zerogrid">
     <div class="col-full">
 	<div class="wrap-col">
-    <h1><a href="home" style="text-decoration-line:none;"><img src="resources/assets/img/images/logo2.png" alt="EXTERIOR"></a> </h1>
+    <h1><a href="home"><img src="resources/assets/img/images/logo2.png" alt="EXTERIOR"></a> </h1>
     
          <div class="menu_block">
-           <nav>
-            <ul class="sf-menu">
-                   <li><a style="text-decoration-line:none;" href="home">Home</a></li>
+           <nav >
+            		<ul class="sf-menu">
+                   <li><a href="home">Home</a></li>
                    
-                   <li><a style="text-decoration-line:none;" href="marketMain_Temp">밀키트</a></li>
-                   <li class="current"><a style="text-decoration-line:none;" href="reviewMain_Temp">후기</a></li>
-                   <li><a style="text-decoration-line:none;" href="campingAreaMain_Temp">주변 캠핑장 </a></li>
-                   <li class="with_ul"><a style="text-decoration-line:none;" href="memberInfo_Temp">회원 정보</a>
-				   	<ul>
-                         <li><a style="text-decoration-line:none;" href="#"> cuisine</a></li>
-                         <li><a style="text-decoration-line:none;" href="#">Good rest</a></li>
-                         <li><a style="text-decoration-line:none;" href="#">Services</a></li>
-                         <li><a style="text-decoration-line:none;" href="makeSampleId">샘플 로그인!</a></li>
-                     </ul>
+                   <li><a href="marketMain_Temp">밀키트</a></li>
+                   <li class="current"><a href="reviewMain_Temp">상품후기</a></li>
+                   <li><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
+                   <li class="with_ul"  id="menuLi"><a href="#">마이페이지</a>
+				   <ul>
+                         <li><a href="money.do" style="margin-top:0;">카드등록</a></li>
+                         <li><a href="money.do" style="text-decoration: none;">카드충전</a></li>
+                         <li><a href="#"  style="text-decoration: none;"
+                         	onclick="goMyBasket(${sessionScope.loginId eq null})">
+                         	장바구니</a></li>
+                   </ul>
 				   </li>
-                   <li><a style="text-decoration-line:none;" href="login_Temp">로그인</a></li>
-             </ul>
-           </nav>
+                   <li><a href="login_Temp">로그인</a></li>
+                    <li><a href="logout">로그아웃</a></li>
+                 </ul>
+           </nav>		
            <div class="clear"></div>
            </div>
            <div class="clear"></div>

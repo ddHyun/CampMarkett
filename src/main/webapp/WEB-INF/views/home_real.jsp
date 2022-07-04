@@ -4,7 +4,7 @@
 
 <html>
 <head>
-     <title>Home</title>
+     <title>:::Everyday 캠프마켓:::</title>
      <meta charset="utf-8">
 	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      <link rel="icon" href="resources/assets/img/images/favicon.ico">
@@ -91,15 +91,18 @@ height: 'auto',
                    
                    <li><a href="marketMain_Temp">밀키트</a></li>
                    <li><a href="reviewMain_Temp">상품후기</a></li>
-                   <li><a href="campingAreaMain_Temp">캠핑장 </a></li>
+                   <li><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
                    <li class="with_ul"  id="menuLi"><a href="#">마이페이지</a>
 				   <ul>
                          <li><a href="money.do">카드등록</a></li>
                          <li><a href="money.do">카드충전</a></li>
-                         <li><a href="goBasket">장바구니</a></li>
+                         <li><a href="#"
+                         	onclick="goMyBasket(${sessionScope.loginId eq null})">
+                         	장바구니</a></li>
                    </ul>
 				   </li>
                    <li><a href="login_Temp">로그인</a></li>
+                   <li><a href="logout">로그아웃</a></li>
                  </ul>
            </nav>
            <div class="clear"></div>
@@ -164,39 +167,7 @@ height: 'auto',
       </div>
 	  </div>
     </div>
-	</div>
-	<div class="row">
-    <div class="bottom_block">
-      <div class="col-1-2">
-        <h3>Follow Us</h3>
-        <div class="socials">
-          <a href="#"></a>
-          <a href="#"></a>
-          <a href="#"></a>
-        </div>
-        <nav><ul>
-                   <li class="current"><a href="home">Home</a></li>
-                   <li ><a href="resources/assets/html/index-1.html">About Us</a></li>
-                   <li><a href="resources/assets/html/index-2.html">Menu</a></li>
-                   <li><a href="resources/assets/html/index-3.html">Portfolio</a></li>
-                   <li><a href="resources/assets/html/index-4.html">News </a></li>
-                   <li><a href="resources/assets/html/index-5.html">Contacts</a></li>
-                 </ul></nav>
-      </div>
-      <div class="col-1-2">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn" data-type="submit">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
-          </div>
-      </div>
-	  </div>
+	</div>	
     </div>
   </div>
 </div>

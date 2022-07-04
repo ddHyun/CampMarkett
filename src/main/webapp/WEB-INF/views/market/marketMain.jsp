@@ -4,7 +4,12 @@
 
 <html>
 <head>
-<title>밀키트 구매하기</title>
+<title>:::Everyday 캠프마켓:::</title>
+<style>
+	.sf-menu>li>a{
+		text-decoration: none;
+	}
+</style>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -102,25 +107,26 @@ height: 'auto',
 						</h1>
 
 						<div class="menu_block">
-							<nav>
-								<ul class="sf-menu">
-									<li><a href="home">Home</a></li>
-
-									<li class="current"><a href="marketMain_Temp">밀키트</a></li>
-									<li><a href="reviewMain_Temp">후기</a></li>
-									<li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
-									<li class="with_ul"><a href="money.do">마이페이지</a>
-										<ul>
-											<li><a href="money.do"> 카드등록/충전</a></li>
-											<li><a href="#">Good rest</a></li>
-											<li><a href="#">Services</a></li>
-											<li><a href="#"
-												onclick="goMyBasket(${sessionScope.loginId eq null})">
-													장바구니 </a></li>
-										</ul></li>
-									<li><a href="login_Temp">로그인</a></li>
-								</ul>
-							</nav>
+						<nav>
+            		<ul class="sf-menu">
+                   <li><a href="home">Home</a></li>
+                   
+                   <li class="current"><a href="marketMain_Temp">밀키트</a></li>
+                   <li><a href="reviewMain_Temp">상품후기</a></li>
+                   <li><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
+                   <li class="with_ul"  id="menuLi"><a href="#">마이페이지</a>
+				   <ul>
+                         <li><a href="money.do">카드등록</a></li>
+                         <li><a href="money.do">카드충전</a></li>
+                         <li><a href="#"
+                         	onclick="goMyBasket(${sessionScope.loginId eq null})">
+                         	장바구니</a></li>
+                   </ul>
+				   </li>
+                   <li><a href="login_Temp">로그인</a></li>
+                    <li><a href="logout">로그아웃</a></li>
+                 </ul>
+           </nav>					
 							<div class="clear"></div>
 						</div>
 						<div class="clear"></div>

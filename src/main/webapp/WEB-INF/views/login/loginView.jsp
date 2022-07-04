@@ -26,6 +26,7 @@
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
 	<script src="resources/assets/js/httpRequest.js"></script>
 	<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
+		 <script src="resources/assets/js/menuBar.js"></script>
 </head>
 
 <body style="background-color: #5fa022;">
@@ -38,24 +39,25 @@
     <h1><a href="home"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
     
          <div class="menu_block">
-           <nav>
-            <ul class="sf-menu">
-                   <li><a href="home">Home</a></li>                   
+           	<div class="menu_block">
+						<nav>
+            		<ul class="sf-menu">
+                   <li><a href="home">Home</a></li>
+                   
                    <li><a href="marketMain_Temp">밀키트</a></li>
-                   <li><a href="reviewMain_Temp">후기</a></li>
-                   <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>                   
-                   <li class="with_ul"><a href="#" 
-                   		onclick="goMyMoney(${sessionScope.loginId eq null})">마이페이지</a>
-				   	<ul>
-                         <li><a href="#"> 카드등록/충전</a></li>
-                         <li><a href="#">Good rest</a></li>
+                   <li><a href="reviewMain_Temp">상품후기</a></li>
+                   <li><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
+                   <li class="with_ul"><a href="#" onclick="">마이페이지</a>
+				   <ul>
+                         <li><a href="money.do">카드등록</a></li>
+                         <li><a href="money.do">카드충전</a></li>
                          <li><a href="#"
-							onclick="goMyBasket(${sessionScope.loginId eq null})">
-									장바구니 </a></li>
-                         <li><a href="makeSampleId">샘플 로그인!</a></li>
-                     </ul>
-				   </li>				   
+                         	onclick="goMyBasket(${sessionScope.loginId eq null})">
+                         	장바구니</a></li>
+                   </ul>
+				   </li>
                    <li class="current"><a href="login_Temp">로그인</a></li>
+                    <li><a href="logout">로그아웃</a></li>
                  </ul>
            </nav>
            <div class="clear"></div>
@@ -208,19 +210,7 @@
 
 	$(document).ready(function(){
        	$('#form').fadeIn(1000);     
-   });
-	
-	
-	//
-	function goMyMoney(id) {
-		var loginId = "${sessionScope.loginId}";
-		if(${sessionScope.loginId eq null} || loginId=='' || loginId=='none'){
-			alert("로그인 후 사용할 수 있습니다.");
-			return;
-		}else{
-			location.href = "money.do";
-		}
-	}
+   });	
    
 	//아이디찾기 팝업
 	$('.popup-btn').click(function(e) {

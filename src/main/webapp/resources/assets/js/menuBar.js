@@ -18,3 +18,4 @@ window.onload=function(){
 		$('#memberMenu').css('display','block');
 	}
 }
+

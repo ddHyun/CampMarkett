@@ -4,7 +4,12 @@
 
 <html>
 <head>
-     <title>주변 캠핑장</title>
+<title>:::Everyday 캠프마켓:::</title>
+<style>
+	.sf-menu>li>a{
+		text-decoration: none;
+	}
+</style>
      <meta charset="utf-8">
 	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      <link rel="icon" href="resources/assets/img/images/favicon.ico">
@@ -24,6 +29,7 @@
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
 	 <script src="resources/assets/js/menuBar.js"></script>
 	 <script src="https://kit.fontawesome.com/d9e2783f4c.js" crossorigin="anonymous"></script>
+	 	 <script src="resources/assets/js/menuBar.js"></script>
      <script>
       $(window).load(function(){
       $('.slider')._TMS({
@@ -93,17 +99,20 @@ height: 'auto',
                    <li><a href="home">Home</a></li>
                    
                    <li><a href="marketMain_Temp">밀키트</a></li>
-                   <li><a href="reviewMain_Temp">후기</a></li>
-                   <li class="current"><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
-                   <li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
-				   	<ul>
-                         <li><a href="#" onclick="goMyBasket()"> 장바구니 </a></li>
-                         <li><a href="#">Good rest</a></li>
-                         <li><a href="#">Services</a></li>
-                     </ul>
+                   <li><a href="reviewMain_Temp">상품후기</a></li>
+                   <li class="current"><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
+                   <li class="with_ul"  id="menuLi"><a href="#">마이페이지</a>
+				   <ul>
+                         <li><a href="money.do">카드등록</a></li>
+                         <li><a href="money.do">카드충전</a></li>
+                         <li><a href="#"
+                         	onclick="goMyBasket(${sessionScope.loginId eq null})">
+                         	장바구니</a></li>
+                   </ul>
 				   </li>
                    <li><a href="login_Temp">로그인</a></li>
-             </ul>
+                   <li><a href="logout">로그아웃</a></li>
+                 </ul>
            </nav>
            <div class="clear"></div>
            </div>
