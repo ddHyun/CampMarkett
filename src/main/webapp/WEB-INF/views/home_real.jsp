@@ -21,6 +21,7 @@
      <script src="resources/assets/js/jquery.carouFredSel-6.1.0-packed.js"></script>
      <script src="resources/assets/js/tms-0.4.1.js"></script>
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
+	 <script src="resources/assets/js/menuBar.js"></script>
      <script>
       $(window).load(function(){
       $('.slider')._TMS({
@@ -89,13 +90,13 @@ height: 'auto',
                    <li class="current"><a href="home">Home</a></li>
                    
                    <li><a href="marketMain_Temp">밀키트</a></li>
-                   <li><a href="reviewMain_Temp">후기</a></li>
-                   <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
-                   <li class="with_ul"><a href="money.do">회원 정보</a>
+                   <li><a href="reviewMain_Temp">상품후기</a></li>
+                   <li><a href="campingAreaMain_Temp">캠핑장 </a></li>
+                   <li class="with_ul"><a href="#">마이페이지</a>
 				   <ul>
-                         <li><a href="#"> cuisine</a></li>
-                         <li><a href="#">Good rest</a></li>
-                         <li><a href="#">Services</a></li>
+                         <li><a href="money.do">카드등록</a></li>
+                         <li><a href="money.do">카드충전</a></li>
+                         <li><a href="goBasket">장바구니</a></li>
                          <li><a href="makeSampleId">샘플로그인</a></li>
                    </ul>
 				   </li>
@@ -113,12 +114,12 @@ height: 'auto',
     <div class="slider-block">
       <div class="slider">
         <ul class="items">
+          <li><img src="resources/assets/img/mainImg/main3.jpg" alt=""></li>
           <li><img src="resources/assets/img/mainImg/main10.jpg" alt=""></li>
-          <li><img src="resources/assets/img/mainImg/main8.jpg" alt=""></li>
-          <li><img src="resources/assets/img/mainImg/mai11.jpg" alt=""></li>
+          <li><img src="resources/assets/img/mainImg/main11.jpg" alt=""></li>
           <li><img src="resources/assets/img/mainImg/main7.jpg" alt=""></li>
          
-          <li class="mb0"><img src="resources/assets/img/mainImg/main3.jpg" alt=""></li>
+          <li class="mb0"><img src="resources/assets/img/mainImg/main8.jpg" alt=""></li>
         </ul>
       </div>
     </div>

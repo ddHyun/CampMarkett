@@ -7,4 +7,4 @@ function goMyBasket(check){
     		 alert("장바구니 페이지로 이동합니다.")
     	 }
     	 location.href="goBasket";
-    	 }
+}
