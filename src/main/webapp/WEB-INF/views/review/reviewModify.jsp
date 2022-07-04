@@ -22,6 +22,31 @@
      <script src="resources/assets/js/jquery.carouFredSel-6.1.0-packed.js"></script>
      <script src="resources/assets/js/tms-0.4.1.js"></script>
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
+          <script>
+     $(document).ready(function() {
+
+    		// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+    		var floatPosition = parseInt($("#floatMenu").css('top'));
+    		// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+    		$(window).scroll(function() {
+    			// 현재 스크롤 위치를 가져온다.
+    			var scrollTop = $(window).scrollTop();
+    			var newPosition = scrollTop + floatPosition + "px";
+
+    			/* 애니메이션 없이 바로 따라감
+    			 $("#floatMenu").css('top', newPosition);
+    			 */
+
+    			$("#floatMenu").stop().animate({
+    				"top" : newPosition
+    			}, 500);
+
+    		}).scroll();
+
+    	});
+     </script>
+     
      <script>
 	
 		function update(f){
@@ -87,7 +112,7 @@ height: 'auto',
     <![endif]-->
      </head>
      <body style="background-color: #5fa022;">
-       <div class="main">
+       <div class="main"><!-- main -->
 <!--==============================header=================================-->
  <header> 
   <div class="zerogrid">
@@ -141,8 +166,26 @@ height: 'auto',
       <div class="col-full">
 	  	<div class="wrap-col">
         <div class="car_wrap">
-        <div class="review" align="center">
+        <div class="review" align="center" style="height:730px;">
         <hr>
+        <div class="" align="center" style="width:890px;">
+        	    <div style="height:auto; position:absolute; width:200px; left:0; top:center;">
+ 
+ 			<div id="floatMenu">
+				<a href="http://www.coleman.co.kr/shop/board/view.php?id=notice&no=48" onclick="clickBanner('http://www.coleman.co.kr/shop/board/view.php?id=notice&no=48')" target="_blank">
+ 				<img style="width:240px; height:800px" src="resources/upload/coleman.png" alt="">
+				</a>
+			</div>
+		</div>  
+		
+			    <div style="height:auto; position:absolute; width:200px; right:0; top:center;">
+ 
+ 			<div id="floatMenu">
+				<a href="https://smartstore.naver.com/yaliyali/products/4986415701?n_media=27758&n_query=MOBICOOL&n_rank=1&n_ad_group=grp-a001-02-000000016396587&n_ad=nad-a001-02-000000100232202&n_campaign_type=2&n_mall_id=ncp_1nsy9r_01&n_mall_pid=4986415701&n_ad_group_type=2&NaPm=ct%3Dl56mvra8%7Cci%3D0A80003GMa9w36qGI10%5F%7Ctr%3Dpla%7Chk%3Da05087ab918bc0b76f7893ebf884d0151b18a136" onclick="clickBanner('https://smartstore.naver.com/yaliyali/products/4986415701?n_media=27758&n_query=MOBICOOL&n_rank=1&n_ad_group=grp-a001-02-000000016396587&n_ad=nad-a001-02-000000100232202&n_campaign_type=2&n_mall_id=ncp_1nsy9r_01&n_mall_pid=4986415701&n_ad_group_type=2&NaPm=ct%3Dl56mvra8%7Cci%3D0A80003GMa9w36qGI10%5F%7Ctr%3Dpla%7Chk%3Da05087ab918bc0b76f7893ebf884d0151b18a136')" target="_blank">
+ 				<img style="width:240px; height:800px" src="resources/upload/dometic.png" alt="">
+				</a>
+			</div>
+		</div>  
         
         <form  enctype="multipart/form-data">
         <input type="hidden" name="idx" value="${vo.idx}">
@@ -160,7 +203,7 @@ height: 'auto',
 				<td>
 				<div class="input-group mb-3">
   				<span class="input-group-text" id="inputGroup-sizing-default">상품명</span>
-  				<input value="${vo.productid }" name="productid" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"readonly/>
+  				<input value="${vo.productid}" name="productid" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"readonly/>
 				</div>
 				</td>
 			</tr>
@@ -240,18 +283,25 @@ height: 'auto',
 	</form>
 	
 	</div>
+	</div>
       </div>
 	  </div>
     </div>
 	</div>
   </div>
 </div>
+</div><!-- main -->
 <!--==============================footer=================================-->
 
 <footer>    
   <div class="zerogrid">
     <div class="col-full">
 		<div class="wrap-col">
+							Gourmet © 2013 &nbsp;&nbsp; |&nbsp;&nbsp; <a href="#">Privacy
+						Policy</a> &nbsp;&nbsp;|&nbsp;&nbsp; Designed by <a
+						href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster</a>
+					- <a href="https://www.zerotheme.com/"
+						title="free website templates">ZEROTHEME</a>
 	 	</div>
     </div>
   </div>
