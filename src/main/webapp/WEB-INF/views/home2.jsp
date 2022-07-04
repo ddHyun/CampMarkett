@@ -25,6 +25,7 @@
 <script src="resources/assets/js/jquery.carouFredSel-6.1.0-packed.js"></script>
 <script src="resources/assets/js/tms-0.4.1.js"></script>
 <script src="resources/assets/js/css3-mediaqueries.js"></script>
+<script src="resources/assets/js/menuBar.js"></script>
 <script>
 	$(window).load(function() {
 		$('.slider')._TMS({
@@ -101,14 +102,15 @@
 
 						<div class="menu_block">
 							<nav>
+								<input type="hidden" id=checkLogin value=${empty sessionScope.loginId}>
 								<ul class="sf-menu">
 									<li class="current"><a href="home2">Home</a></li>
-
+									<li><a href="#">로그인 : ${sessionScope.loginId}</a></li>
 									<li><a href="resources/assets/html/index-2.html">밀키트</a></li>
 									<li><a href="resources/assets/html/index-3.html">후기</a></li>
 									<li><a href="resources/assets/html/index-4.html">주변
 											캠핑장 </a></li>
-									<li class="with_ul"><a
+									<li class="with_ul" id="memberMenu"><a
 										href="resources/assets/html/index-1.html">회원 정보</a>
 										<ul>
 											<li><a href="#"> cuisine</a></li>

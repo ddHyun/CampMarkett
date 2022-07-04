@@ -10,7 +10,11 @@ function goMyBasket(check){
 }
 
 window.onload=function(){	
-	
-	document.getElementById("menuLi").style.display='none';
-	
+	let loginId = $('#checkLogin').val();
+	//비어있는게 true 로그인이 안되어있다. 
+	if(loginId=='true'){
+		$('#memberMenu').css('display','none');
+	}else{
+		$('#memberMenu').css('display','block');
+	}
 }
