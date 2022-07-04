@@ -190,4 +190,12 @@ public class MemberController {
 	public String test() {
 		return "login/popup";
 	}
+	
+	//로그아웃
+	@RequestMapping(value="/logout", method = {RequestMethod.POST, RequestMethod.GET})
+	public String logout() {
+		session.invalidate();
+		System.out.println("세션 종료");
+		return "login/loginView";
+	}
 }

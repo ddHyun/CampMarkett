@@ -98,23 +98,26 @@
 				<div class="s"
 					style="margin: 0; padding: 0; width: 100%; background-color: white;">
 					<h2 class="head2"></h2>
-					<div class="inner1_menu" style="float: left; width: 65%;">
+					<div class="inner1_menu" style="float: left; width: 65%; margin-top:40px">
 						<img src="resources/assets/img/food/${product.imgName}.jpg"
-							style="width: 100%;">
+							style="width: 100%; padding:20px">
 					</div>
 
 					<div class="inner1_menu" style="float: left; width: 35%;">
 
 						<div class="card border-success mb-3" style="width: 100%; border:none;">
-							<h2 class="card-header"
-								style="padding-top: 15px; margin-bottom: 5px;">${product.productId}</h2>
+							<h2 class="card-header" style="padding-top: 15px; 
+								font-size:30px; margin-bottom: 5px;"><strong>${product.productId}</strong></h2>
 							<div class="card-body" style="padding-top: 5px;">
 								<br>
-								<p class="card-text">로렘 입숨(lorem ipsum; 줄여서 립숨, lipsum)은
-									출판이나 그래픽 디자인 분야에서 폰트, 타이포그래피, 레이아웃 같은 그래픽 요소나 시각적 연출을 보여줄 때
-									사용하는 표준 채우기 텍스트로, 최종 결과물에 들어가는 실제적인 문장 내용이 채워지기 전에 시각 디자인 프로젝트
-									모형의 채움 글로도 이용된다. 이런 용도로 사용할 때 로렘 입숨을 그리킹(greeking)이라고도 부르며, 때로
-									로렘 입숨은 공간만 차지하는 무언가를 지칭하는 용어로도 사용된다.</p>
+								<p class="card-text">
+									63 뷔페 파빌리온에서 맛보던 스테이크를 캠핑장에서도 만나볼 수 있는 밀키트<br><br>
+									<span style="font-size:13px">무료배송<br>
+									30000원 이상 구매시<br><br>
+									개당 중량 x 수량 : 1068g x 1팩<br>
+									유통기한 : 2022년 10-10이거나 그 이후인 상품<br>
+									보관방법 : 냉동보관</span>
+								</p>
 								<h3 class="card-title" style="text-align: right;">${product.price}원</h3>
 							</div>
 
@@ -138,14 +141,19 @@
 				<div class="zerogrid2">
 				
 					
-					<div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%; border:1px black; margin-top:10px;">
+					<div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%; border:1px black; margin:20px 0;">
 					  <input type="radio" style="display:none; height:50px;" class="btn-check" name="btnradio" id="btnradio1" value="detail" autocomplete="off" >
 					  <label style="height:40px; border:3px solid #5fa022;" class="btn btn-outline-success" for="btnradio1">상세 보기</label>
 					  <input type="radio" style="display:none; height:50px;" class="btn-check" name="btnradio" id="btnradio2" value="review" autocomplete="off" >
 					  <label style="height:40px; border:3px solid #5fa022;" class="btn btn-outline-success" for="btnradio2">구매 후기</label>
 					</div>
 					<!-- 상품 상세보기 창 -->
-					<div 	id="detail" style=" height:500px; background-color: white;">
+					<div 	id="detail" style="background-color: white;">
+					<img src="resources/assets/img/food/F1/steak1.jpg" style="width:120%">
+					<img src="resources/assets/img/food/F1/steak2.jpg" style="width:120%">
+					<img src="resources/assets/img/food/F1/steak3.jpg" style="width:120%">
+					<img src="resources/assets/img/food/F1/steak4.jpg" style="width:120%">
+					<img src="resources/assets/img/food/F1/steak5.jpg" style="width:120%">
 					</div>
 					<!-- =============== 후기 게시판==================== -->
 					<div 	id="review" >

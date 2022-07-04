@@ -34,7 +34,7 @@
   <div class="zerogrid">
     <div class="col-full">
 	<div class="wrap-col">
-    <h1><a href="index.html"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
+    <h1><a href="home"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
     
          <div class="menu_block">
            <nav>
@@ -51,7 +51,7 @@
                          <li><a href="makeSampleId">샘플 로그인!</a></li>
                      </ul>
 				   </li>
-				   		<li><a onclick="logout()">로그아웃</a></li>					   	
+				   		<li><a href="logout" onclick="">로그아웃</a></li>					   	
 				   				   
                  </ul>
            </nav>
@@ -109,9 +109,9 @@
     align-items: center;
     justify-content: center;
 /*    	height: 85vh; */
-   	height: 50vh;
-   	margin-left: 185px;
-    width: 1140px;
+   	height: 40vh;
+   	margin: 50px auto;
+    width: 70%;
     background: url('resources/assets/img/images/camp.jpg') no-repeat center center;
     background-size: cover;">
    
@@ -149,15 +149,15 @@
       
           <input type="hidden" id="cardId" name="id" value="${sessionScope.loginId}">           
           <input type="text" onKeyup="moveNumber(this)" id="cardNo" name="cardno"
-           placeholder="카드번호 ('-'제외한 숫자 16자리)" maxlength="16">
+           placeholder="카드번호 ('-'제외한 숫자 16자리)" maxlength="16" class="inputBorder">
           <input type="text" onKeyup="moveNumber(this)" id="validDate" name="validcarddate" 
-          placeholder="유효기간   (예) 0524(월/연도))" maxlength="4">
+          placeholder="유효기간   (예) 0524(월/연도))" maxlength="4" class="inputBorder">
           <input type="password" onKeyup="moveNumber(this)" id="cvcNo" name="cvcno"
-           placeholder="CVC번호 (숫자 3자리)"  maxlength="3"> 
+           placeholder="CVC번호 (숫자 3자리)"  maxlength="3" class="inputBorder"> 
           <input type="password" id="simplePwd1" onKeyup="moveNumber(this)" name="simplepwd" 
-          placeholder="결제시 사용할 비밀번호 (숫자 6자리)"  maxlength="6">
+          placeholder="결제시 사용할 비밀번호 (숫자 6자리)"  maxlength="6" class="inputBorder">
           <input type="password" id="simplePwd2" onKeyup="moveNumber(this)" 
-          placeholder="결제 비밀번호 재입력"  maxlength="6">
+          placeholder="결제 비밀번호 재입력"  maxlength="6" class="inputBorder">
           <input type="button" id="registCardBtn" value="등록하기" 
           style="background-color:#A197BD; cursor:pointer; border-radius: 8px">
      
@@ -187,18 +187,21 @@
     </div>
     <figure class="one_half first">
       <ul class="nospace clear">
-        <li class="block clear"><a id="infoBtn1" style="cursor:pointer;"><i class="fas fa-map-marker-alt" style="margin-top:-10px"></i></a> 
+        <li class="block clear"><a id="infoBtn1" style="cursor:pointer;">
+        <i class="fas fa-map-marker-alt" style="margin-top:-10px"></i></a> 
         <span><strong>충전 한도액이 있나요?</strong></span></li>        
         <li class="block clear infoMoney" id="info1"> 
         <span><strong>1일 1회 최소 1000원 ~ 최대 99만원까지 가능합니다.</strong></span></li>
        
-        <li class="block clear"><a id="infoBtn2" style="cursor:pointer"><i class="fas fa-map-marker-alt" style="margin-top:-10px"></i></a> 
+        <li class="block clear"><a id="infoBtn2" style="cursor:pointer">
+        <i class="fas fa-map-marker-alt" style="margin-top:-10px"></i></a> 
         <span><strong>충전 후 유상캐시가 확인되지 않습니다!</strong></span></li>
         <li class="block clear infoMoney info2"> 
         <span><strong>여러 광고 계정을 활용하고 계시다면, 타 광고계정에 입금한 것은 아닌지 확인하여 주시길 바랍니다.<br>
 		광고계정의 통해 입금한게 맞으시다면, 입금증을 첨부하여 문의 주시길 바랍니다.</strong></span></li>
 		
-		<li class="block clear"><a id="infoBtn3" style="cursor:pointer"><i class="fas fa-map-marker-alt" style="margin-top:-10px"></i></a> 
+		<li class="block clear"><a id="infoBtn3" style="cursor:pointer">
+		<i class="fas fa-map-marker-alt" style="margin-top:-10px"></i></a> 
 		<span><strong>카드 결제가 실패되었습니다.</strong></span></li>
         <li class="block clear infoMoney info3">
         <span><strong>

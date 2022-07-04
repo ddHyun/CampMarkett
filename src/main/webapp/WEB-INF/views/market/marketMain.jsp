@@ -234,7 +234,7 @@ height: 'auto',
 		let loginId = "${sessionScope.loginId}";
 
 		if (${sessionScope.loginIdx eq null}||loginId==""||loginId=="none") {
-			alert("로그인 후 이용해 주세요.")
+			alert("로그인 후 이용해 주세요.");
 		} else {
 			if (confirm("장바구니에 추가 하시겠습니까")) {
 

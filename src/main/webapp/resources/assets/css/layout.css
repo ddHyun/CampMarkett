@@ -470,11 +470,13 @@ table a, #comments a{background-color:inherit;}
     }
   
 
-	.numFormat{
+#registCardForm	.numFormat{
 		text-align:center;
 		color:#BDA697;
 		letter-spacing: 5px;
 		font: 20px 'Do Hyeon', sans-serif;
+		border: 1px solid #BDA697;
+		border-radius: 4px;
 	}
 
 

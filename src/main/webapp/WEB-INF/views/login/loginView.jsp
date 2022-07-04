@@ -28,14 +28,14 @@
 	<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 </head>
 
-<body>
+<body style="background-color: #5fa022;">
 <div class="main">
 <!-- ==============================header================================= -->
   <header> 
-  <div class="zerogrid">
+  <div class="zerogrid" style="height:70px">
     <div class="col-full">
 	<div class="wrap-col">
-    <h1><a href="index.html"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
+    <h1><a href="home"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
     
          <div class="menu_block">
            <nav>
@@ -43,15 +43,18 @@
                    <li><a href="home">Home</a></li>                   
                    <li><a href="marketMain_Temp">밀키트</a></li>
                    <li><a href="reviewMain_Temp">후기</a></li>
-                   <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
-                   <li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
+                   <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>                   
+                   <li class="with_ul"><a href="#" 
+                   		onclick="goMyMoney(${sessionScope.loginId eq null})">마이페이지</a>
 				   	<ul>
-                         <li><a href="#"> cuisine</a></li>
+                         <li><a href="#"> 카드등록/충전</a></li>
                          <li><a href="#">Good rest</a></li>
-                         <li><a href="#">Services</a></li>
+                         <li><a href="#"
+							onclick="goMyBasket(${sessionScope.loginId eq null})">
+									장바구니 </a></li>
                          <li><a href="makeSampleId">샘플 로그인!</a></li>
                      </ul>
-				   </li>
+				   </li>				   
                    <li class="current"><a href="login_Temp">로그인</a></li>
                  </ul>
            </nav>
@@ -65,7 +68,7 @@
 <!-- =======content================================ -->
 
 <div class="content">
-  <div class="zerogrid">
+  <div class="zerogrid" style="margin:80px 300px 60px 300px;">
     <!-- <div class="col-full">
       <h2></h2>
     </div> -->
@@ -74,17 +77,15 @@
     <div class="portfolio">  
     
     
-    <main  style="display: flex;
-    align-items: center;
-    justify-content: center;
-   	height: 85vh;
-    width: 100%;
+    <main  style="display: flex; align-items: center;justify-content: center;
+   	height: 65vh; width: 100%;
     background: url('resources/assets/img/images/bbq.jpg') no-repeat center center;
     background-size: cover;">
-    <div class="main2" style="width:800px; margin:160px auto; text-align:center;">
+    <div class="main2" style="height:470px; margin:250px auto; text-align:center;">
     
        <!-- 로그인 통과하면 상품페이지로 이동 -->
-       		 <form id="form" name="form" class="form_class" action="marketMain_Temp" method="post" style="display:none;"> 
+       		 <form id="form" name="form" class="form_class" 
+       		 action="marketMain_Temp" method="post" style="display:none;margin-top:53px"> 
   			<!-- <form id="form" name="form" class="form_class" action="money.do" method="post" style="display:none;"> --> 
             <div class="form_div">
                 <label>아이디</label>
@@ -179,34 +180,8 @@
    
     <div class="row">
     <div class="bottom_block">
-      <div class="col-1-2">
-        <h3>Follow Us</h3>
-        <div class="socials">
-          <a href="#"></a>
-          <a href="#"></a>
-          <a href="#"></a>
-        </div>
-        <nav><ul>
-                   <li><a href="index.html">Home</a></li>
-                   <li><a href="index-1.html">About Us</a></li>
-                   <li><a href="index-2.html">Menu</a></li>
-                   <li class="current"><a href="index-3.html">Portfolio</a></li>
-                   <li><a href="index-4.html">News </a></li>
-                   <li><a href="index-5.html">Contacts</a></li>
-                 </ul></nav>
-      </div>
-     <div class="col-1-2">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn" data-type="submit">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
-          </div>
+      
+     
       </div>
 	  </div>
     </div>
@@ -218,7 +193,11 @@
   <div class="zerogrid">
     <div class="col-full">
 		<div class="wrap-col">
-     Gourmet © 2013  &nbsp;&nbsp; |&nbsp;&nbsp;   <a href="#">Privacy Policy</a>    &nbsp;&nbsp;|&nbsp;&nbsp;  Designed by <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster</a> - <a href="https://www.zerotheme.com/" title="free website templates">ZEROTHEME</a>
+     Gourmet © 2013  &nbsp;&nbsp; |&nbsp;&nbsp;  
+      <a href="#">Privacy Policy</a>    
+      &nbsp;&nbsp;|&nbsp;&nbsp;  Designed by 
+      <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster</a>
+       - <a href="https://www.zerotheme.com/" title="free website templates">ZEROTHEME</a>
 	 	</div>
     </div>
   </div>
@@ -228,8 +207,20 @@
 <script>
 
 	$(document).ready(function(){
-       	$('#form').fadeIn(1000);
+       	$('#form').fadeIn(1000);     
    });
+	
+	
+	//
+	function goMyMoney(id) {
+		var loginId = "${sessionScope.loginId}";
+		if(${sessionScope.loginId eq null} || loginId=='' || loginId=='none'){
+			alert("로그인 후 사용할 수 있습니다.");
+			return;
+		}else{
+			location.href = "money.do";
+		}
+	}
    
 	//아이디찾기 팝업
 	$('.popup-btn').click(function(e) {
