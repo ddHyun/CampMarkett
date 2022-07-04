@@ -53,10 +53,11 @@ public class HomeController {
 		for(DeptVO deptVO : deptMapper.dept()) {
 			System.out.println(deptVO.getDeptno());
 		}
+		session.setAttribute("loginId", "SampleID");
+		session.setAttribute("loginIdx", 1);
+		System.out.println("샘플 로그인이 완료되었습니다. ");
 		
-		System.out.println("home");
-		
-		return "home";
+		return "home_real";
 
 	}
 	
