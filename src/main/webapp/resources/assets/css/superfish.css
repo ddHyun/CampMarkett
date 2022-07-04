@@ -42,11 +42,12 @@ nav{ position:relative;padding: 0px 0 0 0;}
 	text-transform: uppercase;
 	line-height: 20px;
 	z-index: 999;
-	background: url(../img/images/spacer.png) 0 0 repeat;
+	background: url(resources/assets/img/images/spacer.png) 0 0 repeat;
 	border-radius: 5px;
 	position: relative;
 	display: block;
-	padding: 5px 14px 8px;
+	padding: 5px 14px 8px;	
+	text-decoration:none;
 }
 
 
