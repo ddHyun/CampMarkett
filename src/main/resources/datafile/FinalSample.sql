@@ -22,7 +22,7 @@ INSERT INTO MEMBERTABLE VALUES(
 INSERT INTO MEMBERTABLE VALUES(SEQ_MEMBER.NEXTVAL,'연안부두불나방2','1111','나방','남','SDFSDF@NAVER.COM','032-11-111','010-222-2341','서울특별시 강서구 강서로 195, (화곡동)','920301');
 
 /*=============================================================================*/
-/*//음식 샘플*/
+/*//음식 샘플*/  /*되도록 FINALPRODUCTS.SQL 이용*/
 INSERT INTO TEST_PM.PRODUCTTABLE
 (IDX, PRODUCTID, PRICE, STOCK, IMGNAME)
 VALUES(SEQ_PRODUCT.NEXTVAL, '부대찌개', 13000, 300, 'foodNum01');
@@ -59,15 +59,13 @@ INSERT INTO TEST_PM.PRODUCTTABLE
 (IDX, PRODUCTID, PRICE, STOCK, IMGNAME)
 VALUES(SEQ_PRODUCT.NEXTVAL, '만두전골', 12000, 200, 'foodNum09');
 
-INSERT INTO TEST_PM.PRODUCTTABLE
-(IDX, PRODUCTID, PRICE, STOCK, IMGNAME)
-VALUES(SEQ_PRODUCT.NEXTVAL, 'bbq', 30000, 300, 'foodNum10');
+
 
 SELECT * FROM PRODUCTTABLE p ;
 
 /*=============================================================================*/
 
-insert into ordertable values(seq_order.nextval,'APPLE','bbq',sysdate,3,90000);
+
 
 
 /*=============================================================================*/
@@ -87,9 +85,6 @@ SEQ_REVIEW.NEXTVAL,
  
 /*=============================================================================*/
 /*추가된 샘플*/
-DROP TABLE loadmoneytable;
-DROP SEQUENCE seq_loadmoney;
-
 
 create sequence seq_addmoney;
 
@@ -106,6 +101,7 @@ create table addmoneytable(
 	FOREIGN KEY (id)
  		REFERENCES MEMBERTABLE (ID) ON DELETE CASCADE 
 );
+
 
 INSERT INTO ADDMONEYTABLE
 (IDX, ID, CARDNO, CVCNO, SIMPLEPWD, ADDEDMONEY, totalMoney, VALIDCARDDATE, ADDMONEYDATE)
