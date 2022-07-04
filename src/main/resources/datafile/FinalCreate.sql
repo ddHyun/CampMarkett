@@ -109,7 +109,7 @@ create sequence seq_addmoney;
 create table addmoneytable(
 	idx number(3) primary key,
 	id varchar2(50),
-	cardNo number(20),
+	cardNo varchar2(20),
 	cvcNo number(3),
 	simplePwd number(6),
 	addedMoney number(7),
