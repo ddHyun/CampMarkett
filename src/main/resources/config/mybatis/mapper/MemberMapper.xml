@@ -46,6 +46,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT ADDR FROM MEMBERTABLE
 		WHERE id = #{loginId}
 	</select>
+	
+	<update id="changeEmail" parameterType="memberVO">
+		update membertable set email=#{email} where id = #{id}
+	</update>
+	
+
 </mapper>
 
 

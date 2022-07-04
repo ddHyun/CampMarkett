@@ -24,7 +24,8 @@ public interface AddmoneyMapper {
 	int addMoney(AddmoneyVO vo);
 	
 	//등록된 카드 유무 확인
-	@Select("SELECT nvl(TOTALMONEY, 0) FROM ADDMONEYTABLE RIGHT OUTER JOIN dual on id=#{id}")
+//	@Select("SELECT nvl(TOTALMONEY, 0) FROM ADDMONEYTABLE RIGHT OUTER JOIN dual on id=#{id}")
+	@Select("SELECT nvl(max(TOTALMONEY), 0) FROM ADDMONEYTABLE RIGHT OUTER JOIN dual on id=#{id}")
 	int searchId(String id);
 
 	//아이디정보 있는지 확인

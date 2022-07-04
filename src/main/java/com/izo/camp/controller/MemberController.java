@@ -1,5 +1,7 @@
 package com.izo.camp.controller;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.izo.camp.addmoney.AddmoneyService;
 import com.izo.camp.member.MemberService;
+import com.izo.camp.vo.AddmoneyVO;
 import com.izo.camp.vo.MemberVO;
 
 @Controller
@@ -18,6 +22,9 @@ public class MemberController {
 
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	AddmoneyService addmoneyService;
 	
 	@Autowired
 	HttpSession session;
@@ -198,4 +205,43 @@ public class MemberController {
 		System.out.println("세션 종료");
 		return "home_real";
 	}
+	
+	//내정보보기 페이지로 이동
+	@RequestMapping(value="/myInfo.do", method={RequestMethod.POST, RequestMethod.GET})
+	public String myInfo(Model model) {
+		int idx = (Integer)session.getAttribute("loginIdx");
+		String id = (String)session.getAttribute("loginId"); 
+
+		MemberVO vo = memberService.userInfo(idx);
+		
+		int totalmoney = 0;
+		
+		//정보 조회에 필요한 카드정보
+		//등록된 카드가 없으면 현재잔액에 0으로 세팅하기
+		int cardCnt = addmoneyService.getNumber(id);//아이디 갯수 반환
+		if(cardCnt>=1) {
+			//조회 결과 중 가장 최근 정보 가져오기
+			AddmoneyVO vo1 = addmoneyService.getMoneyInfo(id);
+			totalmoney = vo1.getTotalmoney();
+		}else {
+			totalmoney = addmoneyService.searchId(id);
+		}
+		
+		model.addAttribute("vo", vo);
+		model.addAttribute("totalmoney", totalmoney);
+		return "mypage/myInfo";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/changeEmail.do", method={RequestMethod.POST, RequestMethod.GET})
+	public String changeEmail(MemberVO vo) {
+		int res = memberService.changeEmail(vo);
+		String param = "n";
+		if(res>0) {
+			param = "y";
+		}
+		String result = String.format("[{'param':'%s'}]", param);
+		return result;
+	}
+	
 }

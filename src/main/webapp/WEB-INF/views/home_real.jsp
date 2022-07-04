@@ -22,6 +22,7 @@
      <script src="resources/assets/js/tms-0.4.1.js"></script>
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
 	 <script src="resources/assets/js/menuBar.js"></script>
+
      <script>
       $(window).load(function(){
       $('.slider')._TMS({

@@ -27,6 +27,7 @@
 	<script src="resources/assets/js/httpRequest.js"></script>
 	<script src="resources/assets/js/jquery-3.6.0.min.js"></script>
 		 <script src="resources/assets/js/menuBar.js"></script>
+
 </head>
 
 <body style="background-color: #5fa022;">
@@ -48,7 +49,7 @@
                    <li><a href="marketMain_Temp">밀키트</a></li>
                    <li><a href="reviewMain_Temp">상품후기</a></li>
                    <li><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
-                   <li class="with_ul" id="memberMenu"><a href="#" onclick="">마이페이지</a>
+                   <li class="with_ul" id="memberMenu"><a href="#">마이페이지</a>
 				   <ul>
                          <li><a href="money.do">카드등록</a></li>
                          <li><a href="money.do">카드충전</a></li>
