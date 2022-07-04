@@ -41,13 +41,14 @@
          <div class="menu_block">
            	<div class="menu_block">
 						<nav>
+						<input type="hidden" id=checkLogin value=${empty sessionScope.loginId}>
             		<ul class="sf-menu">
                    <li><a href="home">Home</a></li>
                    
                    <li><a href="marketMain_Temp">밀키트</a></li>
                    <li><a href="reviewMain_Temp">상품후기</a></li>
                    <li><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
-                   <li class="with_ul"><a href="#" onclick="">마이페이지</a>
+                   <li class="with_ul" id="memberMenu"><a href="#" onclick="">마이페이지</a>
 				   <ul>
                          <li><a href="money.do">카드등록</a></li>
                          <li><a href="money.do">카드충전</a></li>
@@ -56,8 +57,8 @@
                          	장바구니</a></li>
                    </ul>
 				   </li>
-                   <li class="current"><a href="login_Temp">로그인</a></li>
-                    <li><a href="logout">로그아웃</a></li>
+                   <li class="current" id="loginTag"><a href="login_Temp">로그인</a></li>
+                   <li id="logoutTag"><a href="logout">로그아웃</a></li>
                  </ul>
            </nav>
            <div class="clear"></div>

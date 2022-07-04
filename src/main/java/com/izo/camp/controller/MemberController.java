@@ -196,6 +196,6 @@ public class MemberController {
 	public String logout() {
 		session.invalidate();
 		System.out.println("세션 종료");
-		return "login/loginView";
+		return "home_real";
 	}
 }
