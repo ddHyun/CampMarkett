@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.izo.camp.vo.JoayoVO;
+import com.izo.camp.vo.ProductVO;
 import com.izo.camp.vo.ReviewVO;
 
 @Mapper
@@ -38,6 +39,8 @@ public interface ReviewMapper {
 	  
 	// 게시글 수정
 	public int reviewUpdate(ReviewVO vo);
+	
+	
 	
 	
 }

@@ -12,7 +12,10 @@
      <link rel="stylesheet" href="resources/assets/css/style.css">
      <link rel="stylesheet" href="resources/assets/css/slider.css">
 	 <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
+	 <link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/simplex/bootstrap.min.css" integrity="sha384-FYrl2Nk72fpV6+l3Bymt1zZhnQFK75ipDqPXK0sOR0f/zeOSZ45/tKlsKucQyjSp" crossorigin="anonymous">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+   	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
      <script src="resources/assets/js/jquery.js"></script>
      <script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
      <script src="resources/assets/js/superfish.js"></script>
@@ -146,29 +149,29 @@ height: 'auto',
      <body>
        <div class="main">
 <!--==============================header=================================-->
- <header> 
+  <header> 
   <div class="zerogrid">
     <div class="col-full">
 	<div class="wrap-col">
-    <h1><a href="home"><img src="resources/assets/img/images/logo2.png" alt="EXTERIOR"></a> </h1>
+    <h1><a href="home" style="text-decoration-line:none;"><img src="resources/assets/img/images/logo2.png" alt="EXTERIOR"></a> </h1>
     
          <div class="menu_block">
            <nav>
             <ul class="sf-menu">
-                   <li><a href="home">Home</a></li>
+                   <li><a style="text-decoration-line:none;" href="home">Home</a></li>
                    
-                   <li><a href="marketMain_Temp">밀키트</a></li>
-                   <li class="current"><a href="reviewMain_Temp">후기</a></li>
-                   <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
-                   <li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
+                   <li><a style="text-decoration-line:none;" href="marketMain_Temp">밀키트</a></li>
+                   <li class="current"><a style="text-decoration-line:none;" href="reviewMain_Temp">후기</a></li>
+                   <li><a style="text-decoration-line:none;" href="campingAreaMain_Temp">주변 캠핑장 </a></li>
+                   <li class="with_ul"><a style="text-decoration-line:none;" href="memberInfo_Temp">회원 정보</a>
 				   	<ul>
-                         <li><a href="#"> cuisine</a></li>
-                         <li><a href="#">Good rest</a></li>
-                         <li><a href="#">Services</a></li>
-                         <li><a href="makeSampleId">샘플 로그인!</a></li>
+                         <li><a style="text-decoration-line:none;" href="#"> cuisine</a></li>
+                         <li><a style="text-decoration-line:none;" href="#">Good rest</a></li>
+                         <li><a style="text-decoration-line:none;" href="#">Services</a></li>
+                         <li><a style="text-decoration-line:none;" href="makeSampleId">샘플 로그인!</a></li>
                      </ul>
 				   </li>
-                   <li><a href="login_Temp">로그인</a></li>
+                   <li><a style="text-decoration-line:none;" href="login_Temp">로그인</a></li>
              </ul>
            </nav>
            <div class="clear"></div>
@@ -200,63 +203,46 @@ height: 'auto',
         <div class="car_wrap">
         <div class="review" align="center">
         <hr>
-	<table id="revDetail" border="1" align="center" width="700">
-		<tr>
-			<th>제목</th>
-				<td>${vo.title}</td>
-		</tr>
-		
-		<tr>
-			<th>후기상품</th>
-				<td>${vo.productid }</td>
-		</tr>
-		
-		<tr>
-			<th>내용</th>
-				<td>${vo.content}</td>
-		</tr>
-		
-		
-		<tr>
-			<th>사진</th>
-				<c:if test="${vo.filename ne 'no_file'}">
-					<td><img src="${pageContext.request.contextPath}/resources/upload/${vo.filename}" width="400"></td>	
-				</c:if>
-		</tr>
-		
-		<tr>
-			<th>작성일</th>
-				<td>${fn:split(vo.regdate,' ')[0]}</td>
-		</tr>
-		
-		<tr>
-			<th>조회수</th>
-			<td>${vo.readhit}</td>	
-		</tr>
-		<tr>
-			<th> 추천수</th>
-				<td>
-					
-					<a href="joayoPush.do?idx=${vo.idx}">
-					<font color="black">👍${vo.joayo}</font>  <!-- 글 제목  -->
-					</a>
-				
+	<div class="reviewRead" style="width:700px">
+	
+		<div class="card" style="object-fit: cover;">
+ 			 <img src="${pageContext.request.contextPath}/resources/upload/${vo.filename}" class="card-img-top" alt="...">
+	    <div class="card-body">
+    		<h5 class="card-title">${vo.title}</h5>
+    		<p class="card-text">${vo.content}</p>
+  		</div>
+  	<ul class="list-group list-group-flush">
+    	<li class="list-group-item">${vo.productid }</li>
+   		<li class="list-group-item">${fn:split(vo.regdate,' ')[0]}</li>
+    	<li class="list-group-item">${vo.readhit}</li>
+    	<li class="list-group-item"><a href="joayoPush.do?idx=${vo.idx}">
+									<font color="black">👍${vo.joayo}</font>  <!-- 글 제목  -->
+									</a></li>
+  	</ul>
+  		<div class="card-body">
+    		<a href="" class="card-link">상품페이지</a>
+  		</div>
+		</div>
+	</div>
 
-
-
-				</td>
-		</tr>
-
-		
-	</table>
 	<div align="center">
 		<form>
 			<input type="hidden" name="idx" value="${vo.idx}">
 			<input type="hidden" name="ori_pwd" value="${vo.pwd}">
-			비밀번호<input type="password" name="pwd">
-			<input type="button" value="삭제" width="100" height="100" onclick="del(this.form)">
-			<input type="button" value="수정" width="100" height="100" onclick="modify2(this.form)">
-			<input type="button" value="목록으로" width="100" height="100" onclick="location.href='reviewMain.do'">
+			
+			<br>
+			<br>
+			<div class="form-floating"  style="width:200;">
+			  <input type="password" class="form-control" id="floatingPassword" name="pwd" placeholder="Password">
+  			  <label for="floatingPassword">비밀번호</label>
+			</div>
+			
+			
+			<br>
+			<br>
+			<button type="button" class="btn btn-outline-primary" onclick="del(this.form)">삭제</button>
+			<button type="button" class="btn btn-outline-success" onclick="modify2(this.form)">수정</button>
+			<button type="button" class="btn btn-outline-dark" onclick="location.href='reviewMain.do'">목록으로</button>
 		</form>
 	</div>
 	
@@ -265,39 +251,6 @@ height: 'auto',
 	  </div>
     </div>
 	</div>
-	<div class="row">
-    <div class="bottom_block">
-      <div class="col-1-2">
-        <h3>Follow Us</h3>
-        <div class="socials">
-          <a href="#"></a>
-          <a href="#"></a>
-          <a href="#"></a>
-        </div>
-        <nav><ul>
-                   <li class="current"><a href="home">Home</a></li>
-                   <li ><a href="resources/assets/html/index-1.html">About Us</a></li>
-                   <li><a href="resources/assets/html/index-2.html">Menu</a></li>
-                   <li><a href="resources/assets/html/index-3.html">Portfolio</a></li>
-                   <li><a href="resources/assets/html/index-4.html">News </a></li>
-                   <li><a href="resources/assets/html/index-5.html">Contacts</a></li>
-                 </ul></nav>
-      </div>
-      <div class="col-1-2">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn" data-type="submit">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
-          </div>
-      </div>
-	  </div>
-    </div>
   </div>
 </div>
 <!--==============================footer=================================-->
@@ -306,7 +259,7 @@ height: 'auto',
   <div class="zerogrid">
     <div class="col-full">
 		<div class="wrap-col">
-     Gourmet © 2013  &nbsp;&nbsp; |&nbsp;&nbsp;   <a href="#">Privacy Policy</a>    &nbsp;&nbsp;|&nbsp;&nbsp;  Designed by <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster</a> - <a href="https://www.zerotheme.com/" title="free website templates">ZEROTHEME</a>
+    
 	 	</div>
     </div>
   </div>

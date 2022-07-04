@@ -31,7 +31,7 @@ public class ReviewController {
 	@RequestMapping("reviewMain_Temp")
 	public String goReviewMain(Model model){
 		
-		model.addAttribute("list", reviewService.reviewlist());
+		model.addAttribute("reviewlist", reviewService.reviewlist());
 		
 		return "review/reviewMain";
 	}
@@ -39,7 +39,7 @@ public class ReviewController {
 	// 후기 메인화면
 	@RequestMapping("/reviewMain.do")
 	public String reviewMain(Model model) {
-		model.addAttribute("list", reviewService.reviewlist());
+		model.addAttribute("reviewlist", reviewService.reviewlist());
 		return "review/reviewMain";
 	}
 
@@ -79,6 +79,8 @@ public class ReviewController {
 		 String webPath = "/resources/upload/";
 		 String savePath = request.getSession().getServletContext().getRealPath(webPath);
 		 
+		 System.out.println("savePath : " + savePath + "/" + "webPath : " + webPath);
+		 
 		 MultipartFile file = vo.getFile();
 		 
 		 String filename = "no_file";
@@ -117,7 +119,7 @@ public class ReviewController {
 		 model.addAttribute("vo",reviewService.setReviewVO(vo));
 		 
 		 //reviewMain에서 list를 받아서 보여주니까 list에도 묶어서 전달
-		 model.addAttribute("list", reviewService.reviewlist());
+		 model.addAttribute("reviewlist", reviewService.reviewlist());
 		 
 		 
 		 return "review/reviewMain";
@@ -201,12 +203,12 @@ public class ReviewController {
 				 
 			vo.setFilename(filename);
 			  
-			 
+			System.out.println("savePath:" + savePath);
 	
 		  
 		  model.addAttribute("vo", reviewService.updateReview(vo));
 		  //reviewMain에서 list를 받아서 보여주니까 list에도 묶어서 전달
-		  model.addAttribute("list", reviewService.reviewlist());
+		  model.addAttribute("reviewlist", reviewService.reviewlist());
 		  
 		  return "/review/reviewMain"; 
 		 
@@ -224,4 +226,5 @@ public class ReviewController {
 			  
 			  return "/review/reviewRead";
 		  }
+		  
 }

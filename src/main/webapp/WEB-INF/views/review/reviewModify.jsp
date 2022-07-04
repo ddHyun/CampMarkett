@@ -12,7 +12,8 @@
      <link rel="stylesheet" href="resources/assets/css/style.css">
      <link rel="stylesheet" href="resources/assets/css/slider.css">
 	 <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
+	 <link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen">
+	 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/simplex/bootstrap.min.css" integrity="sha384-FYrl2Nk72fpV6+l3Bymt1zZhnQFK75ipDqPXK0sOR0f/zeOSZ45/tKlsKucQyjSp" crossorigin="anonymous"> 
      <script src="resources/assets/js/jquery.js"></script>
      <script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
      <script src="resources/assets/js/superfish.js"></script>
@@ -120,7 +121,7 @@ height: 'auto',
       </div>
     </div>
 </header>
- <div class="slider-relative">
+<!--  <div class="slider-relative">
     <div class="slider-block">
       <div class="slider">
         <ul class="items">
@@ -130,7 +131,7 @@ height: 'auto',
         </ul>
       </div>
     </div>
- </div>
+ </div> -->
 <!--=======content================================-->
 
 <div class="content page1">
@@ -142,59 +143,95 @@ height: 'auto',
         <div class="car_wrap">
         <div class="review" align="center">
         <hr>
-		<form method="inform" enctype="multipart/form-data">
-		<input type="hidden" name="idx" value="${vo.idx}">
-		<table border="1" align="center">
-		
+        
+        <form  enctype="multipart/form-data">
+        <input type="hidden" name="idx" value="${vo.idx}">
+		<table border="1" >
 			<tr>
-				<th>작성자</th>
-				<td><input name="memberid" value="${vo.memberid}"></td>
+				<td>
+				<div class="input-group mb-3">
+  				<span class="input-group-text" id="inputGroup-sizing-default">작성자</span>
+  				<input value="${vo.memberid}" name="memberid" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				</td>
 			</tr>
 			
 			<tr>
-				<th>상품명</th>
-				<td><input name="productid" value="${vo.productid}"></td>
+				<td>
+				<div class="input-group mb-3">
+  				<span class="input-group-text" id="inputGroup-sizing-default">상품명</span>
+  				<input value="${vo.productid }" name="productid" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				</td>
 			</tr>
 			
 			<tr>
-				<th>제목</th>
-				<td><input name="title" value="${vo.title}"></td>
+				<td>
+				<div class="input-group mb-3">
+  				<span class="input-group-text" id="inputGroup-sizing-default">제목</span>
+  				<input value="${vo.title}" name="title" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+				<div class="input-group mb-3">
+  				<span class="input-group-text" id="inputGroup-sizing-default">후기</span>
+  				<input value="${vo.content}" name="content" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				</td>
 			</tr>
 					
 			<tr>
-				<th>내용</th>
-				<td><textarea row="5" cols="50" name="content" style="resize:none;" wrap="on">${vo.content}</textarea></td>
+				<td>
+				<div class="input-group mb-3">
+  				<span class="input-group-text" id="inputGroup-sizing-default">비밀번호</span>
+  				<input value="${vo.pwd}" name="pwd" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				</td>
 			</tr>
 			
 			<tr>
-				<th>비밀번호</th>
-				<td><input name="pwd" type="password" value="${vo.pwd}"></td>
+				<td>
+				<div class="input-group mb-3">
+  				<span class="input-group-text" id="inputGroup-sizing-default">${vo.filename}</span>
+  				<input value="${vo.filename}" name="file" type="file" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				</td>
 			</tr>
 			
 			<tr>
-				<th>사진</th>
-				<td><input type="file" name="file" value="${vo.filename}" ></td>
+				<td>
+				<div class="input-group mb-3">
+  				<span class="input-group-text" id="inputGroup-sizing-default">작성일</span>
+  				<input value="${vo.regdate}" name="regdate" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				</td>
 			</tr>
 			
 			<tr>
-				<th>작성일</th>
-					<td>${vo.regdate}</td>
+				<td>
+				<div class="input-group mb-3">
+  				<span class="input-group-text" id="inputGroup-sizing-default">조회수</span>
+  				<input value="${vo.readhit}" name="readhit" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				</td>
 			</tr>
 			
 			<tr>
-				<th>조회수</th>
-					<td>${vo.readhit}</td>
+				<td>
+				<div class="input-group mb-3">
+  				<span class="input-group-text" id="inputGroup-sizing-default">작성일</span>
+  				<input value="${vo.joayo}" name="joayo" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				</td>
 			</tr>
-			
-			<tr>
-				<th>작성일</th>
-					<td>${vo.joayo}</td>
-			</tr>
-			
+
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button" value="수정" onclick="update(this.form)">
-					<input type="button" value="돌아가기" onclick="location.href='reviewMain.do'">
+					<button type="button" class="btn btn-outline-success" onclick="update(this.form)">수정완료</button>
+					<button type="button" class="btn btn-outline-primary" onclick="location.href='reviewMain.do'">돌아가기</button>
 				</td>
 			</tr>
 		
@@ -207,39 +244,6 @@ height: 'auto',
 	  </div>
     </div>
 	</div>
-	<div class="row">
-    <div class="bottom_block">
-      <div class="col-1-2">
-        <h3>Follow Us</h3>
-        <div class="socials">
-          <a href="#"></a>
-          <a href="#"></a>
-          <a href="#"></a>
-        </div>
-        <nav><ul>
-                   <li class="current"><a href="home">Home</a></li>
-                   <li ><a href="resources/assets/html/index-1.html">About Us</a></li>
-                   <li><a href="resources/assets/html/index-2.html">Menu</a></li>
-                   <li><a href="resources/assets/html/index-3.html">Portfolio</a></li>
-                   <li><a href="resources/assets/html/index-4.html">News </a></li>
-                   <li><a href="resources/assets/html/index-5.html">Contacts</a></li>
-                 </ul></nav>
-      </div>
-      <div class="col-1-2">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn" data-type="submit">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
-          </div>
-      </div>
-	  </div>
-    </div>
   </div>
 </div>
 <!--==============================footer=================================-->
@@ -248,7 +252,6 @@ height: 'auto',
   <div class="zerogrid">
     <div class="col-full">
 		<div class="wrap-col">
-     Gourmet © 2013  &nbsp;&nbsp; |&nbsp;&nbsp;   <a href="#">Privacy Policy</a>    &nbsp;&nbsp;|&nbsp;&nbsp;  Designed by <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster</a> - <a href="https://www.zerotheme.com/" title="free website templates">ZEROTHEME</a>
 	 	</div>
     </div>
   </div>

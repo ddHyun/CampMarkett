@@ -49,7 +49,7 @@ VALUES(SEQ_Review.nextVal, #{memberid}, #{productid}, #{title}, #{content}, #{fi
 		SET MEMBERID=#{memberid},
 		PRODUCTID=#{productid},
 		TITLE=#{title},
-		CONTENT=#{title},
+		CONTENT=#{content},
 		FILENAME=#{filename},
 		PWD=#{pwd},
 		REGDATE=SYSDATE 
