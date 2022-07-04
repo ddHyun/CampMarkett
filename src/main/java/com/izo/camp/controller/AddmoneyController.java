@@ -42,11 +42,8 @@ public class AddmoneyController {
 		if(cardCnt>=1) {
 			AddmoneyVO vo1 = addmoneyService.getMoneyInfo(id);
 			totalmoney = vo1.getTotalmoney();
-			System.out.println("아이디의 카드가 여러개일때 잔액 - "+totalmoney);
 		}else {
 			totalmoney = addmoneyService.searchId(id);
-			System.out.println("아이디의 카드가 없을 때 잔액 - "+totalmoney);
-			
 		}
 
 		model.addAttribute("vo", vo);

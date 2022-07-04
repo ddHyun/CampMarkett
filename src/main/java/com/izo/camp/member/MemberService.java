@@ -65,5 +65,12 @@ public class MemberService {
 		return memberMapper.getAddress(loginId);
 	}
 
+	//이메일 변경하기
+	public int changeEmail(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return memberMapper.changeEmail(vo);
+	}
+
+	
 	
 }

@@ -40,4 +40,7 @@ public interface MemberMapper {
 	
 	//주소가져오기
 	public String getAddress(String loginId);
+
+	//이메일 변경하기
+	public int changeEmail(MemberVO vo);
 }
