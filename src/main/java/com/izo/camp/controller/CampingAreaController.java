@@ -198,8 +198,7 @@ public class CampingAreaController {
 			list = list.subList(0, 10);
 		return list;
 	}
-	
-	
+
 	
 	@RequestMapping("/moveTest")
 	public String moveTest(Model model,HttpServletRequest request) {
