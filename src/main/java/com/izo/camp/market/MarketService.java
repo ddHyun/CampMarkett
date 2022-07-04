@@ -22,4 +22,9 @@ public class MarketService {
 	public ProductVO getProductByIdx(int idx) {
 		return productMapper.getOne(idx);
 	}
+	
+	public Integer getProductIdx(String productId) {
+		System.out.println(productId);
+		return productMapper.getIdx(productId);
+	}
 }

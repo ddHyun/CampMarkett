@@ -86,7 +86,7 @@ height: 'auto',
 
     <![endif]-->
      </head>
-     <body>
+     <body style="background-color: #5fa022;">
        <div class="main">
 <!--==============================header=================================-->
  <header> 

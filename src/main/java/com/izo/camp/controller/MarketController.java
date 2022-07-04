@@ -17,10 +17,12 @@ import com.izo.camp.addmoney.AddmoneyService;
 import com.izo.camp.market.BasketService;
 import com.izo.camp.market.MarketService;
 import com.izo.camp.market.OrderService;
+import com.izo.camp.review.ReviewService;
 import com.izo.camp.vo.AddmoneyVO;
 import com.izo.camp.vo.BasketVO;
 import com.izo.camp.vo.OrderVO;
 import com.izo.camp.vo.ProductVO;
+import com.izo.camp.vo.ReviewVO;
 
 @Controller
 public class MarketController {
@@ -33,6 +35,8 @@ public class MarketController {
 	AddmoneyService addmoneyService;
 	@Autowired 
 	OrderService orderService;
+	@Autowired
+	ReviewService reviewService;
 	
 	@Autowired
 	HttpSession session;
@@ -54,7 +58,11 @@ public class MarketController {
 		
 		ProductVO product = marketService.getProductByIdx(idx);
 		
+		List<ReviewVO> reviewList = reviewService.getListById(product.getProductId());
+		
 		model.addAttribute("product", product);
+		
+		model.addAttribute("reviewList", reviewList);
 		
 		return "market/detail";
 	}

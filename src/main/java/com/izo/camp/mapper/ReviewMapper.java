@@ -39,6 +39,8 @@ public interface ReviewMapper {
 	  
 	// 게시글 수정
 	public int reviewUpdate(ReviewVO vo);
+
+	public List<ReviewVO> getReviewList(String productId);
 	
 	
 	

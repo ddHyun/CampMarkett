@@ -146,7 +146,7 @@ height: 'auto',
 
     <![endif]-->
      </head>
-     <body>
+     <body style="background-color: #5fa022;">
        <div class="main">
 <!--==============================header=================================-->
   <header> 
@@ -220,7 +220,7 @@ height: 'auto',
 									</a></li>
   	</ul>
   		<div class="card-body">
-    		<a href="" class="card-link">상품페이지</a>
+    		<a href="marketDetail?idx=${productIdx}" class="card-link">구매하러가기</a>
   		</div>
 		</div>
 	</div>
@@ -252,6 +252,7 @@ height: 'auto',
     </div>
 	</div>
   </div>
+</div>
 </div>
 <!--==============================footer=================================-->
 
