@@ -1,7 +1,5 @@
 package com.izo.camp.controller;
 
-import java.io.IOException;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,18 +7,16 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.filefilter.FalseFileFilter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.izo.camp.infomation.CampInfoService;
 import com.izo.camp.infomation.WeatherService;
+import com.izo.camp.member.MemberService;
 import com.izo.camp.vo.CampInfoVO;
 
 @Controller
@@ -31,20 +27,10 @@ public class CampingAreaController {
 	
 	@Autowired
 	CampInfoService campInfoService;
-
 	
-	//나의 주소에 따른 위도 경도 좌표 받기
-	@RequestMapping(value = "/weather", method = RequestMethod.GET)
-	public String weatherView(Model model) throws IOException {
-		weatherService.checkWeather();
-		campInfoService.hasCamping();
-		String defaultAddress = "경원대로 1397, 학원"; 		
-		Map getXY = campInfoService.getKakaoApiFromAddress(defaultAddress);
-		model.addAttribute("lat", getXY.get("lat"));
-		model.addAttribute("lon", getXY.get("lon"));
-		
-		return "weather/weatherHome";
-	}
+	@Autowired
+	MemberService memberService;
+
 	
 	//가까운 캠핑장 정보 얻어오기
 	@RequestMapping("/info")
@@ -155,9 +141,14 @@ public class CampingAreaController {
 			getXY.put("lon", lon);
 		}
 		//주어진 정보가 없고 세션도 null이면  자신의주소
-		else if(session.getAttribute("sessionLat")==null) {
+		else if(session.getAttribute("sessionLat") == null) {
 			//자신의 주소로 위치 확인 
-			String address="인천 부평구 시장로 7, 학원빌딩";//(임시주소)
+			String address;
+			if(session.getAttribute("loginId")==null) {
+				address = "인천 부평구 시장로 7, 학원빌딩";//(임시주소)
+			}else {
+				address = memberService.getAddress((String)session.getAttribute("loginId"));
+			}
 			getXY = campInfoService.getKakaoApiFromAddress(address);
 			
 		}//주어진 정보가 없고 세션이 null이 아니면

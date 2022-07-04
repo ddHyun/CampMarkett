@@ -37,4 +37,7 @@ public interface MemberMapper {
 	
 	//비밀번호 변경하기
 	public int changePwd(MemberVO vo);
+	
+	//주소가져오기
+	public String getAddress(String loginId);
 }
