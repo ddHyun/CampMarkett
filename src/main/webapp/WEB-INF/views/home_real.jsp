@@ -113,9 +113,12 @@ height: 'auto',
     <div class="slider-block">
       <div class="slider">
         <ul class="items">
-          <li><img src="resources/assets/img/images/slide.jpg" alt=""></li>
-          <li><img src="resources/assets/img/images/slide1.jpg" alt=""></li>
-          <li class="mb0"><img src="resources/assets/img/images/slide2.jpg" alt=""></li>
+          <li><img src="resources/assets/img/mainImg/main10.jpg" alt=""></li>
+          <li><img src="resources/assets/img/mainImg/main8.jpg" alt=""></li>
+          <li><img src="resources/assets/img/mainImg/mai11.jpg" alt=""></li>
+          <li><img src="resources/assets/img/mainImg/main7.jpg" alt=""></li>
+         
+          <li class="mb0"><img src="resources/assets/img/mainImg/main3.jpg" alt=""></li>
         </ul>
       </div>
     </div>
