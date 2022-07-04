@@ -130,13 +130,13 @@ height: 'auto',
       </div>
     </div>
 </header>
- <div class="slider-relative">
+  <div class="slider-relative">
     <div class="slider-block">
       <div class="slider">
         <ul class="items">
-          <li><img src="resources/assets/img/images/slide.jpg" alt=""></li>
-          <li><img src="resources/assets/img/images/slide1.jpg" alt=""></li>
-          <li class="mb0"><img src="resources/assets/img/images/slide2.jpg" alt=""></li>
+          <li><img src="resources/upload/caminoevent.jpg" alt="" ></li>
+          <li><img src="resources/upload/coleman_car.png" alt=""></li>
+          <li class="mb0"><img src="resources/upload/minibeam.jpg" alt=""></li>
         </ul>
       </div>
     </div>
@@ -164,10 +164,10 @@ height: 'auto',
 			</tr>
 			
 			<tr>
-				<td>
+				<td style="height:54px;">
 				<div class="form-floating">
-  		<select class="form-select" name="productid" aria-label="Floating label select example">
-    		<option selected name="productid">후기상품을 고르세요</option>
+  		<select class="form-select" name="productid" aria-label="Floating label select example" style="padding:0px; height:38px;">
+    		<option selected name="productid" style="text-align:center;">후기상품을 고르세요</option>
     		<option value="바베큐폭립">바베큐폭립</option>
     		<option value="부대찌개">부대찌개</option>
     		<option value="감바스 알 아히요">감바스 알 아히요</option>
@@ -178,7 +178,7 @@ height: 'auto',
     		<option value="밀푀유나베">밀푀유나베</option>
     		<option value="꼬치구이 세트">꼬치구이 세트</option>
   		</select>
-  		<label for="floatingSelect">상품명</label>
+  	<!-- 	<label for="floatingSelect">상품명</label> -->
 				</div>
 				
 			<!-- <div class="input-group mb-3">
