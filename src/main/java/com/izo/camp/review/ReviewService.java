@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.izo.camp.mapper.ReviewMapper;
-import com.izo.camp.vo.JoayoVO;
+import com.izo.camp.vo.ProductVO;
 import com.izo.camp.vo.ReviewVO;
 
 @Service
@@ -77,6 +77,8 @@ public class ReviewService {
 	return reviewMapper.reviewUpdate(vo);
 	
 	}
+	
+
 	
 
 }

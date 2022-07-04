@@ -12,7 +12,10 @@
      <link rel="stylesheet" href="resources/assets/css/style.css">
      <link rel="stylesheet" href="resources/assets/css/slider.css">
 	 <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
+	 <link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/simplex/bootstrap.min.css" integrity="sha384-FYrl2Nk72fpV6+l3Bymt1zZhnQFK75ipDqPXK0sOR0f/zeOSZ45/tKlsKucQyjSp" crossorigin="anonymous">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+   	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
      <script src="resources/assets/js/jquery.js"></script>
      <script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
      <script src="resources/assets/js/superfish.js"></script>
@@ -77,6 +80,7 @@ height: 'auto',
 		f.submit();
 		
 	}
+
 </script>
      <!--[if lt IE 8]>
        <div style=' clear: both; text-align:center; position: relative;'>
@@ -148,42 +152,71 @@ height: 'auto',
         <div class="car_wrap">
         <div class="review" align="center">
         <hr>
-		<form method="inform"  enctype="multipart/form-data">
-		<table border="1" align="center">
+		<form  enctype="multipart/form-data">
+		<table border="1">
 			<tr>
-				<th>작성자</th>
-				<td><input name="memberid"></td>
+				<td>
+				<div class="input-group mb-3">
+  				<span class="input-group-text" id="inputGroup-sizing-default">작성자</span>
+  				<input name="memberid" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				</td>
 			</tr>
 			
 			<tr>
-				<th>상품명</th>
-				<td><input name="productid"></td>
+				<td>
+				<div class="input-group mb-3">
+  				<span class="input-group-text" id="inputGroup-sizing-default">상품명</span>
+  				<input name="productid" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				</td>
 			</tr>
 			
 			<tr>
-				<th>제목</th>
-				<td><input name="title"></td>
+				<td>
+				<div class="input-group mb-3">
+  				<span class="input-group-text" id="inputGroup-sizing-default">제목</span>
+  				<input name="title" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				</td>
 			</tr>
+			
+			<tr>
+				<td>
+				<div class="input-group mb-3">
+  				<span class="input-group-text" id="inputGroup-sizing-default">후기</span>
+  				<input name="content" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				</td>
+			</tr>			
+			
 					
 			<tr>
-				<th>내용</th>
-				<td><textarea row="5" cols="50" name="content" style="resize:none;" wrap="on"></textarea></td>
+				<td>
+				<div class="input-group mb-3">
+  				<span class="input-group-text" id="inputGroup-sizing-default">비밀번호</span>
+  				<input name="pwd" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				</td>
 			</tr>
+			
 			
 			<tr>
-				<th>비밀번호</th>
-				<td><input name="pwd" type="password"></td>
+				<td>
+				<div class="input-group mb-3">
+  				<span class="input-group-text" id="inputGroup-sizing-default">후기사진</span>
+  				<input name="file" type="file" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				</td>
 			</tr>
 			
-			<tr>
-				<th>업로드</th>
-				<td><input type="file" name="file"></td>
-			</tr>
 			
+			<br>
+			<br>
 			<tr>
 				<td colspan="2" align="center">
-				<input class="btn" type="button" value="리뷰등록" onclick="insert(this.form)">
-				<input class="btn" type="button" value="목록으로" onclick="location.href='reviewMain.do'">
+				<button type="button" class="btn btn-outline-success" onclick="insert(this.form)">리뷰등록</button>
+				<button type="button" class="btn btn-outline-primary" onclick="location.href='reviewMain.do'">목록으로</button>
 				</td>
 			</tr>
 		</table>
