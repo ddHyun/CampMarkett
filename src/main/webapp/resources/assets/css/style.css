@@ -681,7 +681,10 @@ address dd span {
 	text-align: left;
 }
 
-
+#registCardForm .inputBorder {
+	border: 1px solid #A197BD;
+	border-radius: 4px;
+}
 
 
 /************Footer***********/
