@@ -41,6 +41,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<update id="changePwd" parameterType="memberVO">
 			update membertable set pwd=#{pwd} where idx=#{idx}
 		</update>
+		
+	<select id="getAddress" resultType="String" parameterType="String">
+		SELECT ADDR FROM MEMBERTABLE
+		WHERE id = #{loginId}
+	</select>
 </mapper>
 
 

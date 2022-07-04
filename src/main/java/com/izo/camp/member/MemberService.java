@@ -59,5 +59,11 @@ public class MemberService {
 		System.out.println(memberMapper.changePwd(vo));
 		return memberMapper.changePwd(vo);
 	}
+
+	public String getAddress(String loginId) {
+		
+		return memberMapper.getAddress(loginId);
+	}
+
 	
 }

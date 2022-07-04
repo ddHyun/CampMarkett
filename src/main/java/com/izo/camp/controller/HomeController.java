@@ -45,17 +45,12 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
-		session.setAttribute("sessionLat", 37.49051);
-		session.setAttribute("sessionLon", 126.72414);
+		
 		
 		model.addAttribute("serverTime", formattedDate );
 
-		for(DeptVO deptVO : deptMapper.dept()) {
-			System.out.println(deptVO.getDeptno());
-		}
-		session.setAttribute("loginId", "SampleID");
-		session.setAttribute("loginIdx", 1);
-		System.out.println("샘플 로그인이 완료되었습니다. ");
+		campInfoService.hasCamping();
+		
 		
 		return "home_real";
 
@@ -83,8 +78,6 @@ public class HomeController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String homeGo() {
 		campInfoService.hasCamping();
-		session.setAttribute("sessionLat", 37.49051);
-		session.setAttribute("sessionLon", 126.72414);
 		return "home_real";
 	}
 	
