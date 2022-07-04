@@ -165,13 +165,13 @@
 					</div>
 					<!-- 상품 상세보기 창 -->
 					<div id="detail" style="background-color: white;">
-						<img src="resources/assets/img/food/F1/steak1.jpg"
+						<img src="resources/assets/img/food/detail/steak1.jpg"
 							style="width: 120%"> <img
-							src="resources/assets/img/food/F1/steak2.jpg" style="width: 120%">
-						<img src="resources/assets/img/food/F1/steak3.jpg"
+							src="resources/assets/img/food/detail/steak2.jpg" style="width: 120%">
+						<img src="resources/assets/img/food/detail/steak3.jpg"
 							style="width: 120%"> <img
-							src="resources/assets/img/food/F1/steak4.jpg" style="width: 120%">
-						<img src="resources/assets/img/food/F1/steak5.jpg"
+							src="resources/assets/img/food/detail/steak4.jpg" style="width: 120%">
+						<img src="resources/assets/img/food/detail/steak5.jpg"
 							style="width: 120%">
 					</div>
 					
