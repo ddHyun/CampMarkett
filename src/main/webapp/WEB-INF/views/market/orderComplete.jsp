@@ -102,7 +102,6 @@
 					
 			</div>
 			<div id="row"  style= "height:40px;">
-				<input id="totalPrice" value="${totalPrice}원">
 				<h3>배송주소 : ${address}</h3>
 			</div> 		
 		</c:otherwise>

@@ -125,12 +125,13 @@ height: 'auto',
 	<div class="card border-success mb-3" style="width:100%;">
  	
  		  <div class="card-body">
- 		 <c:choose>
+ 	<c:choose>
 	<c:when test="${empty basketProduct}">
 		<p>장바구니가 비어있습니다 <p>
+		<button type="button" style="height:40px; float:right;" class="btn btn-outline-success btn-lg" onclick="location.href='marketMain_Temp'">상품 목록</button>
 	</c:when>
 	
-		<c:otherwise>
+	<c:otherwise>
 			
 			<c:forEach var="product" items="${basketProduct}">
 				<div id="${product.idx}div">
@@ -152,9 +153,7 @@ height: 'auto',
 			</c:forEach>
 			
 				
-		</c:otherwise>
-		
-		</c:choose>
+
  		 </div>
  		 
  		  <div class="card-header">
@@ -164,6 +163,9 @@ height: 'auto',
  		  <div style="margin: 30px;">
 			<button type="button" style="height:40px; float:right;" class="btn btn-outline-success btn-lg" onclick="goOrderPage()">구매 하기</button>
 		</div>
+		</c:otherwise>
+		
+		</c:choose>
 	</div>
 	
 	
