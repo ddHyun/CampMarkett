@@ -116,11 +116,15 @@
 							<div class="card-body" style="padding-top: 5px;">
 								<br>
 								<p class="card-text">
-									63 뷔페 파빌리온에서 맛보던 스테이크를 캠핑장에서도 만나볼 수 있는 밀키트<br> <br> <span
-										style="font-size: 13px">무료배송<br> 30000원 이상 구매시<br>
-										<br> 개당 중량 x 수량 : 1068g x 1팩<br> 유통기한 : 2022년
-										10-10이거나 그 이후인 상품<br> 보관방법 : 냉동보관
-									</span>
+
+									 63 뷔페 파빌리온에서 맛보던 스테이크를 캠핑장에서도 만나볼 수 있는 밀키트<br><br>
+									<span style="font-size:13px">무료배송<br>
+									30000원 이상 구매시<br><br>
+									개당 중량 x 수량 : 1068g x 1팩<br>
+									유통기한 : 2022년 10-10이거나 그 이후인 상품<br>
+									보관방법 : 냉동보관</span> 
+								
+
 								</p>
 								<h3 class="card-title" style="text-align: right;">${product.price}원</h3>
 							</div>
