@@ -17,4 +17,7 @@ public interface ProductMapper {
 	public ProductVO getOne(int idx);
 	
 	public int getPrice(String productId);
+
+	@Select("SELECT IDX FROM PRODUCTTABLE WHERE PRODUCTID = #{productId}")
+	public Integer getIdx(String productId);
 }

@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.izo.camp.mapper.ProductMapper;
 import com.izo.camp.mapper.ReviewMapper;
-import com.izo.camp.vo.ProductVO;
 import com.izo.camp.vo.ReviewVO;
 
 @Service
@@ -17,6 +17,9 @@ public class ReviewService {
 	
 	@Autowired
 	ReviewMapper reviewMapper;
+	
+	@Autowired
+	ProductMapper productMapper;	
 	
 	public List<ReviewVO> list(){
 		return reviewMapper.list();
@@ -77,8 +80,13 @@ public class ReviewService {
 	return reviewMapper.reviewUpdate(vo);
 	
 	}
-	
 
+	public List<ReviewVO> getListById(String productId) {
+		
+		return reviewMapper.getReviewList(productId);
+	}
+	
+	
 	
 
 }

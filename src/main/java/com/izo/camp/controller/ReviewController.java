@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.izo.camp.market.MarketService;
 import com.izo.camp.review.ReviewService;
 import com.izo.camp.vo.ReviewVO;
 
@@ -27,6 +28,8 @@ public class ReviewController {
 	@Autowired
 	HttpServletRequest request;
 	
+	@Autowired
+	MarketService marketService;
 
 	@RequestMapping("reviewMain_Temp")
 	public String goReviewMain(Model model){
@@ -49,12 +52,14 @@ public class ReviewController {
 	
 		
 		model.addAttribute("vo", vo);
+		ReviewVO vo2 = reviewService.getReviewIdx(idx);
 		
 		// 조회수 증가
 		reviewService.readhitCount(vo.getIdx());
-		
+		int productIdx = marketService.getProductIdx(vo2.getProductid());
 		// 후기 조회
-		model.addAttribute("vo", reviewService.getReviewIdx(idx));
+		model.addAttribute("vo", vo2);
+		model.addAttribute("productIdx", productIdx);
 
 		return "review/reviewRead";
 

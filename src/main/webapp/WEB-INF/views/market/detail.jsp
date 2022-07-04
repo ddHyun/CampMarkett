@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <html>
 <head>
@@ -98,32 +99,35 @@
 				<div class="s"
 					style="margin: 0; padding: 0; width: 100%; background-color: white;">
 					<h2 class="head2"></h2>
-					<div class="inner1_menu" style="float: left; width: 65%; margin-top:40px">
+					<div class="inner1_menu"
+						style="float: left; width: 65%; margin-top: 40px">
 						<img src="resources/assets/img/food/${product.imgName}.jpg"
-							style="width: 100%; padding:20px">
+							style="width: 100%; padding: 20px">
 					</div>
 
 					<div class="inner1_menu" style="float: left; width: 35%;">
 
-						<div class="card border-success mb-3" style="width: 100%; border:none;">
-							<h2 class="card-header" style="padding-top: 15px; 
-								font-size:30px; margin-bottom: 5px;"><strong>${product.productId}</strong></h2>
+						<div class="card border-success mb-3"
+							style="width: 100%; border: none;">
+							<h2 class="card-header"
+								style="padding-top: 15px; font-size: 30px; margin-bottom: 5px;">
+								<strong>${product.productId}</strong>
+							</h2>
 							<div class="card-body" style="padding-top: 5px;">
 								<br>
 								<p class="card-text">
-									63 뷔페 파빌리온에서 맛보던 스테이크를 캠핑장에서도 만나볼 수 있는 밀키트<br><br>
-									<span style="font-size:13px">무료배송<br>
-									30000원 이상 구매시<br><br>
-									개당 중량 x 수량 : 1068g x 1팩<br>
-									유통기한 : 2022년 10-10이거나 그 이후인 상품<br>
-									보관방법 : 냉동보관</span>
+									63 뷔페 파빌리온에서 맛보던 스테이크를 캠핑장에서도 만나볼 수 있는 밀키트<br> <br> <span
+										style="font-size: 13px">무료배송<br> 30000원 이상 구매시<br>
+										<br> 개당 중량 x 수량 : 1068g x 1팩<br> 유통기한 : 2022년
+										10-10이거나 그 이후인 상품<br> 보관방법 : 냉동보관
+									</span>
 								</p>
 								<h3 class="card-title" style="text-align: right;">${product.price}원</h3>
 							</div>
 
 							<hr>
 							<div class="card-body" style="text-align: center;">
-								<button class="btn btn-success btn-lg" style="width: 90%; "
+								<button class="btn btn-success btn-lg" style="width: 90%;"
 									onclick="addBasket('${product.productId}')">장바구니 추가</button>
 								<%-- <button class="btn btn-success btn-lg"
 									style="width: 90%; margin-top: 10px;"
@@ -139,96 +143,59 @@
 					</div>
 				</div>
 				<div class="zerogrid2">
-				
-					
-					<div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="width: 100%; border:1px black; margin:20px 0;">
-					  <input type="radio" style="display:none; height:50px;" class="btn-check" name="btnradio" id="btnradio1" value="detail" autocomplete="off" >
-					  <label style="height:40px; border:3px solid #5fa022;" class="btn btn-outline-success" for="btnradio1">상세 보기</label>
-					  <input type="radio" style="display:none; height:50px;" class="btn-check" name="btnradio" id="btnradio2" value="review" autocomplete="off" >
-					  <label style="height:40px; border:3px solid #5fa022;" class="btn btn-outline-success" for="btnradio2">구매 후기</label>
+
+
+					<div class="btn-group" role="group"
+						aria-label="Basic radio toggle button group"
+						style="width: 100%; border: 1px black; margin: 20px 0;">
+						<input type="radio" style="display: none; height: 50px;"
+							class="btn-check" name="btnradio" id="btnradio1" value="detail"
+							autocomplete="off"> <label
+							style="height: 40px; border: 3px solid #5fa022;"
+							class="btn btn-outline-success" for="btnradio1">상세 보기</label> <input
+							type="radio" style="display: none; height: 50px;"
+							class="btn-check" name="btnradio" id="btnradio2" value="review"
+							autocomplete="off"> <label
+							style="height: 40px; border: 3px solid #5fa022;"
+							class="btn btn-outline-success" for="btnradio2">구매 후기</label>
 					</div>
 					<!-- 상품 상세보기 창 -->
-					<div 	id="detail" style="background-color: white;">
-					<img src="resources/assets/img/food/F1/steak1.jpg" style="width:120%">
-					<img src="resources/assets/img/food/F1/steak2.jpg" style="width:120%">
-					<img src="resources/assets/img/food/F1/steak3.jpg" style="width:120%">
-					<img src="resources/assets/img/food/F1/steak4.jpg" style="width:120%">
-					<img src="resources/assets/img/food/F1/steak5.jpg" style="width:120%">
+					<div id="detail" style="background-color: white;">
+						<img src="resources/assets/img/food/F1/steak1.jpg"
+							style="width: 120%"> <img
+							src="resources/assets/img/food/F1/steak2.jpg" style="width: 120%">
+						<img src="resources/assets/img/food/F1/steak3.jpg"
+							style="width: 120%"> <img
+							src="resources/assets/img/food/F1/steak4.jpg" style="width: 120%">
+						<img src="resources/assets/img/food/F1/steak5.jpg"
+							style="width: 120%">
 					</div>
+					
 					<!-- =============== 후기 게시판==================== -->
-					<div 	id="review" >
-					<table style="margin-top: 20px; margin-bottom: 30px;" class="table table-hover"	>
-						<thead>
-							<tr class="table-success">
-								<th scope="col">Type</th>
-								<th scope="col">Column heading</th>
-								<th scope="col">Column heading</th>
-								<th scope="col">Column heading</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="table-active">
-								<th scope="row">Active</th>
-								<td>Column content</td>
-								<td>Column content</td>
-								<td>Column content</td>
-							</tr>
-							<tr>
-								<th scope="row">Default</th>
-								<td>Column content</td>
-								<td>Column content</td>
-								<td>Column content</td>
-							</tr>
-							<tr class="table-primary">
-								<th scope="row">Primary</th>
-								<td>Column content</td>
-								<td>Column content</td>
-								<td>Column content</td>
-							</tr>
-							<tr class="table-secondary">
-								<th scope="row">Secondary</th>
-								<td>Column content</td>
-								<td>Column content</td>
-								<td>Column content</td>
-							</tr>
-							<tr class="table-success">
-								<th scope="row">Success</th>
-								<td>Column content</td>
-								<td>Column content</td>
-								<td>Column content</td>
-							</tr>
-							<tr class="table-danger">
-								<th scope="row">Danger</th>
-								<td>Column content</td>
-								<td>Column content</td>
-								<td>Column content</td>
-							</tr>
-							<tr class="table-warning">
-								<th scope="row">Warning</th>
-								<td>Column content</td>
-								<td>Column content</td>
-								<td>Column content</td>
-							</tr>
-							<tr class="table-info">
-								<th scope="row">Info</th>
-								<td>Column content</td>
-								<td>Column content</td>
-								<td>Column content</td>
-							</tr>
-							<tr class="table-light">
-								<th scope="row">Light</th>
-								<td>Column content</td>
-								<td>Column content</td>
-								<td>Column content</td>
-							</tr>
-							<tr class="table-dark">
-								<th scope="row">Dark</th>
-								<td>Column content</td>
-								<td>Column content</td>
-								<td>Column content</td>
-							</tr>
-						</tbody>
-					</table>
+					<div id="review" >
+						<table class="table table-hover" style="margin-top: 20px; margin-bottom: 30px;">
+							<thead>
+								<tr>
+									<th scope="col" style="text-align:center;">작성일</th>
+									<th scope="col" style="text-align:center;">제목</th>
+									<th scope="col" style="text-align:center;">조회수</th>
+									<th scope="col" style="text-align:center;">추천수</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<c:forEach var="vo" items="${reviewList}">
+									<tr class="table-primary">
+										<th scope="row" style="text-align:center;">${fn:split(vo.regdate,' ')[0]}</th>
+										<td style="text-align:center;"><a style="text-decoration-line: none;"
+											href="reviewRead.do?idx=${vo.idx}"> <font color="black">${vo.title}</font>
+										</a></td>
+										<td style="text-align:center;">${vo.readhit}</td>
+										<td style="text-align:center;">👍${vo.joayo}</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
@@ -271,20 +238,18 @@
 		}
 
 	}
-  $(document).ready(function () {
-	  $('.btn-check').click(function(){
-		  var where = $("input[name='btnradio']:checked").val();
-		  if(where=='review'){
-		
-			  $('#detail').css('display', 'none');
-			  
-		  }else{
-			  $('#detail').css('display', 'block');
-		  }
-	   });   
-  });
-	
-	
+	$(document).ready(function() {
+		$('.btn-check').click(function() {
+			var where = $("input[name='btnradio']:checked").val();
+			if (where == 'review') {
+
+				$('#detail').css('display', 'none');
+
+			} else {
+				$('#detail').css('display', 'block');
+			}
+		});
+	});
 </script>
 
 

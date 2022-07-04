@@ -66,6 +66,10 @@ VALUES(SEQ_Review.nextVal, #{memberid}, #{productid}, #{title}, #{content}, #{fi
 		
 	</update>
 	
+	<select id="getReviewList" resultType="ReviewVO">
+		SELECT * FROM REVIEWTABLE WHERE PRODUCTID=#{productId} order by joayo desc
+	</select>
+	
 	
 
 	
