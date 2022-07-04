@@ -22,4 +22,6 @@ public interface BasketMapper {
 	public int changePcsPM(BasketVO basketVO);
 
 	public int getTotalPrice(BasketVO basketVO);
+
+	public int removeBasket(String loginId);
 }

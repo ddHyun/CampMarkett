@@ -17,6 +17,7 @@ import com.izo.camp.addmoney.AddmoneyService;
 import com.izo.camp.market.BasketService;
 import com.izo.camp.market.MarketService;
 import com.izo.camp.market.OrderService;
+import com.izo.camp.member.MemberService;
 import com.izo.camp.review.ReviewService;
 import com.izo.camp.vo.AddmoneyVO;
 import com.izo.camp.vo.BasketVO;
@@ -38,7 +39,8 @@ public class MarketController {
 	OrderService orderService;
 	@Autowired
 	ReviewService reviewService;
-	
+	@Autowired
+	MemberService memberService;
 	
 	
 	@Autowired
@@ -199,13 +201,21 @@ public class MarketController {
 		AddmoneyVO addmoneyVO = new AddmoneyVO();
 		addmoneyVO.setId(loginId);
 		addmoneyVO.setTotalmoney(totalPrice);
+		
+		String address = memberService.getAddress(loginId);
+		String resultMessage = "";
 		if(addmoneyService.minusPoint(addmoneyVO)) {
-			System.out.println("출금완료");
+			resultMessage ="구매가 완료 되었습니다.";
+			basketService.clearBasket(loginId);
+			
+		}else {
+			resultMessage ="구매에 실패 했습니다.";
 		}
 		
-		//
-		
+		model.addAttribute("resultMessage", resultMessage);
+		model.addAttribute("address",address);
 		model.addAttribute("orderList",basketList);
+		
 		return "market/orderComplete";
 	}
 	
