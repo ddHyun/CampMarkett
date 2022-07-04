@@ -12,7 +12,8 @@
      <link rel="stylesheet" href="resources/assets/css/style.css">
      <link rel="stylesheet" href="resources/assets/css/slider.css">
 	 <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
+	<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/simplex/bootstrap.min.css" integrity="sha384-FYrl2Nk72fpV6+l3Bymt1zZhnQFK75ipDqPXK0sOR0f/zeOSZ45/tKlsKucQyjSp" crossorigin="anonymous"> 
      <script src="resources/assets/js/jquery.js"></script>
      <script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
      <script src="resources/assets/js/superfish.js"></script>
@@ -21,6 +22,7 @@
      <script src="resources/assets/js/jquery.carouFredSel-6.1.0-packed.js"></script>
      <script src="resources/assets/js/tms-0.4.1.js"></script>
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
+	 <script src="https://kit.fontawesome.com/d9e2783f4c.js" crossorigin="anonymous"></script>
      <script>
       $(window).load(function(){
       $('.slider')._TMS({
@@ -74,7 +76,7 @@ height: 'auto',
 
     <![endif]-->
     <style>
-    .zerogrid2{ width: 900px; height:75%; position: relative; margin: 0 auto; padding: 0px;}
+    .zerogrid2{ width: 900px;  position: relative; margin: 0 auto; padding: 0px; padding-bottom: 30px;}
    	button{
    		width:350px;	
    		height:30px;
@@ -82,7 +84,7 @@ height: 'auto',
     </style>
     
      </head>
-     <body>
+<body style="background-color: #5fa022;">
        <div class="main">
 <!--==============================header=================================-->
  <header> 
@@ -119,43 +121,49 @@ height: 'auto',
 <!--==============================content=================================-->
 <div class="content">
 <div class="zerogrid2">
-	<h2 class="head2">장바구니</h2>
-	
-	<div id=basketMain>
-	<c:choose>
+	<h2 style="margin-top: 10px;color:#5fa022;" class="head2"><i class="fa-solid fa-basket-shopping"></i> 장바구니</h2>
+	<div class="card border-success mb-3" style="width:100%;">
+ 	
+ 		  <div class="card-body">
+ 		 <c:choose>
 	<c:when test="${empty basketProduct}">
 		<p>장바구니가 비어있습니다 <p>
 	</c:when>
 	
 		<c:otherwise>
-				비어있지 않아요!
-			<br>
-				제품이름<br>
+			
 			<c:forEach var="product" items="${basketProduct}">
 				<div id="${product.idx}div">
-				${product.productId}
+				<div class="card-header"><h4>${product.productId}</h4></div>
+				<div class="card-body" >
 				구매수량
-				<input type="button" value="-" onclick="changePcs(${product.idx},'${product.productId}',-1)" >
-				<input type="text" id="${product.idx}pcs" value="${product.pcs}"readonly> 개
-				<input type="button" value="+" onclick="changePcs(${product.idx},'${product.productId}',1)">
-				<input type="text" id="${product.idx}price" value="${product.totalPrice}원">
+				<input type="text" size="10" style="text-align:center; border:none; border-bottom:1px solid #5fa022;" id="${product.idx}pcs" value="${product.pcs}"readonly> 개
+				
+						
+				<input id="minusBtn" type="button" style="padding:6px;line-height:0.5rem; width:1.5rem; height:1.5rem; font-size: 1rem;" class="btn btn-outline-dark" value="-" onclick="changePcs(${product.idx},'${product.productId}',-1)" >
+				
+				<input id="plusBtn" type="button" style="padding:6px;line-height:0.5rem; width:1.5rem; height:1.5rem; font-size: 1rem;" class="btn btn-outline-dark"  value="+" onclick="changePcs(${product.idx},'${product.productId}',1)">
+				
+				<input type="text" style="font-size:1.2rem; float:right; text-align:right; border:0 solid black" id="${product.idx}price" value="${product.totalPrice}원">
+			
 				</div>
+				</div>
+				<hr style="margin-top:0px;">
 			</c:forEach>
 			
-			
-			<div id="row"  style= "height:100px;">
 				
-				
-					
-			</div>
-			<div id="row"  style= "height:40px;">
-				<input id="totalPrice" value="${totalPrice}원">
-				
-				<button style="float:right;" onclick="goOrderPage()">구매하기</button>
-			</div> 		
 		</c:otherwise>
 		
-	</c:choose>
+		</c:choose>
+ 		 </div>
+ 		 
+ 		  <div class="card-header">
+ 		  
+ 		  <h3 id="totalPrice" style="text-align: right; color:black;">총 가격 : ${totalPrice}원</h3>
+ 		  </div>
+ 		  <div style="margin: 30px;">
+			<button type="button" style="height:40px; float:right;" class="btn btn-outline-success btn-lg" onclick="goOrderPage()">구매 하기</button>
+		</div>
 	</div>
 	
 	
@@ -192,7 +200,7 @@ function changePcs(idx,productId,num){
 				type: "GET",
 				success: function(totalPrice){
 					console.log(totalPrice);
-					$("#totalPrice").val(totalPrice+"원");
+					$("#totalPrice").text("총 가격 : " + totalPrice + "원");
 					$("#"+idx+"div").hide();
 					if(totalPrice==0){
 						$("#basketMain").hide();
@@ -216,8 +224,7 @@ function changePcs(idx,productId,num){
 					type: "POST",
 					data : {"memberId": loginId},
 					success: function(totalPrice){
-						console.log(totalPrice+"원");
-						$("#totalPrice").val(totalPrice+"원");
+						$("#totalPrice").text("총 가격 : " + totalPrice+"원");
 					}
 				});
 			}
@@ -240,6 +247,7 @@ function goOrderPage(){
 		type: "get",
 		success : function(hasCard){
 			if(hasCard){
+				
 				var pop = window.open(
 						"goOrderPage",
 								"pop",
@@ -247,7 +255,7 @@ function goOrderPage(){
 								+ ", height = " + popUpheight 
 								+ ", top = " + top
 								+ ", left = " + left
-								+ " ,scrollbars=yes, resizable=no");  	
+								+ ",'scrollbars=yes,resizable=no,toolbars=no, menubar=no'");  	
 				
 			}else{
 				alert("카드가 등록되어있지 않습니다.\n 카드를 등록해 주세요");

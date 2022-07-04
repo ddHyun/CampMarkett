@@ -64,7 +64,7 @@
 <div class="content">
   <div class="zerogrid">
   	<div class="row">
-	<form action="joinView.do" name="form" style="width:60%; margin:auto">
+	<form action="joinView.do" name="form" style="width:75%; margin:auto">
 	<div class="row"><br><br><br>
 	<p style="color: #79302b; font-size: 25px">기본정보 입력</p>	
 	</div>	
@@ -87,8 +87,8 @@
 		<label class="join_label">비밀번호 확인<span style="color:red">(필수)</span></label><br>		
         <input class="field_class_join" name="pwd2" id="password2" type="password"
         placeholder="8~15자리의 영문과 숫자를 모두 사용해 입력해야 합니다(특수문자 제외)">
-		<span class="span_join" id="equalMsg" style="color:#699440">비밀번호가 일치합니다</span><br>
-		<span class="span_join" id="notEqualMsg" style="color:red">비밀번호가 일치하지 않습니다</span><br>
+		<span class="span_join" id="equalMsg" style="color:#699440">비밀번호가 일치합니다</span>
+		<span class="span_join" id="notEqualMsg" style="color:red">비밀번호 불일치!</span><br>
        
        	<div class="row"><br><br><br>
 		<p style="color: #79302b; font-size: 25px; margin-bottom: 30px">개인정보 입력</p>	
@@ -110,6 +110,7 @@
         <span style="color:#699440">비밀번호 초기화 메일 수신 등에 반드시 필요한 정보이므로 정확히 입력해주세요.</span><br>		
         <input class="field_class_join" name="email" id="email" type="text" value="${sessionScope.wannaEmail}"
         placeholder="영문자로 시작하는 5~15자리의 영문자와 숫자만 입력이 가능합니다" style="margin-bottom:5px">
+        <a class="btn_join" onclick="verifyEmail()">본인인증</a><br>
 		<span id="emailErrorMsg" style="color:red">올바른 형식이 아닙니다</span><br>
 		
         
@@ -124,53 +125,25 @@
         <a class="btn_join" onclick="certifyTel()">본인인증</a><br>
         
 		<label class="join_label">주소<span style="color:red">(필수)</span></label><br>		
-        <input class="field_class_join" name="addr" id="address" type="text"
-        placeholder="예) 010-2345-6789">
+        <input class="field_class_join" name="addr" id="address" type="text">
         <a class="btn_join" id="addressBtn" onclick="goPopup()">주소찾기</a><br>
         
-        <div style="width:620px">
-        	<div class="info_div" style="display:flex; margin-top: 25px"> 
+        <div style="margin-top: 5px;
+    margin-bottom: 50px;
+    height: 40px;">
+        	<input class="submit_class" type="button" value="취소하기" onclick="location.href='marketMain_Temp'"
+        	style="margin:10px 50px 10px 140px; display:inline; height:50px; font-size:20px">
+        	<input class="submit_class" type="button" value="가입하기" onclick="join()"
+        	style="margin:10px 60px 10px 50px; display:inline; height:50px; font-size:20px">
+        <!-- 	<div class="info_div" style="margin-top: 25px; width:620px"> 
         		<input class="submit_class" type="button" form="form" value="취소하기"
-               	 	onclick="location.href='marketMain_Temp'">  
+               	 	onclick="location.href='marketMain_Temp'" style="margin-right:0px">  
             	<input class="submit_class" type="button" form="form" value="가입하기"
-                	onclick="join()">       			
-        	</div>
+                	onclick="join()" style="margin:0px; display:float">       			
+        	</div> -->
         </div>     
     </div>	
-</form>
-
-    <div class="row">
-    <div class="bottom_block">
-      <div class="col-1-2">
-        <h3>Follow Us</h3>
-        <div class="socials">
-          <a href="#"></a>
-          <a href="#"></a>
-          <a href="#"></a>
-        </div>
-        <nav><ul>
-                   <li><a href="index.html">Home</a></li>
-                   <li><a href="index-1.html">About Us</a></li>
-                   <li><a href="index-2.html">Menu</a></li>
-                   <li><a href="index-3.html">Portfolio</a></li>
-                   <li class="current"><a href="index-4.html">News </a></li>
-                   <li><a href="index-5.html">Contacts</a></li>
-                 </ul></nav>
-      </div>
-      <div class="col-1-2">
-        <h3>Email Updates</h3>
-        <p class="col1">Join our digital mailing list and get news<br> deals and be first to know about events</p>
-        <form id="newsletter">
-                  <div class="success">Your subscribe request has been sent!</div>
-                  <label class="email">
-                       <input type="email" value="Enter e-mail address" >
-                       <a href="#" class="btn">subscribe</a> 
-                        <span class="error">*This is not a valid email address.</span>
-                  </label> 
-              </form> 
-          </div>
-      </div>
-	  </div>
+</form>   
     </div>
   </div>
 </div>

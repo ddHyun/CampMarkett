@@ -13,6 +13,7 @@
      <link rel="stylesheet" href="resources/assets/css/slider.css">
 	 <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lumen/bootstrap.min.css" integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous">
      <script src="resources/assets/js/jquery.js"></script>
      <script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
      <script src="resources/assets/js/superfish.js"></script>
@@ -22,6 +23,7 @@
      <script src="resources/assets/js/tms-0.4.1.js"></script>
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
 	 <script src="resources/assets/js/menuBar.js"></script>
+	 <script src="https://kit.fontawesome.com/d9e2783f4c.js" crossorigin="anonymous"></script>
      <script>
       $(window).load(function(){
       $('.slider')._TMS({
@@ -76,7 +78,7 @@ height: 'auto',
 
     <![endif]-->
      </head>
-     <body>
+     <body style="background-color: #5fa022;">
        <div class="main">
 <!--==============================header=================================-->
  <header> 
@@ -115,8 +117,8 @@ height: 'auto',
 <div class="content">
   <div class="zerogrid">
     <div class="col-full">
-      <h2>주변 캠핑장</h2>
-      <button onclick="popupLocation()">위치 설정</button>
+      <h1 style="margin-top:20px;"><i class="fa-solid fa-tents" style="color:#5fa022;"></i> 주변 캠핑장</h1>
+      <button class="btn btn-dark btn-lg" onclick="popupLocation()">위치 설정</button>
     </div>
     <div class="clear"></div>
 	
@@ -125,10 +127,10 @@ height: 'auto',
 	    <div class="portfolio">
 	    	<c:forEach var="camp" items="#{camplist}">
 	   	   <div class="col-1-2">
-		  		<div class="wrap-col" onclick="popupDetail(${camp.idx})" style="cursor:pointer;">
-		  			<img src="resources/assets/img/campingArea/${camp.imgName}" alt="">
-		  			<h3>${camp.name}</h3>
-		  			<p>캠핑장 까지 거리  ${camp.distance}km</p>
+		  		<div class="wrap-col" onclick="popupDetail(${camp.idx})" style="cursor:pointer;" >
+		  			<img style="border-radius:30px; margin:3px; object-fit:cover;" src="resources/assets/img/campingArea/${camp.imgName}" alt="">
+		  			<h3 style="margin:3px;"><i class="fa-solid fa-tent"></i> ${camp.name}</h3>
+		  			<h4 style="color:black;text-align:right; margin-right:40px;"><i class="fa-solid fa-road"></i> 캠핑장 까지  <strong>${camp.distance}km</strong></h4>
 				</div>
 			</div>
 			</c:forEach>
@@ -138,20 +140,28 @@ height: 'auto',
 	    
 	   
     
-  </div>
+  </div >
   <!-- 페이징 처리 -->
-	<div class="row"	>
+	<div class="row" style="margin:0 auto; align-items: center;text-align: center;">
+	 <div class="zerogrid">
 		<c:forEach var="i" begin="1" end="${maxPage}">
 			<c:choose>
 				<c:when test="${i eq nowPage}">
-					<c:out value="[${i}]"/>&nbsp;
+					<span style="font-size:1.5rem"><c:out value="[${i}]"/>&nbsp;</span>
 				</c:when>
 				<c:otherwise>
-					<a href="campingAreaMain_Temp?page=${i}"><c:out value="${i}"/></a>
+					<a style="font-size:1.5rem" href="campingAreaMain_Temp?page=${i}"><c:out value="${i}"/></a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 	</div>
+	</div>
+
+	
+	
+	
+	
+	
   </div>
   
   
@@ -196,8 +206,8 @@ height: 'auto',
 	
 	//위치설정 페이지 띄우기
 	function popupLocation(){
-		var popUpWidth = windowX / 2 ;
-		var popUpheight = ( windowY * 2 )/ 3 ;
+		var popUpWidth = (windowX * 2 )/ 5 ;
+		var popUpheight = ( windowY * 3 )/ 5 ;
 		var top =  ((windowY / 2) - (popUpheight / 2));
 		var left = ((windowX / 2) - (popUpWidth / 2));
 		var win = this.window;
@@ -209,7 +219,7 @@ height: 'auto',
 						+ ", height = " + popUpheight 
 						+ ", top = " + top
 						+ ", left = " + left
-						+ " ,scrollbars=yes, resizable=no"); 	
+						+ " ,scrollbars=no, resizable=no"); 	
 		
 		//팝업창이 닫힐때 발생하는 이벤트
 		

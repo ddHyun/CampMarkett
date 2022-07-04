@@ -109,9 +109,9 @@ height: 'auto',
 									<li class="current"><a href="marketMain_Temp">밀키트</a></li>
 									<li><a href="reviewMain_Temp">후기</a></li>
 									<li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
-									<li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
+									<li class="with_ul"><a href="money.do">마이페이지</a>
 										<ul>
-											<li><a href="#"> cuisine</a></li>
+											<li><a href="money.do"> 카드등록/충전</a></li>
 											<li><a href="#">Good rest</a></li>
 											<li><a href="#">Services</a></li>
 											<li><a href="#"
@@ -171,7 +171,7 @@ height: 'auto',
 
 										<!--  -->
 										<div class="temp"
-											style="float: left; margin: 10px; width: 27%"
+											style="float: left; margin: 10px; width: 315px"
 											<%--  onclick="popupDetail(${camp.idx})" --%> style="cursor:pointer;">
 											<div class="card mb-3">
 												<img style="margin: 6px;"
@@ -234,7 +234,7 @@ height: 'auto',
 		let loginId = "${sessionScope.loginId}";
 
 		if (${sessionScope.loginIdx eq null}||loginId==""||loginId=="none") {
-			alert("로그인 후 이용해 주세요.")
+			alert("로그인 후 이용해 주세요.");
 		} else {
 			if (confirm("장바구니에 추가 하시겠습니까")) {
 

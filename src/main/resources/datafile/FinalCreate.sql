@@ -102,18 +102,6 @@ CREATE TABLE CAMPINGTABLE
 	
 	
 
-/*==========================================================*/
-create sequence seq_loadmoney;
-
-create table loadmoneytable(
-	idx number(3) primary key,
-	id varchar2(50),
-	cardno number(20),
-	money number(7),
-	adddate date default sysdate,
-	FOREIGN KEY (id)
- 		   REFERENCES MEMBERTABLE (ID) ON DELETE CASCADE
-);
 
 
 /*==========================================================*/
@@ -147,3 +135,19 @@ create table addmoneytable(
 	FOREIGN KEY (id)
  		REFERENCES MEMBERTABLE (ID) ON DELETE CASCADE 
 );
+
+
+/*==========================================================*/ 
+CREATE SEQUENCE SEQ_P_Detail;
+
+CREATE TABLE P_DetailTABLE(
+	idx NUMBER(3),
+	ProductID VARCHAR2(1000) PRIMARY KEY,
+	content VARCHAR2(2000),
+	weight VARCHAR2(200),
+	detailImg1 VARCHAR2(200),
+	detailImg2 VARCHAR2(200),
+	detailImg3 VARCHAR2(200),
+	detailImg4 VARCHAR2(200),
+	detailImg5 VARCHAR2(200)
+); 
