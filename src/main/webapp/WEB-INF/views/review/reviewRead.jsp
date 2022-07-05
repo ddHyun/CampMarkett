@@ -216,7 +216,7 @@ height: 'auto',
 
 <!--=======content================================-->
 
-<div class="content page1" style="height:950px;">
+<div class="content page1" style="height:auto;">
   <div class="zerogrid">
       
 	  <div class="row">
