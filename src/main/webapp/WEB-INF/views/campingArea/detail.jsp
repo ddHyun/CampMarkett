@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<div style="width:620px; margin-left:15px">
+	<div style="width:620px; margin-left:15px; margin:0 auto;">
 	
 	<div style="width:600px; margin-top: 10px">
 	<h3 style="color:black"><strong>${campInfo.name}</strong></h3></td>

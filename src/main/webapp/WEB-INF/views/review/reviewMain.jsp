@@ -169,9 +169,9 @@ height: 'auto',
     <div class="slider-block">
       <div class="slider">
         <ul class="items">
-          <li><img src="resources/upload/caminoevent.jpg" alt="" ></li>
+          <li><img src="resources/upload/caminoevent.png" alt="" ></li>
           <li><img src="resources/upload/coleman_car.png" alt=""></li>
-          <li class="mb0"><img src="resources/upload/minibeam.jpg" alt=""></li>
+          <li class="mb0"><img src="resources/upload/minibeam.png" alt=""></li>
         </ul>
       </div>
     </div>
@@ -180,8 +180,8 @@ height: 'auto',
 
 
  
-<div class="content page1">
-  <div class="zerogrid">
+<div class="content page1" style="height:auto;">
+  <div class="zerogrid" style="height:auto;">
  
 	  <div class="row">
       <div class="col-full">

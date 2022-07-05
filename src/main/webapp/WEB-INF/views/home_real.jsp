@@ -22,6 +22,7 @@
      <script src="resources/assets/js/tms-0.4.1.js"></script>
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
 	 <script src="resources/assets/js/menuBar.js"></script>
+	 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css" integrity="sha384-RxqHG2ilm4r6aFRpGmBbGTjsqwfqHOKy1ArsMhHusnRO47jcGqpIQqlQK/kmGy9R" crossorigin="anonymous">
 
      <script>
       $(window).load(function(){
@@ -35,7 +36,7 @@
               preset:'fade', 
               pagination:true,//'.pagination',true,'<ul></ul>'
               pagNums:false,
-              slideshow:4000,
+              slideshow:2600,
               numStatus:false,
               banners:false,
           waitBannerAnimation:false,
@@ -85,14 +86,14 @@ height: 'auto',
     }
     </style>
      </head>
-     <body>
-       <div class="main">
+<body style="background-color: #5fa022;">
+  <div class="main">
 <!--==============================header=================================-->
  <header> 
   <div class="zerogrid">
     <div class="col-full">
 	<div class="wrap-col">
-    <h1><a href="home"><img src="resources/assets/img/images/logo2.png" alt="EXTERIOR"></a> </h1>
+    <h1><a href="home"><img style="width:400px; z-index: 999;" src="resources/assets/img/images/logo2.png" alt="EXTERIOR"></a> </h1>
     
          <div class="menu_block">
                    <input type="hidden" id=checkLogin value=${empty sessionScope.loginId}>
@@ -131,7 +132,7 @@ height: 'auto',
           <li><img src="resources/assets/img/mainImg/mainImg2.png" alt=""></li>
           <li><img src="resources/assets/img/mainImg/mainImg4.png" alt=""></li>
          
-          <li class="mb0"><img src="resources/assets/img/mainImg/mainImg6.png" alt=""></li>
+          <li class="mb0"><img src="resources/assets/img/mainImg/mainImg3.png" alt=""></li>
         </ul>
       </div>
     </div>
@@ -144,17 +145,25 @@ height: 'auto',
 	  <div class="row">
       <div class="col-full">
 	  	<div class="wrap-col">
-        <div class="car_wrap" style="width:1000px; margin:0 auto;">
-        <h2>About Us</h2>
-        <a href="#" class="prev"></a><a href="#" class="next"></a>
-        <ul class="carousel1">
-          <li><div><img src="resources/assets/img/images/page1_img1.jpg" alt="">
-          <div class="col1 upp"> <a href="#">kim Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-
-          </li>
-           
-        </ul>
+        <div class="car_wrap" style="width:900px; margin:0 auto;">
+      	<h2></h2>
+        <div style="height: 300px; text-align: center">
+			<img  style="width:400px;" src="resources/assets/img/images/logo2.png" alt="EXTERIOR">
+        	<br>
+        	<br>
+        	
+        	<figure>
+			  <blockquote class="blockquote">
+			    <p class="mb-0">다양한 요리를 캠핑장에서 즐길수 있도록<br>밀키트를 판매하고 있습니다</p>
+			  
+			  </blockquote>
+			  <figcaption class="blockquote-footer">
+			    Created by <cite title="Source Title">Izo</cite>
+			  </figcaption>
+			</figure>
+        	</div>
+        	
+        </div>
       </div>
 	  </div>
     </div>

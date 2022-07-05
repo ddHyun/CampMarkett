@@ -216,17 +216,17 @@ height: 'auto',
 
 <!--=======content================================-->
 
-<div class="content page1">
+<div class="content page1" style="height:auto;">
   <div class="zerogrid">
       
 	  <div class="row">
       <div class="col-full">
 	  	<div class="wrap-col">
-        <div class="car_wrap" align="center" style="height:730px;">
+        <div class="car_wrap" align="center" style=" height:auto; overflow: hidden;">
         <br>
         
 	<div class="review" align="center" style="width:890px; ">
-	    <div style="height:auto; position:absolute; width:200px; left:0; top:center;">
+	    <div style=" height:auto; overflow: hidden; position:absolute; width:200px; left:0; top:center;">
  
  			<div id="floatMenu">
 				<a href="http://www.coleman.co.kr/shop/board/view.php?id=notice&no=48" onclick="clickBanner('http://www.coleman.co.kr/shop/board/view.php?id=notice&no=48')" target="_blank">
@@ -244,7 +244,7 @@ height: 'auto',
 			</div>
 		</div>  
         <hr>
-	<div class="reviewRead" style="width:700px">
+	<div class="reviewRead" style="width:700px; height:auto; overflow: hidden;">
 	
 		<div class="card" style="object-fit: cover;">
  			 <img src="${pageContext.request.contextPath}/resources/upload/${vo.filename}" class="card-img-top" alt="...">
@@ -263,11 +263,8 @@ height: 'auto',
   		<div class="card-body">
     		<a href="marketDetail?idx=${productIdx}" class="card-link">구매하러가기</a>
   		</div>
-		</div>
-	</div>
-
-	<div align="center">
-		<form>
+  		<div class="card-body">
+    		<form>
 			<input type="hidden" name="idx" value="${vo.idx}">
 			<input type="hidden" name="ori_pwd" value="${vo.pwd}">
 			
@@ -285,8 +282,13 @@ height: 'auto',
 			<button type="button" class="btn btn-outline-success" onclick="modify2(this.form)">수정</button>
 			<button type="button" class="btn btn-outline-dark" onclick="location.href='reviewMain.do'">목록으로</button>
 		</form>
-	</div>
+  		</div>
+  		
+		</div>
 	
+
+
+	</div>
 	</div>
       </div>
 	  </div>

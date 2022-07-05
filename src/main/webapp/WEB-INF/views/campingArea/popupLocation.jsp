@@ -13,9 +13,9 @@
 <!-- <body> -->
 <body style="background-color: white;">
 <button class="btn btn-lg btn-success btn-lg" onclick='closeb()' style="margin:5px;"><strong>지도의 위치로 위치 변경하기</strong></button>
-<div style="background-color: #5fa022; padding:10px; width:720px; 
+<div style="background-color: #5fa022; padding:10px;  
     margin: 0 auto; margin-top:10px;">
-	<div id="map" style="width:700px;height:570px;"></div>
+	<div id="map" style="margin:0 auto; width:800px;height:570px;"></div>
 </div>
 
 
@@ -40,7 +40,7 @@
 	var centerPosition = new kakao.maps.LatLng(${sessionScope.sessionLat}, ${sessionScope.sessionLon});
     var mapOption = { 
         center: centerPosition, // 지도의 중심좌표
-        level: 6 // 지도의 확대 레벨
+        level: 8 // 지도의 확대 레벨
     };	
 	
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다

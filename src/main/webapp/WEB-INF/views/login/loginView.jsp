@@ -192,7 +192,7 @@
 </div>
 <!-- ==============================footer================================= -->
 
-<footer>    
+<footer style="padding: 0px;">    
   <div class="zerogrid">
     <div class="col-full">
 		<div class="wrap-col">

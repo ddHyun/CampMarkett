@@ -1,5 +1,7 @@
 package com.izo.camp.controller;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,6 +81,9 @@ public class CampingAreaController {
 		/////////////////////////////////////////////////////////
 		//처음 접속 or 위치 선택을 안했을때는
 		//주어진 정보가 있다면 
+		System.out.println(session.getAttribute("sessionLat"));
+		System.out.println(session.getAttribute("loginId"));
+		
 		if(lat!=0) {
 			getXY.put("lat", lat);
 			getXY.put("lon", lon);
@@ -120,6 +125,20 @@ public class CampingAreaController {
 		
 	    list = list.subList(10 * (page - 1), last);
 	    
+	    Collections.sort(list,new Comparator<CampInfoVO>() {
+
+			@Override
+			public int compare(CampInfoVO o1, CampInfoVO o2) {
+					
+				return o1.getDistance()-o2.getDistance() > 0 ? 1 : -1;
+			}
+			
+		});
+		for(CampInfoVO camp : list) {
+			System.out.println(camp.getDistance());
+		}
+	    
+	    
 	    model.addAttribute("camplist", list);
 	    model.addAttribute("maxPage", maxPage);
 	    model.addAttribute("nowPage", page);
@@ -154,7 +173,7 @@ public class CampingAreaController {
 		List<CampInfoVO> list  = 
 				campInfoService.getNearCampingArea(getXY);
 		list = list.subList(0, 10);
-		model.addAttribute("camplist", list);
+		
 		
 		return "campingArea/moveLocation";
 	}
