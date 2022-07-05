@@ -102,7 +102,7 @@ height: 'auto',
             		<ul class="sf-menu">
                    <li><a href="home">Home</a></li>
                    
-                   <li class="current"><a href="marketMain_Temp">밀키트</a></li>
+                   <li><a href="marketMain_Temp">밀키트</a></li>
                    <li><a href="reviewMain_Temp">상품후기</a></li>
                    <li><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
                    <li class="with_ul" id="memberMenu"><a href="#">마이페이지</a>
