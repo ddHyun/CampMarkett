@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="icon" href="images/favicon.ico">
 <link rel="shortcut icon" href="images/favicon.ico" />
-<link href="resources/assets/css/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="resources/assets/css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="resources/assets/css/style.css">
 <link rel="stylesheet" href="resources/assets/css/zerogrid.css" type="text/css" media="screen">
 <link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
@@ -31,40 +31,44 @@
 <body  style="background-color:#5fa022">
 <div class="main">
 <!--==============================header=================================-->
- <header> 
-  <div class="zerogrid">
-    <div class="col-full">
-	<div class="wrap-col">
-    <h1><a href="home"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
-    
-         <div class="menu_block">
-           <nav>
-           <input type="hidden" id=checkLogin value=${empty sessionScope.loginId}>
-            <ul class="sf-menu">
-                   <li><a href="home" style="text-decoration:none">Home</a></li>
-                   
-                   <li><a href="marketMain_Temp">밀키트</a></li>
-                   <li><a href="reviewMain_Temp">상품후기</a></li>
-                   <li class="current"><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
-                   <li class="with_ul" id="memberMenu"><a href="#">마이페이지</a>
-				   <ul>
-                         <li><a href="money.do">카드등록</a></li>
-                         <li><a href="money.do">카드충전</a></li>
-                         <li><a href="#"
-                         	onclick="goMyBasket(${sessionScope.loginId eq null})">
-                         	장바구니</a></li>
-                   </ul>
-				   </li>
-                   <li id="loginTag"><a href="login_Temp">로그인</a></li>
-                   <li id="logoutTag"><a href="logout">로그아웃</a></li>
-                 </ul>
-           </nav>
-           <div class="clear"></div>
-           </div>
-           <div class="clear"></div>
+<header>
+	<div class="zerogrid">
+		<div class="col-full">
+			<div class="wrap-col">
+				<h1>
+					<a href="home"><img
+						src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a>
+				</h1>
+
+				<div class="menu_block">
+				<nav>
+				<input type="hidden" id=checkLogin value=${empty sessionScope.loginId}>
+          		<ul class="sf-menu">
+                 <li><a href="home">Home</a></li>
+                 
+                 <li><a href="marketMain_Temp">밀키트</a></li>
+                 <li><a href="reviewMain_Temp">상품후기</a></li>
+                 <li><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
+                 <li class="with_ul" id="memberMenu"><a href="#">마이페이지</a>
+		 			  <ul>
+                       <li><a href="myInfo.do">내정보수정</a></li>
+                       <li><a href="money.do">카드등록</a></li>
+                       <li><a href="money.do">카드충전</a></li>
+                       <li><a href="#"
+                       	onclick="goMyBasket(${sessionScope.loginId eq null})">
+                       	장바구니</a></li>
+                 	</ul>
+		   		</li>
+                 <li id="loginTag"><a href="login_Temp">로그인</a></li>
+                 <li id="logoutTag"><a href="logout">로그아웃</a></li>
+               </ul>
+         </nav>					
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
 		</div>
-      </div>
-    </div>
+	</div>
 </header>
 <!--=======content================================-->
 
@@ -241,7 +245,7 @@
           id="afterAddedMoney" style="color:red"> 
           <input type="password" placeholder="결제 비밀번호 6자리를 입력하세요" id="simplepwd" 
           name="simplepwd" class="numFormat" maxlength="6">
-          <input type="button" id="addMoneyBtn" value="충전하기" style="background-color:#BDA697; 
+          <input type="button" id="addMoneyBtn" value="충전하기" style="color:black;background-color:#BDA697; 
           cursor:pointer; border-radius: 8px" class="numFormat" onclick="addMoney()">
       </form>
       
@@ -354,6 +358,7 @@
 				$('#cvcNo').val('');
 				$('#validDate').val('');
 				$('#cardNo').val('');
+				location.href='money.do';
 			}else if(json[0].param=='yesData'){
 				alert("이미 등록된 카드입니다. 다른 카드로 시도해 주세요");
 				$('#simplePwd2').val('');
