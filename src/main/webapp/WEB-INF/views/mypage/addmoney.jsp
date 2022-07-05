@@ -270,8 +270,7 @@
 
 <script>
 	
-	let cardCheck = true;
-	
+
 	$(function(){
 		/*  $('#regist').css('display','block');  */
 		 $('.infoMoney').hide();
@@ -348,7 +347,6 @@
 		}).done(function(data){
 			var json = (new Function('return'+data))();
 			if(json[0].param=='y'){
-				cardCheck = false;
 				console.log(json[0].param);
 				alert("카드 등록이 완료되었습니다");
 				$('#simplePwd2').val('');
@@ -433,7 +431,7 @@
 	
 	//충전하기
 	function addMoney(){	
-		if(${cardCnt}==0 && cardCheck){
+		if(${cardCnt}==0){
 			alert("등록된 카드가 없습니다. 카드등록 후 충전해 주세요");
 			location.href='#section2';
 			return;

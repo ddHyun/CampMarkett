@@ -25,7 +25,6 @@ public class BasketService {
 	//장바구니에 존재하는지 확인 
 	public BasketVO hasBasket(BasketVO basketVO) {
 		//장바구니에 존재하면 true
-		System.out.println("hasBasket?"+basketVO.getMemberId() + basketVO.getProductId());
 		return basketMapper.findBasket(basketVO);
 	}
 	

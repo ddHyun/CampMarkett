@@ -80,7 +80,6 @@ public class MarketController {
 	public String goBasket(Model model) {
 		String loginId = (String)session.getAttribute("loginId");
 		
-		System.out.println(loginId + "장바구니 목록 불러오기");
 		List<BasketVO> basketList = basketService.getBasket(loginId);
 		
 		int totolPrice = 0;
