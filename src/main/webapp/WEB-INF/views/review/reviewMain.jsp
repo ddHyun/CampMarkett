@@ -39,6 +39,7 @@
 	 	 <script src="resources/assets/js/menuBar.js"></script>
 	 	 <script src='//unpkg.com/popper.js@1/dist/umd/popper.min.js'></script>
 <script src='//unpkg.com/bootstrap@4/dist/js/bootstrap.min.js'></script>
+	 <script src="resources/assets/js/menuBar.js"></script>
 
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/minty/bootstrap.min.css"
@@ -127,13 +128,16 @@ height: 'auto',
 <!--==============================header=================================-->
  <header> 
   <div class="zerogrid">
-    <div class="col-full">
-	<div class="wrap-col">
-    <h1><a href="home"><img src="resources/assets/img/images/logo2.png" alt="EXTERIOR"></a> </h1>
-    
-         <div class="menu_block">
-           <nav >
-           <input type="hidden" id=checkLogin value=${empty sessionScope.loginId}>
+				<div class="col-full">
+					<div class="wrap-col">
+						<h1>
+							<a href="home"><img
+								src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a>
+						</h1>
+
+						<div class="menu_block">
+						<nav>
+						<input type="hidden" id=checkLogin value=${empty sessionScope.loginId}>
             		<ul class="sf-menu">
                    <li><a href="home">Home</a></li>
                    
@@ -142,9 +146,10 @@ height: 'auto',
                    <li><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
                    <li class="with_ul" id="memberMenu"><a href="#">마이페이지</a>
 				   <ul>
-                         <li><a href="money.do" style="margin-top:0;">카드등록</a></li>
-                         <li><a href="money.do" style="text-decoration: none;">카드충전</a></li>
-                         <li><a href="#"  style="text-decoration: none;"
+                         <li><a href="myInfo.do">내정보수정</a></li>
+                         <li><a href="money.do">카드등록</a></li>
+                         <li><a href="money.do">카드충전</a></li>
+                         <li><a href="#"
                          	onclick="goMyBasket(${sessionScope.loginId eq null})">
                          	장바구니</a></li>
                    </ul>
@@ -152,13 +157,13 @@ height: 'auto',
                    <li id="loginTag"><a href="login_Temp">로그인</a></li>
                    <li id="logoutTag"><a href="logout">로그아웃</a></li>
                  </ul>
-           </nav>		
-           <div class="clear"></div>
-           </div>
-           <div class="clear"></div>
-		</div>
-      </div>
-    </div>
+           </nav>					
+							<div class="clear"></div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
 </header>
  <div class="slider-relative">
     <div class="slider-block">

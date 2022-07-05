@@ -107,6 +107,7 @@ height: 'auto',
                    <li><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
                    <li class="with_ul" id="memberMenu"><a href="#">마이페이지</a>
 				   <ul>
+                         <li><a href="myInfo.do">내정보수정</a></li>
                          <li><a href="money.do">카드등록</a></li>
                          <li><a href="money.do">카드충전</a></li>
                          <li><a href="#"
@@ -136,11 +137,10 @@ height: 'auto',
 							<div class="car_wrap" style="margin: 20px auto">
 								<form>
   <fieldset>
-    <legend>Legend</legend>
     <div class="form-group row">
-      <label for="staticEmail" class="col-sm-2 col-form-label">이름</label>
+      <label for="name" class="col-sm-2 col-form-label">이름</label>
       <div class="col-sm-10">
-        <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value="${vo.name}">
+        <input type="text" readonly="" class="form-control-plaintext" id="name" value="${vo.name}">
       </div>
     </div>
     <div class="form-group">
@@ -155,9 +155,9 @@ height: 'auto',
 		id="pwdChangeBtn">비밀번호 변경하기</span>
     </div>
     <div class="form-group row">
-      <label for="staticEmail" class="col-sm-2 col-form-label">성별</label>
+      <label for="gender" class="col-sm-2 col-form-label">성별</label>
       <div class="col-sm-10">
-        <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value="${vo.gender}">
+        <input type="text" readonly="" class="form-control-plaintext" id="gender" value="${vo.gender}">
       </div>
     </div>
     <div class="form-group">
@@ -168,114 +168,47 @@ height: 'auto',
       </div>
 		<span class="badge bg-primary" style="margin-top: 3px; height:25px;cursor: pointer; line-height:25px;"
 		id="emailChangeBtn">이메일 변경하기</span>
-    </div>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-group">
-      <label for="exampleSelect1" class="form-label mt-4">Example select</label>
-      <select class="form-select" id="exampleSelect1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="exampleSelect2" class="form-label mt-4">Example multiple select</label>
-      <select multiple="" class="form-select" id="exampleSelect2">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="exampleTextarea" class="form-label mt-4">Example textarea</label>
-      <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-    </div>
-    <div class="form-group">
-      <label for="formFile" class="form-label mt-4">Default file input example</label>
-      <input class="form-control" type="file" id="formFile">
-    </div>
-    <fieldset class="form-group">
-      <legend class="mt-4">Radio buttons</legend>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-          Option one is this and that—be sure to include why it's great
-        </label>
+		    <div class="form-group">
+      <label for="inputMobileTel" class="form-label mt-4">휴대전화</label>
+    <span class="badge bg-primary" style="margin-top: 25px;padding: 6px;cursor: pointer;"
+      		id="mobileTelAbleBtn">전화번호 변경을 원하면 이곳을 눌러주세요.</span>
+      <input type="text" class="form-control" id="inputMobileTel" aria-describedby="emailHelp" value="${vo.mobiletel}" disabled>
       </div>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-          Option two can be something else and selecting it will deselect option one
-        </label>
+		<span class="badge bg-primary" style="margin-top: 3px; height:25px;cursor: pointer; line-height:25px;"
+		id="mobileTelChangeBtn">휴대전화 변경하기</span>
+		<div class="form-group">
+      <label for="inputAddr" class="form-label mt-4">주소</label>
+    <span class="badge bg-primary" style="margin-top: 25px;padding: 6px;cursor: pointer;"
+      		id="addrAbleBtn" onclick="goPopup()">주소 변경을 원하면 이곳을 눌러주세요.</span>
+      <input type="text" class="form-control" id="inputAddr" aria-describedby="emailHelp" value="${vo.addr}" disabled>
       </div>
-      <div class="form-check disabled">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled="">
-          Option three is disabled
-        </label>
+		<span class="badge bg-primary" style="margin-top: 3px; height:25px;cursor: pointer; line-height:25px;"
+		id="addrChangeBtn">주소 변경하기</span>
+		 <div class="form-group row">
+      <label for="totalmoney" class="col-sm-2 col-form-label">현재 충전금액</label>
+      <span class="badge bg-primary" style="cursor: pointer; width:150px; height: 25px; margin-top:10px;
+      line-height: 20px" onclick="location.href='money.do'">충전하러 가기</span>
+      <div class="col-sm-10">
+        <input type="text" readonly="" class="form-control-plaintext" style="color:red"
+        id="totalmoney" value="${totalmoney}">
       </div>
-    </fieldset>
-    <fieldset class="form-group">
-      <legend class="mt-4">Checkboxes</legend>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
-          Default checkbox
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
-        <label class="form-check-label" for="flexCheckChecked">
-          Checked checkbox
-        </label>
-      </div>
-    </fieldset>
-    <fieldset>
-      <legend class="mt-4">Switches</legend>
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-      </div>
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-        <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
-      </div>
-    </fieldset>
-    <fieldset class="form-group">
-      <legend class="mt-4">Ranges</legend>
-        <label for="customRange1" class="form-label">Example range</label>
-        <input type="range" class="form-range" id="customRange1">
-        <label for="disabledRange" class="form-label">Disabled range</label>
-        <input type="range" class="form-range" id="disabledRange" disabled="">
-        <label for="customRange3" class="form-label">Example range</label>
-        <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
-    </fieldset>
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+							</div>
   </fieldset>
 </form>
+
+    </div>
+    </div>
+    </div>
+
 								
 
 
 
-							</div>
 						</div>
 					</div>
 				</div>
 
-			</div>
-
-		</div>
-
-
-</div>
 		<!--==============================footer=================================-->
 	<footer>
 		<div class="zerogrid">
@@ -290,13 +223,15 @@ height: 'auto',
 			</div>
 		</div>
 	</footer>
-
+</div>
 </body>
 <script>
 	$(document).ready(function(){
 			$('#pwdTag').css('display', 'none');	
 			$('#pwdChangeBtn').css('display', 'none');
 			$('#emailChangeBtn').hide();
+			$('#mobileTelChangeBtn').hide();
+			$('#addrChangeBtn').hide();
 	})
 	
 	//비밀번호 변경 신청
@@ -357,6 +292,7 @@ height: 'auto',
 		$(this).hide();
 		$('#emailChangeBtn').show();
 		$('#inputEmail').val('');
+		$('#inputEmail').attr('placeholder', '예) abc@def.com');
 	})
 	
 	//이메일 변경하기
@@ -379,7 +315,7 @@ height: 'auto',
 			inputEmail.val('');
 			return;
 		}
-		if(confirm("변경가능한 이메일 주소입니다. 변경하시겠습니까?")){
+		
 		$.ajax({
 			url: 'changeEmail.do',
 			data: {id:'${vo.id}',
@@ -390,19 +326,76 @@ height: 'auto',
 		}).done(function(data){
 			let json = (new Function('return'+data))();
 			if(json[0].param=='y'){
-				alert("이메일이 정상적으로 변경되었습니다.");
+				alert("이메일이 정상적으로 변경되었습니다");
 				inputEmail.attr('disabled', true);
 			}
 		}).fail(function(){
 			alert("관리자에게 문의하세요");
 			return;
-		})
-		}else{
-			alert("이메일 변경이 취소되었습니다");
-			inputEmail.val('${vo.email}');
+		})		
+	})
+	
+	//전화번호 변경 요청시
+	$('#mobileTelAbleBtn').on('click', function(){		
+		$('#inputMobileTel').attr('disabled', false);
+		$(this).hide();
+		$('#mobileTelChangeBtn').show();
+		$('#inputMobileTel').val('');
+		$('#inputMobileTel').attr('placeholder', '예) 010-2345-6789');
+		
+	})
+	
+	//전화번호 변경하기
+	$('#mobileTelAbleBtn').on('click', function(){
+		let inputMobileTel = $('#inputMobileTel');
+		let inputMobileTelVal = $('#inputMobileTel').val();
+		var phonePattern = /^01([0:1:6:7:8:9]?)-([0-9]{3,4})-([0-9]{4})$/;
+		
+		if(inputMobileTelVal==''){
+			alert("휴대전화번호를 입력해주세요");
 			return;
 		}
+		if(!phonePattern.test(inputMobileTelVal)){
+			alert("휴대전화 형식이 올바르지 않습니다. 다시 시도해 주세요");
+			return;
+		}
+		if(inputMobileTelVal=='${vo.mobiletel}'){
+			alert("휴대전화번호가 기존과 동일합니다. 다른 전화번호를 입력해주세요");
+			return;
+		}
+		
+		$.ajax({
+			url: 'changeMobileTel.do',
+			data: {id:'${vo.id}',
+					mobiletel:iniputMobileTelVal},
+			datatype: "json",
+			async: false,
+			type: "post"
+		}).done(function(data){
+			let json = (new Function('return'+data))();
+			if(json[0].param=='y'){
+				alert("휴대전화번호가 정상적으로 변경되었습니다.");
+				inputMobileTel.attr('disabled', true);				
+			}else{
+				alert("관리자에게 문의하세요");
+				return;
+			}
+		})
 	})
+			
+	//주소찾기 API
+	function goPopup(){
+		var pop = window.open("jusoPopup.do","pop","width=570,height=420, scrollbars=yes, resizable=no"); 	
+		$('#addrAbleBtn').hide();
+		$('#addrChangeBtn').show();
+	}
+	//주소찾기 API cb
+	function jusoCallBack(roadFullAddr){
+		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+		var address = document.querySelector("#inputAddr");
+		address.value = roadFullAddr;
+		$('#inputAddr').attr('disabled', true);
+	}		
 			
 		
 		

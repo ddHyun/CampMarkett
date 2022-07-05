@@ -43,4 +43,7 @@ public interface MemberMapper {
 
 	//이메일 변경하기
 	public int changeEmail(MemberVO vo);
+
+	//휴대전화 변경하기
+	public int changeMobileTel(MemberVO vo);
 }

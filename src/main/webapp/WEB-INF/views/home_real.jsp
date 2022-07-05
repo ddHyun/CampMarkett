@@ -95,6 +95,7 @@ height: 'auto',
                    <li><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
                    <li class="with_ul"  id="memberMenu"><a href="#">마이페이지</a>
 				   <ul>
+				         <li><a href="myInfo.do">내정보수정</a></li>
                          <li><a href="money.do">카드등록</a></li>
                          <li><a href="money.do">카드충전</a></li>
                          <li><a href="#"

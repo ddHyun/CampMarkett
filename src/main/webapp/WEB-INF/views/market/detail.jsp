@@ -30,6 +30,7 @@
 <script src="resources/assets/js/jquery.carouFredSel-6.1.0-packed.js"></script>
 <script src="resources/assets/js/tms-0.4.1.js"></script>
 <script src="resources/assets/js/css3-mediaqueries.js"></script>
+	 <script src="resources/assets/js/menuBar.js"></script>
 
 <!--[if lt IE 8]>
        <div style=' clear: both; text-align:center; position: relative;'>
@@ -70,22 +71,28 @@
 						</h1>
 
 						<div class="menu_block">
-							<nav>
-								<ul class="sf-menu">
-									<li><a href="home">Home</a></li>
-
-									<li class="current"><a href="marketMain_Temp">밀키트</a></li>
-									<li><a href="reviewMain_Temp">후기</a></li>
-									<li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
-									<li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
-										<ul>
-											<li><a href="#"> cuisine</a></li>
-											<li><a href="#">Good rest</a></li>
-											<li><a href="#">Services</a></li>
-										</ul></li>
-									<li><a href="login_Temp">로그인</a></li>
-								</ul>
-							</nav>
+						<nav>
+						<input type="hidden" id=checkLogin value=${empty sessionScope.loginId}>
+            		<ul class="sf-menu">
+                   <li><a href="home">Home</a></li>
+                   
+                   <li class="current"><a href="marketMain_Temp">밀키트</a></li>
+                   <li><a href="reviewMain_Temp">상품후기</a></li>
+                   <li><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
+                   <li class="with_ul" id="memberMenu"><a href="#">마이페이지</a>
+				   <ul>
+                         <li><a href="myInfo.do">내정보수정</a></li>
+                         <li><a href="money.do">카드등록</a></li>
+                         <li><a href="money.do">카드충전</a></li>
+                         <li><a href="#"
+                         	onclick="goMyBasket(${sessionScope.loginId eq null})">
+                         	장바구니</a></li>
+                   </ul>
+				   </li>
+                   <li id="loginTag"><a href="login_Temp">로그인</a></li>
+                   <li id="logoutTag"><a href="logout">로그아웃</a></li>
+                 </ul>
+           </nav>					
 							<div class="clear"></div>
 						</div>
 						<div class="clear"></div>
