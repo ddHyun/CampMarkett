@@ -39,7 +39,6 @@
 	<div class="wrap-col">
     <h1><a href="home"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
     
-         <div class="menu_block">
            	<div class="menu_block">
 						<nav>
 						<input type="hidden" id=checkLogin value=${empty sessionScope.loginId}>
@@ -63,10 +62,9 @@
                  </ul>
            </nav>
            <div class="clear"></div>
-           </div>
-           <div class="clear"></div>
 		</div>
       </div>
+    </div>
     </div>
 </header>
 <!-- =======content================================ -->

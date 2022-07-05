@@ -257,10 +257,10 @@
 <!--==============================footer=================================-->
 
 <footer>    
-  <div class="zerogrid" style="background:#5fa022">
-    <div class="col-full" style="background-color:#5fa022">
-		<div class="wrap-col" style="background:#5fa022">
-     Gourmet © 2013  &nbsp;&nbsp; |&nbsp;&nbsp;   <a href="#">Privacy Policy</a>    &nbsp;&nbsp;|&nbsp;&nbsp;  Designed by <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster</a> - <a href="https://www.zerotheme.com/" title="free website templates">ZEROTHEME</a>
+  <div class="zerogrid">
+    <div class="col-full">
+		<div class="wrap-col">
+     koreaIt ② academy  &nbsp;&nbsp; |&nbsp;&nbsp;   <a href="#">Privacy Policy</a>    &nbsp;&nbsp;|&nbsp;&nbsp;  Designed by <a href="https://github.com/SpringProjectKoreaIT/CampMarkett" rel="nofollow">CampMarketTeam</a> - <a href="https://github.com/SpringProjectKoreaIT/CampMarkett" title="free website templates">Group '2' </a>
 	 	</div>
     </div>
   </div>
