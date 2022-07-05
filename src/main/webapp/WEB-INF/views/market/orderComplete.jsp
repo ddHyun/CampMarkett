@@ -97,9 +97,10 @@
 					<div class="card-body">
 					    <h4 class="card-title"><strong>${product.productId}</strong></h4>
 					    <p style="float: right" class="card-text"> 구매 수량 : ${product.pcs} </p>
+					    <hr>
+					    <p style="float:clear;">
 					</div>
 				</c:forEach>
-					<hr>
 					<br>
 					
 					 <div class="card-header"><h4>배송주소 : ${address}</h4></div>

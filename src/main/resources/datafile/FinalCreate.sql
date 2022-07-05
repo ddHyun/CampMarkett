@@ -101,6 +101,13 @@ CREATE TABLE basketTable(
 	price NUMBER(10),
 	totalPrice NUMBER(10)
 );
+/*외래키 추가*/
+ALTER TABLE basketTable
+ADD CONSTRAINT fk_basket_1 foreign KEY(ProductID) references ProductTABLE (ProductID) ON DELETE CASCADE ;
+
+ALTER TABLE basketTable
+ADD CONSTRAINT fk_basket_2 foreign KEY(memberID) references MEMBERTABLE (ID) ON DELETE CASCADE ;
+
 
 /*==========================================================*/
 
@@ -135,3 +142,8 @@ CREATE TABLE P_DetailTABLE(
 	detailImg4 VARCHAR2(200),
 	detailImg5 VARCHAR2(200)
 ); 
+
+/*외래키 추가*/
+ALTER TABLE P_DetailTABLE
+ADD CONSTRAINT fk_detail foreign KEY(ProductID) references ProductTABLE (ProductID);
+

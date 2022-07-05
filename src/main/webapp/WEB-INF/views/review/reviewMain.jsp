@@ -180,8 +180,8 @@ height: 'auto',
 
 
  
-<div class="content page1">
-  <div class="zerogrid">
+<div class="content page1" style="height:auto;">
+  <div class="zerogrid" style="height:auto;">
  
 	  <div class="row">
       <div class="col-full">
