@@ -232,6 +232,7 @@ public class MemberController {
 		return "mypage/myInfo";
 	}
 	
+	//이메일 변경하기
 	@ResponseBody
 	@RequestMapping(value="/changeEmail.do", method={RequestMethod.POST, RequestMethod.GET})
 	public String changeEmail(MemberVO vo) {
@@ -244,4 +245,16 @@ public class MemberController {
 		return result;
 	}
 	
+	//휴대전화번호 변경하기
+	@ResponseBody
+	@RequestMapping(value="/changeMobileTel.do", method= {RequestMethod.POST, RequestMethod.GET})
+	public String changeMobileTel(MemberVO vo) {
+		int res = memberService.changeMobileTel(vo);
+		String param = "n";
+		if(res>0) {
+			param = "y";
+		}
+		String result = String.format("[{'param':'%s'}]", param);
+		return result;
+	}
 }

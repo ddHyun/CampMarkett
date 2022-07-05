@@ -71,6 +71,12 @@ public class MemberService {
 		return memberMapper.changeEmail(vo);
 	}
 
+	//휴대전화번호 변경하기
+	public int changeMobileTel(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return memberMapper.changeMobileTel(vo);
+	}
+
 	
 	
 }

@@ -23,7 +23,7 @@
 	 <script src="resources/assets/js/css3-mediaqueries.js"></script>
 	 <script src="https://kit.fontawesome.com/d9e2783f4c.js" crossorigin="anonymous"></script>
 	 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/simplex/bootstrap.min.css" integrity="sha384-FYrl2Nk72fpV6+l3Bymt1zZhnQFK75ipDqPXK0sOR0f/zeOSZ45/tKlsKucQyjSp" crossorigin="anonymous">
-    
+    	 <script src="resources/assets/js/menuBar.js"></script>
     <style>
     .zerogrid2{ margin: 20px;width: 100%; height:600px; position: relative; margin: 0 auto; padding: 0px;}
    	button{
@@ -38,15 +38,42 @@
 <!--==============================header=================================-->
  <header style="padding: 10px;"> 
   <div class="zerogrid">
-    <div class="col-full">
-	<div class="wrap-col">
-    <h1 ><a href="home"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
-    
-         
-           <div class="clear"></div>
-		</div>
-      </div>
-    </div>
+				<div class="col-full">
+					<div class="wrap-col">
+						<h1>
+							<a href="home"><img
+								src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a>
+						</h1>
+
+						<div class="menu_block">
+						<nav>
+						<input type="hidden" id=checkLogin value=${empty sessionScope.loginId}>
+            		<ul class="sf-menu">
+                   <li><a href="home">Home</a></li>
+                   
+                   <li class="current"><a href="marketMain_Temp">밀키트</a></li>
+                   <li><a href="reviewMain_Temp">상품후기</a></li>
+                   <li><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
+                   <li class="with_ul" id="memberMenu"><a href="#">마이페이지</a>
+				   <ul>
+                         <li><a href="myInfo.do">내정보수정</a></li>
+                         <li><a href="money.do">카드등록</a></li>
+                         <li><a href="money.do">카드충전</a></li>
+                         <li><a href="#"
+                         	onclick="goMyBasket(${sessionScope.loginId eq null})">
+                         	장바구니</a></li>
+                   </ul>
+				   </li>
+                   <li id="loginTag"><a href="login_Temp">로그인</a></li>
+                   <li id="logoutTag"><a href="logout">로그아웃</a></li>
+                 </ul>
+           </nav>					
+							<div class="clear"></div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
 </header>
 <!--==============================content=================================-->
 

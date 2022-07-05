@@ -51,6 +51,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update membertable set email=#{email} where id = #{id}
 	</update>
 	
+	<!-- 휴대전화 변경 -->
+	<update id="changeMobileTel" parameterType="memberVO">
+		update membertable set mobileTel=#{mobileTel} where id=#{id}
+	</update>
 
 </mapper>
 
