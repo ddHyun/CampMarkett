@@ -323,6 +323,7 @@ height: 'auto',
 			let json = (new Function('return'+data))();
 			if(json[0].param=='y'){
 				alert("이메일이 정상적으로 변경되었습니다");
+				let newEmail = json[1].email;			
 				inputEmail.attr('disabled', true);
 			}
 		}).fail(function(){
