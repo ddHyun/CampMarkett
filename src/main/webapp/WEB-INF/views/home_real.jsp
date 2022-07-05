@@ -35,7 +35,7 @@
               preset:'fade', 
               pagination:true,//'.pagination',true,'<ul></ul>'
               pagNums:false,
-              slideshow:5000,
+              slideshow:4000,
               numStatus:false,
               banners:false,
           waitBannerAnimation:false,
@@ -119,7 +119,7 @@ height: 'auto',
            <div class="clear"></div>
            </div>
            <div class="clear"></div>
-		</div>
+		</div>	
       </div>
     </div>
 </header>
@@ -127,53 +127,33 @@ height: 'auto',
     <div class="slider-block">
       <div class="slider" style="margin-right:0px">
         <ul class="items">
-          <li><img src="resources/assets/img/mainImg/main3.jpg" alt=""></li>
-          <li><img src="resources/assets/img/mainImg/main10.jpg" alt=""></li>
-          <li><img src="resources/assets/img/mainImg/main11.jpg" alt=""></li>
-          <li><img src="resources/assets/img/mainImg/main7.jpg" alt=""></li>
+          <li><img src="resources/assets/img/mainImg/mainImg5.png" alt=""></li>
+          <li><img src="resources/assets/img/mainImg/mainImg2.png" alt=""></li>
+          <li><img src="resources/assets/img/mainImg/mainImg4.png" alt=""></li>
          
-          <li class="mb0"><img src="resources/assets/img/mainImg/main8.jpg" alt=""></li>
+          <li class="mb0"><img src="resources/assets/img/mainImg/mainImg6.png" alt=""></li>
         </ul>
       </div>
     </div>
  </div>
 <!--=======content================================-->
 
-<div class="content page1">
+<div class="content page1" style="padding-top: 20px">
   <div class="zerogrid">
       
 	  <div class="row">
       <div class="col-full">
 	  	<div class="wrap-col">
-        <div class="car_wrap">
-        <h2>Best Choice</h2>
+        <div class="car_wrap" style="width:1000px; margin:0 auto;">
+        <h2>About Us</h2>
         <a href="#" class="prev"></a><a href="#" class="next"></a>
         <ul class="carousel1">
           <li><div><img src="resources/assets/img/images/page1_img1.jpg" alt="">
           <div class="col1 upp"> <a href="#">kim Lorem ipsum doamet consectet</a></div>
           <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
+
           </li>
-          <li><div><img src="resources/assets/img/images/page1_img2.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img3.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img4.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
-          <li><div><img src="resources/assets/img/images/page1_img3.jpg" alt="">
-          <div class="col1 upp"> <a href="#">Lorem ipsum doamet consectet kim</a></div>
-          <span> Dorem ipsum dolor amet consectetur</span>
-          <div class="price">45$</div></div>
-          </li>
+           
         </ul>
       </div>
 	  </div>
