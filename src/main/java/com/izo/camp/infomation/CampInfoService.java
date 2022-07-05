@@ -33,11 +33,11 @@ public class CampInfoService {
 	
 	//테이블에 추가 
 	public void hasCamping() {
-		System.out.println("---------------");
 		if(campInfoMapper.getTotalNum() == 0) {
+			System.out.println("---------------");
+			System.out.println("CampInfo 테이블이 없습니다 Load 합니다");
 			insertInfo();
 		}else {
-			System.out.println("CampInfo 테이블이 이미 있습니다");
 		}
 	}
 	

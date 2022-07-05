@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="resources/assets/css/responsive.css" type="text/css" media="screen"> 
      <script src="resources/assets/js/jquery.js"></script>
      <script src="resources/assets/js/jquery-migrate-1.1.1.js"></script>
-     <script src="resources/assets/js/superfish.js"></script>
+     <script src="resources/assets/js/0superfish.js"></script>
      <script src="resources/assets/js/jquery.easing.1.3.js"></script>
      <script src="resources/assets/js/sForm.js"></script>
      <script src="resources/assets/js/jquery.carouFredSel-6.1.0-packed.js"></script>
@@ -91,8 +91,8 @@ height: 'auto',
                    <li><a href="marketMain_Temp">밀키트</a></li>
                    <li class="current"><a href="reviewMain_Temp">후기</a></li>
                    <li><a href="campingAreaMain_Temp">주변 캠핑장 </a></li>
-                   <li class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
-				   	<ul>
+                   <li  style="padding-left: 0rem" class="with_ul"><a href="memberInfo_Temp">회원 정보</a>
+				   	<ul style="padding-left: 0rem">
                          <li><a href="#"> cuisine</a></li>
                          <li><a href="#">Good rest</a></li>
                          <li><a href="#">Services</a></li>

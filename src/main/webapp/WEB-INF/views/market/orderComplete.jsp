@@ -25,7 +25,7 @@
 
      
         <style>
-    .zerogrid2{ width: 900px; height:75%; position: relative; margin: 0 auto; padding: 0px;}
+    .zerogrid2{ width: 900px; height:75%; position: relative; margin: 0 auto; padding: 0;}
    	button{
    		width:350px;	
    		height:30px;
@@ -78,44 +78,45 @@
 <!--==============================content=================================-->
 <div class="content">
 <div class="zerogrid2">
-	<h2 class="head2">구매가 완료 되었습니다.</h2>
 	
 	<div id=basketMain>
-	
+	<div class="card border-light mb-3" style="width: 740px; margin:60px">
+	  <div class="card-header"><h2>${resultMessage}</h2></div>
+	   <hr>
+		<c:choose>
+			<c:when test="${empty orderList}">
+				<a href='home' text-aling="center">이미 요청된 페이지 입니다. Home </a>
+			</c:when>
+			
+			<c:otherwise>
+
+				제품이름
+				<br>
+				<br>
+				<c:forEach var="product" items="${orderList}">
+					<div class="card-body">
+					    <h4 class="card-title"><strong>${product.productId}</strong></h4>
+					    <p style="float: right" class="card-text"> 구매 수량 : ${product.pcs} </p>
+					</div>
+				</c:forEach>
+					<hr>
+					<br>
+					
+					 <div class="card-header"><h4>배송주소 : ${address}</h4></div>
+				<br>
+				<hr>
+				<div class="d-grid gap-2" style="text-align: right">
+				  <button class="btn btn-lg btn-light " type="button" onclick="location.href='home'">Home</button>
+				</div>
+		</c:otherwise>
+		
+	</c:choose>
+	</div>
 		<!-- model.addAttribute("resultMessage", resultMessage);
 		model.addAttribute("address",address);
 		model.addAttribute("orderList",basketList);
 		 -->
-		 
-	<h1>${resultMessage}</h1>
-	<c:choose>
-	<c:when test="${empty orderList}">
-		<p>구매 품목이 없습니다. <p>
-	</c:when>
-		
-		<c:otherwise>
-			<br>
-				제품이름<br>
-			<c:forEach var="product" items="${orderList}">
-				<div id="${product.idx}div">
-				${product.productId}
-				구매수량
-				<input type="text" id="${product.idx}pcs" value="${product.pcs}"readonly> 개
-				</div>
-			</c:forEach>
-			
-			
-			<div id="row"  style= "height:100px;">
-				
-				
-					
-			</div>
-			<div id="row"  style= "height:40px;">
-				<h3>배송주소 : ${address}</h3>
-			</div> 		
-		</c:otherwise>
-		
-	</c:choose>
+	
 	</div>
 	
 	

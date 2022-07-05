@@ -35,7 +35,7 @@
               preset:'fade', 
               pagination:true,//'.pagination',true,'<ul></ul>'
               pagNums:false,
-              slideshow:8000,
+              slideshow:5000,
               numStatus:false,
               banners:false,
           waitBannerAnimation:false,
@@ -61,7 +61,6 @@ height: 'auto',
     
     
     });      
-
      </script>
      <!--[if lt IE 8]>
        <div style=' clear: both; text-align:center; position: relative;'>
@@ -75,6 +74,16 @@ height: 'auto',
       <link rel="stylesheet" media="screen" href="resources/assets/css/ie.css">
 
     <![endif]-->
+    <style>
+    .pagination {
+    display:none;
+    bottom: 0px;
+    position: absolute;
+    left: 50%;
+    margin-left: -51px;
+    z-index: 999;
+    }
+    </style>
      </head>
      <body>
        <div class="main">

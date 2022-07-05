@@ -45,31 +45,7 @@
 								src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a>
 						</h1>
 
-						<div class="menu_block">
-						<nav>
-						<input type="hidden" id=checkLogin value=${empty sessionScope.loginId}>
-            		<ul class="sf-menu">
-                   <li><a href="home">Home</a></li>
-                   
-                   <li class="current"><a href="marketMain_Temp">밀키트</a></li>
-                   <li><a href="reviewMain_Temp">상품후기</a></li>
-                   <li><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
-                   <li class="with_ul" id="memberMenu"><a href="#">마이페이지</a>
-				   <ul>
-                         <li><a href="myInfo.do">내정보수정</a></li>
-                         <li><a href="money.do">카드등록</a></li>
-                         <li><a href="money.do">카드충전</a></li>
-                         <li><a href="#"
-                         	onclick="goMyBasket(${sessionScope.loginId eq null})">
-                         	장바구니</a></li>
-                   </ul>
-				   </li>
-                   <li id="loginTag"><a href="login_Temp">로그인</a></li>
-                   <li id="logoutTag"><a href="logout">로그아웃</a></li>
-                 </ul>
-           </nav>					
-							<div class="clear"></div>
-						</div>
+						
 						<div class="clear"></div>
 					</div>
 				</div>
