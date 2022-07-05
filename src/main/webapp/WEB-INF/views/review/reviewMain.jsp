@@ -6,14 +6,14 @@
 <head>
 <title>:::Everyday 캠프마켓:::</title>
 <style>
-	.sf-menu>li>a{
+/* 	.sf-menu>li>a{
 		text-decoration: none;
 	}
 	
 .sf-menu li ul li a {
     text-decoration: none;
     margin-top: 0;
-}
+} */
 
 </style>
      <meta charset="utf-8">
@@ -145,7 +145,7 @@ height: 'auto',
                    <li class="current"><a href="reviewMain_Temp">상품후기</a></li>
                    <li><a href="campingAreaMain_Temp">주변캠핑장 </a></li>
                    <li class="with_ul" id="memberMenu"><a href="#">마이페이지</a>
-				   <ul>
+				   <ul  style="padding-left: 0;">
                          <li><a href="myInfo.do">내정보수정</a></li>
                          <li><a href="money.do">카드등록</a></li>
                          <li><a href="money.do">카드충전</a></li>
