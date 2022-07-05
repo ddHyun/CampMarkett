@@ -34,7 +34,8 @@
 <div class="main">
 <!-- ==============================header================================= -->
   <header> 
-  <div class="zerogrid" style="height:70px">
+  <div class="zerogrid">
+<!--   <div class="zerogrid" style="height:70px"> -->
     <div class="col-full">
 	<div class="wrap-col">
     <h1><a href="home"><img src="resources/assets/img/images/logo.png" alt="EXTERIOR"></a> </h1>
@@ -79,7 +80,7 @@
     <div class="portfolio">  
     
     
-    <main  style="display: flex; align-items: center;justify-content: center;
+      <main  style="display: flex; align-items: center;justify-content: center;
    	height: 65vh; width: 100%;
     background: url('resources/assets/img/images/bbq.jpg') no-repeat center center;
     background-size: cover;">

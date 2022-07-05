@@ -1,7 +1,5 @@
 package com.izo.camp.controller;
 
-import java.util.HashMap;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -241,6 +239,7 @@ public class MemberController {
 		if(res>0) {
 			param = "y";
 		}
+		
 		String result = String.format("[{'param':'%s'}]", param);
 		return result;
 	}
