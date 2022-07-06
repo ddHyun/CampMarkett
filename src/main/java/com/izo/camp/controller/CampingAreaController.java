@@ -81,8 +81,6 @@ public class CampingAreaController {
 		/////////////////////////////////////////////////////////
 		//처음 접속 or 위치 선택을 안했을때는
 		//주어진 정보가 있다면 
-		System.out.println(session.getAttribute("sessionLat"));
-		System.out.println(session.getAttribute("loginId"));
 		
 		if(lat!=0) {
 			getXY.put("lat", lat);
