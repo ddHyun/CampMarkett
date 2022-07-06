@@ -228,8 +228,8 @@
 	function addBasket(productId) {
 		let loginId = "${sessionScope.loginId}";
 
-		if (loginId == null || loginId == "none") {
-			alert("로그인 후 이용해 주세요.")
+		if (${sessionScope.loginIdx eq null}||loginId==""||loginId=="none") {
+			alert("로그인 후 이용해 주세요.");
 		} else {
 			if (confirm("장바구니에 추가 하시겠습니까")) {
 
