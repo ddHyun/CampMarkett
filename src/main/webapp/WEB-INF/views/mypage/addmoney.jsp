@@ -443,7 +443,7 @@
 		}
 		if(confirm("충전하시겠습니까?")){
 		var id = '${sessionScope.loginId}';
-		var simplepwd = $('#simplepwd').val();
+		var simplepwd = Number($('#simplepwd').val());
 		var totalmoney = Number($('#totalmoney').val());
 		var addedmoney = Number($('#addingMoney').val());
 		
