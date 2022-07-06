@@ -54,7 +54,6 @@ public class CampInfoService {
 		else {
 //			
 			ClassPathResource resource = new ClassPathResource("/datafile/campArea.json");
-			System.out.println(resource.getFilename());
 			// 1. 파일을 parse해서 obj 형태로 받는다.
 			try {
 				Object obj = jsonParser.parse(new FileReader(resource.getFile()));
@@ -98,15 +97,11 @@ public class CampInfoService {
 					}
 					campInfoVO.setAddress(address);
 					campInfoVO.setTell((String)camp.get("야영장전화번호"));
-					
-					
-					
+			
 					//이미지 파일 이름
 					idx++;
 					String imgName = String.format("campingArea%02d.jpg", idx%30 + 1 );
-					
 					campInfoVO.setImgName(imgName);
-					
 					campInfoMapper.addNewCamp(campInfoVO);
 				}
 			

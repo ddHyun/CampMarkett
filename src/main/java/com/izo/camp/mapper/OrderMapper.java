@@ -7,6 +7,6 @@ import com.izo.camp.vo.OrderVO;
 @Mapper
 public interface OrderMapper {
 
-	public void insertOrder(OrderVO orderVO);
+	public int insertOrder(OrderVO orderVO);
 
 }
