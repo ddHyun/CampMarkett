@@ -221,7 +221,6 @@ function changePcs(idx,productId,num){
 		}
 		
 	}else{
-		/* 숫자 하나 내리고 업데이트 */
 		var newPcs = nowPcs + num;
 		$.ajax({
 			url: "plusMinusPcs",
