@@ -1,8 +1,26 @@
 # CampMarket 프로젝트
 ![image](https://user-images.githubusercontent.com/107980962/216505939-27289fbc-7e45-4c30-b3fb-f9d360494569.png)
-<h2>캠핑 밀키트 쇼핑몰 프로젝트</h2>
+<h2>캠핑 밀키트 쇼핑몰 팀프로젝트</h2>
 <ul>
  <li>참여자</li>
+  <table>
+   <tr>
+    <th>이름</th>
+    <td>파트</td>
+   </tr>
+   <tr>
+    <th>강병준</th>
+    <td>상품후기</td>
+   </tr>
+   <tr>
+    <th>김진호</th>
+    <td>주변캠핑장/밀키트/장바구니</td>
+   </tr>
+   <tr>
+    <th>현경숙</th>
+    <td>회원가입/로그인/마이페이지</td>
+   </tr>
+  </table>
  <li>프로젝트 개요
   <ul>
    <li>개발동기 및 기획의도</li>
