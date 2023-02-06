@@ -33,12 +33,20 @@
  <li>프로젝트 상세
   <ul>
    <li>구조도</li>
-   <img src="https://user-images.githubusercontent.com/107980962/216544631-4cf39b17-785e-4fa3-8d53-8c03072e3de7.png">
+   <img width="800px" src="https://user-images.githubusercontent.com/107980962/216544631-4cf39b17-785e-4fa3-8d53-8c03072e3de7.png">
    <li>ERD</li>
-   <img src="https://user-images.githubusercontent.com/107980962/216544350-1b22118b-6216-4eee-91ee-289fe9a91103.png">
+   <img width="800px" src="https://user-images.githubusercontent.com/107980962/216544350-1b22118b-6216-4eee-91ee-289fe9a91103.png">
    <li>시연영상</li>
    https://drive.google.com/file/d/1MCkRVwfvdGbxB-klp0WNgBG2Z2H3_rzW/view?usp=sharing
    <br>-화질이 저하되므로 다운로드 후 재생해 주세요
+   <li>담당페이지 구현</li>
+   <img width="800px" src="https://user-images.githubusercontent.com/107980962/216857383-981f3f1b-4c8d-416e-884d-384725145ba0.png">
+   <img width="800px" src="https://user-images.githubusercontent.com/107980962/216857522-1a47dc55-945d-4f51-bab2-066ed3597075.png">
+   <img width="800px" src="https://user-images.githubusercontent.com/107980962/216857028-cdebf7b1-d0e1-4410-b449-2c1b9db15e11.png">
+   <img width="800px" src="https://user-images.githubusercontent.com/107980962/216857621-e2a8317b-dc62-4e57-ab91-385b11b3ad61.png">
+   <img width="800px" src="https://user-images.githubusercontent.com/107980962/216858178-ea9c853b-2350-4e2c-99df-6955e5d9507e.png">
+   <img width="800px" src="https://user-images.githubusercontent.com/107980962/216857805-056a1ef1-6697-4dd3-ba44-0eaab51d7d65.png">
+   <img width="800px" src="https://user-images.githubusercontent.com/107980962/216858221-525ef72a-cde5-4443-801f-c345f1bdc643.png">
   </ul>
  </li>
  <li>진행 프로세스
