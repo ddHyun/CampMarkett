@@ -111,6 +111,4 @@
    </table>
   </ul>
  </li>
- <li>프로젝트PPT</li>
- [CampMarket.pptx](https://github.com/ddHyun/CampMarkett/files/10576974/CampMarket.pptx) 
 </ul>
